@@ -1,4 +1,4 @@
-# Preview Versions
+﻿# Preview Versions
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG candidate releases are pre-release versions made available for
@@ -6,8 +6,8 @@ testing before the community issues a new generally available (GA) release.
 These versions are feature-frozen, meaning no new features are added, and are
 intended for public testing prior to the final release.
 
-!!! Important
-    CloudNativePG release candidates are not intended for use in production
+:::important
+CloudNativePG release candidates are not intended for use in production
     systems.
 
 ## Purpose of Release Candidates
@@ -43,3 +43,4 @@ For more information on the current preview version and how to test, please view
 - [Announcement](https://cloudnative-pg.io/releases/cloudnative-pg-1-27.0-rc1-released/)
 - [Documentation](https://cloudnative-pg.io/documentation/preview/)
 -->
+

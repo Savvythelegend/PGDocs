@@ -1,4 +1,4 @@
-# Kubernetes Upgrade and Maintenance
+﻿# Kubernetes Upgrade and Maintenance
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Maintaining an up-to-date Kubernetes cluster is crucial for ensuring optimal
@@ -41,8 +41,8 @@ for PostgreSQL clusters relying on **node-local storage**, where the storage is
 local to the Kubernetes worker node running the PostgreSQL database. Node-local
 storage, or simply *local storage*, is employed to enhance performance.
 
-!!! Note
-    If your database files reside on shared storage accessible over the
+:::note
+If your database files reside on shared storage accessible over the
     network, the default self-healing behavior of the operator can efficiently
     handle scenarios where volumes are reused by pods on different nodes after a
     drain operation. In such cases, you can skip the remaining sections of this
@@ -94,8 +94,8 @@ on draining the node during development activities.
 
 ## Node Maintenance Window
 
-!!! Important
-    While CloudNativePG will continue supporting the node maintenance window,
+:::important
+While CloudNativePG will continue supporting the node maintenance window,
     it is currently recommended to transition to direct control of pod disruption
     budgets, as explained in the previous section. This section is retained
     mainly for backward compatibility.
@@ -106,8 +106,8 @@ the cluster in **maintenance mode** through the `nodeMaintenanceWindow` option
 to avoid standard self-healing procedures to kick in, while, for example,
 enlarging the partition on the physical node or updating the node itself.
 
-!!! Warning
-    Limit the duration of the maintenance window to the shortest
+:::warning
+Limit the duration of the maintenance window to the shortest
     amount of time possible. In this phase, some of the expected
     behaviors of Kubernetes are either disabled or running with
     some limitations, including self-healing, rolling updates,
@@ -137,22 +137,22 @@ the new PostgreSQL instance takes shorter than waiting. This behavior
 does **not** apply to clusters with only one instance and
 reusePVC disabled: see section below.
 
-!!! Note
-    When performing the `kubectl drain` command, you will need
+:::note
+When performing the `kubectl drain` command, you will need
     to add the `--delete-emptydir-data` option.
     Don't be afraid: it refers to another volume internally used
     by the operator - not the PostgreSQL data directory.
 
-!!! Important
-    `PodDisruptionBudget` management can be disabled by setting the
+:::important
+`PodDisruptionBudget` management can be disabled by setting the
     `.spec.enablePDB` field to `false`. In that case, the operator won't
     create `PodDisruptionBudgets` and will delete them if they were
     previously created.
 
 ### Single instance clusters with `reusePVC` set to `false`
 
-!!! Important
-    We recommend to always create clusters with more
+:::important
+We recommend to always create clusters with more
     than one instance in order to guarantee high availability.
 
 Deleting the only PostgreSQL instance in a single instance cluster with
@@ -185,3 +185,4 @@ A possible approach could be:
 4. Scale back down the cluster to a single instance, this will delete the old instance
 5. The old primary's node can now be drained successfully, while leaving the new primary
    running on a new node.
+

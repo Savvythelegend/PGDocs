@@ -1,8 +1,8 @@
-# Client TLS/SSL connections
+﻿# Client TLS/SSL connections
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
-!!! Seealso "Certificates"
-    See [Certificates](certificates.md)
+:::info ""
+See [Certificates](certificates.md)
     for more details on how CloudNativePG supports TLS certificates.
 
 The CloudNativePG operator was designed to work with TLS/SSL for both
@@ -21,8 +21,8 @@ convention by way of the `initdb` configuration in the `bootstrap` section.)
 
 ## Issuing a new certificate
 
-!!! Seealso "About CNPG plugin for kubectl"
-    See the [Certificates in the CloudNativePG plugin](kubectl-plugin.md#certificates)
+:::info ""
+See the [Certificates in the CloudNativePG plugin](kubectl-plugin.md#certificates)
     content for details on how to use the plugin for kubectl.
 
 You can create a certificate for the app user in the `cluster-example`
@@ -189,3 +189,4 @@ This assumes that the PostgreSQL operand images include an OpenSSL library that
 supports the `TLSv1.3` version. If not, or if your client applications need a
 lower version number, you need to manually configure it in the PostgreSQL
 configuration as any other Postgres GUC.
+

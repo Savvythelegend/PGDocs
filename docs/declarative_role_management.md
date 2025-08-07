@@ -1,4 +1,4 @@
-# PostgreSQL Role Management
+﻿# PostgreSQL Role Management
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 From its inception, CloudNativePG has managed the creation of specific roles
@@ -150,8 +150,8 @@ never expires, mirroring the behavior of PostgreSQL. Specifically:
   UNTIL` was not set to `NULL` in the database (this is due to PostgreSQL not
   allowing `VALID UNTIL NULL` in the `ALTER ROLE` SQL statement)
 
-!!! Warning
-    New roles created without `passwordSecret` will have a `NULL` password
+:::warning
+New roles created without `passwordSecret` will have a `NULL` password
     inside PostgreSQL.
 
 ### Password hashed
@@ -247,8 +247,8 @@ Role      Errors
 petrarca  could not perform UPDATE_MEMBERSHIPS on role petrarca: role "poets" does not exist
 ```
 
-!!! Important
-    In terms of backward compatibility, declarative role management is designed
+:::important
+In terms of backward compatibility, declarative role management is designed
     to ignore roles that exist in the database but are not included in the spec.
     The lifecycle of these roles will continue to be managed within PostgreSQL,
     allowing CloudNativePG users to adopt this feature at their convenience.

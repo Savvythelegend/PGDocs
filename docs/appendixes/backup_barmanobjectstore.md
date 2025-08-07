@@ -1,4 +1,4 @@
-# Appendix B - Backup on object stores
+﻿# Appendix B - Backup on object stores
 
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
@@ -344,3 +344,4 @@ archive. This feature can appreciably reduce the recovery time. Make sure that
 you plan ahead for this scenario and correctly tune the value of this parameter
 for your environment. It will make a difference when you need it, and you will.
 :::
+

@@ -1,4 +1,4 @@
-# Operator configuration
+﻿# Operator configuration
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 The operator for CloudNativePG is installed from a standard
@@ -13,21 +13,21 @@ to change the default behavior, such as:
 By default, the operator is installed in the `cnpg-system`
 namespace as a Kubernetes `Deployment` called `cnpg-controller-manager`.
 
-!!! Note
-    In the examples below we assume the default name and namespace for the operator deployment.
+:::note
+In the examples below we assume the default name and namespace for the operator deployment.
 
 The behavior of the operator can be customized through a `ConfigMap`/`Secret` that
 is located in the same namespace of the operator deployment and with
 `cnpg-controller-manager-config` as the name.
 
-!!! Important
-    Any change to the config's `ConfigMap`/`Secret` will not be automatically
+:::important
+Any change to the config's `ConfigMap`/`Secret` will not be automatically
     detected by the operator, - and as such, it needs to be reloaded (see below).
     Moreover, changes only apply to the resources created after the configuration
     is reloaded.
 
-!!! Important
-    The operator first processes the ConfigMap values and then the Secret’s, in this order.
+:::important
+The operator first processes the ConfigMap values and then the Secret’s, in this order.
     As a result, if a parameter is defined in both places, the one in the Secret will be used.
 
 ## Available options
@@ -132,8 +132,8 @@ kubectl delete pods -n [NAMESPACE_NAME_HERE] \
   -l app.kubernetes.io/name=cloudnative-pg
 ```
 
-!!! Warning
-    Customizations will be applied only to `Cluster` resources created
+:::warning
+Customizations will be applied only to `Cluster` resources created
     after the reload of the operator deployment.
 
 Following the above example, if the `Cluster` definition contains a `categories`

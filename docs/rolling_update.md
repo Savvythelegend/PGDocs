@@ -1,11 +1,11 @@
-# Rolling Updates
+﻿# Rolling Updates
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 The operator allows changing the PostgreSQL version used in a cluster while
 applications are running against it.
 
-!!! Important
-    Only upgrades for PostgreSQL minor releases are supported.
+:::important
+Only upgrades for PostgreSQL minor releases are supported.
 
 Rolling upgrades are started when:
 
@@ -95,3 +95,4 @@ kubectl cnpg restart [cluster] [current_primary]
 ```
 
 You can find more information in the [`cnpg` plugin page](kubectl-plugin.md).
+

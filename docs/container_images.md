@@ -1,4 +1,4 @@
-# Container Image Requirements
+﻿# Container Image Requirements
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 The CloudNativePG operator for Kubernetes is designed to work with any
@@ -18,18 +18,18 @@ Optional Components:
   is needed)
 - `du` (used for `kubectl cnpg status`)
 
-!!! Important
-    Only [PostgreSQL versions officially supported by PGDG](https://postgresql.org/) are allowed.
+:::important
+Only [PostgreSQL versions officially supported by PGDG](https://postgresql.org/) are allowed.
 
-!!! Info
-    Barman Cloud executables are no longer required in CloudNativePG. The
+:::info
+Barman Cloud executables are no longer required in CloudNativePG. The
     recommended approach is to use the dedicated [Barman Cloud Plugin](https://github.com/cloudnative-pg/plugin-barman-cloud).
 
 No entry point or command is required in the image definition. CloudNativePG
 automatically overrides it with its instance manager.
 
-!!! Warning
-    CloudNativePG only supports **Primary with multiple/optional Hot Standby
+:::warning
+CloudNativePG only supports **Primary with multiple/optional Hot Standby
     Servers architecture** for PostgreSQL application container images.
 
 The CloudNativePG community provides and maintains
@@ -62,8 +62,8 @@ Examples of accepted image tags:
 - `15.5-10`
 - `16.0`
 
-!!! Warning
-    `latest` is not considered a valid tag for the image.
+:::warning
+`latest` is not considered a valid tag for the image.
 
-!!! Note
-    Image tag requirements do no apply for images defined in a catalog.
+:::note
+Image tag requirements do no apply for images defined in a catalog.

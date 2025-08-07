@@ -1,4 +1,4 @@
-# Fencing
+﻿# Fencing
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Fencing in CloudNativePG is the ultimate process of protecting the
@@ -94,8 +94,8 @@ This consists of an initial fast shutdown with a timeout set to
 - metrics will not be collected, except `cnpg_collector_fencing_on` which will be
   set to 1
 
-!!! Warning
-    If a **primary instance** is fenced, its postmaster process
+:::warning
+If a **primary instance** is fenced, its postmaster process
     is shut down but no failover is performed, interrupting the operativity of
     the applications. When the fence will be lifted, the primary instance will be
     started up again without performing a failover.

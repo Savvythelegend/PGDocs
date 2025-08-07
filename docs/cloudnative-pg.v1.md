@@ -1,1463 +1,215 @@
-# API Reference
+﻿API Reference
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
-<p>Package v1 contains API Schema definitions for the postgresql v1 API group</p>
+Package v1 contains API Schema definitions for the postgresql v1 API group.
 
+Resource Types
+Backup
 
-## Resource Types
+Cluster
 
+ClusterImageCatalog
 
-- [Backup](#postgresql-cnpg-io-v1-Backup)
-- [Cluster](#postgresql-cnpg-io-v1-Cluster)
-- [ClusterImageCatalog](#postgresql-cnpg-io-v1-ClusterImageCatalog)
-- [Database](#postgresql-cnpg-io-v1-Database)
-- [ImageCatalog](#postgresql-cnpg-io-v1-ImageCatalog)
-- [Pooler](#postgresql-cnpg-io-v1-Pooler)
-- [Publication](#postgresql-cnpg-io-v1-Publication)
-- [ScheduledBackup](#postgresql-cnpg-io-v1-ScheduledBackup)
-- [Subscription](#postgresql-cnpg-io-v1-Subscription)
+Database
 
-## Backup     {#postgresql-cnpg-io-v1-Backup}
+ImageCatalog
 
+Pooler
 
+Publication
 
-<p>A Backup resource is a request for a PostgreSQL backup by the user.</p>
+ScheduledBackup
 
+Subscription
 
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Backup</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-BackupSpec"><i>BackupSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the backup.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-<tr><td><code>status</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupStatus"><i>BackupStatus</i></a>
-</td>
-<td>
-   <p>Most recently observed status of the backup. This data may not be up to
-date. Populated by the system. Read-only.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## Cluster     {#postgresql-cnpg-io-v1-Cluster}
-
-
-
-<p>Cluster is the Schema for the PostgreSQL API</p>
-
+Backup \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Backup\}
+A Backup resource is a request for a PostgreSQL backup by the user.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Cluster</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-ClusterSpec"><i>ClusterSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the cluster.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-<tr><td><code>status</code><br/>
-<a href="#postgresql-cnpg-io-v1-ClusterStatus"><i>ClusterStatus</i></a>
-</td>
-<td>
-   <p>Most recently observed status of the cluster. This data may not be up
-to date. Populated by the system. Read-only.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Backup</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-BackupSpec"><i>BackupSpec</i></a></td><td>Specification of the desired behavior of the backup. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
+<tr><td><code>status</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-BackupStatus"><i>BackupStatus</i></a></td><td>Most recently observed status of the backup. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## ClusterImageCatalog     {#postgresql-cnpg-io-v1-ClusterImageCatalog}
-
-
-
-<p>ClusterImageCatalog is the Schema for the clusterimagecatalogs API</p>
-
+Cluster \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Cluster\}
+Cluster is the Schema for the PostgreSQL API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>ClusterImageCatalog</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-ImageCatalogSpec"><i>ImageCatalogSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the ClusterImageCatalog.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Cluster</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ClusterSpec"><i>ClusterSpec</i></a></td><td>Specification of the desired behavior of the cluster. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
+<tr><td><code>status</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ClusterStatus"><i>ClusterStatus</i></a></td><td>Most recently observed status of the cluster. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## Database     {#postgresql-cnpg-io-v1-Database}
-
-
-
-<p>Database is the Schema for the databases API</p>
-
+ClusterImageCatalog \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ClusterImageCatalog\}
+ClusterImageCatalog is the Schema for the clusterimagecatalogs API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Database</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-DatabaseSpec"><i>DatabaseSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired Database.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-<tr><td><code>status</code><br/>
-<a href="#postgresql-cnpg-io-v1-DatabaseStatus"><i>DatabaseStatus</i></a>
-</td>
-<td>
-   <p>Most recently observed status of the Database. This data may not be up to
-date. Populated by the system. Read-only.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>ClusterImageCatalog</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ImageCatalogSpec"><i>ImageCatalogSpec</i></a></td><td>Specification of the desired behavior of the ClusterImageCatalog. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## ImageCatalog     {#postgresql-cnpg-io-v1-ImageCatalog}
-
-
-
-<p>ImageCatalog is the Schema for the imagecatalogs API</p>
-
+Database \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Database\}
+Database is the Schema for the databases API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>ImageCatalog</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-ImageCatalogSpec"><i>ImageCatalogSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the ImageCatalog.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Database</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-DatabaseSpec"><i>DatabaseSpec</i></a></td><td>Specification of the desired Database. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
+<tr><td><code>status</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-DatabaseStatus"><i>DatabaseStatus</i></a></td><td>Most recently observed status of the Database. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## Pooler     {#postgresql-cnpg-io-v1-Pooler}
-
-
-
-<p>Pooler is the Schema for the poolers API</p>
-
+ImageCatalog \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ImageCatalog\}
+ImageCatalog is the Schema for the imagecatalogs API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Pooler</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-PoolerSpec"><i>PoolerSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the Pooler.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-<tr><td><code>status</code><br/>
-<a href="#postgresql-cnpg-io-v1-PoolerStatus"><i>PoolerStatus</i></a>
-</td>
-<td>
-   <p>Most recently observed status of the Pooler. This data may not be up to
-date. Populated by the system. Read-only.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>ImageCatalog</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ImageCatalogSpec"><i>ImageCatalogSpec</i></a></td><td>Specification of the desired behavior of the ImageCatalog. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## Publication     {#postgresql-cnpg-io-v1-Publication}
-
-
-
-<p>Publication is the Schema for the publications API</p>
-
+Pooler \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Pooler\}
+Pooler is the Schema for the poolers API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Publication</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-PublicationSpec"><i>PublicationSpec</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span></td>
-</tr>
-<tr><td><code>status</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-PublicationStatus"><i>PublicationStatus</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span></td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Pooler</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-PoolerSpec"><i>PoolerSpec</i></a></td><td>Specification of the desired behavior of the Pooler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
+<tr><td><code>status</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-PoolerStatus"><i>PoolerStatus</i></a></td><td>Most recently observed status of the Pooler. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## ScheduledBackup     {#postgresql-cnpg-io-v1-ScheduledBackup}
-
-
-
-<p>ScheduledBackup is the Schema for the scheduledbackups API</p>
-
+Publication \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Publication\}
+Publication is the Schema for the publications API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>ScheduledBackup</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-ScheduledBackupSpec"><i>ScheduledBackupSpec</i></a>
-</td>
-<td>
-   <p>Specification of the desired behavior of the ScheduledBackup.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
-<tr><td><code>status</code><br/>
-<a href="#postgresql-cnpg-io-v1-ScheduledBackupStatus"><i>ScheduledBackupStatus</i></a>
-</td>
-<td>
-   <p>Most recently observed status of the ScheduledBackup. This data may not be up
-to date. Populated by the system. Read-only.
-More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Publication</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-PublicationSpec"><i>PublicationSpec</i></a></td><td>No description provided.</td></tr>
+<tr><td><code>status</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-PublicationStatus"><i>PublicationStatus</i></a></td><td>No description provided.</td></tr>
 </tbody>
 </table>
 
-## Subscription     {#postgresql-cnpg-io-v1-Subscription}
-
-
-
-<p>Subscription is the Schema for the subscriptions API</p>
-
+ScheduledBackup \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ScheduledBackup\}
+ScheduledBackup is the Schema for the scheduledbackups API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>apiVersion</code> <B>[Required]</B><br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
-<tr><td><code>kind</code> <B>[Required]</B><br/>string</td><td><code>Subscription</code></td></tr>
-<tr><td><code>metadata</code> <B>[Required]</B><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td>
-</tr>
-<tr><td><code>spec</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-SubscriptionSpec"><i>SubscriptionSpec</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span></td>
-</tr>
-<tr><td><code>status</code> <B>[Required]</B><br/>
-<a href="#postgresql-cnpg-io-v1-SubscriptionStatus"><i>SubscriptionStatus</i></a>
-</td>
-<td>
-   <span class="text-muted">No description provided.</span></td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>ScheduledBackup</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ScheduledBackupSpec"><i>ScheduledBackupSpec</i></a></td><td>Specification of the desired behavior of the ScheduledBackup. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
+<tr><td><code>status</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ScheduledBackupStatus"><i>ScheduledBackupStatus</i></a></td><td>Most recently observed status of the ScheduledBackup. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</td></tr>
 </tbody>
 </table>
 
-## AffinityConfiguration     {#postgresql-cnpg-io-v1-AffinityConfiguration}
-
-
-**Appears in:**
-
-- [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
-
-
-<p>AffinityConfiguration contains the info we need to create the
-affinity rules for Pods</p>
-
+Subscription \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Subscription\}
+Subscription is the Schema for the subscriptions API.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>enablePodAntiAffinity</code><br/>
-<i>bool</i>
-</td>
-<td>
-   <p>Activates anti-affinity for the pods. The operator will define pods
-anti-affinity unless this field is explicitly set to false</p>
-</td>
-</tr>
-<tr><td><code>topologyKey</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>TopologyKey to use for anti-affinity configuration. See k8s documentation
-for more info on that</p>
-</td>
-</tr>
-<tr><td><code>nodeSelector</code><br/>
-<i>map[string]string</i>
-</td>
-<td>
-   <p>NodeSelector is map of key-value pairs used to define the nodes on which
-the pods can run.
-More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</p>
-</td>
-</tr>
-<tr><td><code>nodeAffinity</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#nodeaffinity-v1-core"><i>core/v1.NodeAffinity</i></a>
-</td>
-<td>
-   <p>NodeAffinity describes node affinity scheduling rules for the pod.
-More info: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</p>
-</td>
-</tr>
-<tr><td><code>tolerations</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#toleration-v1-core"><i>[]core/v1.Toleration</i></a>
-</td>
-<td>
-   <p>Tolerations is a list of Tolerations that should be set for all the pods, in order to allow them to run
-on tainted nodes.
-More info: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/</p>
-</td>
-</tr>
-<tr><td><code>podAntiAffinityType</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>PodAntiAffinityType allows the user to decide whether pod anti-affinity between cluster instance has to be
-considered a strong requirement during scheduling or not. Allowed values are: &quot;preferred&quot; (default if empty) or
-&quot;required&quot;. Setting it to &quot;required&quot;, could lead to instances remaining pending until new kubernetes nodes are
-added if all the existing nodes don't match the required pod anti-affinity rule.
-More info:
-https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity</p>
-</td>
-</tr>
-<tr><td><code>additionalPodAntiAffinity</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podantiaffinity-v1-core"><i>core/v1.PodAntiAffinity</i></a>
-</td>
-<td>
-   <p>AdditionalPodAntiAffinity allows to specify pod anti-affinity terms to be added to the ones generated
-by the operator if EnablePodAntiAffinity is set to true (default) or to be used exclusively if set to false.</p>
-</td>
-</tr>
-<tr><td><code>additionalPodAffinity</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podaffinity-v1-core"><i>core/v1.PodAffinity</i></a>
-</td>
-<td>
-   <p>AdditionalPodAffinity allows to specify pod affinity terms to be passed to all the cluster's pods.</p>
-</td>
-</tr>
+<tr><td><code>apiVersion</code> [Required]<br/>string</td><td><code>postgresql.cnpg.io/v1</code></td></tr>
+<tr><td><code>kind</code> [Required]<br/>string</td><td><code>Subscription</code></td></tr>
+<tr><td><code>metadata</code> [Required]<br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#objectmeta-v1-meta"><i>meta/v1.ObjectMeta</i></a></td><td>Refer to the Kubernetes API documentation for the fields of the <code>metadata</code> field.</td></tr>
+<tr><td><code>spec</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-SubscriptionSpec"><i>SubscriptionSpec</i></a></td><td>No description provided.</td></tr>
+<tr><td><code>status</code> [Required]<br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-SubscriptionStatus"><i>SubscriptionStatus</i></a></td><td>No description provided.</td></tr>
 </tbody>
 </table>
 
-## AvailableArchitecture     {#postgresql-cnpg-io-v1-AvailableArchitecture}
+AffinityConfiguration 
+Appears in:
 
+ClusterSpec
 
-**Appears in:**
-
-- [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
-
-
-<p>AvailableArchitecture represents the state of a cluster's architecture</p>
-
+AffinityConfiguration contains the info we need to create the affinity rules for Pods.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>goArch</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>GoArch is the name of the executable architecture</p>
-</td>
-</tr>
-<tr><td><code>hash</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Hash is the hash of the executable</p>
-</td>
-</tr>
+<tr><td><code>enablePodAntiAffinity</code><br/><i>bool</i></td><td>Activates anti-affinity for the pods. The operator will define pods anti-affinity unless this field is explicitly set to false.</td></tr>
+<tr><td><code>topologyKey</code><br/><i>string</i></td><td>TopologyKey to use for anti-affinity configuration. See k8s documentation for more info on that.</td></tr>
+<tr><td><code>nodeSelector</code><br/><i>map[string]string</i></td><td>NodeSelector is map of key-value pairs used to define the nodes on which the pods can run. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</td></tr>
+<tr><td><code>nodeAffinity</code><br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#nodeaffinity-v1-core"><i>core/v1.NodeAffinity</i></a></td><td>NodeAffinity describes node affinity scheduling rules for the pod. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</td></tr>
+<tr><td><code>tolerations</code><br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#toleration-v1-core"><i>[]core/v1.Toleration</i></a></td><td>Tolerations is a list of Tolerations that should be set for all the pods, in order to allow them to run on tainted nodes. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/</td></tr>
+<tr><td><code>podAntiAffinityType</code><br/><i>string</i></td><td>PodAntiAffinityType allows the user to decide whether pod anti-affinity between cluster instance has to be considered a strong requirement during scheduling or not. Allowed values are: "preferred" (default if empty) or "required". Setting it to "required", could lead to instances remaining pending until new kubernetes nodes are added if all the existing nodes don't match the required pod anti-affinity rule. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity</td></tr>
+<tr><td><code>additionalPodAntiAffinity</code><br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podantiaffinity-v1-core"><i>core/v1.PodAntiAffinity</i></a></td><td>AdditionalPodAntiAffinity allows to specify pod anti-affinity terms to be added to the ones generated by the operator if EnablePodAntiAffinity is set to true (default) or to be used exclusively if set to false.</td></tr>
+<tr><td><code>additionalPodAffinity</code><br/><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podaffinity-v1-core"><i>core/v1.PodAffinity</i></a></td><td>AdditionalPodAffinity allows to specify pod affinity terms to be passed to all the cluster's pods.</td></tr>
 </tbody>
 </table>
 
-## BackupConfiguration     {#postgresql-cnpg-io-v1-BackupConfiguration}
+BootstrapRecovery 
+Appears in:
 
+BootstrapConfiguration
 
-**Appears in:**
+BootstrapRecovery contains the configuration required to restore from an existing cluster using 3 methodologies: external cluster, volume snapshots or backup objects. Full recovery and Point-In-Time Recovery are supported. The method can be also be used to create clusters in continuous recovery (replica clusters), also supporting cascading replication when instances > 1.
 
-- [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
-
-
-<p>BackupConfiguration defines how the backup of the cluster are taken.
-The supported backup methods are BarmanObjectStore and VolumeSnapshot.
-For details and examples refer to the Backup and Recovery section of the
-documentation</p>
-
+Once the cluster exits recovery, the password for the superuser will be changed through the provided secret. Refer to the Bootstrap page of the documentation for more information.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>volumeSnapshot</code><br/>
-<a href="#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration"><i>VolumeSnapshotConfiguration</i></a>
-</td>
-<td>
-   <p>VolumeSnapshot provides the configuration for the execution of volume snapshot backups.</p>
-</td>
-</tr>
-<tr><td><code>barmanObjectStore</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/barman-cloud/pkg/api/#BarmanObjectStoreConfiguration"><i>github.com/cloudnative-pg/barman-cloud/pkg/api.BarmanObjectStoreConfiguration</i></a>
-</td>
-<td>
-   <p>The configuration for the barman-cloud tool suite</p>
-</td>
-</tr>
-<tr><td><code>retentionPolicy</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>RetentionPolicy is the retention policy to be used for backups
-and WALs (i.e. '60d'). The retention policy is expressed in the form
-of <code>XXu</code> where <code>XX</code> is a positive integer and <code>u</code> is in <code>[dwm]</code> -
-days, weeks, months.
-It's currently only applicable when using the BarmanObjectStore method.</p>
-</td>
-</tr>
-<tr><td><code>target</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupTarget"><i>BackupTarget</i></a>
-</td>
-<td>
-   <p>The policy to decide which instance should perform backups. Available
-options are empty string, which will default to <code>prefer-standby</code> policy,
-<code>primary</code> to have backups run always on primary instances, <code>prefer-standby</code>
-to have backups run preferably on the most updated standby, if available.</p>
-</td>
-</tr>
+<tr><td><code>backup</code><br/><a href="https://www.google.com/search?q=%23postgresql-cnpg-io-v1-BackupSource"><i>BackupSource</i></a></td><td>The backup object containing the physical base backup from which to initiate the recovery procedure. Mutually exclusive with <code>source</code> and <code>volumeSnapshots</code>.</td></tr>
+<tr><td><code>source</code><br/><i>string</i></td><td>The external cluster whose backup we will restore. This is also used as the name of the folder under which the backup is stored, so it must be set to the name of the source cluster. Mutually exclusive with <code>backup</code>.</td></tr>
+<tr><td><code>volumeSnapshots</code><br/><a href="#postgresql-cnpg-io-v1-DataSource"><i>DataSource</i></a></td><td>The static PVC data source(s) from which to initiate the recovery procedure. Currently supporting <code>VolumeSnapshot</code> and <code>PersistentVolumeClaim</code> resources that map an existing PVC group, compatible with CloudNativePG, and taken with a cold backup copy on a fenced Postgres instance.</td></tr>
+<tr><td><code>recoveryTarget</code><br/><a href="#postgresql-cnpg-io-v1-RecoveryTarget"><i>RecoveryTarget</i></a></td><td>By default, the recovery process applies all the available WAL files in the archive (full recovery). However, you can also end the recovery as soon as a consistent state is reached or recover to a point-in-time (PITR) by specifying a <code>RecoveryTarget</code> object. More info: https://www.postgresql.org/docs/current/runtime-config-wal.html#RUNTIME-CONFIG-WAL-RECOVERY-TARGET</td></tr>
+<tr><td><code>database</code><br/><i>string</i></td><td>Name of the database used by the application. Default: <code>app</code>.</td></tr>
+<tr><td><code>owner</code><br/><i>string</i></td><td>Name of the owner of the database in the instance to be used by applications. Defaults to the value of the <code>database</code> key.</td></tr>
+<tr><td><code>secret</code><br/><a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a></td><td>Name of the secret containing the initial credentials for the owner of the user database. If empty a new secret will be created from scratch.</td></tr>
 </tbody>
 </table>
 
-## BackupMethod     {#postgresql-cnpg-io-v1-BackupMethod}
+CertificatesConfiguration 
+Appears in:
 
-(Alias of `string`)
+CertificatesStatus
 
-**Appears in:**
+ClusterSpec
 
-- [BackupSpec](#postgresql-cnpg-io-v1-BackupSpec)
-
-- [BackupStatus](#postgresql-cnpg-io-v1-BackupStatus)
-
-- [ScheduledBackupSpec](#postgresql-cnpg-io-v1-ScheduledBackupSpec)
-
-
-<p>BackupMethod defines the way of executing the physical base backups of
-the selected PostgreSQL instance</p>
-
-
-
-
-## BackupPhase     {#postgresql-cnpg-io-v1-BackupPhase}
-
-(Alias of `string`)
-
-**Appears in:**
-
-- [BackupStatus](#postgresql-cnpg-io-v1-BackupStatus)
-
-
-<p>BackupPhase is the phase of the backup</p>
-
-
-
-
-## BackupPluginConfiguration     {#postgresql-cnpg-io-v1-BackupPluginConfiguration}
-
-
-**Appears in:**
-
-- [BackupSpec](#postgresql-cnpg-io-v1-BackupSpec)
-
-- [ScheduledBackupSpec](#postgresql-cnpg-io-v1-ScheduledBackupSpec)
-
-
-<p>BackupPluginConfiguration contains the backup configuration used by
-the backup plugin</p>
-
+CertificatesConfiguration contains the needed configurations to handle server certificates.
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
-<tr><td><code>name</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name is the name of the plugin managing this backup</p>
-</td>
-</tr>
-<tr><td><code>parameters</code><br/>
-<i>map[string]string</i>
-</td>
-<td>
-   <p>Parameters are the configuration parameters passed to the backup
-plugin for this backup</p>
-</td>
-</tr>
+<tr><td><code>serverCASecret</code><br/><i>string</i></td><td>The secret containing the Server CA certificate. If not defined, a new secret will be created with a self-signed CA and will be used to generate the TLS certificate ServerTLSSecret. Contains: <ul><li><code>ca.crt</code>: CA that should be used to validate the server certificate, used as <code>sslrootcert</code> in client connection strings.</li><li><code>ca.key</code>: key used to generate Server SSL certs, if ServerTLSSecret is provided, this can be omitted.</li></ul></td></tr>
+<tr><td><code>serverTLSSecret</code><br/><i>string</i></td><td>The secret of type kubernetes.io/tls containing the server TLS certificate and key that will be set as <code>ssl_cert_file</code> and <code>ssl_key_file</code> so that clients can connect to postgres securely. If not defined, ServerCASecret must provide also <code>ca.key</code> and a new secret will be created using the provided CA.</td></tr>
+<tr><td><code>replicationTLSSecret</code><br/><i>string</i></td><td>The secret of type kubernetes.io/tls containing the client certificate to authenticate as the <code>streaming_replica</code> user. If not defined, ClientCASecret must provide also <code>ca.key</code>, and a new secret will be created using the provided CA.</td></tr>
+<tr><td><code>clientCASecret</code><br/><i>string</i></td><td>The secret containing the Client CA certificate. If not defined, a new secret will be created with a self-signed CA and will be used to generate all the client certificates. Contains: <ul><li><code>ca.crt</code>: CA that should be used to validate the client certificates, used as <code>ssl_ca_file</code> of all the instances.</li><li><code>ca.key</code>: key used to generate client certificates, if ReplicationTLSSecret is provided, this can be omitted.</li></ul></td></tr>
+<tr><td><code>serverAltDNSNames</code><br/><i>[]string</i></td><td>The list of the server alternative DNS names to be added to the generated server TLS certificates, when required.</td></tr>
 </tbody>
 </table>
 
-## BackupSnapshotElementStatus     {#postgresql-cnpg-io-v1-BackupSnapshotElementStatus}
-
-
-**Appears in:**
-
-- [BackupSnapshotStatus](#postgresql-cnpg-io-v1-BackupSnapshotStatus)
-
-
-<p>BackupSnapshotElementStatus is a volume snapshot that is part of a volume snapshot method backup</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>name</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name is the snapshot resource name</p>
-</td>
-</tr>
-<tr><td><code>type</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Type is tho role of the snapshot in the cluster, such as PG_DATA, PG_WAL and PG_TABLESPACE</p>
-</td>
-</tr>
-<tr><td><code>tablespaceName</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>TablespaceName is the name of the snapshotted tablespace. Only set
-when type is PG_TABLESPACE</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BackupSnapshotStatus     {#postgresql-cnpg-io-v1-BackupSnapshotStatus}
-
-
-**Appears in:**
-
-- [BackupStatus](#postgresql-cnpg-io-v1-BackupStatus)
-
-
-<p>BackupSnapshotStatus the fields exclusive to the volumeSnapshot method backup</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>elements</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupSnapshotElementStatus"><i>[]BackupSnapshotElementStatus</i></a>
-</td>
-<td>
-   <p>The elements list, populated with the gathered volume snapshots</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BackupSource     {#postgresql-cnpg-io-v1-BackupSource}
-
-
-**Appears in:**
-
-- [BootstrapRecovery](#postgresql-cnpg-io-v1-BootstrapRecovery)
-
-
-<p>BackupSource contains the backup we need to restore from, plus some
-information that could be needed to correctly restore it.</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>LocalObjectReference</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a>
-</td>
-<td>(Members of <code>LocalObjectReference</code> are embedded into this type.)
-   <span class="text-muted">No description provided.</span></td>
-</tr>
-<tr><td><code>endpointCA</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#SecretKeySelector"><i>github.com/cloudnative-pg/machinery/pkg/api.SecretKeySelector</i></a>
-</td>
-<td>
-   <p>EndpointCA store the CA bundle of the barman endpoint.
-Useful when using self-signed certificates to avoid
-errors with certificate issuer and barman-cloud-wal-archive.</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BackupSpec     {#postgresql-cnpg-io-v1-BackupSpec}
-
-
-**Appears in:**
-
-- [Backup](#postgresql-cnpg-io-v1-Backup)
-
-
-<p>BackupSpec defines the desired state of Backup</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>cluster</code> <B>[Required]</B><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a>
-</td>
-<td>
-   <p>The cluster to backup</p>
-</td>
-</tr>
-<tr><td><code>target</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupTarget"><i>BackupTarget</i></a>
-</td>
-<td>
-   <p>The policy to decide which instance should perform this backup. If empty,
-it defaults to <code>cluster.spec.backup.target</code>.
-Available options are empty string, <code>primary</code> and <code>prefer-standby</code>.
-<code>primary</code> to have backups run always on primary instances,
-<code>prefer-standby</code> to have backups run preferably on the most updated
-standby, if available.</p>
-</td>
-</tr>
-<tr><td><code>method</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupMethod"><i>BackupMethod</i></a>
-</td>
-<td>
-   <p>The backup method to be used, possible options are <code>barmanObjectStore</code>,
-<code>volumeSnapshot</code> or <code>plugin</code>. Defaults to: <code>barmanObjectStore</code>.</p>
-</td>
-</tr>
-<tr><td><code>pluginConfiguration</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupPluginConfiguration"><i>BackupPluginConfiguration</i></a>
-</td>
-<td>
-   <p>Configuration parameters passed to the plugin managing this backup</p>
-</td>
-</tr>
-<tr><td><code>online</code><br/>
-<i>bool</i>
-</td>
-<td>
-   <p>Whether the default type of backup with volume snapshots is
-online/hot (<code>true</code>, default) or offline/cold (<code>false</code>)
-Overrides the default setting specified in the cluster field '.spec.backup.volumeSnapshot.online'</p>
-</td>
-</tr>
-<tr><td><code>onlineConfiguration</code><br/>
-<a href="#postgresql-cnpg-io-v1-OnlineConfiguration"><i>OnlineConfiguration</i></a>
-</td>
-<td>
-   <p>Configuration parameters to control the online/hot backup with volume snapshots
-Overrides the default settings specified in the cluster '.backup.volumeSnapshot.onlineConfiguration' stanza</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BackupStatus     {#postgresql-cnpg-io-v1-BackupStatus}
-
-
-**Appears in:**
-
-- [Backup](#postgresql-cnpg-io-v1-Backup)
-
-
-<p>BackupStatus defines the observed state of Backup</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>BarmanCredentials</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/barman-cloud/pkg/api/#BarmanCredentials"><i>github.com/cloudnative-pg/barman-cloud/pkg/api.BarmanCredentials</i></a>
-</td>
-<td>(Members of <code>BarmanCredentials</code> are embedded into this type.)
-   <p>The potential credentials for each cloud provider</p>
-</td>
-</tr>
-<tr><td><code>endpointCA</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#SecretKeySelector"><i>github.com/cloudnative-pg/machinery/pkg/api.SecretKeySelector</i></a>
-</td>
-<td>
-   <p>EndpointCA store the CA bundle of the barman endpoint.
-Useful when using self-signed certificates to avoid
-errors with certificate issuer and barman-cloud-wal-archive.</p>
-</td>
-</tr>
-<tr><td><code>endpointURL</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Endpoint to be used to upload data to the cloud,
-overriding the automatic endpoint discovery</p>
-</td>
-</tr>
-<tr><td><code>destinationPath</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The path where to store the backup (i.e. s3://bucket/path/to/folder)
-this path, with different destination folders, will be used for WALs
-and for data. This may not be populated in case of errors.</p>
-</td>
-</tr>
-<tr><td><code>serverName</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The server name on S3, the cluster name is used if this
-parameter is omitted</p>
-</td>
-</tr>
-<tr><td><code>encryption</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Encryption method required to S3 API</p>
-</td>
-</tr>
-<tr><td><code>backupId</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The ID of the Barman backup</p>
-</td>
-</tr>
-<tr><td><code>backupName</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The Name of the Barman backup</p>
-</td>
-</tr>
-<tr><td><code>phase</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupPhase"><i>BackupPhase</i></a>
-</td>
-<td>
-   <p>The last backup status</p>
-</td>
-</tr>
-<tr><td><code>startedAt</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#time-v1-meta"><i>meta/v1.Time</i></a>
-</td>
-<td>
-   <p>When the backup was started</p>
-</td>
-</tr>
-<tr><td><code>stoppedAt</code><br/>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#time-v1-meta"><i>meta/v1.Time</i></a>
-</td>
-<td>
-   <p>When the backup was terminated</p>
-</td>
-</tr>
-<tr><td><code>beginWal</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The starting WAL</p>
-</td>
-</tr>
-<tr><td><code>endWal</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The ending WAL</p>
-</td>
-</tr>
-<tr><td><code>beginLSN</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The starting xlog</p>
-</td>
-</tr>
-<tr><td><code>endLSN</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The ending xlog</p>
-</td>
-</tr>
-<tr><td><code>error</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The detected error</p>
-</td>
-</tr>
-<tr><td><code>commandOutput</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Unused. Retained for compatibility with old versions.</p>
-</td>
-</tr>
-<tr><td><code>commandError</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The backup command output in case of error</p>
-</td>
-</tr>
-<tr><td><code>backupLabelFile</code><br/>
-<i>[]byte</i>
-</td>
-<td>
-   <p>Backup label file content as returned by Postgres in case of online (hot) backups</p>
-</td>
-</tr>
-<tr><td><code>tablespaceMapFile</code><br/>
-<i>[]byte</i>
-</td>
-<td>
-   <p>Tablespace map file content as returned by Postgres in case of online (hot) backups</p>
-</td>
-</tr>
-<tr><td><code>instanceID</code><br/>
-<a href="#postgresql-cnpg-io-v1-InstanceID"><i>InstanceID</i></a>
-</td>
-<td>
-   <p>Information to identify the instance where the backup has been taken from</p>
-</td>
-</tr>
-<tr><td><code>snapshotBackupStatus</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupSnapshotStatus"><i>BackupSnapshotStatus</i></a>
-</td>
-<td>
-   <p>Status of the volumeSnapshot backup</p>
-</td>
-</tr>
-<tr><td><code>method</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupMethod"><i>BackupMethod</i></a>
-</td>
-<td>
-   <p>The backup method being used</p>
-</td>
-</tr>
-<tr><td><code>online</code><br/>
-<i>bool</i>
-</td>
-<td>
-   <p>Whether the backup was online/hot (<code>true</code>) or offline/cold (<code>false</code>)</p>
-</td>
-</tr>
-<tr><td><code>pluginMetadata</code><br/>
-<i>map[string]string</i>
-</td>
-<td>
-   <p>A map containing the plugin metadata</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BackupTarget     {#postgresql-cnpg-io-v1-BackupTarget}
-
-(Alias of `string`)
-
-**Appears in:**
-
-- [BackupConfiguration](#postgresql-cnpg-io-v1-BackupConfiguration)
-
-- [BackupSpec](#postgresql-cnpg-io-v1-BackupSpec)
-
-- [ScheduledBackupSpec](#postgresql-cnpg-io-v1-ScheduledBackupSpec)
-
-
-<p>BackupTarget describes the preferred targets for a backup</p>
-
-
-
-
-## BootstrapConfiguration     {#postgresql-cnpg-io-v1-BootstrapConfiguration}
-
-
-**Appears in:**
-
-- [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
-
-
-<p>BootstrapConfiguration contains information about how to create the PostgreSQL
-cluster. Only a single bootstrap method can be defined among the supported
-ones. <code>initdb</code> will be used as the bootstrap method if left
-unspecified. Refer to the Bootstrap page of the documentation for more
-information.</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>initdb</code><br/>
-<a href="#postgresql-cnpg-io-v1-BootstrapInitDB"><i>BootstrapInitDB</i></a>
-</td>
-<td>
-   <p>Bootstrap the cluster via initdb</p>
-</td>
-</tr>
-<tr><td><code>recovery</code><br/>
-<a href="#postgresql-cnpg-io-v1-BootstrapRecovery"><i>BootstrapRecovery</i></a>
-</td>
-<td>
-   <p>Bootstrap the cluster from a backup</p>
-</td>
-</tr>
-<tr><td><code>pg_basebackup</code><br/>
-<a href="#postgresql-cnpg-io-v1-BootstrapPgBaseBackup"><i>BootstrapPgBaseBackup</i></a>
-</td>
-<td>
-   <p>Bootstrap the cluster taking a physical backup of another compatible
-PostgreSQL instance</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BootstrapInitDB     {#postgresql-cnpg-io-v1-BootstrapInitDB}
-
-
-**Appears in:**
-
-- [BootstrapConfiguration](#postgresql-cnpg-io-v1-BootstrapConfiguration)
-
-
-<p>BootstrapInitDB is the configuration of the bootstrap process when
-initdb is used
-Refer to the Bootstrap page of the documentation for more information.</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>database</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the database used by the application. Default: <code>app</code>.</p>
-</td>
-</tr>
-<tr><td><code>owner</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the owner of the database in the instance to be used
-by applications. Defaults to the value of the <code>database</code> key.</p>
-</td>
-</tr>
-<tr><td><code>secret</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a>
-</td>
-<td>
-   <p>Name of the secret containing the initial credentials for the
-owner of the user database. If empty a new secret will be
-created from scratch</p>
-</td>
-</tr>
-<tr><td><code>options</code><br/>
-<i>[]string</i>
-</td>
-<td>
-   <p>The list of options that must be passed to initdb when creating the cluster.
-Deprecated: This could lead to inconsistent configurations,
-please use the explicit provided parameters instead.
-If defined, explicit values will be ignored.</p>
-</td>
-</tr>
-<tr><td><code>dataChecksums</code><br/>
-<i>bool</i>
-</td>
-<td>
-   <p>Whether the <code>-k</code> option should be passed to initdb,
-enabling checksums on data pages (default: <code>false</code>)</p>
-</td>
-</tr>
-<tr><td><code>encoding</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The value to be passed as option <code>--encoding</code> for initdb (default:<code>UTF8</code>)</p>
-</td>
-</tr>
-<tr><td><code>localeCollate</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The value to be passed as option <code>--lc-collate</code> for initdb (default:<code>C</code>)</p>
-</td>
-</tr>
-<tr><td><code>localeCType</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The value to be passed as option <code>--lc-ctype</code> for initdb (default:<code>C</code>)</p>
-</td>
-</tr>
-<tr><td><code>locale</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Sets the default collation order and character classification in the new database.</p>
-</td>
-</tr>
-<tr><td><code>localeProvider</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>This option sets the locale provider for databases created in the new cluster.
-Available from PostgreSQL 16.</p>
-</td>
-</tr>
-<tr><td><code>icuLocale</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Specifies the ICU locale when the ICU provider is used.
-This option requires <code>localeProvider</code> to be set to <code>icu</code>.
-Available from PostgreSQL 15.</p>
-</td>
-</tr>
-<tr><td><code>icuRules</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Specifies additional collation rules to customize the behavior of the default collation.
-This option requires <code>localeProvider</code> to be set to <code>icu</code>.
-Available from PostgreSQL 16.</p>
-</td>
-</tr>
-<tr><td><code>builtinLocale</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Specifies the locale name when the builtin provider is used.
-This option requires <code>localeProvider</code> to be set to <code>builtin</code>.
-Available from PostgreSQL 17.</p>
-</td>
-</tr>
-<tr><td><code>walSegmentSize</code><br/>
-<i>int</i>
-</td>
-<td>
-   <p>The value in megabytes (1 to 1024) to be passed to the <code>--wal-segsize</code>
-option for initdb (default: empty, resulting in PostgreSQL default: 16MB)</p>
-</td>
-</tr>
-<tr><td><code>postInitSQL</code><br/>
-<i>[]string</i>
-</td>
-<td>
-   <p>List of SQL queries to be executed as a superuser in the <code>postgres</code>
-database right after the cluster has been created - to be used with extreme care
-(by default empty)</p>
-</td>
-</tr>
-<tr><td><code>postInitApplicationSQL</code><br/>
-<i>[]string</i>
-</td>
-<td>
-   <p>List of SQL queries to be executed as a superuser in the application
-database right after the cluster has been created - to be used with extreme care
-(by default empty)</p>
-</td>
-</tr>
-<tr><td><code>postInitTemplateSQL</code><br/>
-<i>[]string</i>
-</td>
-<td>
-   <p>List of SQL queries to be executed as a superuser in the <code>template1</code>
-database right after the cluster has been created - to be used with extreme care
-(by default empty)</p>
-</td>
-</tr>
-<tr><td><code>import</code><br/>
-<a href="#postgresql-cnpg-io-v1-Import"><i>Import</i></a>
-</td>
-<td>
-   <p>Bootstraps the new cluster by importing data from an existing PostgreSQL
-instance using logical backup (<code>pg_dump</code> and <code>pg_restore</code>)</p>
-</td>
-</tr>
-<tr><td><code>postInitApplicationSQLRefs</code><br/>
-<a href="#postgresql-cnpg-io-v1-SQLRefs"><i>SQLRefs</i></a>
-</td>
-<td>
-   <p>List of references to ConfigMaps or Secrets containing SQL files
-to be executed as a superuser in the application database right after
-the cluster has been created. The references are processed in a specific order:
-first, all Secrets are processed, followed by all ConfigMaps.
-Within each group, the processing order follows the sequence specified
-in their respective arrays.
-(by default empty)</p>
-</td>
-</tr>
-<tr><td><code>postInitTemplateSQLRefs</code><br/>
-<a href="#postgresql-cnpg-io-v1-SQLRefs"><i>SQLRefs</i></a>
-</td>
-<td>
-   <p>List of references to ConfigMaps or Secrets containing SQL files
-to be executed as a superuser in the <code>template1</code> database right after
-the cluster has been created. The references are processed in a specific order:
-first, all Secrets are processed, followed by all ConfigMaps.
-Within each group, the processing order follows the sequence specified
-in their respective arrays.
-(by default empty)</p>
-</td>
-</tr>
-<tr><td><code>postInitSQLRefs</code><br/>
-<a href="#postgresql-cnpg-io-v1-SQLRefs"><i>SQLRefs</i></a>
-</td>
-<td>
-   <p>List of references to ConfigMaps or Secrets containing SQL files
-to be executed as a superuser in the <code>postgres</code> database right after
-the cluster has been created. The references are processed in a specific order:
-first, all Secrets are processed, followed by all ConfigMaps.
-Within each group, the processing order follows the sequence specified
-in their respective arrays.
-(by default empty)</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BootstrapPgBaseBackup     {#postgresql-cnpg-io-v1-BootstrapPgBaseBackup}
-
-
-**Appears in:**
-
-- [BootstrapConfiguration](#postgresql-cnpg-io-v1-BootstrapConfiguration)
-
-
-<p>BootstrapPgBaseBackup contains the configuration required to take
-a physical backup of an existing PostgreSQL cluster</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>source</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The name of the server of which we need to take a physical backup</p>
-</td>
-</tr>
-<tr><td><code>database</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the database used by the application. Default: <code>app</code>.</p>
-</td>
-</tr>
-<tr><td><code>owner</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the owner of the database in the instance to be used
-by applications. Defaults to the value of the <code>database</code> key.</p>
-</td>
-</tr>
-<tr><td><code>secret</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a>
-</td>
-<td>
-   <p>Name of the secret containing the initial credentials for the
-owner of the user database. If empty a new secret will be
-created from scratch</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## BootstrapRecovery     {#postgresql-cnpg-io-v1-BootstrapRecovery}
-
-
-**Appears in:**
-
-- [BootstrapConfiguration](#postgresql-cnpg-io-v1-BootstrapConfiguration)
-
-
-<p>BootstrapRecovery contains the configuration required to restore
-from an existing cluster using 3 methodologies: external cluster,
-volume snapshots or backup objects. Full recovery and Point-In-Time
-Recovery are supported.
-The method can be also be used to create clusters in continuous recovery
-(replica clusters), also supporting cascading replication when <code>instances</code> &gt;</p>
-<ol>
-<li>Once the cluster exits recovery, the password for the superuser
-will be changed through the provided secret.
-Refer to the Bootstrap page of the documentation for more information.</li>
-</ol>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>backup</code><br/>
-<a href="#postgresql-cnpg-io-v1-BackupSource"><i>BackupSource</i></a>
-</td>
-<td>
-   <p>The backup object containing the physical base backup from which to
-initiate the recovery procedure.
-Mutually exclusive with <code>source</code> and <code>volumeSnapshots</code>.</p>
-</td>
-</tr>
-<tr><td><code>source</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The external cluster whose backup we will restore. This is also
-used as the name of the folder under which the backup is stored,
-so it must be set to the name of the source cluster
-Mutually exclusive with <code>backup</code>.</p>
-</td>
-</tr>
-<tr><td><code>volumeSnapshots</code><br/>
-<a href="#postgresql-cnpg-io-v1-DataSource"><i>DataSource</i></a>
-</td>
-<td>
-   <p>The static PVC data source(s) from which to initiate the
-recovery procedure. Currently supporting <code>VolumeSnapshot</code>
-and <code>PersistentVolumeClaim</code> resources that map an existing
-PVC group, compatible with CloudNativePG, and taken with
-a cold backup copy on a fenced Postgres instance (limitation
-which will be removed in the future when online backup
-will be implemented).
-Mutually exclusive with <code>backup</code>.</p>
-</td>
-</tr>
-<tr><td><code>recoveryTarget</code><br/>
-<a href="#postgresql-cnpg-io-v1-RecoveryTarget"><i>RecoveryTarget</i></a>
-</td>
-<td>
-   <p>By default, the recovery process applies all the available
-WAL files in the archive (full recovery). However, you can also
-end the recovery as soon as a consistent state is reached or
-recover to a point-in-time (PITR) by specifying a <code>RecoveryTarget</code> object,
-as expected by PostgreSQL (i.e., timestamp, transaction Id, LSN, ...).
-More info: https://www.postgresql.org/docs/current/runtime-config-wal.html#RUNTIME-CONFIG-WAL-RECOVERY-TARGET</p>
-</td>
-</tr>
-<tr><td><code>database</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the database used by the application. Default: <code>app</code>.</p>
-</td>
-</tr>
-<tr><td><code>owner</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>Name of the owner of the database in the instance to be used
-by applications. Defaults to the value of the <code>database</code> key.</p>
-</td>
-</tr>
-<tr><td><code>secret</code><br/>
-<a href="https://pkg.go.dev/github.com/cloudnative-pg/machinery/pkg/api/#LocalObjectReference"><i>github.com/cloudnative-pg/machinery/pkg/api.LocalObjectReference</i></a>
-</td>
-<td>
-   <p>Name of the secret containing the initial credentials for the
-owner of the user database. If empty a new secret will be
-created from scratch</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## CatalogImage     {#postgresql-cnpg-io-v1-CatalogImage}
-
-
-**Appears in:**
-
-- [ImageCatalogSpec](#postgresql-cnpg-io-v1-ImageCatalogSpec)
-
-
-<p>CatalogImage defines the image and major version</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>image</code> <B>[Required]</B><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The image reference</p>
-</td>
-</tr>
-<tr><td><code>major</code> <B>[Required]</B><br/>
-<i>int</i>
-</td>
-<td>
-   <p>The PostgreSQL major version of the image. Must be unique within the catalog.</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## CertificatesConfiguration     {#postgresql-cnpg-io-v1-CertificatesConfiguration}
-
-
-**Appears in:**
-
-- [CertificatesStatus](#postgresql-cnpg-io-v1-CertificatesStatus)
-
-- [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
-
-
-<p>CertificatesConfiguration contains the needed configurations to handle server certificates.</p>
-
-
-<table class="table">
-<thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
-<tbody>
-<tr><td><code>serverCASecret</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The secret containing the Server CA certificate. If not defined, a new secret will be created
-with a self-signed CA and will be used to generate the TLS certificate ServerTLSSecret.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Contains:<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<ul>
-<li><code>ca.crt</code>: CA that should be used to validate the server certificate,
-used as <code>sslrootcert</code> in client connection strings.<!-- raw HTML omitted --></li>
-<li><code>ca.key</code>: key used to generate Server SSL certs, if ServerTLSSecret is provided,
-this can be omitted.<!-- raw HTML omitted --></li>
-</ul>
-</td>
-</tr>
-<tr><td><code>serverTLSSecret</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The secret of type kubernetes.io/tls containing the server TLS certificate and key that will be set as
-<code>ssl_cert_file</code> and <code>ssl_key_file</code> so that clients can connect to postgres securely.
-If not defined, ServerCASecret must provide also <code>ca.key</code> and a new secret will be
-created using the provided CA.</p>
-</td>
-</tr>
-<tr><td><code>replicationTLSSecret</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The secret of type kubernetes.io/tls containing the client certificate to authenticate as
-the <code>streaming_replica</code> user.
-If not defined, ClientCASecret must provide also <code>ca.key</code>, and a new secret will be
-created using the provided CA.</p>
-</td>
-</tr>
-<tr><td><code>clientCASecret</code><br/>
-<i>string</i>
-</td>
-<td>
-   <p>The secret containing the Client CA certificate. If not defined, a new secret will be created
-with a self-signed CA and will be used to generate all the client certificates.<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Contains:<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<ul>
-<li><code>ca.crt</code>: CA that should be used to validate the client certificates,
-used as <code>ssl_ca_file</code> of all the instances.<!-- raw HTML omitted --></li>
-<li><code>ca.key</code>: key used to generate client certificates, if ReplicationTLSSecret is provided,
-this can be omitted.<!-- raw HTML omitted --></li>
-</ul>
-</td>
-</tr>
-<tr><td><code>serverAltDNSNames</code><br/>
-<i>[]string</i>
-</td>
-<td>
-   <p>The list of the server alternative DNS names to be added to the generated server TLS certificates, when required.</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-## CertificatesStatus     {#postgresql-cnpg-io-v1-CertificatesStatus}
+## CertificatesStatus     
 
 
 **Appears in:**
@@ -1488,7 +240,7 @@ this can be omitted.<!-- raw HTML omitted --></li>
 </tbody>
 </table>
 
-## ClusterMonitoringTLSConfiguration     {#postgresql-cnpg-io-v1-ClusterMonitoringTLSConfiguration}
+## ClusterMonitoringTLSConfiguration     
 
 
 **Appears in:**
@@ -1514,7 +266,7 @@ Changing this option will force a rollout of all instances.</p>
 </tbody>
 </table>
 
-## ClusterSpec     {#postgresql-cnpg-io-v1-ClusterSpec}
+## ClusterSpec     
 
 
 **Appears in:**
@@ -1938,7 +690,7 @@ in the PostgreSQL Pods.</p>
 </tbody>
 </table>
 
-## ClusterStatus     {#postgresql-cnpg-io-v1-ClusterStatus}
+## ClusterStatus     
 
 
 **Appears in:**
@@ -2304,7 +1056,7 @@ WAL file, and Time of latest checkpoint</p>
 </tbody>
 </table>
 
-## ConfigMapResourceVersion     {#postgresql-cnpg-io-v1-ConfigMapResourceVersion}
+## ConfigMapResourceVersion     
 
 
 **Appears in:**
@@ -2330,7 +1082,7 @@ Map keys are the config map names, map values are the versions</p>
 </tbody>
 </table>
 
-## DataDurabilityLevel     {#postgresql-cnpg-io-v1-DataDurabilityLevel}
+## DataDurabilityLevel     
 
 (Alias of `string`)
 
@@ -2345,7 +1097,7 @@ when cluster instances are unavailable. Options are <code>required</code> or <co
 
 
 
-## DataSource     {#postgresql-cnpg-io-v1-DataSource}
+## DataSource     
 
 
 **Appears in:**
@@ -2384,7 +1136,7 @@ PostgreSQL cluster from an existing storage</p>
 </tbody>
 </table>
 
-## DatabaseObjectSpec     {#postgresql-cnpg-io-v1-DatabaseObjectSpec}
+## DatabaseObjectSpec     
 
 
 **Appears in:**
@@ -2421,7 +1173,7 @@ extension/schema will be removed if it exists.</p>
 </tbody>
 </table>
 
-## DatabaseObjectStatus     {#postgresql-cnpg-io-v1-DatabaseObjectStatus}
+## DatabaseObjectStatus     
 
 
 **Appears in:**
@@ -2460,7 +1212,7 @@ the database</p>
 </tbody>
 </table>
 
-## DatabaseReclaimPolicy     {#postgresql-cnpg-io-v1-DatabaseReclaimPolicy}
+## DatabaseReclaimPolicy     
 
 (Alias of `string`)
 
@@ -2474,7 +1226,7 @@ the database</p>
 
 
 
-## DatabaseRoleRef     {#postgresql-cnpg-io-v1-DatabaseRoleRef}
+## DatabaseRoleRef     
 
 
 **Appears in:**
@@ -2497,7 +1249,7 @@ the database</p>
 </tbody>
 </table>
 
-## DatabaseSpec     {#postgresql-cnpg-io-v1-DatabaseSpec}
+## DatabaseSpec     
 
 
 **Appears in:**
@@ -2692,7 +1444,7 @@ tablespace used for objects created in this database.</p>
 </tbody>
 </table>
 
-## DatabaseStatus     {#postgresql-cnpg-io-v1-DatabaseStatus}
+## DatabaseStatus     
 
 
 **Appears in:**
@@ -2745,7 +1497,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## EmbeddedObjectMetadata     {#postgresql-cnpg-io-v1-EmbeddedObjectMetadata}
+## EmbeddedObjectMetadata     
 
 
 **Appears in:**
@@ -2774,7 +1526,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## EnsureOption     {#postgresql-cnpg-io-v1-EnsureOption}
+## EnsureOption     
 
 (Alias of `string`)
 
@@ -2793,7 +1545,7 @@ a Role in a PostgreSQL instance</p>
 
 
 
-## EphemeralVolumesSizeLimitConfiguration     {#postgresql-cnpg-io-v1-EphemeralVolumesSizeLimitConfiguration}
+## EphemeralVolumesSizeLimitConfiguration     
 
 
 **Appears in:**
@@ -2825,7 +1577,7 @@ storage</p>
 </tbody>
 </table>
 
-## ExtensionSpec     {#postgresql-cnpg-io-v1-ExtensionSpec}
+## ExtensionSpec     
 
 
 **Appears in:**
@@ -2869,7 +1621,7 @@ is used.</p>
 </tbody>
 </table>
 
-## ExternalCluster     {#postgresql-cnpg-io-v1-ExternalCluster}
+## ExternalCluster     
 
 
 **Appears in:**
@@ -2953,7 +1705,7 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageCatalogRef     {#postgresql-cnpg-io-v1-ImageCatalogRef}
+## ImageCatalogRef     
 
 
 **Appears in:**
@@ -2983,7 +1735,7 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageCatalogSpec     {#postgresql-cnpg-io-v1-ImageCatalogSpec}
+## ImageCatalogSpec     
 
 
 **Appears in:**
@@ -3009,7 +1761,7 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageInfo     {#postgresql-cnpg-io-v1-ImageInfo}
+## ImageInfo     
 
 
 **Appears in:**
@@ -3040,7 +1792,7 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## Import     {#postgresql-cnpg-io-v1-Import}
+## Import     
 
 
 **Appears in:**
@@ -3122,7 +1874,7 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## ImportSource     {#postgresql-cnpg-io-v1-ImportSource}
+## ImportSource     
 
 
 **Appears in:**
@@ -3146,7 +1898,7 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## InstanceID     {#postgresql-cnpg-io-v1-InstanceID}
+## InstanceID     
 
 
 **Appears in:**
@@ -3177,7 +1929,7 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## InstanceReportedState     {#postgresql-cnpg-io-v1-InstanceReportedState}
+## InstanceReportedState     
 
 
 **Appears in:**
@@ -3215,7 +1967,7 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## LDAPBindAsAuth     {#postgresql-cnpg-io-v1-LDAPBindAsAuth}
+## LDAPBindAsAuth     
 
 
 **Appears in:**
@@ -3247,7 +1999,7 @@ bind authentication for LDAP</p>
 </tbody>
 </table>
 
-## LDAPBindSearchAuth     {#postgresql-cnpg-io-v1-LDAPBindSearchAuth}
+## LDAPBindSearchAuth     
 
 
 **Appears in:**
@@ -3300,7 +2052,7 @@ the bind+search LDAP authentication process</p>
 </tbody>
 </table>
 
-## LDAPConfig     {#postgresql-cnpg-io-v1-LDAPConfig}
+## LDAPConfig     
 
 
 **Appears in:**
@@ -3359,7 +2111,7 @@ the bind+search LDAP authentication process</p>
 </tbody>
 </table>
 
-## LDAPScheme     {#postgresql-cnpg-io-v1-LDAPScheme}
+## LDAPScheme     
 
 (Alias of `string`)
 
@@ -3373,7 +2125,7 @@ the bind+search LDAP authentication process</p>
 
 
 
-## ManagedConfiguration     {#postgresql-cnpg-io-v1-ManagedConfiguration}
+## ManagedConfiguration     
 
 
 **Appears in:**
@@ -3405,7 +2157,7 @@ by the instance manager</p>
 </tbody>
 </table>
 
-## ManagedRoles     {#postgresql-cnpg-io-v1-ManagedRoles}
+## ManagedRoles     
 
 
 **Appears in:**
@@ -3444,7 +2196,7 @@ with an explanation of the cause</p>
 </tbody>
 </table>
 
-## ManagedService     {#postgresql-cnpg-io-v1-ManagedService}
+## ManagedService     
 
 
 **Appears in:**
@@ -3484,7 +2236,7 @@ Valid values are &quot;rw&quot;, &quot;r&quot;, and &quot;ro&quot;, representing
 </tbody>
 </table>
 
-## ManagedServices     {#postgresql-cnpg-io-v1-ManagedServices}
+## ManagedServices     
 
 
 **Appears in:**
@@ -3516,7 +2268,7 @@ Valid values are &quot;r&quot;, and &quot;ro&quot;, representing read, and read-
 </tbody>
 </table>
 
-## Metadata     {#postgresql-cnpg-io-v1-Metadata}
+## Metadata     
 
 
 **Appears in:**
@@ -3567,7 +2319,7 @@ More info: http://kubernetes.io/docs/user-guide/annotations</p>
 </tbody>
 </table>
 
-## MonitoringConfiguration     {#postgresql-cnpg-io-v1-MonitoringConfiguration}
+## MonitoringConfiguration     
 
 
 **Appears in:**
@@ -3637,7 +2389,7 @@ Changing tls.enabled option will force a rollout of all instances.</p>
 </tbody>
 </table>
 
-## NodeMaintenanceWindow     {#postgresql-cnpg-io-v1-NodeMaintenanceWindow}
+## NodeMaintenanceWindow     
 
 
 **Appears in:**
@@ -3672,7 +2424,7 @@ up again) or not (recreate it elsewhere - when <code>instances</code> &gt;1)</p>
 </tbody>
 </table>
 
-## OnlineConfiguration     {#postgresql-cnpg-io-v1-OnlineConfiguration}
+## OnlineConfiguration     
 
 
 **Appears in:**
@@ -3719,7 +2471,7 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PasswordState     {#postgresql-cnpg-io-v1-PasswordState}
+## PasswordState     
 
 
 **Appears in:**
@@ -3750,7 +2502,7 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PgBouncerIntegrationStatus     {#postgresql-cnpg-io-v1-PgBouncerIntegrationStatus}
+## PgBouncerIntegrationStatus     
 
 
 **Appears in:**
@@ -3773,7 +2525,7 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PgBouncerPoolMode     {#postgresql-cnpg-io-v1-PgBouncerPoolMode}
+## PgBouncerPoolMode     
 
 (Alias of `string`)
 
@@ -3787,7 +2539,7 @@ possible. <code>false</code> by default.</p>
 
 
 
-## PgBouncerSecrets     {#postgresql-cnpg-io-v1-PgBouncerSecrets}
+## PgBouncerSecrets     
 
 
 **Appears in:**
@@ -3812,7 +2564,7 @@ by pgbouncer</p>
 </tbody>
 </table>
 
-## PgBouncerSpec     {#postgresql-cnpg-io-v1-PgBouncerSpec}
+## PgBouncerSpec     
 
 
 **Appears in:**
@@ -3882,7 +2634,7 @@ the operator calls PgBouncer's <code>PAUSE</code> and <code>RESUME</code> comman
 </tbody>
 </table>
 
-## PluginConfiguration     {#postgresql-cnpg-io-v1-PluginConfiguration}
+## PluginConfiguration     
 
 
 **Appears in:**
@@ -3931,7 +2683,7 @@ Cannot be active if &quot;.spec.backup.barmanObjectStore&quot; configuration is 
 </tbody>
 </table>
 
-## PluginStatus     {#postgresql-cnpg-io-v1-PluginStatus}
+## PluginStatus     
 
 
 **Appears in:**
@@ -4010,7 +2762,7 @@ plugin regarding the RestoreJobHook management</p>
 </tbody>
 </table>
 
-## PodTemplateSpec     {#postgresql-cnpg-io-v1-PodTemplateSpec}
+## PodTemplateSpec     
 
 
 **Appears in:**
@@ -4051,7 +2803,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## PodTopologyLabels     {#postgresql-cnpg-io-v1-PodTopologyLabels}
+## PodTopologyLabels     
 
 (Alias of `map[string]string`)
 
@@ -4065,7 +2817,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 
 
 
-## PoolerIntegrations     {#postgresql-cnpg-io-v1-PoolerIntegrations}
+## PoolerIntegrations     
 
 
 **Appears in:**
@@ -4088,7 +2840,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## PoolerMonitoringConfiguration     {#postgresql-cnpg-io-v1-PoolerMonitoringConfiguration}
+## PoolerMonitoringConfiguration     
 
 
 **Appears in:**
@@ -4129,7 +2881,7 @@ part for now.</p>
 </tbody>
 </table>
 
-## PoolerSecrets     {#postgresql-cnpg-io-v1-PoolerSecrets}
+## PoolerSecrets     
 
 
 **Appears in:**
@@ -4174,7 +2926,7 @@ part for now.</p>
 </tbody>
 </table>
 
-## PoolerSpec     {#postgresql-cnpg-io-v1-PoolerSpec}
+## PoolerSpec     
 
 
 **Appears in:**
@@ -4248,7 +3000,7 @@ Pooler name should never match with any cluster name within the same namespace.<
 </tbody>
 </table>
 
-## PoolerStatus     {#postgresql-cnpg-io-v1-PoolerStatus}
+## PoolerStatus     
 
 
 **Appears in:**
@@ -4279,7 +3031,7 @@ Pooler name should never match with any cluster name within the same namespace.<
 </tbody>
 </table>
 
-## PoolerType     {#postgresql-cnpg-io-v1-PoolerType}
+## PoolerType     
 
 (Alias of `string`)
 
@@ -4294,7 +3046,7 @@ we are targeting. Allowed values are <code>rw</code> and <code>ro</code>.</p>
 
 
 
-## PostgresConfiguration     {#postgresql-cnpg-io-v1-PostgresConfiguration}
+## PostgresConfiguration     
 
 
 **Appears in:**
@@ -4382,7 +3134,7 @@ Defaults to false.</p>
 </tbody>
 </table>
 
-## PrimaryUpdateMethod     {#postgresql-cnpg-io-v1-PrimaryUpdateMethod}
+## PrimaryUpdateMethod     
 
 (Alias of `string`)
 
@@ -4397,7 +3149,7 @@ the primary server of the cluster as part of rolling updates</p>
 
 
 
-## PrimaryUpdateStrategy     {#postgresql-cnpg-io-v1-PrimaryUpdateStrategy}
+## PrimaryUpdateStrategy     
 
 (Alias of `string`)
 
@@ -4412,7 +3164,7 @@ the primary server of the cluster as part of rolling updates</p>
 
 
 
-## Probe     {#postgresql-cnpg-io-v1-Probe}
+## Probe     
 
 
 **Appears in:**
@@ -4489,7 +3241,7 @@ Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.</p>
 </tbody>
 </table>
 
-## ProbeStrategyType     {#postgresql-cnpg-io-v1-ProbeStrategyType}
+## ProbeStrategyType     
 
 (Alias of `string`)
 
@@ -4504,7 +3256,7 @@ ready</p>
 
 
 
-## ProbeWithStrategy     {#postgresql-cnpg-io-v1-ProbeWithStrategy}
+## ProbeWithStrategy     
 
 
 **Appears in:**
@@ -4542,7 +3294,7 @@ ready</p>
 </tbody>
 </table>
 
-## ProbesConfiguration     {#postgresql-cnpg-io-v1-ProbesConfiguration}
+## ProbesConfiguration     
 
 
 **Appears in:**
@@ -4581,7 +3333,7 @@ to be injected in the PostgreSQL Pods</p>
 </tbody>
 </table>
 
-## PublicationReclaimPolicy     {#postgresql-cnpg-io-v1-PublicationReclaimPolicy}
+## PublicationReclaimPolicy     
 
 (Alias of `string`)
 
@@ -4595,7 +3347,7 @@ to be injected in the PostgreSQL Pods</p>
 
 
 
-## PublicationSpec     {#postgresql-cnpg-io-v1-PublicationSpec}
+## PublicationSpec     
 
 
 **Appears in:**
@@ -4656,7 +3408,7 @@ PostgreSQL <code>CREATE PUBLICATION</code> command</p>
 </tbody>
 </table>
 
-## PublicationStatus     {#postgresql-cnpg-io-v1-PublicationStatus}
+## PublicationStatus     
 
 
 **Appears in:**
@@ -4695,7 +3447,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## PublicationTarget     {#postgresql-cnpg-io-v1-PublicationTarget}
+## PublicationTarget     
 
 
 **Appears in:**
@@ -4728,7 +3480,7 @@ Corresponding to <code>FOR ALL TABLES</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## PublicationTargetObject     {#postgresql-cnpg-io-v1-PublicationTargetObject}
+## PublicationTargetObject     
 
 
 **Appears in:**
@@ -4762,7 +3514,7 @@ to <code>FOR TABLE</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## PublicationTargetTable     {#postgresql-cnpg-io-v1-PublicationTargetTable}
+## PublicationTargetTable     
 
 
 **Appears in:**
@@ -4807,7 +3559,7 @@ to <code>FOR TABLE</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## RecoveryTarget     {#postgresql-cnpg-io-v1-RecoveryTarget}
+## RecoveryTarget     
 
 
 **Appears in:**
@@ -4886,7 +3638,7 @@ in Postgres, <code>recovery_target_inclusive</code> will be true</p>
 </tbody>
 </table>
 
-## ReplicaClusterConfiguration     {#postgresql-cnpg-io-v1-ReplicaClusterConfiguration}
+## ReplicaClusterConfiguration     
 
 
 **Appears in:**
@@ -4956,7 +3708,7 @@ token cannot be used.</p>
 </tbody>
 </table>
 
-## ReplicationSlotsConfiguration     {#postgresql-cnpg-io-v1-ReplicationSlotsConfiguration}
+## ReplicationSlotsConfiguration     
 
 
 **Appears in:**
@@ -4996,7 +3748,7 @@ every <code>updateInterval</code> seconds (default 30).</p>
 </tbody>
 </table>
 
-## ReplicationSlotsHAConfiguration     {#postgresql-cnpg-io-v1-ReplicationSlotsHAConfiguration}
+## ReplicationSlotsHAConfiguration     
 
 
 **Appears in:**
@@ -5042,7 +3794,7 @@ This can only be set at creation time. By default set to <code>_cnpg_</code>.</p
 </tbody>
 </table>
 
-## RoleConfiguration     {#postgresql-cnpg-io-v1-RoleConfiguration}
+## RoleConfiguration     
 
 
 **Appears in:**
@@ -5190,7 +3942,7 @@ Default is <code>false</code>.</p>
 </tbody>
 </table>
 
-## SQLRefs     {#postgresql-cnpg-io-v1-SQLRefs}
+## SQLRefs     
 
 
 **Appears in:**
@@ -5225,7 +3977,7 @@ in their respective arrays.</p>
 </tbody>
 </table>
 
-## ScheduledBackupSpec     {#postgresql-cnpg-io-v1-ScheduledBackupSpec}
+## ScheduledBackupSpec     
 
 
 **Appears in:**
@@ -5328,7 +4080,7 @@ Overrides the default settings specified in the cluster '.backup.volumeSnapshot.
 </tbody>
 </table>
 
-## ScheduledBackupStatus     {#postgresql-cnpg-io-v1-ScheduledBackupStatus}
+## ScheduledBackupStatus     
 
 
 **Appears in:**
@@ -5366,7 +4118,7 @@ Overrides the default settings specified in the cluster '.backup.volumeSnapshot.
 </tbody>
 </table>
 
-## SchemaSpec     {#postgresql-cnpg-io-v1-SchemaSpec}
+## SchemaSpec     
 
 
 **Appears in:**
@@ -5399,7 +4151,7 @@ It maps to the <code>AUTHORIZATION</code> parameter of <code>CREATE SCHEMA</code
 </tbody>
 </table>
 
-## SecretVersion     {#postgresql-cnpg-io-v1-SecretVersion}
+## SecretVersion     
 
 
 **Appears in:**
@@ -5432,7 +4184,7 @@ It maps to the <code>AUTHORIZATION</code> parameter of <code>CREATE SCHEMA</code
 </tbody>
 </table>
 
-## SecretsResourceVersion     {#postgresql-cnpg-io-v1-SecretsResourceVersion}
+## SecretsResourceVersion     
 
 
 **Appears in:**
@@ -5528,7 +4280,7 @@ Map keys are the secret names, map values are the versions</p>
 </tbody>
 </table>
 
-## ServiceAccountTemplate     {#postgresql-cnpg-io-v1-ServiceAccountTemplate}
+## ServiceAccountTemplate     
 
 
 **Appears in:**
@@ -5553,7 +4305,7 @@ service account</p>
 </tbody>
 </table>
 
-## ServiceSelectorType     {#postgresql-cnpg-io-v1-ServiceSelectorType}
+## ServiceSelectorType     
 
 (Alias of `string`)
 
@@ -5570,7 +4322,7 @@ It indicates which type of service the selector applies to, such as read-write, 
 
 
 
-## ServiceTemplateSpec     {#postgresql-cnpg-io-v1-ServiceTemplateSpec}
+## ServiceTemplateSpec     
 
 
 **Appears in:**
@@ -5606,7 +4358,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## ServiceUpdateStrategy     {#postgresql-cnpg-io-v1-ServiceUpdateStrategy}
+## ServiceUpdateStrategy     
 
 (Alias of `string`)
 
@@ -5620,7 +4372,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 
 
 
-## SnapshotOwnerReference     {#postgresql-cnpg-io-v1-SnapshotOwnerReference}
+## SnapshotOwnerReference     
 
 (Alias of `string`)
 
@@ -5635,7 +4387,7 @@ This specifies which owner the processed resources should relate to.</p>
 
 
 
-## SnapshotType     {#postgresql-cnpg-io-v1-SnapshotType}
+## SnapshotType     
 
 (Alias of `string`)
 
@@ -5649,7 +4401,7 @@ This specifies which owner the processed resources should relate to.</p>
 
 
 
-## StorageConfiguration     {#postgresql-cnpg-io-v1-StorageConfiguration}
+## StorageConfiguration     
 
 
 **Appears in:**
@@ -5702,7 +4454,7 @@ Size cannot be decreased.</p>
 </tbody>
 </table>
 
-## SubscriptionReclaimPolicy     {#postgresql-cnpg-io-v1-SubscriptionReclaimPolicy}
+## SubscriptionReclaimPolicy     
 
 (Alias of `string`)
 
@@ -5716,7 +4468,7 @@ Size cannot be decreased.</p>
 
 
 
-## SubscriptionSpec     {#postgresql-cnpg-io-v1-SubscriptionSpec}
+## SubscriptionSpec     
 
 
 **Appears in:**
@@ -5796,7 +4548,7 @@ cluster. Defaults to the one in the external cluster definition.</p>
 </tbody>
 </table>
 
-## SubscriptionStatus     {#postgresql-cnpg-io-v1-SubscriptionStatus}
+## SubscriptionStatus     
 
 
 **Appears in:**
@@ -5835,7 +4587,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## SwitchReplicaClusterStatus     {#postgresql-cnpg-io-v1-SwitchReplicaClusterStatus}
+## SwitchReplicaClusterStatus     
 
 
 **Appears in:**
@@ -5859,7 +4611,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## SyncReplicaElectionConstraints     {#postgresql-cnpg-io-v1-SyncReplicaElectionConstraints}
+## SyncReplicaElectionConstraints     
 
 
 **Appears in:**
@@ -5893,7 +4645,7 @@ if all the labels values match.</p>
 </tbody>
 </table>
 
-## SynchronizeReplicasConfiguration     {#postgresql-cnpg-io-v1-SynchronizeReplicasConfiguration}
+## SynchronizeReplicasConfiguration     
 
 
 **Appears in:**
@@ -5925,7 +4677,7 @@ physical replication slots</p>
 </tbody>
 </table>
 
-## SynchronousReplicaConfiguration     {#postgresql-cnpg-io-v1-SynchronousReplicaConfiguration}
+## SynchronousReplicaConfiguration     
 
 
 **Appears in:**
@@ -6003,7 +4755,7 @@ to allow for operational continuity. This setting is only applicable if both
 </tbody>
 </table>
 
-## SynchronousReplicaConfigurationMethod     {#postgresql-cnpg-io-v1-SynchronousReplicaConfigurationMethod}
+## SynchronousReplicaConfigurationMethod     
 
 (Alias of `string`)
 
@@ -6018,7 +4770,7 @@ quorum based replication or a priority list</p>
 
 
 
-## TablespaceConfiguration     {#postgresql-cnpg-io-v1-TablespaceConfiguration}
+## TablespaceConfiguration     
 
 
 **Appears in:**
@@ -6067,7 +4819,7 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 </tbody>
 </table>
 
-## TablespaceState     {#postgresql-cnpg-io-v1-TablespaceState}
+## TablespaceState     
 
 
 **Appears in:**
@@ -6112,7 +4864,7 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 </tbody>
 </table>
 
-## TablespaceStatus     {#postgresql-cnpg-io-v1-TablespaceStatus}
+## TablespaceStatus     
 
 (Alias of `string`)
 
@@ -6126,7 +4878,7 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 
 
 
-## Topology     {#postgresql-cnpg-io-v1-Topology}
+## Topology     
 
 
 **Appears in:**
@@ -6169,7 +4921,7 @@ in synchronous replica election in case of failures</p>
 </tbody>
 </table>
 
-## VolumeSnapshotConfiguration     {#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration}
+## VolumeSnapshotConfiguration     
 
 
 **Appears in:**

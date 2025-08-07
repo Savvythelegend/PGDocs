@@ -1,4 +1,4 @@
-# CloudNativePG
+﻿# CloudNativePG
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG (CNPG) is an open-source
@@ -35,10 +35,11 @@ CloudNativePG was originally built by [EDB](https://www.enterprisedb.com), then
 released open source under Apache License 2.0.
 The [source code repository is in GitHub](https://github.com/cloudnative-pg/cloudnative-pg).
 
-!!! Note
-    Based on the [Operator Capability Levels model](operator_capability_levels.md),
-    users can expect a "Level V - Auto Pilot" subset of capabilities from the
-    CloudNativePG Operator.
+:::note
+Based on the [Operator Capability Levels model](operator_capability_levels.md),
+users can expect a "Level V - Auto Pilot" subset of capabilities from the
+CloudNativePG Operator.
+:::
 
 ## Supported Kubernetes distributions
 
@@ -158,10 +159,11 @@ Additionally, the community provides images for the [PostGIS extension](postgis.
 - Multi-arch container images, including Software Bill of Materials (SBOM) and
   provenance attestations for security compliance.
 
-!!! Info
-    CloudNativePG does not use `StatefulSet`s for managing data persistence.
-    Instead, it directly manages Persistent Volume Claims (PVCs).
-    See ["Custom Pod Controller"](controller.md) for more details.
+:::info
+CloudNativePG does not use `StatefulSet`s for managing data persistence.
+Instead, it directly manages Persistent Volume Claims (PVCs).
+See ["Custom Pod Controller"](controller.md) for more details.
+:::
 
 ## About this guide
 
@@ -186,3 +188,4 @@ CloudNativePG is a
 [Cloud Native Computing Foundation Sandbox project](https://www.cncf.io/sandbox-projects/).
 
 ![](https://github.com/cncf/artwork/blob/main/other/cncf/horizontal/color/cncf-color.png?raw=true)
+

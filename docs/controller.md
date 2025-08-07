@@ -1,4 +1,4 @@
-# Custom Pod Controller
+﻿# Custom Pod Controller
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Kubernetes uses the
@@ -122,3 +122,4 @@ user can select the preferred behavior at the cluster level (read the
 
 Being generic, the `StatefulSet` doesn't allow this level of
 customization.
+

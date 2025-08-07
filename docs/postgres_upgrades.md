@@ -1,4 +1,4 @@
-# PostgreSQL Upgrades
+﻿# PostgreSQL Upgrades
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 PostgreSQL upgrades fall into two categories:
@@ -44,8 +44,8 @@ Each method has trade-offs in terms of downtime, complexity, and data volume
 handling. The best approach depends on your upgrade strategy and operational
 constraints.
 
-!!! Important
-    We strongly recommend testing all methods in a controlled environment
+:::important
+We strongly recommend testing all methods in a controlled environment
     before proceeding with a production upgrade.
 
 ## Offline In-Place Major Upgrades
@@ -54,13 +54,13 @@ CloudNativePG performs an **offline in-place major upgrade** when a new operand
 container image with a higher PostgreSQL major version is declaratively
 requested for a cluster.
 
-!!! Important
-    Major upgrades are only supported between images based on the same
+:::important
+Major upgrades are only supported between images based on the same
     operating system distribution. For example, if your previous version uses a
     `bullseye` image, you cannot upgrade to a `bookworm` image.
 
-!!! Warning
-    There is a bug in PostgreSQL 17.0 through 17.5 that prevents successful upgrades
+:::warning
+There is a bug in PostgreSQL 17.0 through 17.5 that prevents successful upgrades
     if the `max_slot_wal_keep_size` parameter is set to any value other than `-1`.
     The upgrade process will fail with an error related to replication slot configuration.
     This issue has been [fixed in PostgreSQL 17.6 and 18beta2 or later versions](https://github.com/postgres/postgres/commit/f36e5774).
@@ -77,8 +77,8 @@ You can trigger the upgrade in one of two ways:
 For details on supported image tags, see
 ["Image Tag Requirements"](container_images.md#image-tag-requirements).
 
-!!! Warning
-    CloudNativePG is not responsible for PostgreSQL extensions. You must ensure
+:::warning
+CloudNativePG is not responsible for PostgreSQL extensions. You must ensure
     that extensions in the source PostgreSQL image are compatible with those in the
     target image and that upgrade paths are supported. Thoroughly test the upgrade
     process in advance to avoid unexpected issues.
@@ -99,18 +99,18 @@ For details on supported image tags, see
    - Upon successful completion, replaces the original directories with their
      upgraded counterparts.
 
-!!! Warning
-    During the upgrade process, the entire PostgreSQL cluster, including
+:::warning
+During the upgrade process, the entire PostgreSQL cluster, including
     replicas, is unavailable to applications. Ensure that your system can
     tolerate this downtime before proceeding.
 
-!!! Warning
-    Performing an in-place upgrade is an exceptional operation that carries inherent
+:::warning
+Performing an in-place upgrade is an exceptional operation that carries inherent
     risks. It is strongly recommended to take a full backup of the cluster before
     initiating the upgrade process.
 
-!!! Info
-    For detailed guidance on `pg_upgrade`, refer to the official
+:::info
+For detailed guidance on `pg_upgrade`, refer to the official
     [PostgreSQL documentation](https://www.postgresql.org/docs/current/pgupgrade.html).
 
 ### Post-Upgrade Actions
@@ -120,23 +120,23 @@ If the upgrade is successful, CloudNativePG:
 - Destroys the PVCs of replicas (if available).
 - Scales up replicas as required.
 
-!!! Warning
-    Re-cloning replicas can be time-consuming, especially for very large
+:::warning
+Re-cloning replicas can be time-consuming, especially for very large
     databases. Plan accordingly to accommodate potential delays. After completing
     the upgrade, it is strongly recommended to take a full backup. Existing backup
     data (namely base backups and WAL files) is only available for the previous
     minor PostgreSQL release.
 
-!!! Warning
-    `pg_upgrade` doesn't transfer optimizer statistics. After the upgrade, you
+:::warning
+`pg_upgrade` doesn't transfer optimizer statistics. After the upgrade, you
     may want to run `ANALYZE` on your databases to update them.
 
 If the upgrade fails, you must manually revert the major version change in the
 cluster's configuration and delete the upgrade job, as CloudNativePG cannot
 automatically decide the rollback.
 
-!!! Important
-    This process **protects your existing database from data loss**, as no data
+:::important
+This process **protects your existing database from data loss**, as no data
     is modified during the upgrade. If the upgrade fails, a rollback is
     usually possible, without having to perform a full recovery from a backup.
     Ensure you monitor the process closely and take corrective action if needed.
@@ -216,3 +216,4 @@ You can now update the statistics by running `ANALYZE` on the `app` database:
 ```sh
 kubectl cnpg psql cluster-example -- app -c 'ANALYZE'
 ```
+

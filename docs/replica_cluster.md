@@ -1,4 +1,4 @@
-# Replica clusters
+﻿# Replica clusters
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 A replica cluster is a CloudNativePG `Cluster` resource designed to
@@ -27,7 +27,7 @@ For example, the diagram below — taken from the ["Architecture" section](archi
 clusters, with a symmetric replica cluster primarily serving disaster recovery
 purposes.
 
-![An example of multi-cluster deployment with a primary and a replica cluster](/images/multi-cluster.png)
+![An example of multi-cluster deployment with a primary and a replica cluster](/img/multi-cluster.png)
 
 ## Basic Concepts
 
@@ -262,8 +262,8 @@ involving:
 
 These processes are described in the next sections.
 
-!!! Important
-    Before you proceed, ensure you review the ["About PostgreSQL Roles" section](#about-postgresql-roles)
+:::important
+Before you proceed, ensure you review the ["About PostgreSQL Roles" section](#about-postgresql-roles)
     above and use identical role definitions, including secrets, in all
     `Cluster` objects participating in the distributed topology.
 
@@ -318,8 +318,8 @@ kubectl get cluster cluster-eu-south \
 You can obtain the `demotionToken` using the `cnpg` plugin by checking the
 cluster's status. The token is listed under the `Demotion token` section.
 
-!!! Note
-    The `demotionToken` obtained from `cluster-eu-south` will serve as the
+:::note
+The `demotionToken` obtained from `cluster-eu-south` will serve as the
     `promotionToken` for `cluster-eu-central`.
 
 You can verify the role change using the `cnpg` plugin, checking the status of
@@ -350,8 +350,8 @@ replica:
   source: cluster-eu-south
 ```
 
-!!! Warning
-    It is crucial to apply the changes to the `primary` and `promotionToken`
+:::warning
+It is crucial to apply the changes to the `primary` and `promotionToken`
     fields simultaneously. If the promotion token is omitted, a failover will be
     triggered, necessitating a rebuild of the former primary.
 
@@ -380,8 +380,8 @@ clusters.
 
 ## Standalone Replica Clusters
 
-!!! Important
-    Standalone Replica Clusters were previously known as Replica Clusters
+:::important
+Standalone Replica Clusters were previously known as Replica Clusters
     before the introduction of the Distributed Topology strategy in CloudNativePG
     1.24.
 
@@ -396,13 +396,13 @@ When `.spec.replica.enabled` is set to `false`, the replica cluster exits
 continuous recovery mode and becomes a primary cluster, completely detached
 from the original source.
 
-!!! Warning
-    Disabling replication is an **irreversible** operation. Once replication is
+:::warning
+Disabling replication is an **irreversible** operation. Once replication is
     disabled and the designated primary is promoted to primary, the replica cluster
     and the source cluster become two independent clusters definitively.
 
-!!! Important
-    Standalone replica clusters are suitable for several use cases, primarily
+:::important
+Standalone replica clusters are suitable for several use cases, primarily
     involving read-only workloads. If you are planning to setup a disaster
     recovery solution, look into "Distributed Topology" above.
 
@@ -530,8 +530,8 @@ a backup of the source cluster has been created already.
       key: password
 ```
 
-!!! Note
-    To use streaming replication between the source cluster and the replica
+:::note
+To use streaming replication between the source cluster and the replica
     cluster, we need to make sure there is network connectivity between the two
     clusters, and that all the necessary secrets which hold passwords or
     certificates are properly created in advance.
@@ -610,8 +610,8 @@ The main use cases of delayed replicas can be summarized into:
    buffer that provides an opportunity to intervene and prevent the propagation of
    undesirable changes.
 
-!!! Warning
-    The `minApplyDelay` option of delayed replicas cannot be used in
+:::warning
+The `minApplyDelay` option of delayed replicas cannot be used in
     conjunction with `promotionToken`.
 
 By integrating delayed replicas into your replication strategy, you can enhance
@@ -619,8 +619,8 @@ the resilience and data protection capabilities of your PostgreSQL environment.
 Adjust the delay duration based on your specific needs and the criticality of
 your data.
 
-!!! Important
-    Always measure your goals. Depending on your environment, it might be more
+:::important
+Always measure your goals. Depending on your environment, it might be more
     efficient to rely on volume snapshot-based recovery for faster outcomes.
     Evaluate and choose the approach that best aligns with your unique requirements
     and infrastructure.

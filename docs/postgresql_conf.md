@@ -1,4 +1,4 @@
-# PostgreSQL Configuration
+﻿# PostgreSQL Configuration
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Users that are familiar with PostgreSQL are aware of the existence of the
@@ -16,8 +16,8 @@ via the `parameters`, the `pg_hba`, and the `pg_ident` keys.
 
 These settings are the same across all instances.
 
-!!! Warning
-    Please don't use the `ALTER SYSTEM` query to change the configuration of
+:::warning
+Please don't use the `ALTER SYSTEM` query to change the configuration of
     the PostgreSQL instances in an imperative way. Changing some of the options
     that are normally controlled by the operator might indeed lead to an
     unpredictable/unrecoverable state of the cluster.
@@ -48,8 +48,8 @@ The `custom.conf` file will contain the user-defined settings in the
   # ...
 ```
 
-!!! Seealso "PostgreSQL GUCs: Grand Unified Configuration"
-    Refer to the PostgreSQL documentation for
+:::info ""
+Refer to the PostgreSQL documentation for
     [more information on the available parameters](https://www.postgresql.org/docs/current/runtime-config.html),
     also known as GUC (Grand Unified Configuration).
     Please note that CloudNativePG accepts only strings for the PostgreSQL parameters.
@@ -89,8 +89,8 @@ wal_sender_timeout = '5s'
 wal_receiver_timeout = '5s'
 ```
 
-!!! Warning
-    It is your duty to plan for WAL segments retention in your PostgreSQL
+:::warning
+It is your duty to plan for WAL segments retention in your PostgreSQL
     cluster and properly configure either `wal_keep_size` or `wal_keep_segments`,
     depending on the server version, based on the expected and observed workloads.
 
@@ -197,8 +197,8 @@ In CloudNativePG the `shared_preload_libraries` option is empty by
 default. Although you can override the content of `shared_preload_libraries`,
 we recommend that only expert Postgres users take advantage of this option.
 
-!!! Important
-    In case a specified library is not found, the server fails to start,
+:::important
+In case a specified library is not found, the server fails to start,
     preventing CloudNativePG from any self-healing attempt and requiring
     manual intervention. Please make sure you always test both the extensions and
     the settings of `shared_preload_libraries` if you plan to directly manage its
@@ -214,8 +214,8 @@ requires one of the managed libraries, it will automatically add the needed
 library. The operator will also remove the library as soon as no actual parameter
 requires it.
 
-!!! Important
-    Please always keep in mind that removing libraries from
+:::important
+Please always keep in mind that removing libraries from
     `shared_preload_libraries` requires a restart of all instances in the cluster
     in order to be effective.
 
@@ -247,11 +247,11 @@ cluster, identified by the following query:
 SELECT datname FROM pg_database WHERE datallowconn
 ```
 
-!!! Note
-    The above query also includes template databases like `template1`.
+:::note
+The above query also includes template databases like `template1`.
 
-!!! Important
-    With the introduction of [declarative extensions](declarative_database_management.md#managing-extensions-in-a-database)
+:::important
+With the introduction of [declarative extensions](declarative_database_management.md#managing-extensions-in-a-database)
     in the `Database` CRD, you can now manage extensions directly. As a result,
     the managed extensions feature may undergo significant changes in future
     versions of CloudNativePG, and some functionalities might be deprecated.
@@ -276,8 +276,8 @@ to complete):
   # ...
 ```
 
-!!! Note
-    Enabling auto_explain can lead to performance issues. Please refer to [`the auto explain documentation`](https://www.postgresql.org/docs/current/auto-explain.html)
+:::note
+Enabling auto_explain can lead to performance issues. Please refer to [`the auto explain documentation`](https://www.postgresql.org/docs/current/auto-explain.html)
 
 
 #### Enabling `pg_stat_statements`
@@ -356,8 +356,8 @@ you need to add this entry in the `pg_hba` section:
 `pg_hba` is a list of PostgreSQL Host Based Authentication rules
 used to create the `pg_hba.conf` used by the pods.
 
-!!! Important
-    See the PostgreSQL documentation for
+:::important
+See the PostgreSQL documentation for
     [more information on `pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html).
 
 Since the first matching rule is used for authentication, the `pg_hba.conf` file
@@ -453,8 +453,8 @@ postgresql:
 generate and maintain the ident map file (known as `pg_ident.conf`) inside the
 data directory.
 
-!!! Important
-    See the PostgreSQL documentation for
+:::important
+See the PostgreSQL documentation for
     [more information on `pg_ident.conf`](https://www.postgresql.org/docs/current/auth-username-maps.html).
 
 The `pg_ident.conf` file written by the operator is made up of the following
@@ -520,8 +520,8 @@ on new Postgres clusters. This decision is rooted in the recognition of
 potential risks associated with this command. To enable the use of `ALTER SYSTEM`,
 you can explicitly set `.spec.postgresql.enableAlterSystem` to `true`.
 
-!!! Warning
-    Proceed with caution when utilizing `ALTER SYSTEM`. This command operates
+:::warning
+Proceed with caution when utilizing `ALTER SYSTEM`. This command operates
     directly on the connected instance and does not undergo replication.
     CloudNativePG assumes responsibility for certain fixed parameters and complete
     control over others, emphasizing the need for careful consideration.
@@ -686,3 +686,4 @@ Users are not allowed to set the following configuration parameters in the
 - `unix_socket_directories`
 - `unix_socket_group`
 - `unix_socket_permissions`
+

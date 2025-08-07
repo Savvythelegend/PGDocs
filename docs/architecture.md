@@ -1,4 +1,4 @@
-# Architecture
+﻿# Architecture
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::tip
@@ -85,7 +85,7 @@ The multi-availability zone Kubernetes architecture with three (3) or more
 zones is the one that we recommend for PostgreSQL usage.
 This scenario is typical of Kubernetes services managed by Cloud Providers.
 
-![Kubernetes cluster spanning over 3 independent data centers](/images/k8s-architecture-3-az.png)
+![Kubernetes cluster spanning over 3 independent data centers](/img/k8s-architecture-3-az.png)
 
 Such an architecture enables the CloudNativePG operator to control the full
 lifecycle of a `Cluster` resource across the zones within a single Kubernetes
@@ -115,7 +115,7 @@ manually (through GitOps, for example) or by using a higher-level cluster
 management tool.
 :::
 
-![Example of a multiple Kubernetes cluster architecture distributed over 3 regions each with 3 independent data centers](/images/k8s-architecture-multi.png)
+![Example of a multiple Kubernetes cluster architecture distributed over 3 regions each with 3 independent data centers](/img/k8s-architecture-multi.png)
 
 ### Single availability zone Kubernetes clusters
 
@@ -137,7 +137,7 @@ Kubernetes clusters in an active/passive configuration, with the second cluster
 primarily used for Disaster Recovery (see
 the [replica cluster feature](replica_cluster.md)).
 
-![Example of a Kubernetes architecture with only 2 data centers](/images/k8s-architecture-2-az.png)
+![Example of a Kubernetes architecture with only 2 data centers](/img/k8s-architecture-2-az.png)
 
 :::tip
 If you are at an early stage of your Kubernetes journey, please share this
@@ -293,7 +293,7 @@ architecture for a PostgreSQL cluster spanning across 3 different availability
 zones, running on separate nodes, each with dedicated local storage for
 PostgreSQL data.
 
-![Bird-eye view of the recommended shared nothing architecture for PostgreSQL in Kubernetes](/images/k8s-pg-architecture.png)
+![Bird-eye view of the recommended shared nothing architecture for PostgreSQL in Kubernetes](/img/k8s-pg-architecture.png)
 
 CloudNativePG automatically takes care of updating the above services if
 the topology of the cluster changes. For example, in case of failover, it
@@ -324,7 +324,7 @@ Applications can decide to connect to the PostgreSQL instance elected as
 *current primary* by the Kubernetes operator, as depicted in the following
 diagram:
 
-![Applications writing to the single primary](/images/architecture-rw.png)
+![Applications writing to the single primary](/img/architecture-rw.png)
 
 Applications can use the `-rw` suffix service.
 
@@ -347,7 +347,7 @@ primary node.
 
 The following diagram shows the architecture:
 
-![Applications reading from hot standby replicas in round robin](/images/architecture-read-only.png)
+![Applications reading from hot standby replicas in round robin](/img/architecture-read-only.png)
 
 Applications can also access any PostgreSQL instance through the
 `-r` service.
@@ -391,7 +391,7 @@ cluster and the replica cluster is in the second. The second Kubernetes cluster
 acts as the company's disaster recovery cluster, ready to be activated in case
 of disaster and unavailability of the first one.
 
-![An example of multi-cluster deployment with a primary and a replica cluster](/images/multi-cluster.png)
+![An example of multi-cluster deployment with a primary and a replica cluster](/img/multi-cluster.png)
 
 A replica cluster can have the same architecture as the primary cluster.
 Instead of a primary instance, a replica cluster has a **designated primary**
@@ -439,3 +439,4 @@ more detailed information on how physical replica clusters operate and how to
 define a distributed topology with read-only clusters across different
 Kubernetes clusters. This approach can significantly enhance your global
 disaster recovery and high availability (HA) strategy.
+

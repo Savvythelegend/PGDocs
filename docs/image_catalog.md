@@ -1,4 +1,4 @@
-# Image Catalog
+﻿# Image Catalog
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 `ImageCatalog` and `ClusterImageCatalog` are essential resources that empower
@@ -10,8 +10,8 @@ a `ClusterImageCatalog` is cluster-scoped.
 Both share a common structure, comprising a list of images, each equipped with
 a `major` field indicating the major version of the image.
 
-!!! Warning
-    The operator places trust in the user-defined major version and refrains
+:::warning
+The operator places trust in the user-defined major version and refrains
     from conducting any PostgreSQL version detection. It is the user's
     responsibility to ensure alignment between the declared major version in
     the catalog and the PostgreSQL image.
@@ -110,3 +110,4 @@ with:
 kubectl apply \
   -f https://raw.githubusercontent.com/cloudnative-pg/postgis-containers/main/PostGIS/ClusterImageCatalog.yaml
 ```
+

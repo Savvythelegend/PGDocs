@@ -1,4 +1,4 @@
-# Tablespaces
+﻿# Tablespaces
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 A tablespace is a robust and widely embraced feature in database
@@ -176,8 +176,8 @@ CREATE TABLE facts_202312 PARTITION OF facts
     TABLESPACE current;
 ```
 
-!!! Important
-    This example assumes you're familiar with
+:::important
+This example assumes you're familiar with
     [PostgreSQL declarative partitioning](https://www.postgresql.org/docs/current/ddl-partitioning.html).
 
 ## Tablespace ownership
@@ -201,8 +201,8 @@ the `postgres` user, like in the following excerpt:
         size: 1Gi
 ```
 
-!!! Important
-    If you change the ownership of a tablespace, make sure that you're using
+:::important
+If you change the ownership of a tablespace, make sure that you're using
     an existing role. Otherwise, the status of the cluster reports the
     issue and stops reconciling tablespaces until fixed. It's your responsibility
     to monitor the status and the log and to promptly intervene by fixing the issue.
@@ -247,15 +247,15 @@ spec:
 CloudNativePG handles backup of tablespaces (and the relative
 tablespace map) both on object stores and volume snapshots.
 
-!!! Warning
-    By default, backups are taken from replica nodes. A backup taken immediately
+:::warning
+By default, backups are taken from replica nodes. A backup taken immediately
     after creating tablespaces in a cluster can result in an
     incomplete view of the tablespaces from the replica and thus an incomplete
     backup. The lag will be resolved in a maximum of 5 minutes, with the next
     reconciliation.
 
-!!! Warning
-    When you add or remove a tablespace in an existing cluster, recovery
+:::warning
+When you add or remove a tablespace in an existing cluster, recovery
     from WAL will fail until you take a new base backup.
 
 Once a cluster with tablespaces has a base backup, you can restore a
@@ -360,3 +360,4 @@ Instances status
 
 Currently, you can't remove tablespaces from an existing CloudNativePG
 cluster.
+

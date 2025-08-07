@@ -1,4 +1,4 @@
-# Connecting from an application
+﻿# Connecting from an application
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Applications are supposed to work with the services created by CloudNativePG
@@ -92,3 +92,4 @@ and correspond to the `postgres` user.
 :::important
 Superuser access over the network is disabled by default.
 :::
+

@@ -1,4 +1,4 @@
-# Importing Postgres databases
+﻿# Importing Postgres databases
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 This section describes how to import one or more existing PostgreSQL
@@ -21,8 +21,8 @@ As a result, the instructions in this section are suitable for both:
   same or newer, enabling *major upgrades* of PostgreSQL (e.g. from version 13.x
   to version 17.x)
 
-!!! Warning
-    When performing major upgrades of PostgreSQL you are responsible for making
+:::warning
+When performing major upgrades of PostgreSQL you are responsible for making
     sure that applications are compatible with the new version and that the
     upgrade path of the objects contained in the database (including extensions) is
     feasible.
@@ -30,8 +30,8 @@ As a result, the instructions in this section are suitable for both:
 In both cases, the operation is performed on a consistent **snapshot** of the
 origin database.
 
-!!! Important
-    For this reason we suggest to stop write operations on the source before
+:::important
+For this reason we suggest to stop write operations on the source before
     the final import in the `Cluster` resource, as changes done to the source
     database after the start of the backup will not be in the destination cluster -
     hence why this feature is referred to as "offline import" or "offline major
@@ -59,8 +59,8 @@ into the destination cluster:
 The first import method is available via the `microservice` type, the
 second via the `monolith` type.
 
-!!! Warning
-    It is your responsibility to ensure that the destination cluster can
+:::warning
+It is your responsibility to ensure that the destination cluster can
     access the source cluster with a superuser or a user having enough
     privileges to take a logical backup with `pg_dump`. Please refer to the
     [PostgreSQL documentation on `pg_dump`](https://www.postgresql.org/docs/current/app-pgdump.html)
@@ -86,7 +86,7 @@ In the figure below, a single PostgreSQL cluster containing *N* databases is
 imported into separate CloudNativePG clusters, with each cluster using a
 microservice import for one of the *N* source databases.
 
-![Example of microservice import type](/images/microservice-import.png)
+![Example of microservice import type](/img/microservice-import.png)
 
 For example, the YAML below creates a new 3 instance PostgreSQL cluster (latest
 available major version at the time the operator was released) called
@@ -128,8 +128,8 @@ spec:
         key: password
 ```
 
-!!! Warning
-    The example above deliberately uses a source database running a version of
+:::warning
+The example above deliberately uses a source database running a version of
     PostgreSQL that is not supported anymore by the Community, and consequently by
     CloudNativePG.
     Data export from the source instance is performed using the version of
@@ -158,8 +158,8 @@ There are a few things you need to be aware of when using the `microservice` typ
 - Only one database can be specified inside the `initdb.import.databases` array
 - Roles are not imported - and as such they cannot be specified inside `initdb.import.roles`
 
-!!! Hint
-    The microservice approach adheres to CloudNativePG conventions and defaults
+:::info
+The microservice approach adheres to CloudNativePG conventions and defaults
     for the destination cluster. If you do not set `initdb.database` or
     `initdb.owner` for the destination cluster, both parameters will default to
     `app`.
@@ -178,7 +178,7 @@ The operation is performed in the following steps:
 - run `ANALYZE` on each imported database
 - cleanup of the database dump files
 
-![Example of monolith import type](/images/monolith-import.png)
+![Example of monolith import type](/img/monolith-import.png)
 
 For example, the YAML below creates a new 3 instance PostgreSQL cluster (latest
 available major version at the time the operator was released) called
@@ -253,8 +253,8 @@ There are a few things you need to be aware of when using the `monolith` type:
   database.
 - The `postImportApplicationSQL` field is not supported
 
-!!! Hint
-    The databases and their owners are preserved exactly as they exist in the
+:::info
+The databases and their owners are preserved exactly as they exist in the
     source cluster—no `app` database or user will be created during import. If your
     `bootstrap.initdb` stanza specifies custom `database` and `owner` values that
     do not match any of the databases or users being imported, the instance
@@ -379,8 +379,8 @@ Before completing the import job, CloudNativePG restores the expected
 configuration, then runs `initdb --sync-only` to ensure that data is
 permanently written on disk.
 
-!!! Important
-    WAL archiving, if requested, and WAL level will be honored after the
+:::important
+WAL archiving, if requested, and WAL level will be honored after the
     database import process has completed. Similarly, replicas will be cloned
     after the bootstrap phase, when the actual cluster resource starts.
 
@@ -414,8 +414,8 @@ import/export processes, as shown in the following example:
   # <snip>
 ```
 
-!!! Warning
-    Use the `pgDumpExtraOptions` and `pgRestoreExtraOptions` fields with
+:::warning
+Use the `pgDumpExtraOptions` and `pgRestoreExtraOptions` fields with
     caution and at your own risk. These options are not validated or verified by
     the operator, and some configurations may conflict with its intended
     functionality or behavior. Always test thoroughly in a safe and controlled
@@ -437,3 +437,4 @@ upgrades.
 
 For more details, including limitations and best practices, refer to the
 [Logical Replication](logical_replication.md) section in the documentation.
+

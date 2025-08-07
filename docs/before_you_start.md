@@ -1,4 +1,4 @@
-# Before You Start
+﻿# Before You Start
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Before we get started, it is essential to go over some terminology that is
@@ -157,3 +157,4 @@ Zone
 Now that you have familiarized with the terminology, you can decide to
 [test CloudNativePG on your laptop using a local cluster](quickstart.md) before
 deploying the operator in your selected cloud environment.
+

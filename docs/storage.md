@@ -1,4 +1,4 @@
-# Storage
+﻿# Storage
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Storage is the most critical component in a database workload.
@@ -7,8 +7,8 @@ and guarantee consistency and durability. The same expectations and
 requirements that apply to traditional environments, such as virtual machines
 and bare metal, are also valid in container contexts managed by Kubernetes.
 
-!!! Important
-    When it comes to dynamically provisioned storage,
+:::important
+When it comes to dynamically provisioned storage,
     Kubernetes has its own specifics. These include *storage classes*, *persistent
     volumes*, and *Persistent Volume Claims (PVCs)*. You need to own these
     concepts, on top of all the valuable knowledge you've built over
@@ -32,15 +32,15 @@ Local storage enables shared-nothing architectures, which is more suitable
 for high transactional and very large database (VLDB) workloads, as it
 guarantees higher and more predictable performance.
 
-!!! Warning
-    Before you deploy a PostgreSQL cluster with CloudNativePG,
+:::warning
+Before you deploy a PostgreSQL cluster with CloudNativePG,
     ensure that the storage you're using is recommended for database
     workloads. We recommend clearly setting performance expectations by
     first benchmarking the storage using tools such as [fio](https://fio.readthedocs.io/en/latest/fio_doc.html)
     and then the database using [pgbench](https://www.postgresql.org/docs/current/pgbench.html).
 
-!!! Info
-    CloudNativePG doesn't use `StatefulSet` for managing data persistence.
+:::info
+CloudNativePG doesn't use `StatefulSet` for managing data persistence.
     Rather, it manages PVCs directly. If you want
     to know more, see
     [Custom pod controller](controller.md).
@@ -51,8 +51,8 @@ Since CloudNativePG supports volume snapshots for both backup and recovery,
 we recommend that you also consider this aspect when you choose your storage
 solution, especially if you manage very large databases.
 
-!!! Important
-    See the Kubernetes documentation for a list of all
+:::important
+See the Kubernetes documentation for a list of all
     the supported [container storage interface (CSI) drivers](https://kubernetes-csi.github.io/docs/drivers.html)
     that provide snapshot capabilities.
 
@@ -70,8 +70,8 @@ Briefly, we recommend operating at two levels:
 - Measuring the performance of the database using pgbench, the default benchmarking tool
   distributed with PostgreSQL
 
-!!! Important
-    You must measure both the storage and database performance before putting
+:::important
+You must measure both the storage and database performance before putting
     the database into production. These results are extremely valuable not just in
     the planning phase (for example, capacity planning). They are also valuable in
     the production lifecycle, particularly in emergency situations when you don't
@@ -106,8 +106,8 @@ defined as a *PVC group*.
 
 ## Configuration via a storage class
 
-!!! Important
-    CloudNativePG was designed to work interchangeably with all storage classes.
+:::important
+CloudNativePG was designed to work interchangeably with all storage classes.
     As usual, we recommend properly benchmarking the storage class in a
     controlled environment before deploying to production.
 
@@ -174,8 +174,8 @@ contains the log of transactional changes that occurred in the database, in the
 form of segment files. (`pg_wal` is historically known as `pg_xlog` in
 PostgreSQL.)
 
-!!! Info
-    Normally, each segment is 16MB in size, but you can configure the size
+:::info
+Normally, each segment is 16MB in size, but you can configure the size
     using the `walSegmentSize` option. This option is applied at cluster
     initialization time, as described in
     [Bootstrap an empty cluster](bootstrap.md#bootstrap-an-empty-cluster-initdb).
@@ -203,8 +203,8 @@ volume has a few benefits:
   on both `PGDATA` and `pg_wal`. You can also set alerts that notify you in case,
   for example, `PGDATA` requires resizing.
 
-!!! Seealso "Write-Ahead Log (WAL)"
-    See [Reliability and the Write-Ahead Log](https://www.postgresql.org/docs/current/wal.html)
+:::info ""
+See [Reliability and the Write-Ahead Log](https://www.postgresql.org/docs/current/wal.html)
     in the PostgreSQL documentation for more information.
 
 You can add a separate volume for WAL using the `.spec.walStorage` option.
@@ -224,8 +224,8 @@ spec:
     size: 1Gi
 ```
 
-!!! Important
-    Removing `walStorage` isn't supported. Once added, a separate volume for
+:::important
+Removing `walStorage` isn't supported. Once added, a separate volume for
     WALs can't be removed from an existing Postgres cluster.
 
 ## Volumes for tablespaces
@@ -305,8 +305,8 @@ For example, re-create the storage for `cluster-example-3`:
 $ kubectl delete pvc/cluster-example-3 pod/cluster-example-3
 ```
 
-!!! Important
-    If you created a dedicated WAL volume, both PVCs must be deleted during
+:::important
+If you created a dedicated WAL volume, both PVCs must be deleted during
     this process. The same procedure applies if you want to regenerate the WAL
     volume PVC. You can do this by also disabling `resizeInUseVolumes` for the
     `.spec.walStorage` section.
@@ -341,8 +341,8 @@ storage volumes and then create the related `PersistentVolume` objects for
 their representation inside the Kubernetes cluster. This is also known as
 *pre-provisioning* of volumes.
 
-!!! Important
-    We recommend that you avoid pre-provisioning volumes, as it has an effect
+:::important
+We recommend that you avoid pre-provisioning volumes, as it has an effect
     on the high availability and self-healing capabilities of the operator. It
     breaks the fully declarative model on which CloudNativePG was built.
     
@@ -357,8 +357,8 @@ To use a pre-provisioned volume in CloudNativePG:
    section that can help Kubernetes match the `PersistentVolume`
    and enable CloudNativePG to create the needed `PersistentVolumeClaim`.
 
-!!! Warning
-    With static provisioning, it's your responsibility to ensure that Postgres
+:::warning
+With static provisioning, it's your responsibility to ensure that Postgres
     pods can be correctly scheduled by Kubernetes where a pre-provisioned volume
     exists. (The scheduling configuration is based on the affinity rules of your
     cluster.) Make sure you check for any pods stuck in `Pending` after you deploy

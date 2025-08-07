@@ -1,4 +1,4 @@
-# External Secrets
+﻿# External Secrets
 
 [External Secrets](https://external-secrets.io/latest/) is a CNCF Sandbox
 project, accepted in 2022 under the sponsorship of TAG Security.

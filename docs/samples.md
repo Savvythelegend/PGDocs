@@ -1,16 +1,16 @@
-# Examples
+﻿# Examples
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 The examples show configuration files for setting up
 your PostgreSQL cluster.
 
-!!! Important
-    These examples are for demonstration and experimentation
+:::important
+These examples are for demonstration and experimentation
     purposes. You can execute them on a personal Kubernetes cluster with Minikube
     or Kind, as described in [Quick start](quickstart.md).
 
-!!! Seealso "Reference"
-    For a list of available options, see [API reference](cloudnative-pg.v1.md).
+:::info ""
+For a list of available options, see [API reference](cloudnative-pg.v1.md).
 
 ## Basics
 
@@ -209,3 +209,4 @@ Which brings us to the next section.
 : *Prerequisites*: an existing cluster `cluster-example` running Postgres 16
   or more advanced.
 : [`database-example-icu.yaml`](samples/database-example-icu.yaml)
+

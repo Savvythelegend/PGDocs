@@ -1,8 +1,8 @@
-# Monitoring
+﻿# Monitoring
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
-!!! Important
-    Installing Prometheus and Grafana is beyond the scope of this project.
+:::important
+Installing Prometheus and Grafana is beyond the scope of this project.
     We assume they are correctly installed in your system. However, for
     experimentation we provide instructions in
     [Part 4 of the Quickstart](quickstart.md#part-4-monitor-clusters-with-prometheus-and-grafana).
@@ -16,12 +16,12 @@ configurable and customizable system to define additional queries via one or
 more `ConfigMap` or `Secret` resources (see the
 ["User defined metrics" section](#user-defined-metrics) below for details).
 
-!!! Important
-    CloudNativePG, by default, installs a set of [predefined metrics](#default-set-of-metrics)
+:::important
+CloudNativePG, by default, installs a set of [predefined metrics](#default-set-of-metrics)
     in a `ConfigMap` named `default-monitoring`.
 
-!!! Info
-    You can inspect the exported metrics by following the instructions in
+:::info
+You can inspect the exported metrics by following the instructions in
     the ["How to inspect the exported metrics"](#how-to-inspect-the-exported-metrics)
     section below.
 
@@ -50,8 +50,8 @@ to the following logic:
 The default database can always be overridden for a given user-defined metric,
 by specifying a list of one or more databases in the `target_databases` option.
 
-!!! Seealso "Prometheus/Grafana"
-    If you are interested in evaluating the integration of CloudNativePG
+:::info ""
+If you are interested in evaluating the integration of CloudNativePG
     with Prometheus and Grafana, you can find a quick setup guide
     in [Part 4 of the quickstart](quickstart.md#part-4-monitor-clusters-with-prometheus-and-grafana)
 
@@ -64,8 +64,8 @@ A specific PostgreSQL cluster can be monitored using the
 A `PodMonitor` that correctly points to the Cluster can be automatically created by the operator by setting
 `.spec.monitoring.enablePodMonitor` to `true` in the Cluster resource itself (default: `false`).
 
-!!! Important
-    Any change to the `PodMonitor` created automatically will be overridden by the Operator at the next reconciliation
+:::important
+Any change to the `PodMonitor` created automatically will be overridden by the Operator at the next reconciliation
     cycle, in case you need to customize it, you can do so as described below.
 
 To deploy a `PodMonitor` for a specific Cluster manually, define it as follows and adjust as needed:
@@ -83,12 +83,12 @@ spec:
   - port: metrics
 ```
 
-!!! Important
-    Ensure you modify the example above with a unique name, as well as the
+:::important
+Ensure you modify the example above with a unique name, as well as the
     correct cluster's namespace and labels (e.g., `cluster-example`).
 
-!!! Important
-    The `postgresql` label, used in previous versions of this document, is deprecated
+:::important
+The `postgresql` label, used in previous versions of this document, is deprecated
     and will be removed in the future. Please use the `cnpg.io/cluster` label
     instead to select the instances.
 
@@ -98,8 +98,8 @@ To enable TLS communication on the metrics port, configure the `.spec.monitoring
 setting to `true`. This setup ensures that the metrics exporter uses the same
 server certificate used by PostgreSQL to secure communication on port 5432.
 
-!!! Important
-    Changing the `.spec.monitoring.tls.enabled` setting will trigger a rolling restart of the Cluster.
+:::important
+Changing the `.spec.monitoring.tls.enabled` setting will trigger a rolling restart of the Cluster.
 
 If the `PodMonitor` is managed by the operator (`.spec.monitoring.enablePodMonitor` set to `true`),
 it will automatically contain the necessary configurations to access the metrics via TLS.
@@ -127,12 +127,12 @@ spec:
       serverName: cluster-example-rw
 ```
 
-!!! Important
-    Ensure you modify the example above with a unique name, as well as the
+:::important
+Ensure you modify the example above with a unique name, as well as the
     correct Cluster's namespace and labels (e.g., `cluster-example`).
 
-!!! Important
-    The `serverName` field in the metrics endpoint must match one of the names
+:::important
+The `serverName` field in the metrics endpoint must match one of the names
     defined in the server certificate. If the default certificate is in use,
     the `serverName` value should be in the format `<cluster-name>-rw`.
 
@@ -392,14 +392,14 @@ go_memstats_sys_bytes 7.6891144e+07
 go_threads 18
 ```
 
-!!! Note
-    `cnpg_collector_postgres_version` is a GaugeVec metric containing
+:::note
+`cnpg_collector_postgres_version` is a GaugeVec metric containing
     the `Major.Minor` version of PostgreSQL. The full semantic version
     `Major.Minor.Patch` can be found inside one of its label field
     named `full`.
 
-!!! Warning
-    The metrics `cnpg_collector_last_failed_backup_timestamp`,
+:::warning
+The metrics `cnpg_collector_last_failed_backup_timestamp`,
     `cnpg_collector_last_available_backup_timestamp`, and
     `cnpg_collector_first_recoverability_point` have been deprecated starting
     from version 1.26. These metrics will continue to function with native backup
@@ -440,13 +440,13 @@ The `customQueriesConfigMap`/`customQueriesSecret` sections contain a list of
 `ConfigMap`/`Secret` references specifying the key in which the custom queries are defined.
 Take care that the referred resources have to be created **in the same namespace as the Cluster** resource.
 
-!!! Note
-    If you want ConfigMaps and Secrets to be **automatically** reloaded by instances, you can
+:::note
+If you want ConfigMaps and Secrets to be **automatically** reloaded by instances, you can
     add a label with key `cnpg.io/reload` to it, otherwise you will have to reload
     the instances using the `kubectl cnpg reload` subcommand.
 
-!!! Important
-    When a user defined metric overwrites an already existing metric the instance manager prints a json warning log,
+:::important
+When a user defined metric overwrites an already existing metric the instance manager prints a json warning log,
     containing the message:`Query with the same name already found. Overwriting the existing one.`
     and a key `queryName` containing the overwritten query name.
 
@@ -529,8 +529,8 @@ databases by adding all the databases returned by the execution of `SELECT
 datname FROM pg_database WHERE datallowconn AND NOT datistemplate` and matching
 the pattern according to [path.Match()](https://pkg.go.dev/path#Match) rules.
 
-!!! Note
-    The `*` character has a [special meaning](https://yaml.org/spec/1.2/spec.html#id2786448) in yaml,
+:::note
+The `*` character has a [special meaning](https://yaml.org/spec/1.2/spec.html#id2786448) in yaml,
     so you need to quote (`"*"`) the `target_databases` value when it includes such a pattern.
 
 It is recommended that you always include the name of the database
@@ -656,8 +656,8 @@ with the following format:
 cnpg_<MetricName>_<ColumnName>{<LabelColumnName>=<LabelColumnValue> ... } <ColumnValue>
 ```
 
-!!! Note
-    `LabelColumnName` are metrics with `usage` set to `LABEL` and their `Value`
+:::note
+`LabelColumnName` are metrics with `usage` set to `LABEL` and their `Value`
 
 Considering the `pg_replication` example above, the exporter's endpoint would
 return the following output when invoked:
@@ -699,8 +699,8 @@ If you want to disable the default set of metrics, you can:
   (empty string), in the operator ConfigMap. Changes to operator ConfigMap require an operator restart.
 - disable it for a specific Cluster: set `.spec.monitoring.disableDefaultQueries` to `true` in the Cluster.
 
-!!! Important
-    The ConfigMap or Secret specified via `MONITORING_QUERIES_CONFIGMAP`/`MONITORING_QUERIES_SECRET`
+:::important
+The ConfigMap or Secret specified via `MONITORING_QUERIES_CONFIGMAP`/`MONITORING_QUERIES_SECRET`
     will always be copied to the Cluster's namespace with a fixed name: `cnpg-default-monitoring`.
     So that, if you intend to have default metrics, you should not create a ConfigMap with this name in the cluster's namespace.
 
@@ -715,8 +715,8 @@ in CloudNativePG's exporter.
 The operator internally exposes [Prometheus](https://prometheus.io/) metrics
 via HTTP on port 8080, named `metrics`.
 
-!!! Info
-    You can inspect the exported metrics by following the instructions in
+:::info
+You can inspect the exported metrics by following the instructions in
     the ["How to inspect the exported metrics"](#how-to-inspect-the-exported-metrics)
     section below.
 
@@ -754,8 +754,8 @@ In this section we provide basic instructions on how to inspect
 the metrics exported by a specific PostgreSQL instance manager (primary
 or replica) or the operator.
 
-!!! Note
-    In the examples below we assume we are working in the default namespace, and
+:::note
+In the examples below we assume we are working in the default namespace, and
     with the operator installed in the `cnpg-system` namespace.
     Please adapt to your use case.
 
@@ -845,8 +845,8 @@ kubectl delete -f curl.yaml
 
 ## Auxiliary resources
 
-!!! Important
-    These resources are provided for illustration and experimentation, and do
+:::important
+These resources are provided for illustration and experimentation, and do
     not represent any kind of recommendation for your production system
 
 In the [`doc/src/samples/monitoring/`](https://github.com/cloudnative-pg/cloudnative-pg/tree/main/docs/src/samples/monitoring)

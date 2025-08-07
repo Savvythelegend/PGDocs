@@ -1,4 +1,4 @@
-# Backup
+﻿# Backup
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::info
@@ -84,7 +84,7 @@ as they can simply rely on the WAL archive to synchronize across long
 distances, extending disaster recovery goals across different regions.
 
 When you [configure a WAL archive](wal_archiving.md), CloudNativePG provides
-out-of-the-box an [RPO](before_you_start.md#rpo) <= 5 minutes for disaster
+out-of-the-box an [RPO](before_you_start.md#rpo) ≤ 5 minutes for disaster
 recovery, even across regions.
 
 :::important
@@ -496,3 +496,4 @@ Users are encouraged to rely on the retention mechanisms provided by the
 backup plugin they are using. This ensures better flexibility and consistency
 with the backup method in use.
 :::
+

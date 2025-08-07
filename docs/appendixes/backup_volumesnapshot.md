@@ -1,4 +1,4 @@
-# Appendix A - Backup on volume snapshots
+﻿# Appendix A - Backup on volume snapshots
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::important
@@ -409,3 +409,4 @@ spec:
 
 The last resource defines daily volume snapshot backups at midnight, requesting
 one immediately after the cluster is created.
+

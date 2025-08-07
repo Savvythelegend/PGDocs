@@ -1,4 +1,4 @@
-# PostgreSQL Database Management
+﻿# PostgreSQL Database Management
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG simplifies PostgreSQL database provisioning by automatically
@@ -18,8 +18,8 @@ automated, and consistent approach to managing PostgreSQL databases.
 
 ### Scope of Management
 
-!!! Important
-    CloudNativePG manages **global objects** in PostgreSQL clusters, including
+:::important
+CloudNativePG manages **global objects** in PostgreSQL clusters, including
     databases, roles, and tablespaces. However, it does **not** manage database content
     beyond extensions and schemas (e.g., tables). To manage database content, use specialized
     tools or rely on the applications themselves.
@@ -48,8 +48,8 @@ When applied, this manifest creates a `Database` object called
 `cluster-example-one` requesting a database named `one`, owned by the `app`
 role, in the `cluster-example` PostgreSQL cluster.
 
-!!! Info
-    Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-DatabaseSpec)
+:::info
+Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-DatabaseSpec)
     the full list of attributes you can define for each `Database` object.
 
 ### Required Fields in the `Database` Manifest
@@ -63,8 +63,8 @@ The `Database` object must reference a specific `Cluster`, determining where
 the database will be created. It is managed by the cluster's primary instance,
 ensuring the database is created or updated as needed.
 
-!!! Info
-    The distinction between `metadata.name` and `spec.name` allows multiple
+:::info
+The distinction between `metadata.name` and `spec.name` allows multiple
     `Database` resources to reference databases with the same name across different
     CloudNativePG clusters in the same Kubernetes namespace.
 
@@ -74,8 +74,8 @@ PostgreSQL automatically creates databases such as `postgres`, `template0`, and
 `template1`. These names are reserved and cannot be used for new `Database`
 objects in CloudNativePG.
 
-!!! Important
-    Creating a `Database` with `spec.name` set to `postgres`, `template0`, or
+:::important
+Creating a `Database` with `spec.name` set to `postgres`, `template0`, or
     `template1` is not allowed.
 
 ## Reconciliation and Status
@@ -163,8 +163,8 @@ This manifest ensures that the `database-to-drop` database is removed from the
 
 ## Managing Extensions in a Database
 
-!!! Info
-    While extensions are database-scoped rather than global objects,
+:::info
+While extensions are database-scoped rather than global objects,
     CloudNativePG provides a declarative interface for managing them. This approach
     is necessary because installing certain extensions may require superuser
     privileges, which CloudNativePG recommends disabling by default. By leveraging
@@ -197,8 +197,8 @@ Each extension entry supports the following properties:
   upgrade to.
 - `schema`: The schema in which the extension should be installed.
 
-!!! Info
-    CloudNativePG manages extensions using the following PostgreSQL’s SQL commands:
+:::info
+CloudNativePG manages extensions using the following PostgreSQL’s SQL commands:
     [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/sql-createextension.html),
     [`DROP EXTENSION`](https://www.postgresql.org/docs/current/sql-dropextension.html),
     [`ALTER EXTENSION`](https://www.postgresql.org/docs/current/sql-alterextension.html)
@@ -208,8 +208,8 @@ The operator reconciles only the extensions explicitly listed in
 `spec.extensions`. Any existing extensions not specified in this list remain
 unchanged.
 
-!!! Warning
-    Before the introduction of declarative extension management, CloudNativePG
+:::warning
+Before the introduction of declarative extension management, CloudNativePG
     did not offer a straightforward way to create extensions through configuration.
     To address this, the ["managed extensions"](postgresql_conf.md#managed-extensions)
     feature was introduced, enabling the automated and transparent management
@@ -219,8 +219,8 @@ unchanged.
 
 ## Managing Schemas in a Database
 
-!!! Info
-    Schema management in PostgreSQL is an exception to CloudNativePG's primary
+:::info
+Schema management in PostgreSQL is an exception to CloudNativePG's primary
     focus on managing global objects. Since schemas exist within a database, they
     are typically managed as part of the application development process. However,
     CloudNativePG provides a declarative interface for schema management, primarily
@@ -250,8 +250,8 @@ Each schema entry supports the following properties:
     - `present`: Ensures that the schema is installed (default).
     - `absent`: Ensures that the schema is removed.
 
-!!! Info
-    CloudNativePG manages schemas using the following PostgreSQL’s SQL commands:
+:::info
+CloudNativePG manages schemas using the following PostgreSQL’s SQL commands:
     [`CREATE SCHEMA`](https://www.postgresql.org/docs/current/sql-createschema.html),
     [`DROP SCHEMA`](https://www.postgresql.org/docs/current/sql-dropschema.html),
     [`ALTER SCHEMA`](https://www.postgresql.org/docs/current/sql-alterschema.html).
@@ -276,8 +276,8 @@ It is important to note that there are some differences between these two
 Postgres commands: in particular, the options accepted by `ALTER` are a subset
 of those accepted by `CREATE`.
 
-!!! Warning
-    Some fields, such as encoding and collation settings, are immutable in
+:::warning
+Some fields, such as encoding and collation settings, are immutable in
     PostgreSQL. Attempts to modify these fields on existing databases will be
     ignored.
 
@@ -312,3 +312,4 @@ Errors from PostgreSQL will be reflected in the `Database` object's `status`.
 CloudNativePG does not overwrite manual changes to databases. Once reconciled,
 a `Database` object will not be reapplied unless its `metadata.generation`
 changes, giving flexibility for direct PostgreSQL modifications.
+

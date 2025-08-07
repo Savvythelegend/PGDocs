@@ -1,12 +1,12 @@
-# PostGIS
+﻿# PostGIS
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 [PostGIS](https://postgis.net/) is a very popular open source extension
 for PostgreSQL that introduces support for storing GIS (Geographic Information
 Systems) objects in the database and be queried via SQL.
 
-!!! Important
-    This section assumes you are familiar with PostGIS and provides some basic
+:::important
+This section assumes you are familiar with PostGIS and provides some basic
     information about how to create a new PostgreSQL cluster with a PostGIS database
     in Kubernetes via CloudNativePG.
 
@@ -40,8 +40,8 @@ do this in two ways:
   databases you end up creating in the cluster, in case you adopt the monolith
   architecture where the instance is shared by multiple databases
 
-!!! Info
-    For more information on the microservice vs monolith architecture in the database
+:::info
+For more information on the microservice vs monolith architecture in the database
     please refer to the ["How many databases should be hosted in a single PostgreSQL instance?" FAQ](faq.md)
     or the ["Database import" section](database_import.md).
 
@@ -56,8 +56,8 @@ resource.
 The [`postgis-example.yaml` manifest](samples/postgis-example.yaml) below
 provides some guidance on how the creation of a PostGIS cluster can be done.
 
-!!! Warning
-    Please consider that, although convention over configuration applies in
+:::warning
+Please consider that, although convention over configuration applies in
     CloudNativePG, you should spend time configuring and tuning your system for
     production. Also the `imageName` in the example below deliberately points
     to the latest available image for PostgreSQL 17 - you should use a specific
@@ -96,8 +96,8 @@ spec:
 The example leverages the `Database` resource's declarative extension
 management to add the specified extensions to the `app` database.
 
-!!! Info
-    For more details, see the
+:::info
+For more details, see the
     ["Managing Extensions in a Database" section](declarative_database_management.md#managing-extensions-in-a-database).
 
 You can easily verify the available version of PostGIS that is in the
@@ -150,3 +150,4 @@ app=# SELECT postgis_full_version();
  POSTGIS="3.5.2 dea6d0a" [EXTENSION] PGSQL="170" GEOS="3.9.0-CAPI-1.16.2" PROJ="7.2.1 NETWORK_ENABLED=OFF URL_ENDPOINT=https://cdn.proj.org USER_WRITABLE_DIRECTORY=/tmp/proj DATABASE_PATH=/usr/share/proj/proj.db" (compiled against PROJ 7.2.1) LIBXML="2.9.10" LIBJSON="0.15" LIBPROTOBUF="1.3.3" WAGYU="0.5.0 (Internal)" TOPOLOGY
 (1 row)
 ```
+

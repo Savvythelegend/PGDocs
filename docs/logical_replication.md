@@ -1,4 +1,4 @@
-# Logical Replication
+﻿# Logical Replication
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 PostgreSQL extends its replication capabilities beyond physical replication,
@@ -20,8 +20,8 @@ This flexible model is particularly useful for:
 - Real-time analytics
 - Integration with external applications
 
-!!! Info
-    For more details, examples, and limitations, please refer to the
+:::info
+For more details, examples, and limitations, please refer to the
     [official PostgreSQL documentation on Logical Replication](https://www.postgresql.org/docs/current/logical-replication.html).
 
 **CloudNativePG** enhances this capability by providing declarative support for
@@ -47,8 +47,8 @@ or leverage the [`cnpg publication create` plugin command](kubectl-plugin.md#log
 When managing `Cluster` objects with **CloudNativePG**, PostgreSQL publications
 can be defined declaratively through the `Publication` resource.
 
-!!! Info
-    Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-Publication)
+:::info
+Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-Publication)
     for the full list of attributes you can define for each `Publication` object.
 
 Suppose you have a cluster named `freddie` and want to replicate all tables in
@@ -76,8 +76,8 @@ In the above example:
 - It includes all tables (`spec.target.allTables: true`) from the `app`
   database (`spec.dbname`).
 
-!!! Important
-    While `allTables` simplifies configuration, PostgreSQL offers fine-grained
+:::important
+While `allTables` simplifies configuration, PostgreSQL offers fine-grained
     control for replicating specific tables or targeted data changes. For advanced
     configurations, consult the [PostgreSQL documentation](https://www.postgresql.org/docs/current/logical-replication.html).
     Additionally, refer to the [CloudNativePG API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-PublicationTarget)
@@ -148,15 +148,15 @@ A subscription establishes the connection to a publisher's database and
 specifies the set of publications (one or more) it subscribes to. Subscriptions
 can be created on any supported PostgreSQL instance acting as the *subscriber*.
 
-!!! Important
-    Since schema definitions are not replicated, the subscriber must have the
+:::important
+Since schema definitions are not replicated, the subscriber must have the
     corresponding tables already defined before data replication begins.
 
 CloudNativePG simplifies subscription management by enabling you to define them
 declaratively using the `Subscription` resource.
 
-!!! Info
-    Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-Subscription)
+:::info
+Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-Subscription)
     for the full list of attributes you can define for each `Subscription` object.
 
 Suppose you want to replicate changes from the `publisher` publication on the
@@ -199,8 +199,8 @@ externalClusters:
       dbname: app
 ```
 
-!!! Info
-    For more details on configuring the `externalClusters` section, see the
+:::info
+For more details on configuring the `externalClusters` section, see the
     ["Bootstrap" section](bootstrap.md#the-externalclusters-section) of the
     documentation.
 

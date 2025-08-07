@@ -1,4 +1,4 @@
-# Labels and annotations
+﻿# Labels and annotations
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Resources in Kubernetes are organized in a flat structure, with no hierarchical
@@ -6,8 +6,8 @@ information or relationship between them. However, such resources and objects
 can be linked together and put in relationship through *labels* and
 *annotations*.
 
-!!! info
-    For more information, see the Kubernetes documentation on
+:::info
+For more information, see the Kubernetes documentation on
     [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) and
     [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 
@@ -23,8 +23,8 @@ in your CloudNativePG deployments. Then you need to configure the operator
 so that when you define these labels or annotations in a cluster's metadata,
 they're inherited by all resources created by it (including pods).
 
-!!! Note
-    Label and annotation inheritance is the technique adopted by CloudNativePG
+:::note
+Label and annotation inheritance is the technique adopted by CloudNativePG
     instead of alternative approaches such as pod templates.
 
 ## Predefined labels
@@ -255,8 +255,8 @@ The following continues from that example and limits it to the following:
 - Annotations: `categories`
 - Labels: `app`, `environment`, and `workload`
 
-!!! Note
-    Feel free to select the names that most suit your context for both
+:::note
+Feel free to select the names that most suit your context for both
     annotations and labels. You can also use wildcards
     in naming and adopt strategies like using `mycompany/*` for all labels
     or setting annotations starting with `mycompany/` to be inherited.
@@ -294,3 +294,4 @@ Currently, CloudNativePG doesn't automatically propagate labels or
 annotations deletions. Therefore, when an annotation or label is removed from
 a cluster that was previously propagated to the underlying pods, the operator
 doesn't remove it on the associated resources.
+

@@ -1,4 +1,4 @@
-# Troubleshooting
+﻿# Troubleshooting
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 In this page, you can find some basic information on how to troubleshoot
@@ -820,3 +820,4 @@ You can work around this issue by setting `STANDBY_TCP_USER_TIMEOUT` in the
 the standby instances to close the TCP connection if the initial `SYN` packet
 is not acknowledged within the specified timeout, allowing them to retry the
 connection more quickly.
+

@@ -1,4 +1,4 @@
-# Declarative hibernation
+﻿# Declarative hibernation
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG is designed to keep PostgreSQL clusters up, running and available
@@ -79,3 +79,4 @@ $ kubectl annotate cluster <cluster-name> cnpg.io/hibernation-
 ```
 
 The Pods will be recreated and the cluster will resume operation.
+

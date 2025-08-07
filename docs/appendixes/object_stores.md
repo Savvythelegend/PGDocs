@@ -1,4 +1,4 @@
-# Appendix C - Common object stores for backups
+﻿# Appendix C - Common object stores for backups
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::warning
@@ -353,3 +353,4 @@ This way of authentication will create a JSON file inside the container with all
 information to access your Google Cloud Storage bucket, meaning that if someone gets access to the pod
 will also have write permissions to the bucket.
 :::
+

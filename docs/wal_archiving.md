@@ -1,4 +1,4 @@
-# WAL archiving
+﻿# WAL archiving
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Write-Ahead Log (WAL) archiving in CloudNativePG is the process of continuously
@@ -50,3 +50,4 @@ Even though you change the value of the
 [`archive_timeout` setting in the PostgreSQL configuration](https://www.postgresql.org/docs/current/runtime-config-wal.html#GUC-ARCHIVE-TIMEOUT),
 our experience suggests that the default value set by the operator is suitable
 for most use cases.
+

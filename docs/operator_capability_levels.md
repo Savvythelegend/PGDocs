@@ -1,4 +1,4 @@
-# Operator capability levels
+﻿# Operator capability levels
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 These capabilities were implemented by CloudNativePG,
@@ -6,10 +6,10 @@ classified using the
 [Operator SDK definition of Capability Levels](https://operatorframework.io/operator-capabilities/)
 framework.
 
-![Operator Capability Levels](/images/operator-capability-level.png)
+![Operator Capability Levels](/img/operator-capability-level.png)
 
-!!! Important
-    Based on the [Operator Capability Levels model](operator_capability_levels.md),
+:::important
+Based on the [Operator Capability Levels model](operator_capability_levels.md),
     you can expect a "Level V - Auto Pilot" set of capabilities from the
     CloudNativePG operator.
 
@@ -21,8 +21,8 @@ Each capability level is associated with a certain set of management features th
 4. Deep insights
 5. Auto pilot
 
-!!! Note
-    We consider this framework as a guide for future work and implementations in the operator.
+:::note
+We consider this framework as a guide for future work and implementations in the operator.
 
 ## Level 1: Basic install
 
@@ -31,8 +31,8 @@ operator. This category includes usability and user experience
 enhancements, such as improvements in how you interact with the
 operator and a PostgreSQL cluster configuration.
 
-!!! Important
-    We consider information security part of this level.
+:::important
+We consider information security part of this level.
 
 ### Operator deployment via declarative configuration
 
@@ -238,7 +238,7 @@ The operator enables you to apply changes to the `Cluster` resource YAML
 section of the PostgreSQL configuration. Depending on the configuration option,
 it also makes sure that all instances are properly reloaded or restarted.
 
-!!! Note Current limitation
+:::note Current limitation
     Changes with `ALTER SYSTEM` aren't detected, meaning
     that the cluster state isn't enforced.
 
