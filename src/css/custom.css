@@ -46,3 +46,8 @@
 [data-theme='dark'] .navbar__brand .navbar__logo {
   filter: brightness(0) invert(1);
 }
+
+/* Table cell white-space fix from MkDocs override */
+td, th {
+  white-space: normal;
+}
