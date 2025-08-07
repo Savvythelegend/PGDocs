@@ -1,49 +1,24 @@
 ---
 slug: /
 sidebar_position: 1
+title: Introduction
 ---
 
+### Welcome to the CloudNativePG Documentation
+This site contains the official documentation for **CloudNativePG**, the open-source operator designed to manage PostgreSQL workloads on any Kubernetes cluster.
 
+Our goal is to provide clear, comprehensive, and accurate information to help you deploy, manage, and operate PostgreSQL in a truly cloud-native way.
 
-# Tutorial Intro
+These documentation pages are built directly from the [operator's source code](https://github.com/cloudnative-pg/cloudnative-pg) and will be versioned alongside the operator's releases.
 
-Let's discover **Docusaurus in less than 5 minutes**.
+### Getting Started
 
-## Getting Started
+Whether you are new to CloudNativePG or an experienced user, here are some helpful sections to get you started quickly:
 
-Get started by **creating a new site**.
+- **Quickstart:** The fastest way to get a PostgreSQL cluster up and running.
+- **Architecture:** Understand the components of CloudNativePG and how they work together.
+- **Installation & Upgrade:** Detailed instructions for installing or upgrading the operator.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+---
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+This documentation is a community effort. If you find any issues or have suggestions for improvement, please **[report them via the project's issue tracker](https://github.com/cloudnative-pg/cloudnative-pg/issues)**.
