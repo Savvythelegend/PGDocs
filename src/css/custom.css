@@ -4,27 +4,45 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* 🎨 LIGHT THEME COLORS */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #5c3b90;
+  --ifm-color-primary-dark: #523581;
+  --ifm-color-primary-darker: #4d3279;
+  --ifm-color-primary-darkest: #402964;
+  --ifm-color-primary-light: #66419f;
+  --ifm-color-primary-lighter: #6b45a7;
+  --ifm-color-primary-lightest: #7a50bd;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Custom Navbar and Footer Styling */
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #242526;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* 🌙 DARK THEME COLORS */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #ad94d4;
+  --ifm-color-primary-dark: #9c80c9;
+  --ifm-color-primary-darker: #9376c3;
+  --ifm-color-primary-darkest: #7a61a2;
+  --ifm-color-primary-light: #beabd_f;
+  --ifm-color-primary-lighter: #c5b1e3;
+  --ifm-color-primary-lightest: #d_ad_f0;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Custom Navbar and Footer Styling */
+  --ifm-navbar-background-color: #1f1e2c;
+  --ifm-footer-background-color: #1f1e2c;
+}
+
+/* Additional custom styles for a more polished look */
+.footer {
+  /* Add a subtle top border to the footer */
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .navbar__brand .navbar__logo {
+  filter: brightness(0) invert(1);
 }
