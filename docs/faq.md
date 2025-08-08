@@ -1,4 +1,5 @@
 ﻿# Frequently Asked Questions (FAQ)
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 ## Running PostgreSQL in Kubernetes
@@ -6,8 +7,8 @@
 **Everyone knows that stateful workloads like PostgreSQL cannot run in
 Kubernetes. Why do you say the contrary?**
 
-An [*independent research survey commissioned by the Data on Kubernetes
-Community*](https://dok.community/dokc-2021-report/) in September 2021
+An [_independent research survey commissioned by the Data on Kubernetes
+Community_](https://dok.community/dokc-2021-report/) in September 2021
 revealed that half of the respondents run most of their production
 workloads on Kubernetes. 90% of them believe that Kubernetes is ready
 for stateful workloads, and 70% of them run databases in production.
@@ -20,7 +21,7 @@ of your project.
 
 For database fanatics like us, a real game-changer has been the
 introduction of the support for local persistent volumes in
-[*Kubernetes 1.14 in April 2019*](https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/).
+[_Kubernetes 1.14 in April 2019_](https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/).
 
 **CloudNativePG is built on immutable application containers.
 What does it mean?**
@@ -49,24 +50,24 @@ application code or apply a patch, you build a new image and redeploy
 it. Immutability makes deployments safer and more repeatable.
 
 For more information, please refer to
-[*"Why EDB chose immutable application containers"*](https://www.enterprisedb.com/blog/why-edb-chose-immutable-application-containers).
+[_"Why EDB chose immutable application containers"_](https://www.enterprisedb.com/blog/why-edb-chose-immutable-application-containers).
 
 **What does Cloud Native mean?**
 
 The Cloud Native Computing Foundation defines the term
-"[*Cloud Native*](https://github.com/cncf/toc/blob/main/DEFINITION.md)".
+"[_Cloud Native_](https://github.com/cncf/toc/blob/main/DEFINITION.md)".
 However, since the start of the Cloud Native PostgreSQL/CloudNativePG operator
 at 2ndQuadrant, the development team has been interpreting Cloud Native
 as three main concepts:
 
-1.  An existing, healthy, genuine, and prosperous DevOps culture, founded
-    on people, as well as principles and processes, which enables teams
-    and organizations (as teams of teams) to continuously change so to
-    innovate and accelerate the delivery of outcomes and produce value
-    for the business in safer, more efficient, and more engaging ways
-2.  A microservice architecture that is based on Immutable Application
-    Containers
-3.  A way to manage and orchestrate these containers, such as Kubernetes
+1. An existing, healthy, genuine, and prosperous DevOps culture, founded
+   on people, as well as principles and processes, which enables teams
+   and organizations (as teams of teams) to continuously change so to
+   innovate and accelerate the delivery of outcomes and produce value
+   for the business in safer, more efficient, and more engaging ways
+2. A microservice architecture that is based on Immutable Application
+   Containers
+3. A way to manage and orchestrate these containers, such as Kubernetes
 
 Currently, the standard de facto for container orchestration is
 Kubernetes, which automates the deployment, administration and
@@ -74,7 +75,7 @@ scalability of Cloud Native Applications.
 
 Another definition of Cloud Native that resonates with us is the one
 defined by Ibryam and Huß in
-[*"Kubernetes Patterns", published by O'Reilly*](https://www.oreilly.com/library/view/kubernetes-patterns/9781492050278/):
+[_"Kubernetes Patterns", published by O'Reilly_](https://www.oreilly.com/library/view/kubernetes-patterns/9781492050278/):
 
 > Principles, Patterns, Tools to automate containerized microservices at scale
 
@@ -96,7 +97,6 @@ replication?**
 
 Please read the ["Architecture: Synchronizing the state"](architecture.md#synchronizing-the-state)
 section.
-
 
 **Why should I use an operator instead of running PostgreSQL as a
 container?**
@@ -143,11 +143,11 @@ or similar) and rely on StatefulSets.
 Here is a non exhaustive list, in chronological order from their
 publication on GitHub:
 
-* [Crunchy Data Postgres Operator](https://github.com/CrunchyData/postgres-operator) (2017)
-* [Zalando Postgres Operator](https://github.com/zalando/postgres-operator) (2017)
-* [Stackgres](https://github.com/ongres/stackgres) (2020)
-* [Percona Operator for PostgreSQL](https://github.com/percona/percona-postgresql-operator) (2021)
-* [Kubegres](https://github.com/reactive-tech/kubegres) (2021)
+- [Crunchy Data Postgres Operator](https://github.com/CrunchyData/postgres-operator) (2017)
+- [Zalando Postgres Operator](https://github.com/zalando/postgres-operator) (2017)
+- [Stackgres](https://github.com/ongres/stackgres) (2020)
+- [Percona Operator for PostgreSQL](https://github.com/percona/percona-postgresql-operator) (2021)
+- [Kubegres](https://github.com/reactive-tech/kubegres) (2021)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=cloudnative-pg/cloudnative-pg,zalando/postgres-operator,CrunchyData/postgres-operator,ongres/stackgres,percona/percona-postgresql-operator,reactive-tech/kubegres&type=Date)](https://star-history.com/#cloudnative-pg/cloudnative-pg&zalando/postgres-operator&CrunchyData/postgres-operator&ongres/stackgres&percona/percona-postgresql-operator&reactive-tech/kubegres&Date)
 
@@ -155,9 +155,10 @@ Feel free to report any relevant missing entry as a PR.
 
 :::info
 The [Data on Kubernetes Community](https://dok.community)
-    (which includes some of our maintainers) is working on an independent and
-    vendor neutral project to list the operators called
-    [Operator Feature Matrix](https://github.com/dokc/operator-feature-matrix).
+(which includes some of our maintainers) is working on an independent and
+vendor neutral project to list the operators called
+[Operator Feature Matrix](https://github.com/dokc/operator-feature-matrix).
+:::
 
 **You say that CloudNativePG is a fully declarative operator.
 What do you mean by that?**
@@ -236,7 +237,6 @@ failover?**
 
 No. The operator does that automatically for you, and relies on `pg_rewind` to
 synchronize the former primary with the new one.
-
 
 <!--
 How can I ensure that failover (unplanned) and switchover (planned)
@@ -333,16 +333,16 @@ We believe that PostgreSQL is the equivalent in the database area of
 what Linux represents in the operating system space. The current latest
 major version of Postgres is version 16, which ships out of the box:
 
--   native streaming replication, both physical and logical
--   continuous hot backup and point in time recovery
--   declarative partitioning for horizontal table partitioning, which is
-    a very well-known technique in the database area to improve vertical
-    scalability on a single instance
--   extensibility, with extensions like [PostGIS](postgis.md) for geographical
-    databases
--   parallel queries for vertical scalability
--   JSON support, unleashing the multi-model hybrid database for both
-    structured and unstructured data queried via standard SQL
+- native streaming replication, both physical and logical
+- continuous hot backup and point in time recovery
+- declarative partitioning for horizontal table partitioning, which is
+  a very well-known technique in the database area to improve vertical
+  scalability on a single instance
+- extensibility, with extensions like [PostGIS](postgis.md) for geographical
+  databases
+- parallel queries for vertical scalability
+- JSON support, unleashing the multi-model hybrid database for both
+  structured and unstructured data queried via standard SQL
 
 And so on ...
 
@@ -369,22 +369,22 @@ owned by the aforementioned application user.
 Reserving a PostgreSQL instance to a single microservice owned database,
 enhances:
 
--   resource management: in PostgreSQL, CPU, and memory constrained
-    resources are generally handled at the instance level, not the
-    database level, making it easier to integrate it with Kubernetes
-    resource management policies at the pod level
--   physical continuous backup and Point-In-Time-Recovery (PITR): given
-    that PostgreSQL handles continuous backup and recovery at the
-    instance level, having one database per instance simplifies PITR
-    operations, differentiates retention policy management, and
-    increases data protection of backups
--   application updates: enable each application to decide their update
-    policies without impacting other databases owned by different
-    applications
--   database updates: each application can decide which PostgreSQL
-    version to use, and independently, when to upgrade to a different
-    major version of PostgreSQL and at what conditions (e.g., cutover
-    time)
+- resource management: in PostgreSQL, CPU, and memory constrained
+  resources are generally handled at the instance level, not the
+  database level, making it easier to integrate it with Kubernetes
+  resource management policies at the pod level
+- physical continuous backup and Point-In-Time-Recovery (PITR): given
+  that PostgreSQL handles continuous backup and recovery at the
+  instance level, having one database per instance simplifies PITR
+  operations, differentiates retention policy management, and
+  increases data protection of backups
+- application updates: enable each application to decide their update
+  policies without impacting other databases owned by different
+  applications
+- database updates: each application can decide which PostgreSQL
+  version to use, and independently, when to upgrade to a different
+  major version of PostgreSQL and at what conditions (e.g., cutover
+  time)
 
 **Is there an upper limit in database size for not considering Kubernetes?**
 
@@ -413,7 +413,7 @@ of a query in PostgreSQL, a very common way is to set them up globally. With
 CloudNativePG you can configure the cluster level time zone in the
 `.spec.postgresql.parameters` section as in the following example:
 
-``` yaml
+```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -431,7 +431,7 @@ spec:
 
 The time zone can be verified with:
 
-``` console
+```console
 $ kubectl exec -ti pg-italy-1 -c postgres -- psql -x -c "SHOW timezone"
 -[ RECORD 1 ]---------
 TimeZone | Europe/Rome
@@ -473,7 +473,6 @@ maximum RPO of 5 minutes is enough for you.
 
 Please look at ["Fencing"](fencing.md) or ["Hibernation"](declarative_hibernation.md).
 
-
 **What are the global objects such as roles and databases that are
 automatically created by CloudNativePG?**
 
@@ -482,7 +481,7 @@ called `app`) and a database for the application (by default called `app`)
 which is owned by the aforementioned user.
 
 This way, the database is ready for a microservice adoption, as developers
-can control migrations using the `app` user, without requiring *superuser*
+can control migrations using the `app` user, without requiring _superuser_
 access.
 
 Teams can then create another user for read-write operations through the
@@ -509,4 +508,3 @@ TODO
 
 TODO
 -->
-

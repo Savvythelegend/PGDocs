@@ -1,4 +1,5 @@
 ﻿# Quickstart
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 This section guides you through testing a PostgreSQL cluster on your local machine by
@@ -120,14 +121,15 @@ a new namespace to deploy clusters on.
 Alternatively, you can use labels. The operator will apply the `cnpg.io/cluster`
 label on all objects relevant to a particular cluster. For example:
 
-``` sh
+```sh
 kubectl get pods -l cnpg.io/cluster=<CLUSTER>
 ```
 
 :::important
 Note that we are using `cnpg.io/cluster` as the label. In the past you may
-    have seen or used `postgresql`. This label is being deprecated, and
-    will be dropped in the future. Please use `cnpg.io/cluster`.
+have seen or used `postgresql`. This label is being deprecated, and
+will be dropped in the future. Please use `cnpg.io/cluster`.
+:::
 
 By default, the operator will install the latest available minor version
 of the latest major version of PostgreSQL when the operator was released.
@@ -138,32 +140,36 @@ the `Cluster` definition. For example, to install PostgreSQL 13.6:
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-   # [...]
+  # [...]
 spec:
-   # [...]
-   imageName: ghcr.io/cloudnative-pg/postgresql:13.6
-   #[...]
+  # [...]
+  imageName: ghcr.io/cloudnative-pg/postgresql:13.6
+  #[...]
 ```
 
 :::important
 The immutable infrastructure paradigm requires that you always
-    point to a specific version of the container image.
-    Never use tags like `latest` or `13` in a production environment
-    as it might lead to unpredictable scenarios in terms of update
-    policies and version consistency in the cluster.
-    For strict deterministic and repeatable deployments, you can add the digests
-    to the image name, through the `<image>:<tag>@sha256:<digestValue>` format.
+point to a specific version of the container image.
+Never use tags like `latest` or `13` in a production environment
+as it might lead to unpredictable scenarios in terms of update
+policies and version consistency in the cluster.
+For strict deterministic and repeatable deployments, you can add the digests
+to the image name, through the `<image>:<tag>@sha256:<digestValue>` format.
+:::
 
-:::note "There's more"
-    There are some examples cluster configurations bundled with the operator.
-    Please refer to the ["Examples" section](samples.md).
+:::note
+"There's more"
+There are some examples cluster configurations bundled with the operator.
+Please refer to the ["Examples" section](samples.md).
+:::
 
 ## Part 4: Monitor clusters with Prometheus and Grafana
 
 :::important
 Installing Prometheus and Grafana is beyond the scope of this project.
-    The instructions in this section are provided for experimentation and
-    illustration only.
+The instructions in this section are provided for experimentation and
+illustration only.
+:::
 
 In this section we show how to deploy Prometheus and Grafana for observability,
 and how to create a Grafana Dashboard to monitor CloudNativePG clusters, and a
@@ -192,7 +198,7 @@ install the *Kube Prometheus stack* with our sample configuration
 
 We can accomplish this with the following commands:
 
-``` sh
+```sh
 helm repo add prometheus-community \
   https://prometheus-community.github.io/helm-charts
 
@@ -205,17 +211,17 @@ helm upgrade --install \
 After completion, you will have Prometheus, Grafana, and Alert Manager,
 configured with the `kube-stack-config.yaml` file:
 
-- From the Prometheus installation, you will have the Prometheus Operator
+* From the Prometheus installation, you will have the Prometheus Operator
   watching for **any** `PodMonitor` (see [*monitoring*](monitoring.md)).
-- Alert Manager and Grafana are both enabled.
+* Alert Manager and Grafana are both enabled.
 
-:::info ""
-install](https://helm.sh/docs/helm/helm_install/)
-    documentation.
+:::info
+Refer to the [install](https://helm.sh/docs/helm/helm_install/) documentation.
+:::
 
 You can see several Custom Resources have been created:
 
-``` sh
+```sh
 % kubectl get crds
 NAME                                        CREATED AT
 …
@@ -228,8 +234,8 @@ prometheusrules.monitoring.coreos.com       <timestamp>
 
 as well as a series of Services:
 
-``` sh
-% kubectl get svc     
+```sh
+% kubectl get svc
 NAME                                      TYPE        PORT(S)
 …                                         …           …
 prometheus-community-grafana              ClusterIP   80/TCP
@@ -245,7 +251,7 @@ would be observable via Prometheus.
 
 For example, you could deploy a simple cluster with `PodMonitor` enabled:
 
-``` sh
+```sh
 kubectl apply -f - <<EOF
 ---
 apiVersion: postgresql.cnpg.io/v1
@@ -265,7 +271,7 @@ EOF
 
 To access Prometheus, port-forward the Prometheus service:
 
-``` sh
+```sh
 kubectl port-forward svc/prometheus-community-kube-prometheus 9090
 ```
 
@@ -281,15 +287,15 @@ target it. See the relevant section in the [monitoring page](monitoring.md#monit
 
 You can define some alerts by creating a `prometheusRule`:
 
-``` sh
+```sh
 kubectl apply -f \
   https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/prometheusrule.yaml
 ```
 
 You should see the default alerts now:
 
-``` sh
-% kubectl get prometheusrules                      
+```sh
+% kubectl get prometheusrules
 NAME                                                       AGE
 cnpg-default-alerts                                        3m27s
 ```
@@ -303,7 +309,7 @@ In our installation so far, Grafana is deployed with no predefined dashboards.
 
 To open Grafana, you can port-forward the grafana service:
 
-``` sh
+```sh
 kubectl port-forward svc/prometheus-community-grafana 3000:80
 ```
 
@@ -322,8 +328,9 @@ You can now click on the `CloudNativePG` dashboard just created:
 
 :::warning
 Some graphs in the previous dashboard make use of metrics that are in alpha stage by the time
-    this was created, like `kubelet_volume_stats_available_bytes` and `kubelet_volume_stats_capacity_bytes`
-    producing some graphs to show `No data`.
+this was created, like `kubelet_volume_stats_available_bytes` and `kubelet_volume_stats_capacity_bytes`
+producing some graphs to show `No data`.
+:::
 
 Note that in our local setup, Prometheus and Grafana are configured to
 automatically discover and monitor any CloudNativePG clusters deployed with the

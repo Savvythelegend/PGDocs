@@ -1,4 +1,5 @@
 ﻿API Reference
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Package v1 contains API Schema definitions for the postgresql v1 API group.
@@ -22,7 +23,7 @@ ScheduledBackup
 
 Subscription
 
-Backup \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Backup\}
+Backup `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Backup}`
 A Backup resource is a request for a PostgreSQL backup by the user.
 
 <table class="table">
@@ -36,7 +37,7 @@ A Backup resource is a request for a PostgreSQL backup by the user.
 </tbody>
 </table>
 
-Cluster \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Cluster\}
+Cluster `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Cluster}`
 Cluster is the Schema for the PostgreSQL API.
 
 <table class="table">
@@ -50,7 +51,7 @@ Cluster is the Schema for the PostgreSQL API.
 </tbody>
 </table>
 
-ClusterImageCatalog \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ClusterImageCatalog\}
+ClusterImageCatalog `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ClusterImageCatalog}`
 ClusterImageCatalog is the Schema for the clusterimagecatalogs API.
 
 <table class="table">
@@ -63,7 +64,7 @@ ClusterImageCatalog is the Schema for the clusterimagecatalogs API.
 </tbody>
 </table>
 
-Database \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Database\}
+Database `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Database}`
 Database is the Schema for the databases API.
 
 <table class="table">
@@ -77,7 +78,7 @@ Database is the Schema for the databases API.
 </tbody>
 </table>
 
-ImageCatalog \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ImageCatalog\}
+ImageCatalog `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ImageCatalog}`
 ImageCatalog is the Schema for the imagecatalogs API.
 
 <table class="table">
@@ -90,7 +91,7 @@ ImageCatalog is the Schema for the imagecatalogs API.
 </tbody>
 </table>
 
-Pooler \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Pooler\}
+Pooler `{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Pooler}`
 Pooler is the Schema for the poolers API.
 
 <table class="table">
@@ -104,7 +105,7 @@ Pooler is the Schema for the poolers API.
 </tbody>
 </table>
 
-Publication \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Publication\}
+Publication {https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Publication}
 Publication is the Schema for the publications API.
 
 <table class="table">
@@ -118,7 +119,7 @@ Publication is the Schema for the publications API.
 </tbody>
 </table>
 
-ScheduledBackup \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ScheduledBackup\}
+ScheduledBackup {https://www.google.com/search?q=%23postgresql-cnpg-io-v1-ScheduledBackup}
 ScheduledBackup is the Schema for the scheduledbackups API.
 
 <table class="table">
@@ -132,7 +133,7 @@ ScheduledBackup is the Schema for the scheduledbackups API.
 </tbody>
 </table>
 
-Subscription \{https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Subscription\}
+Subscription {https://www.google.com/search?q=%23postgresql-cnpg-io-v1-Subscription}
 Subscription is the Schema for the subscriptions API.
 
 <table class="table">
@@ -146,7 +147,7 @@ Subscription is the Schema for the subscriptions API.
 </tbody>
 </table>
 
-AffinityConfiguration 
+AffinityConfiguration
 Appears in:
 
 ClusterSpec
@@ -167,7 +168,7 @@ AffinityConfiguration contains the info we need to create the affinity rules for
 </tbody>
 </table>
 
-BootstrapRecovery 
+BootstrapRecovery
 Appears in:
 
 BootstrapConfiguration
@@ -189,7 +190,7 @@ Once the cluster exits recovery, the password for the superuser will be changed 
 </tbody>
 </table>
 
-CertificatesConfiguration 
+CertificatesConfiguration
 Appears in:
 
 CertificatesStatus
@@ -209,48 +210,37 @@ CertificatesConfiguration contains the needed configurations to handle server ce
 </tbody>
 </table>
 
-## CertificatesStatus     
-
+## CertificatesStatus
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>CertificatesStatus contains configuration certificates and related expiration dates.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
 <tbody>
 <tr><td><code>CertificatesConfiguration</code><br/>
-<a href="#postgresql-cnpg-io-v1-CertificatesConfiguration"><i>CertificatesConfiguration</i></a>
-</td>
+<a href="#postgresql-cnpg-io-v1-CertificatesConfiguration"><i>CertificatesConfiguration</i></a></td>
 <td>(Members of <code>CertificatesConfiguration</code> are embedded into this type.)
-   <p>Needed configurations to handle server certificates, initialized with default values, if needed.</p>
-</td>
-</tr>
+   <p>Needed configurations to handle server certificates, initialized with default values, if needed.</p></td></tr>
 <tr><td><code>expirations</code><br/>
-<i>map[string]string</i>
-</td>
+<i>map[string]string</i></td>
 <td>
    <p>Expiration dates for all certificates.</p>
-</td>
-</tr>
+</td></tr>
 </tbody>
 </table>
 
-## ClusterMonitoringTLSConfiguration     
-
+## ClusterMonitoringTLSConfiguration
 
 **Appears in:**
 
 - [MonitoringConfiguration](#postgresql-cnpg-io-v1-MonitoringConfiguration)
 
-
 <p>ClusterMonitoringTLSConfiguration is the type containing the TLS configuration
 for the cluster's monitoring</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -266,16 +256,13 @@ Changing this option will force a rollout of all instances.</p>
 </tbody>
 </table>
 
-## ClusterSpec     
-
+## ClusterSpec
 
 **Appears in:**
 
 - [Cluster](#postgresql-cnpg-io-v1-Cluster)
 
-
 <p>ClusterSpec defines the desired state of Cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -690,16 +677,13 @@ in the PostgreSQL Pods.</p>
 </tbody>
 </table>
 
-## ClusterStatus     
-
+## ClusterStatus
 
 **Appears in:**
 
 - [Cluster](#postgresql-cnpg-io-v1-Cluster)
 
-
 <p>ClusterStatus defines the observed state of Cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1056,17 +1040,14 @@ WAL file, and Time of latest checkpoint</p>
 </tbody>
 </table>
 
-## ConfigMapResourceVersion     
-
+## ConfigMapResourceVersion
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>ConfigMapResourceVersion is the resource versions of the secrets
 managed by the operator</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1082,7 +1063,7 @@ Map keys are the config map names, map values are the versions</p>
 </tbody>
 </table>
 
-## DataDurabilityLevel     
+## DataDurabilityLevel
 
 (Alias of `string`)
 
@@ -1090,24 +1071,17 @@ Map keys are the config map names, map values are the versions</p>
 
 - [SynchronousReplicaConfiguration](#postgresql-cnpg-io-v1-SynchronousReplicaConfiguration)
 
-
 <p>DataDurabilityLevel specifies how strictly to enforce synchronous replication
 when cluster instances are unavailable. Options are <code>required</code> or <code>preferred</code>.</p>
 
-
-
-
-## DataSource     
-
+## DataSource
 
 **Appears in:**
 
 - [BootstrapRecovery](#postgresql-cnpg-io-v1-BootstrapRecovery)
 
-
 <p>DataSource contains the configuration required to bootstrap a
 PostgreSQL cluster from an existing storage</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1136,8 +1110,7 @@ PostgreSQL cluster from an existing storage</p>
 </tbody>
 </table>
 
-## DatabaseObjectSpec     
-
+## DatabaseObjectSpec
 
 **Appears in:**
 
@@ -1145,10 +1118,8 @@ PostgreSQL cluster from an existing storage</p>
 
 - [SchemaSpec](#postgresql-cnpg-io-v1-SchemaSpec)
 
-
 <p>DatabaseObjectSpec contains the fields which are common to every
 database object</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1173,16 +1144,13 @@ extension/schema will be removed if it exists.</p>
 </tbody>
 </table>
 
-## DatabaseObjectStatus     
-
+## DatabaseObjectStatus
 
 **Appears in:**
 
 - [DatabaseStatus](#postgresql-cnpg-io-v1-DatabaseStatus)
 
-
 <p>DatabaseObjectStatus is the status of the managed database objects</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1212,7 +1180,7 @@ the database</p>
 </tbody>
 </table>
 
-## DatabaseReclaimPolicy     
+## DatabaseReclaimPolicy
 
 (Alias of `string`)
 
@@ -1220,22 +1188,15 @@ the database</p>
 
 - [DatabaseSpec](#postgresql-cnpg-io-v1-DatabaseSpec)
 
-
 <p>DatabaseReclaimPolicy describes a policy for end-of-life maintenance of databases.</p>
 
-
-
-
-## DatabaseRoleRef     
-
+## DatabaseRoleRef
 
 **Appears in:**
 
 - [TablespaceConfiguration](#postgresql-cnpg-io-v1-TablespaceConfiguration)
 
-
 <p>DatabaseRoleRef is a reference an a role available inside PostgreSQL</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1249,18 +1210,15 @@ the database</p>
 </tbody>
 </table>
 
-## DatabaseSpec     
-
+## DatabaseSpec
 
 **Appears in:**
 
 - [Database](#postgresql-cnpg-io-v1-Database)
 
-
 <p>DatabaseSpec is the specification of a Postgresql Database, built around the
 <code>CREATE DATABASE</code>, <code>ALTER DATABASE</code>, and <code>DROP DATABASE</code> SQL commands of
 PostgreSQL.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1444,16 +1402,13 @@ tablespace used for objects created in this database.</p>
 </tbody>
 </table>
 
-## DatabaseStatus     
-
+## DatabaseStatus
 
 **Appears in:**
 
 - [Database](#postgresql-cnpg-io-v1-Database)
 
-
 <p>DatabaseStatus defines the observed state of Database</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1497,16 +1452,13 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## EmbeddedObjectMetadata     
-
+## EmbeddedObjectMetadata
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>EmbeddedObjectMetadata contains metadata to be inherited by all resources related to a Cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1526,7 +1478,7 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## EnsureOption     
+## EnsureOption
 
 (Alias of `string`)
 
@@ -1538,24 +1490,17 @@ desired state that was synchronized</p>
 
 - [RoleConfiguration](#postgresql-cnpg-io-v1-RoleConfiguration)
 
-
 <p>EnsureOption represents whether we should enforce the presence or absence of
 a Role in a PostgreSQL instance</p>
 
-
-
-
-## EphemeralVolumesSizeLimitConfiguration     
-
+## EphemeralVolumesSizeLimitConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>EphemeralVolumesSizeLimitConfiguration contains the configuration of the ephemeral
 storage</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1577,16 +1522,13 @@ storage</p>
 </tbody>
 </table>
 
-## ExtensionSpec     
-
+## ExtensionSpec
 
 **Appears in:**
 
 - [DatabaseSpec](#postgresql-cnpg-io-v1-DatabaseSpec)
 
-
 <p>ExtensionSpec configures an extension in a database</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1621,17 +1563,14 @@ is used.</p>
 </tbody>
 </table>
 
-## ExternalCluster     
-
+## ExternalCluster
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ExternalCluster represents the connection parameters to an
 external cluster which is used in the other sections of the configuration</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1705,16 +1644,13 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageCatalogRef     
-
+## ImageCatalogRef
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ImageCatalogRef defines the reference to a major version in an ImageCatalog</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1735,8 +1671,7 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageCatalogSpec     
-
+## ImageCatalogSpec
 
 **Appears in:**
 
@@ -1744,9 +1679,7 @@ of WAL archiving and backups for this external cluster</p>
 
 - [ImageCatalog](#postgresql-cnpg-io-v1-ImageCatalog)
 
-
 <p>ImageCatalogSpec defines the desired ImageCatalog</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1761,16 +1694,13 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## ImageInfo     
-
+## ImageInfo
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>ImageInfo contains the information about a PostgreSQL image</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1792,16 +1722,13 @@ of WAL archiving and backups for this external cluster</p>
 </tbody>
 </table>
 
-## Import     
-
+## Import
 
 **Appears in:**
 
 - [BootstrapInitDB](#postgresql-cnpg-io-v1-BootstrapInitDB)
 
-
 <p>Import contains the configuration to init a database from a logic snapshot of an externalCluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1874,16 +1801,13 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## ImportSource     
-
+## ImportSource
 
 **Appears in:**
 
 - [Import](#postgresql-cnpg-io-v1-Import)
 
-
 <p>ImportSource describes the source for the logical snapshot</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1898,16 +1822,13 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## InstanceID     
-
+## InstanceID
 
 **Appears in:**
 
 - [BackupStatus](#postgresql-cnpg-io-v1-BackupStatus)
 
-
 <p>InstanceID contains the information to identify an instance</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1929,16 +1850,13 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## InstanceReportedState     
-
+## InstanceReportedState
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>InstanceReportedState describes the last reported state of an instance during a reconciliation loop</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1967,17 +1885,14 @@ conflict with the operator's intended functionality or design.</p>
 </tbody>
 </table>
 
-## LDAPBindAsAuth     
-
+## LDAPBindAsAuth
 
 **Appears in:**
 
 - [LDAPConfig](#postgresql-cnpg-io-v1-LDAPConfig)
 
-
 <p>LDAPBindAsAuth provides the required fields to use the
 bind authentication for LDAP</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -1999,17 +1914,14 @@ bind authentication for LDAP</p>
 </tbody>
 </table>
 
-## LDAPBindSearchAuth     
-
+## LDAPBindSearchAuth
 
 **Appears in:**
 
 - [LDAPConfig](#postgresql-cnpg-io-v1-LDAPConfig)
 
-
 <p>LDAPBindSearchAuth provides the required fields to use
 the bind+search LDAP authentication process</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2052,16 +1964,13 @@ the bind+search LDAP authentication process</p>
 </tbody>
 </table>
 
-## LDAPConfig     
-
+## LDAPConfig
 
 **Appears in:**
 
 - [PostgresConfiguration](#postgresql-cnpg-io-v1-PostgresConfiguration)
 
-
 <p>LDAPConfig contains the parameters needed for LDAP authentication</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2111,7 +2020,7 @@ the bind+search LDAP authentication process</p>
 </tbody>
 </table>
 
-## LDAPScheme     
+## LDAPScheme
 
 (Alias of `string`)
 
@@ -2119,23 +2028,16 @@ the bind+search LDAP authentication process</p>
 
 - [LDAPConfig](#postgresql-cnpg-io-v1-LDAPConfig)
 
-
 <p>LDAPScheme defines the possible schemes for LDAP</p>
 
-
-
-
-## ManagedConfiguration     
-
+## ManagedConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ManagedConfiguration represents the portions of PostgreSQL that are managed
 by the instance manager</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2157,16 +2059,13 @@ by the instance manager</p>
 </tbody>
 </table>
 
-## ManagedRoles     
-
+## ManagedRoles
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>ManagedRoles tracks the status of a cluster's managed roles</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2196,17 +2095,14 @@ with an explanation of the cause</p>
 </tbody>
 </table>
 
-## ManagedService     
-
+## ManagedService
 
 **Appears in:**
 
 - [ManagedServices](#postgresql-cnpg-io-v1-ManagedServices)
 
-
 <p>ManagedService represents a specific service managed by the cluster.
 It includes the type of service and its associated template specification.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2236,16 +2132,13 @@ Valid values are &quot;rw&quot;, &quot;r&quot;, and &quot;ro&quot;, representing
 </tbody>
 </table>
 
-## ManagedServices     
-
+## ManagedServices
 
 **Appears in:**
 
 - [ManagedConfiguration](#postgresql-cnpg-io-v1-ManagedConfiguration)
 
-
 <p>ManagedServices represents the services managed by the cluster.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2268,8 +2161,7 @@ Valid values are &quot;r&quot;, and &quot;ro&quot;, representing read, and read-
 </tbody>
 </table>
 
-## Metadata     
-
+## Metadata
 
 **Appears in:**
 
@@ -2279,12 +2171,10 @@ Valid values are &quot;r&quot;, and &quot;ro&quot;, representing read, and read-
 
 - [ServiceTemplateSpec](#postgresql-cnpg-io-v1-ServiceTemplateSpec)
 
-
 <p>Metadata is a structure similar to the metav1.ObjectMeta, but still
 parseable by controller-gen to create a suitable CRD for the user.
 The comment of PodTemplateSpec has an explanation of why we are
 not using the core data types.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2319,17 +2209,14 @@ More info: http://kubernetes.io/docs/user-guide/annotations</p>
 </tbody>
 </table>
 
-## MonitoringConfiguration     
-
+## MonitoringConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>MonitoringConfiguration is the type containing all the monitoring
 configuration for a certain cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2389,19 +2276,16 @@ Changing tls.enabled option will force a rollout of all instances.</p>
 </tbody>
 </table>
 
-## NodeMaintenanceWindow     
-
+## NodeMaintenanceWindow
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>NodeMaintenanceWindow contains information that the operator
 will use while upgrading the underlying node.</p>
 <p>This option is only useful when the chosen storage prevents the Pods
 from being freely moved across nodes.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2424,8 +2308,7 @@ up again) or not (recreate it elsewhere - when <code>instances</code> &gt;1)</p>
 </tbody>
 </table>
 
-## OnlineConfiguration     
-
+## OnlineConfiguration
 
 **Appears in:**
 
@@ -2435,9 +2318,7 @@ up again) or not (recreate it elsewhere - when <code>instances</code> &gt;1)</p>
 
 - [VolumeSnapshotConfiguration](#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration)
 
-
 <p>OnlineConfiguration contains the configuration parameters for the online volume snapshot</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2471,16 +2352,13 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PasswordState     
-
+## PasswordState
 
 **Appears in:**
 
 - [ManagedRoles](#postgresql-cnpg-io-v1-ManagedRoles)
 
-
 <p>PasswordState represents the state of the password of a managed RoleConfiguration</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2502,16 +2380,13 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PgBouncerIntegrationStatus     
-
+## PgBouncerIntegrationStatus
 
 **Appears in:**
 
 - [PoolerIntegrations](#postgresql-cnpg-io-v1-PoolerIntegrations)
 
-
 <p>PgBouncerIntegrationStatus encapsulates the needed integration for the pgbouncer poolers referencing the cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2525,7 +2400,7 @@ possible. <code>false</code> by default.</p>
 </tbody>
 </table>
 
-## PgBouncerPoolMode     
+## PgBouncerPoolMode
 
 (Alias of `string`)
 
@@ -2533,23 +2408,16 @@ possible. <code>false</code> by default.</p>
 
 - [PgBouncerSpec](#postgresql-cnpg-io-v1-PgBouncerSpec)
 
-
 <p>PgBouncerPoolMode is the mode of PgBouncer</p>
 
-
-
-
-## PgBouncerSecrets     
-
+## PgBouncerSecrets
 
 **Appears in:**
 
 - [PoolerSecrets](#postgresql-cnpg-io-v1-PoolerSecrets)
 
-
 <p>PgBouncerSecrets contains the versions of the secrets used
 by pgbouncer</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2564,16 +2432,13 @@ by pgbouncer</p>
 </tbody>
 </table>
 
-## PgBouncerSpec     
-
+## PgBouncerSpec
 
 **Appears in:**
 
 - [PoolerSpec](#postgresql-cnpg-io-v1-PoolerSpec)
 
-
 <p>PgBouncerSpec defines how to configure PgBouncer</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2634,8 +2499,7 @@ the operator calls PgBouncer's <code>PAUSE</code> and <code>RESUME</code> comman
 </tbody>
 </table>
 
-## PluginConfiguration     
-
+## PluginConfiguration
 
 **Appears in:**
 
@@ -2643,10 +2507,8 @@ the operator calls PgBouncer's <code>PAUSE</code> and <code>RESUME</code> comman
 
 - [ExternalCluster](#postgresql-cnpg-io-v1-ExternalCluster)
 
-
 <p>PluginConfiguration specifies a plugin that need to be loaded for this
 cluster to be reconciled</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2683,16 +2545,13 @@ Cannot be active if &quot;.spec.backup.barmanObjectStore&quot; configuration is 
 </tbody>
 </table>
 
-## PluginStatus     
-
+## PluginStatus
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>PluginStatus is the status of a loaded plugin</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2762,13 +2621,11 @@ plugin regarding the RestoreJobHook management</p>
 </tbody>
 </table>
 
-## PodTemplateSpec     
-
+## PodTemplateSpec
 
 **Appears in:**
 
 - [PoolerSpec](#postgresql-cnpg-io-v1-PoolerSpec)
-
 
 <p>PodTemplateSpec is a structure allowing the user to set
 a template for Pod generation.</p>
@@ -2779,7 +2636,6 @@ metadata section.</p>
 https://github.com/kubernetes-sigs/controller-tools/issues/385
 https://github.com/kubernetes-sigs/controller-tools/issues/448
 https://github.com/prometheus-operator/prometheus-operator/issues/3041</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2803,7 +2659,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## PodTopologyLabels     
+## PodTopologyLabels
 
 (Alias of `map[string]string`)
 
@@ -2811,22 +2667,15 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 
 - [Topology](#postgresql-cnpg-io-v1-Topology)
 
-
 <p>PodTopologyLabels represent the topology of a Pod. map[labelName]labelValue</p>
 
-
-
-
-## PoolerIntegrations     
-
+## PoolerIntegrations
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>PoolerIntegrations encapsulates the needed integration for the poolers referencing the cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2840,19 +2689,16 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## PoolerMonitoringConfiguration     
-
+## PoolerMonitoringConfiguration
 
 **Appears in:**
 
 - [PoolerSpec](#postgresql-cnpg-io-v1-PoolerSpec)
 
-
 <p>PoolerMonitoringConfiguration is the type containing all the monitoring
 configuration for a certain Pooler.</p>
 <p>Mirrors the Cluster's MonitoringConfiguration but without the custom queries
 part for now.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2881,16 +2727,13 @@ part for now.</p>
 </tbody>
 </table>
 
-## PoolerSecrets     
-
+## PoolerSecrets
 
 **Appears in:**
 
 - [PoolerStatus](#postgresql-cnpg-io-v1-PoolerStatus)
 
-
 <p>PoolerSecrets contains the versions of all the secrets used</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -2926,16 +2769,13 @@ part for now.</p>
 </tbody>
 </table>
 
-## PoolerSpec     
-
+## PoolerSpec
 
 **Appears in:**
 
 - [Pooler](#postgresql-cnpg-io-v1-Pooler)
 
-
 <p>PoolerSpec defines the desired state of Pooler</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3000,16 +2840,13 @@ Pooler name should never match with any cluster name within the same namespace.<
 </tbody>
 </table>
 
-## PoolerStatus     
-
+## PoolerStatus
 
 **Appears in:**
 
 - [Pooler](#postgresql-cnpg-io-v1-Pooler)
 
-
 <p>PoolerStatus defines the observed state of Pooler</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3031,7 +2868,7 @@ Pooler name should never match with any cluster name within the same namespace.<
 </tbody>
 </table>
 
-## PoolerType     
+## PoolerType
 
 (Alias of `string`)
 
@@ -3039,23 +2876,16 @@ Pooler name should never match with any cluster name within the same namespace.<
 
 - [PoolerSpec](#postgresql-cnpg-io-v1-PoolerSpec)
 
-
 <p>PoolerType is the type of the connection pool, meaning the service
 we are targeting. Allowed values are <code>rw</code> and <code>ro</code>.</p>
 
-
-
-
-## PostgresConfiguration     
-
+## PostgresConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>PostgresConfiguration defines the PostgreSQL configuration</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3134,22 +2964,18 @@ Defaults to false.</p>
 </tbody>
 </table>
 
-## PrimaryUpdateMethod     
+## PrimaryUpdateMethod
 
 (Alias of `string`)
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
-
 
 <p>PrimaryUpdateMethod contains the method to use when upgrading
 the primary server of the cluster as part of rolling updates</p>
 
-
-
-
-## PrimaryUpdateStrategy     
+## PrimaryUpdateStrategy
 
 (Alias of `string`)
 
@@ -3157,15 +2983,10 @@ the primary server of the cluster as part of rolling updates</p>
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>PrimaryUpdateStrategy contains the strategy to follow when upgrading
 the primary server of the cluster as part of rolling updates</p>
 
-
-
-
-## Probe     
-
+## Probe
 
 **Appears in:**
 
@@ -3173,10 +2994,8 @@ the primary server of the cluster as part of rolling updates</p>
 
 - [ProbesConfiguration](#postgresql-cnpg-io-v1-ProbesConfiguration)
 
-
 <p>Probe describes a health check to be performed against a container to determine whether it is
 alive or ready to receive traffic.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3241,7 +3060,7 @@ Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.</p>
 </tbody>
 </table>
 
-## ProbeStrategyType     
+## ProbeStrategyType
 
 (Alias of `string`)
 
@@ -3249,23 +3068,16 @@ Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.</p>
 
 - [ProbeWithStrategy](#postgresql-cnpg-io-v1-ProbeWithStrategy)
 
-
 <p>ProbeStrategyType is the type of the strategy used to declare a PostgreSQL instance
 ready</p>
 
-
-
-
-## ProbeWithStrategy     
-
+## ProbeWithStrategy
 
 **Appears in:**
 
 - [ProbesConfiguration](#postgresql-cnpg-io-v1-ProbesConfiguration)
 
-
 <p>ProbeWithStrategy is the configuration of the startup probe</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3294,17 +3106,14 @@ ready</p>
 </tbody>
 </table>
 
-## ProbesConfiguration     
-
+## ProbesConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ProbesConfiguration represent the configuration for the probes
 to be injected in the PostgreSQL Pods</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3333,7 +3142,7 @@ to be injected in the PostgreSQL Pods</p>
 </tbody>
 </table>
 
-## PublicationReclaimPolicy     
+## PublicationReclaimPolicy
 
 (Alias of `string`)
 
@@ -3341,22 +3150,15 @@ to be injected in the PostgreSQL Pods</p>
 
 - [PublicationSpec](#postgresql-cnpg-io-v1-PublicationSpec)
 
-
 <p>PublicationReclaimPolicy defines a policy for end-of-life maintenance of Publications.</p>
 
-
-
-
-## PublicationSpec     
-
+## PublicationSpec
 
 **Appears in:**
 
 - [Publication](#postgresql-cnpg-io-v1-Publication)
 
-
 <p>PublicationSpec defines the desired state of Publication</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3408,16 +3210,13 @@ PostgreSQL <code>CREATE PUBLICATION</code> command</p>
 </tbody>
 </table>
 
-## PublicationStatus     
-
+## PublicationStatus
 
 **Appears in:**
 
 - [Publication](#postgresql-cnpg-io-v1-Publication)
 
-
 <p>PublicationStatus defines the observed state of Publication</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3447,16 +3246,13 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## PublicationTarget     
-
+## PublicationTarget
 
 **Appears in:**
 
 - [PublicationSpec](#postgresql-cnpg-io-v1-PublicationSpec)
 
-
 <p>PublicationTarget is what this publication should publish</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3480,16 +3276,13 @@ Corresponding to <code>FOR ALL TABLES</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## PublicationTargetObject     
-
+## PublicationTargetObject
 
 **Appears in:**
 
 - [PublicationTarget](#postgresql-cnpg-io-v1-PublicationTarget)
 
-
 <p>PublicationTargetObject is an object to publish</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3514,16 +3307,13 @@ to <code>FOR TABLE</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## PublicationTargetTable     
-
+## PublicationTargetTable
 
 **Appears in:**
 
 - [PublicationTargetObject](#postgresql-cnpg-io-v1-PublicationTargetObject)
 
-
 <p>PublicationTargetTable is a table to publish</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3559,17 +3349,14 @@ to <code>FOR TABLE</code> in PostgreSQL.</p>
 </tbody>
 </table>
 
-## RecoveryTarget     
-
+## RecoveryTarget
 
 **Appears in:**
 
 - [BootstrapRecovery](#postgresql-cnpg-io-v1-BootstrapRecovery)
 
-
 <p>RecoveryTarget allows to configure the moment where the recovery process
 will stop. All the target options except TargetTLI are mutually exclusive.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3638,17 +3425,14 @@ in Postgres, <code>recovery_target_inclusive</code> will be true</p>
 </tbody>
 </table>
 
-## ReplicaClusterConfiguration     
-
+## ReplicaClusterConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ReplicaClusterConfiguration encapsulates the configuration of a replica
 cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3708,17 +3492,14 @@ token cannot be used.</p>
 </tbody>
 </table>
 
-## ReplicationSlotsConfiguration     
-
+## ReplicationSlotsConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ReplicationSlotsConfiguration encapsulates the configuration
 of replication slots</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3748,13 +3529,11 @@ every <code>updateInterval</code> seconds (default 30).</p>
 </tbody>
 </table>
 
-## ReplicationSlotsHAConfiguration     
-
+## ReplicationSlotsHAConfiguration
 
 **Appears in:**
 
 - [ReplicationSlotsConfiguration](#postgresql-cnpg-io-v1-ReplicationSlotsConfiguration)
-
 
 <p>ReplicationSlotsHAConfiguration encapsulates the configuration
 of the replication slots that are automatically managed by
@@ -3764,7 +3543,6 @@ Replication slots are a PostgreSQL feature that makes sure
 that PostgreSQL automatically keeps WAL files in the primary
 when a streaming client (in this specific case a replica that
 is part of the HA cluster) gets disconnected.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3794,20 +3572,17 @@ This can only be set at creation time. By default set to <code>_cnpg_</code>.</p
 </tbody>
 </table>
 
-## RoleConfiguration     
-
+## RoleConfiguration
 
 **Appears in:**
 
 - [ManagedConfiguration](#postgresql-cnpg-io-v1-ManagedConfiguration)
-
 
 <p>RoleConfiguration is the representation, in Kubernetes, of a PostgreSQL role
 with the additional field Ensure specifying whether to ensure the presence or
 absence of the role in the database</p>
 <p>The defaults of the CREATE ROLE command are applied
 Reference: https://www.postgresql.org/docs/current/sql-createrole.html</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3942,20 +3717,17 @@ Default is <code>false</code>.</p>
 </tbody>
 </table>
 
-## SQLRefs     
-
+## SQLRefs
 
 **Appears in:**
 
 - [BootstrapInitDB](#postgresql-cnpg-io-v1-BootstrapInitDB)
-
 
 <p>SQLRefs holds references to ConfigMaps or Secrets
 containing SQL files. The references are processed in a specific order:
 first, all Secrets are processed, followed by all ConfigMaps.
 Within each group, the processing order follows the sequence specified
 in their respective arrays.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -3977,16 +3749,13 @@ in their respective arrays.</p>
 </tbody>
 </table>
 
-## ScheduledBackupSpec     
-
+## ScheduledBackupSpec
 
 **Appears in:**
 
 - [ScheduledBackup](#postgresql-cnpg-io-v1-ScheduledBackup)
 
-
 <p>ScheduledBackupSpec defines the desired state of ScheduledBackup</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4080,16 +3849,13 @@ Overrides the default settings specified in the cluster '.backup.volumeSnapshot.
 </tbody>
 </table>
 
-## ScheduledBackupStatus     
-
+## ScheduledBackupStatus
 
 **Appears in:**
 
 - [ScheduledBackup](#postgresql-cnpg-io-v1-ScheduledBackup)
 
-
 <p>ScheduledBackupStatus defines the observed state of ScheduledBackup</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4118,16 +3884,13 @@ Overrides the default settings specified in the cluster '.backup.volumeSnapshot.
 </tbody>
 </table>
 
-## SchemaSpec     
-
+## SchemaSpec
 
 **Appears in:**
 
 - [DatabaseSpec](#postgresql-cnpg-io-v1-DatabaseSpec)
 
-
 <p>SchemaSpec configures a schema in a database</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4151,8 +3914,7 @@ It maps to the <code>AUTHORIZATION</code> parameter of <code>CREATE SCHEMA</code
 </tbody>
 </table>
 
-## SecretVersion     
-
+## SecretVersion
 
 **Appears in:**
 
@@ -4160,9 +3922,7 @@ It maps to the <code>AUTHORIZATION</code> parameter of <code>CREATE SCHEMA</code
 
 - [PoolerSecrets](#postgresql-cnpg-io-v1-PoolerSecrets)
 
-
 <p>SecretVersion contains a secret name and its ResourceVersion</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4184,17 +3944,14 @@ It maps to the <code>AUTHORIZATION</code> parameter of <code>CREATE SCHEMA</code
 </tbody>
 </table>
 
-## SecretsResourceVersion     
-
+## SecretsResourceVersion
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>SecretsResourceVersion is the resource versions of the secrets
 managed by the operator</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4280,16 +4037,13 @@ Map keys are the secret names, map values are the versions</p>
 </tbody>
 </table>
 
-## ServiceAccountTemplate     
-
+## ServiceAccountTemplate
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>ServiceAccountTemplate contains the template needed to generate the service accounts</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4305,7 +4059,7 @@ service account</p>
 </tbody>
 </table>
 
-## ServiceSelectorType     
+## ServiceSelectorType
 
 (Alias of `string`)
 
@@ -4315,15 +4069,10 @@ service account</p>
 
 - [ManagedServices](#postgresql-cnpg-io-v1-ManagedServices)
 
-
 <p>ServiceSelectorType describes a valid value for generating the service selectors.
 It indicates which type of service the selector applies to, such as read-write, read, or read-only</p>
 
-
-
-
-## ServiceTemplateSpec     
-
+## ServiceTemplateSpec
 
 **Appears in:**
 
@@ -4331,10 +4080,8 @@ It indicates which type of service the selector applies to, such as read-write, 
 
 - [PoolerSpec](#postgresql-cnpg-io-v1-PoolerSpec)
 
-
 <p>ServiceTemplateSpec is a structure allowing the user to set
 a template for Service generation.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4358,7 +4105,7 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 </tbody>
 </table>
 
-## ServiceUpdateStrategy     
+## ServiceUpdateStrategy
 
 (Alias of `string`)
 
@@ -4366,13 +4113,9 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 
 - [ManagedService](#postgresql-cnpg-io-v1-ManagedService)
 
-
 <p>ServiceUpdateStrategy describes how the changes to the managed service should be handled</p>
 
-
-
-
-## SnapshotOwnerReference     
+## SnapshotOwnerReference
 
 (Alias of `string`)
 
@@ -4380,14 +4123,10 @@ More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-
 
 - [VolumeSnapshotConfiguration](#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration)
 
-
 <p>SnapshotOwnerReference defines the reference type for the owner of the snapshot.
 This specifies which owner the processed resources should relate to.</p>
 
-
-
-
-## SnapshotType     
+## SnapshotType
 
 (Alias of `string`)
 
@@ -4395,14 +4134,9 @@ This specifies which owner the processed resources should relate to.</p>
 
 - [Import](#postgresql-cnpg-io-v1-Import)
 
-
 <p>SnapshotType is a type of allowed import</p>
 
-
-
-
-## StorageConfiguration     
-
+## StorageConfiguration
 
 **Appears in:**
 
@@ -4410,10 +4144,8 @@ This specifies which owner the processed resources should relate to.</p>
 
 - [TablespaceConfiguration](#postgresql-cnpg-io-v1-TablespaceConfiguration)
 
-
 <p>StorageConfiguration is the configuration used to create and reconcile PVCs,
 usable for WAL volumes, PGDATA volumes, or tablespaces</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4454,7 +4186,7 @@ Size cannot be decreased.</p>
 </tbody>
 </table>
 
-## SubscriptionReclaimPolicy     
+## SubscriptionReclaimPolicy
 
 (Alias of `string`)
 
@@ -4462,22 +4194,15 @@ Size cannot be decreased.</p>
 
 - [SubscriptionSpec](#postgresql-cnpg-io-v1-SubscriptionSpec)
 
-
 <p>SubscriptionReclaimPolicy describes a policy for end-of-life maintenance of Subscriptions.</p>
 
-
-
-
-## SubscriptionSpec     
-
+## SubscriptionSpec
 
 **Appears in:**
 
 - [Subscription](#postgresql-cnpg-io-v1-Subscription)
 
-
 <p>SubscriptionSpec defines the desired state of Subscription</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4548,16 +4273,13 @@ cluster. Defaults to the one in the external cluster definition.</p>
 </tbody>
 </table>
 
-## SubscriptionStatus     
-
+## SubscriptionStatus
 
 **Appears in:**
 
 - [Subscription](#postgresql-cnpg-io-v1-Subscription)
 
-
 <p>SubscriptionStatus defines the observed state of Subscription</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4587,16 +4309,13 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## SwitchReplicaClusterStatus     
-
+## SwitchReplicaClusterStatus
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>SwitchReplicaClusterStatus contains all the statuses regarding the switch of a cluster to a replica cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4611,19 +4330,16 @@ desired state that was synchronized</p>
 </tbody>
 </table>
 
-## SyncReplicaElectionConstraints     
-
+## SyncReplicaElectionConstraints
 
 **Appears in:**
 
 - [PostgresConfiguration](#postgresql-cnpg-io-v1-PostgresConfiguration)
 
-
 <p>SyncReplicaElectionConstraints contains the constraints for sync replicas election.</p>
 <p>For anti-affinity parameters two instances are considered in the same location
 if all the labels values match.</p>
 <p>In future synchronous replica election restriction by name will be supported.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4645,17 +4361,14 @@ if all the labels values match.</p>
 </tbody>
 </table>
 
-## SynchronizeReplicasConfiguration     
-
+## SynchronizeReplicasConfiguration
 
 **Appears in:**
 
 - [ReplicationSlotsConfiguration](#postgresql-cnpg-io-v1-ReplicationSlotsConfiguration)
 
-
 <p>SynchronizeReplicasConfiguration contains the configuration for the synchronization of user defined
 physical replication slots</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4677,19 +4390,16 @@ physical replication slots</p>
 </tbody>
 </table>
 
-## SynchronousReplicaConfiguration     
-
+## SynchronousReplicaConfiguration
 
 **Appears in:**
 
 - [PostgresConfiguration](#postgresql-cnpg-io-v1-PostgresConfiguration)
 
-
 <p>SynchronousReplicaConfiguration contains the configuration of the
 PostgreSQL synchronous replication feature.
 Important: at this moment, also <code>.spec.minSyncReplicas</code> and <code>.spec.maxSyncReplicas</code>
 need to be considered.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4755,7 +4465,7 @@ to allow for operational continuity. This setting is only applicable if both
 </tbody>
 </table>
 
-## SynchronousReplicaConfigurationMethod     
+## SynchronousReplicaConfigurationMethod
 
 (Alias of `string`)
 
@@ -4763,24 +4473,17 @@ to allow for operational continuity. This setting is only applicable if both
 
 - [SynchronousReplicaConfiguration](#postgresql-cnpg-io-v1-SynchronousReplicaConfiguration)
 
-
 <p>SynchronousReplicaConfigurationMethod configures whether to use
 quorum based replication or a priority list</p>
 
-
-
-
-## TablespaceConfiguration     
-
+## TablespaceConfiguration
 
 **Appears in:**
 
 - [ClusterSpec](#postgresql-cnpg-io-v1-ClusterSpec)
 
-
 <p>TablespaceConfiguration is the configuration of a tablespace, and includes
 the storage specification for the tablespace</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4819,16 +4522,13 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 </tbody>
 </table>
 
-## TablespaceState     
-
+## TablespaceState
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>TablespaceState represents the state of a tablespace in a cluster</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4864,7 +4564,7 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 </tbody>
 </table>
 
-## TablespaceStatus     
+## TablespaceStatus
 
 (Alias of `string`)
 
@@ -4872,22 +4572,15 @@ documentation for more information on the <code>temp_tablespaces</code> GUC.</p>
 
 - [TablespaceState](#postgresql-cnpg-io-v1-TablespaceState)
 
-
 <p>TablespaceStatus represents the status of a tablespace in the cluster</p>
 
-
-
-
-## Topology     
-
+## Topology
 
 **Appears in:**
 
 - [ClusterStatus](#postgresql-cnpg-io-v1-ClusterStatus)
 
-
 <p>Topology contains the cluster topology</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
@@ -4921,16 +4614,13 @@ in synchronous replica election in case of failures</p>
 </tbody>
 </table>
 
-## VolumeSnapshotConfiguration     
-
+## VolumeSnapshotConfiguration
 
 **Appears in:**
 
 - [BackupConfiguration](#postgresql-cnpg-io-v1-BackupConfiguration)
 
-
 <p>VolumeSnapshotConfiguration represents the configuration for the execution of snapshot backups.</p>
-
 
 <table class="table">
 <thead><tr><th width="30%">Field</th><th>Description</th></tr></thead>
