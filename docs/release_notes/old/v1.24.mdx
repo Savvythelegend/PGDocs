@@ -1,4 +1,5 @@
 ﻿# Release notes for CloudNativePG 1.24
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 History of user-visible changes in the 1.24 minor release of CloudNativePG.
@@ -7,15 +8,14 @@ For a complete list of changes, please refer to the
 [commits](https://github.com/cloudnative-pg/cloudnative-pg/commits/release-1.24)
 on the release branch in GitHub.
 
-
 ## Version 1.24.4
 
 **Release date:** May 23, 2025
 
 :::warning
 This is the final release in the 1.24.x series.
-    Users are strongly encouraged to upgrade to a newer minor version, as 1.24
-    is no longer supported.
+Users are strongly encouraged to upgrade to a newer minor version, as 1.24
+is no longer supported.
 
 ### Important Changes
 
@@ -39,7 +39,7 @@ This is the final release in the 1.24.x series.
 - Added support for collecting `pg_stat_wal` metrics in PostgreSQL 18. (#7005)
 
 - Added support for LZ4, XZ, and Zstandard compression methods when archiving
-  WAL files via Barman Cloud (*deprecated*). (#7151)
+  WAL files via Barman Cloud (_deprecated_). (#7151)
 
 ### Security
 
@@ -74,7 +74,6 @@ This is the final release in the 1.24.x series.
   (e.g., `512MB` instead of `512`). (#7160)
 
 - CloudNativePG Interface (CNPG-I):
-
   - Implemented automatic reloading of TLS certificates for plugins when they
     change. (#7029) <!-- no 1.22 -->
 
@@ -86,7 +85,6 @@ This is the final release in the 1.24.x series.
     executions (#7496). <!-- no 1.22 -->
 
 - `cnpg` plugin:
-
   - Ensured that the primary Pod is recreated during an imperative restart when
     `primaryUpdateMethod` is set to `restart`, aligning its definition with the
     replicas. (#7122)
@@ -156,18 +154,18 @@ This is the final release in the 1.24.x series.
 - Improved PostgreSQL version detection by using a more precise check of the
   data directory. (#6659)
 - Volume Snapshot Backups:
-    - Fixed an issue where unused backup connections were not properly cleaned
-      up. (#6882)
-    - Ensured the instance manager closes stale PostgreSQL connections left by
-      failed volume snapshot backups. (#6879)
-    - Prevented the operator from starting a new volume snapshot backup while
-      another is already in progress. (#6890)
+  - Fixed an issue where unused backup connections were not properly cleaned
+    up. (#6882)
+  - Ensured the instance manager closes stale PostgreSQL connections left by
+    failed volume snapshot backups. (#6879)
+  - Prevented the operator from starting a new volume snapshot backup while
+    another is already in progress. (#6890)
 - `cnpg` plugin:
-    - Restored functionality of the `promote` plugin command. (#6476)
-    - Enhanced `kubectl cnpg report --logs <cluster>` to collect logs from all
-      containers, including sidecars. (#6636)
-    - Ensured `pgbench` jobs can run when a `Cluster` uses an `ImageCatalog`.
-      (#6868)
+  - Restored functionality of the `promote` plugin command. (#6476)
+  - Enhanced `kubectl cnpg report --logs <cluster>` to collect logs from all
+    containers, including sidecars. (#6636)
+  - Ensured `pgbench` jobs can run when a `Cluster` uses an `ImageCatalog`.
+    (#6868)
 
 ### Technical Enhancements
 
@@ -187,7 +185,7 @@ This is the final release in the 1.24.x series.
 - Improved validation for the `spec.schedule` field in ScheduledBackups,
   raising warnings for potential misconfigurations. (#5396)
 - `cnpg` plugin:
-    - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
+  - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
 
 ### Bug Fixes
 
@@ -217,8 +215,8 @@ This is the final release in the 1.24.x series.
 - Ensure proper quoting of the inRoles field in SQL statements to prevent
   syntax errors in generated SQL during role management. (#6346)
 - `cnpg` plugin:
-    - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
-    - Avoid displaying physical backups block when empty with `status` command. (#5998)
+  - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
+  - Avoid displaying physical backups block when empty with `status` command. (#5998)
 
 ## Version 1.24.1
 
@@ -234,14 +232,14 @@ This is the final release in the 1.24.x series.
   PostgreSQL. This setting defaults to `on`, in line with PostgreSQL's
   recommendations (#5516).
 - Plugin:
-    - Add the `logs pretty` command in the `cnpg` plugin to read a log stream
-      from standard input and output a human-readable format, with options to
-      filter log entries (#5770)
-    - Enhance the `status` command by allowing multiple `-v` options to
-      increase verbosity for more detailed output (#5765).
-    - Add support for specifying a custom Docker image using the `--image`
-      flag in the `pgadmin4` plugin command, giving users control over the
-      Docker image used for pgAdmin4 deployments (#5515).
+  - Add the `logs pretty` command in the `cnpg` plugin to read a log stream
+    from standard input and output a human-readable format, with options to
+    filter log entries (#5770)
+  - Enhance the `status` command by allowing multiple `-v` options to
+    increase verbosity for more detailed output (#5765).
+  - Add support for specifying a custom Docker image using the `--image`
+    flag in the `pgadmin4` plugin command, giving users control over the
+    Docker image used for pgAdmin4 deployments (#5515).
 
 ### Fixes:
 
@@ -260,10 +258,10 @@ This is the final release in the 1.24.x series.
 - Correctly set the `TMPDIR` and `PSQL_HISTORY` environment variables for pods
   and jobs, improving temporary file and history management (#5503).
 - Plugin:
-    - Resolve a race condition in the `logs cluster` command (#5775).
-    - Display the `potential` sync status in the `status` plugin (#5533).
-    - Fix the issue where pods deployed by the `pgadmin4` command didn’t have
-      a writable home directory (#5800).
+  - Resolve a race condition in the `logs cluster` command (#5775).
+  - Display the `potential` sync status in the `status` plugin (#5533).
+  - Fix the issue where pods deployed by the `pgadmin4` command didn’t have
+    a writable home directory (#5800).
 
 ### Supported versions
 
@@ -283,7 +281,7 @@ This is the final release in the 1.24.x series.
 
 :::warning
 The PodAntiAffinity change will trigger a rollout of all the instances when
-    the operator is upgraded, even when online upgrades are enabled.
+the operator is upgraded, even when online upgrades are enabled.
 
 ### Features:
 
@@ -291,18 +289,18 @@ The PodAntiAffinity change will trigger a rollout of all the instances when
   create distributed database topologies for PostgreSQL that span multiple
   Kubernetes clusters, enabling hybrid and multi-cloud deployments. This feature
   supports:
-    - **Declarative Primary Control**: Easily specify which PostgreSQL cluster
-      acts as the primary in a distributed setup (#4388).
-    - **Seamless Switchover**: Effortlessly demote the current primary and
-      promote a selected replica cluster, typically in a different region,
-      without needing to rebuild the former primary. This ensures high availability
-      and resilience in diverse environments (#4411).
+  - **Declarative Primary Control**: Easily specify which PostgreSQL cluster
+    acts as the primary in a distributed setup (#4388).
+  - **Seamless Switchover**: Effortlessly demote the current primary and
+    promote a selected replica cluster, typically in a different region,
+    without needing to rebuild the former primary. This ensures high availability
+    and resilience in diverse environments (#4411).
 - **Managed Services**: Introduce managed services via the `managed.services`
   stanza (#4769 and #4952), allowing you to:
-    - Disable the read-only and read services via configuration.
-    - Leverage the service template capability to create custom service
-      resources, including load balancers, to access PostgreSQL outside
-      Kubernetes (particularly useful for DBaaS purposes).
+  - Disable the read-only and read services via configuration.
+  - Leverage the service template capability to create custom service
+    resources, including load balancers, to access PostgreSQL outside
+    Kubernetes (particularly useful for DBaaS purposes).
 - **Enhanced API for Synchronous Replication**: Introducing an improved API for
   explicit configuration of synchronous replication, supporting both
   quorum-based and priority list strategies. This update allows full
@@ -322,7 +320,7 @@ The PodAntiAffinity change will trigger a rollout of all the instances when
   maps or secrets (#5074).
 - Add transparent support for PostgreSQL 17's `allow_alter_system` parameter,
   enabling or disabling the `ALTER SYSTEM` command through the
-`.spec.postgresql.enableAlterSystem` option (#4921).
+  `.spec.postgresql.enableAlterSystem` option (#4921).
 - Allow overriding the query metric name and the names of the columns using a
   `name` key/value pair, which can replace the name automatically inherited
   from the parent key (#4779).
@@ -340,17 +338,17 @@ The PodAntiAffinity change will trigger a rollout of all the instances when
 - Support the new metrics introduced in PgBouncer 1.23 in the `Pooler` metrics
   collector (#5044).
 - `cnpg` plugin updates:
-    - Enhance the `install generate` command by adding a `--control-plane` option,
-      allowing deployment of the operator on control-plane nodes by setting
-      node affinity and tolerations (#5271).
-    - Enhance the `destroy` command to delete also any job related to the target
-      instance (#5298).
-    - Enhanced the `status` command to display `demotionToken` and
-      `promotionToken` when available, providing more detailed operational
-      insights with distributed topologies (#5149).
-    - Added support for customizing the remote database name in the `publication`
-      and `subscription` subcommands. This enhancement offers greater flexibility
-      for synchronizing data from an external cluster with multiple databases (#5113).
+  - Enhance the `install generate` command by adding a `--control-plane` option,
+    allowing deployment of the operator on control-plane nodes by setting
+    node affinity and tolerations (#5271).
+  - Enhance the `destroy` command to delete also any job related to the target
+    instance (#5298).
+  - Enhanced the `status` command to display `demotionToken` and
+    `promotionToken` when available, providing more detailed operational
+    insights with distributed topologies (#5149).
+  - Added support for customizing the remote database name in the `publication`
+    and `subscription` subcommands. This enhancement offers greater flexibility
+    for synchronizing data from an external cluster with multiple databases (#5113).
 
 ### Security:
 
@@ -398,13 +396,12 @@ The PodAntiAffinity change will trigger a rollout of all the instances when
 - Allow setting `smartShutdownTimeout` to zero, enabling immediate fast
   shutdown and bypassing the smart shutdown process when required (#5347).
 - `cnpg` plugin:
-    - Properly handle errors during the `status` command execution.
-    - Support TLS in the `status` command (#4915).
+  - Properly handle errors during the `status` command execution.
+  - Support TLS in the `status` command (#4915).
 
 ### Supported versions
 
 - Kubernetes 1.31, 1.30, 1.29, and 1.28
 - PostgreSQL 16, 15, 14, 13, and 12
-    - PostgreSQL 16.4 is the default image
-    - PostgreSQL 12 support ends on November 12, 2024
-
+  - PostgreSQL 16.4 is the default image
+  - PostgreSQL 12 support ends on November 12, 2024

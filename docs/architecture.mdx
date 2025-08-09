@@ -1,4 +1,5 @@
 ﻿# Architecture
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::tip
@@ -36,8 +37,8 @@ Disaster Recovery (DR), in the case of a database, state must be replicated in
 multiple locations, preferably in a continuous and instantaneous way, by
 adopting either of the following two strategies:
 
-- *storage-level replication*, normally persistent volumes
-- *application-level replication*, in this specific case PostgreSQL
+- _storage-level replication_, normally persistent volumes
+- _application-level replication_, in this specific case PostgreSQL
 
 CloudNativePG relies on application-level replication, for a simple reason: the
 PostgreSQL database management system comes with robust and reliable
@@ -48,8 +49,8 @@ the world for over a decade.
 PostgreSQL supports both asynchronous and synchronous streaming replication
 over the network, as well as asynchronous file-based log shipping (normally
 used as a fallback option, for example, to store WAL files in an object store).
-Replicas are usually called *standby servers* and can also be used for
-read-only workloads, thanks to the *Hot Standby* feature.
+Replicas are usually called _standby servers_ and can also be used for
+read-only workloads, thanks to the _Hot Standby_ feature.
 
 :::important
 **We recommend against storage-level replication with PostgreSQL**, although
@@ -91,7 +92,7 @@ Such an architecture enables the CloudNativePG operator to control the full
 lifecycle of a `Cluster` resource across the zones within a single Kubernetes
 cluster, by treating all the availability zones as active: this includes, among
 other operations,
-[scheduling](scheduling.md) the workloads in a declarative manner (based on
+[scheduling](scheduling.mdx) the workloads in a declarative manner (based on
 affinity rules, tolerations and node selectors), automated failover,
 self-healing, and updates. All will work seamlessly across the zones in a single
 Kubernetes cluster.
@@ -103,7 +104,7 @@ worker node, and availability zone levels.
 
 Additionally, you can leverage [Kubernetes clusters](#deployments-across-kubernetes-clusters)
 to deploy distributed PostgreSQL topologies hosting "passive"
-[PostgreSQL replica clusters](replica_cluster.md) in different regions and
+[PostgreSQL replica clusters](replica_cluster.mdx) in different regions and
 managing them via declarative configuration. This setup is ideal for disaster
 recovery (DR), read-only operations, or cross-region availability.
 
@@ -135,7 +136,7 @@ prevents the creation of a multi-availability zone Kubernetes cluster, which
 requires a minimum of three zones. As a result, users must create two separate
 Kubernetes clusters in an active/passive configuration, with the second cluster
 primarily used for Disaster Recovery (see
-the [replica cluster feature](replica_cluster.md)).
+the [replica cluster feature](replica_cluster.mdx)).
 
 ![Example of a Kubernetes architecture with only 2 data centers](/img/k8s-architecture-2-az.png)
 
@@ -161,11 +162,11 @@ located on different worker nodes and do not share the same storage.
 
 For DR, you can push the SPoF above the single zone, by using additional
 [Kubernetes clusters](#deployments-across-kubernetes-clusters) to define a
-distributed topology hosting "passive" [PostgreSQL replica clusters](replica_cluster.md).
+distributed topology hosting "passive" [PostgreSQL replica clusters](replica_cluster.mdx).
 As with other Kubernetes workloads in this scenario, promotion of a Kubernetes
 cluster as primary must be done manually.
 
-Through the [replica cluster feature](replica_cluster.md), you can define a
+Through the [replica cluster feature](replica_cluster.mdx), you can define a
 distributed PostgreSQL topology and coordinate a controlled switchover between
 data centers by first demoting the primary cluster and then promoting the
 replica cluster, without the need to re-clone the former primary. While failover
@@ -231,7 +232,7 @@ spec:
   affinity:
     # <snip>
     nodeSelector:
-      node-role.kubernetes.io/postgres: ""
+      node-role.kubernetes.io/postgres: ''
 ```
 
 #### Proposed node taint
@@ -253,9 +254,9 @@ spec:
   affinity:
     # <snip>
     tolerations:
-    - key: node-role.kubernetes.io/postgres
-      operator: Exists
-      effect: NoSchedule
+      - key: node-role.kubernetes.io/postgres
+        operator: Exists
+        effect: NoSchedule
 ```
 
 ## PostgreSQL architecture
@@ -264,27 +265,27 @@ CloudNativePG supports clusters based on asynchronous and synchronous
 streaming replication to manage multiple hot standby replicas within the same
 Kubernetes cluster, with the following specifications:
 
-* One primary, with optional multiple hot standby replicas for HA
-* Available services for applications:
-    * `-rw`: applications connect only to the primary instance of the cluster
-    * `-ro`: applications connect only to hot standby replicas for
-      read-only-workloads (optional)
-    * `-r`: applications connect to any of the instances for read-only
-      workloads (optional)
+- One primary, with optional multiple hot standby replicas for HA
+- Available services for applications:
+  - `-rw`: applications connect only to the primary instance of the cluster
+  - `-ro`: applications connect only to hot standby replicas for
+    read-only-workloads (optional)
+  - `-r`: applications connect to any of the instances for read-only
+    workloads (optional)
 
-* Shared-nothing architecture recommended for better resilience of the PostgreSQL cluster:
-    * PostgreSQL instances should reside on different Kubernetes worker nodes
-      and share only the network - as a result, instances should not share
-      the storage and preferably use local volumes attached to the node they
-      run on
-    * PostgreSQL instances should reside in different availability zones
-      within the same Kubernetes cluster / region
+- Shared-nothing architecture recommended for better resilience of the PostgreSQL cluster:
+  - PostgreSQL instances should reside on different Kubernetes worker nodes
+    and share only the network - as a result, instances should not share
+    the storage and preferably use local volumes attached to the node they
+    run on
+  - PostgreSQL instances should reside in different availability zones
+    within the same Kubernetes cluster / region
 
 :::important
 You can configure the above services through the `managed.services` section
 in the `Cluster` configuration. This can be done by reducing the number of
 services and selecting the type (default is `ClusterIP`). For more details,
-please refer to the ["Service Management" section](service_management.md)
+please refer to the ["Service Management" section](service_management.mdx)
 below.
 :::
 
@@ -301,19 +302,19 @@ automatically updates the `-rw` service to point to the promoted primary,
 making sure that traffic from the applications is seamlessly redirected.
 
 :::seealso "Replication"
-Please refer to the ["Replication" section](replication.md) for more
+Please refer to the ["Replication" section](replication.mdx) for more
 information about how CloudNativePG relies on PostgreSQL replication,
 including synchronous settings.
 :::
 
 :::seealso "Connecting from an application"
-Please refer to the ["Connecting from an application" section](applications.md) for
+Please refer to the ["Connecting from an application" section](applications.mdx) for
 information about how to connect to CloudNativePG from a stateless
 application within the same Kubernetes cluster.
 :::
 
 :::seealso "Connection Pooling"
-Please refer to the ["Connection Pooling" section](connection_pooling.md) for
+Please refer to the ["Connection Pooling" section](connection_pooling.mdx) for
 information about how to take advantage of PgBouncer as a connection pooler,
 and create an access layer between your applications and the PostgreSQL clusters.
 :::
@@ -321,7 +322,7 @@ and create an access layer between your applications and the PostgreSQL clusters
 ### Read-write workloads
 
 Applications can decide to connect to the PostgreSQL instance elected as
-*current primary* by the Kubernetes operator, as depicted in the following
+_current primary_ by the Kubernetes operator, as depicted in the following
 diagram:
 
 ![Applications writing to the single primary](/img/architecture-rw.png)
@@ -366,10 +367,10 @@ only write inside a single Kubernetes cluster, at any time.
 
 However, for business continuity objectives it is fundamental to:
 
-- reduce global **recovery point objectives** ([RPO](before_you_start.md#rpo))
+- reduce global **recovery point objectives** ([RPO](before_you_start.mdx#rpo))
   by storing PostgreSQL backup data in multiple locations, regions and possibly
   using different providers (Disaster Recovery)
-- reduce global **recovery time objectives** ([RTO](before_you_start.md#rto))
+- reduce global **recovery time objectives** ([RTO](before_you_start.mdx#rto))
   by taking advantage of PostgreSQL replication beyond the primary Kubernetes
   cluster (High Availability)
 
@@ -434,9 +435,8 @@ You can also define replica clusters with a lower number of replicas, and then
 increase this number when the cluster is promoted to primary.
 
 :::seealso "Replica clusters"
-Please refer to the ["Replica Clusters" section](replica_cluster.md) for
+Please refer to the ["Replica Clusters" section](replica_cluster.mdx) for
 more detailed information on how physical replica clusters operate and how to
 define a distributed topology with read-only clusters across different
 Kubernetes clusters. This approach can significantly enhance your global
 disaster recovery and high availability (HA) strategy.
-

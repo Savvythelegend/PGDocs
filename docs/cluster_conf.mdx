@@ -1,4 +1,5 @@
 ﻿# Instance pod configuration
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 ## Projected volumes
@@ -13,7 +14,7 @@ template in Kubernetes that allows you to mount arbitrary data under the
 
 This simple example shows how to mount an existing TLS secret (named
 `sample-secret`) as files into Postgres pods. The values for the secret keys
-`tls.crt` and `tls.key` in `sample-secret` are mounted as files into the  paths
+`tls.crt` and `tls.key` in `sample-secret` are mounted as files into the paths
 `/projected/certificate/tls.crt` and `/projected/certificate/tls.key` in the
 Postgres pod.
 
@@ -50,7 +51,7 @@ duration of a pod's life, without persisting across pod restarts.
 
 ### Volume Claim Template for Temporary Storage
 
-The operator uses  by default an `emptyDir` volume, which can be customized by using the `.spec.ephemeralVolumesSizeLimit field`.
+The operator uses by default an `emptyDir` volume, which can be customized by using the `.spec.ephemeralVolumesSizeLimit field`.
 This can be overridden by specifying a volume claim template in the `.spec.ephemeralVolumeSource` field.
 
 In the following example, a `1Gi` ephemeral volume is set.
@@ -65,9 +66,9 @@ spec:
   ephemeralVolumeSource:
     volumeClaimTemplate:
       spec:
-        accessModes: ["ReadWriteOnce"]
+        accessModes: ['ReadWriteOnce']
         # example storageClassName, replace with one existing in your Kubernetes cluster
-        storageClassName: "scratch-storage-class"
+        storageClassName: 'scratch-storage-class'
         resources:
           requests:
             storage: 1Gi
@@ -81,7 +82,7 @@ This volume is used as shared memory space for Postgres and as an ephemeral
 type but stored in memory. You can configure an upper bound on the size using
 the `.spec.ephemeralVolumesSizeLimit.shm` field in the cluster spec.
 Use this field only in case of
-[PostgreSQL running with `posix` shared memory dynamic allocation](postgresql_conf.md#dynamic-shared-memory-settings).
+[PostgreSQL running with `posix` shared memory dynamic allocation](postgresql_conf.mdx#dynamic-shared-memory-settings).
 
 ## Environment variables
 
@@ -105,8 +106,8 @@ spec:
   instances: 3
 
   env:
-  - name: TZ
-    value: Australia/Sydney
+    - name: TZ
+      value: Australia/Sydney
 
   storage:
     size: 1Gi
@@ -124,10 +125,10 @@ spec:
   instances: 3
 
   envFrom:
-  - configMapRef:
-      name: config-map-name
-  - secretRef:
-      name: secret-name
+    - configMapRef:
+        name: config-map-name
+    - secretRef:
+        name: secret-name
 
   storage:
     size: 1Gi

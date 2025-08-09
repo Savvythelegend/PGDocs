@@ -1,4 +1,5 @@
 ﻿# Replica clusters
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 A replica cluster is a CloudNativePG `Cluster` resource designed to
@@ -15,14 +16,14 @@ There are primarily two use cases for replica clusters:
 1. **Disaster Recovery and High Availability**: Enhance disaster recovery and,
    to some extent, high availability of a CloudNativePG cluster across different
    Kubernetes clusters, typically located in different regions. In CloudNativePG
-   terms, this is known as a ["Distributed Topology"](replica_cluster.md#distributed-topology).
+   terms, this is known as a ["Distributed Topology"](replica_cluster.mdx#distributed-topology).
 
 2. **Read-Only Workloads**: Create standalone replicas of a PostgreSQL cluster
    for purposes such as reporting or Online Analytical Processing (OLAP). These
    replicas are primarily for read-only workloads. In CloudNativePG terms, this
-   is referred to as a ["Standalone Replica Cluster"](replica_cluster.md#standalone-replica-clusters).
+   is referred to as a ["Standalone Replica Cluster"](replica_cluster.mdx#standalone-replica-clusters).
 
-For example, the diagram below — taken from the ["Architecture" section](architecture.md#deployments-across-kubernetes-clusters)
+For example, the diagram below — taken from the ["Architecture" section](architecture.mdx#deployments-across-kubernetes-clusters)
 — illustrates a distributed PostgreSQL topology spanning two Kubernetes
 clusters, with a symmetric replica cluster primarily serving disaster recovery
 purposes.
@@ -48,7 +49,7 @@ cluster is promoted.
 If you are not planning to promote the cluster (e.g., for read-only workloads)
 or if you intend to detach completely from the source cluster
 once the replica cluster is promoted, you don't need to take any action.
-This is normally the case of the ["Standalone Replica Cluster"](replica_cluster.md#standalone-replica-clusters).
+This is normally the case of the ["Standalone Replica Cluster"](replica_cluster.mdx#standalone-replica-clusters).
 
 If you are planning to promote the cluster at some point, CloudNativePG will
 manage the following roles and passwords when transitioning from replica
@@ -56,13 +57,12 @@ cluster to primary:
 
 - the application user
 - the superuser (if you are using it)
-- any role defined using the [declarative interface](declarative_role_management.md)
-
+- any role defined using the [declarative interface](declarative_role_management.mdx)
 
 If your intention is to seamlessly ensure that the above roles and passwords
 don't change, you need to define the necessary secrets for the above in each
 `Cluster`.
-This is normally the case of the ["Distributed Topology"](replica_cluster.md#distributed-topology).
+This is normally the case of the ["Distributed Topology"](replica_cluster.mdx#distributed-topology).
 
 ### Bootstrapping a Replica Cluster
 
@@ -75,7 +75,7 @@ methods:
 
 For detailed instructions on cloning a PostgreSQL server using `pg_basebackup`
 (streaming) or recovery (volume snapshot or object store), refer to the
-["Bootstrap" section](bootstrap.md#bootstrap-from-another-cluster).
+["Bootstrap" section](bootstrap.mdx#bootstrap-from-another-cluster).
 
 ### Configuring Replication
 
@@ -100,26 +100,26 @@ recovery. There are three main options:
 When configuring the external cluster, you have the following options:
 
 - **`plugin` section**:
-    - Enables bootstrapping the replica cluster using a [CNPG-I](https://github.com/cloudnative-pg/cnpg-i)
-      plugin that support the
-      [`restore_job`](https://github.com/cloudnative-pg/cnpg-i/blob/main/docs/protocol.md#restore_job-proto)
-      and the [`wal`](https://github.com/cloudnative-pg/cnpg-i/blob/main/docs/protocol.md#wal-proto) protocols.
-    - CloudNativePG supports the [Barman Cloud Plugin](https://cloudnative-pg.io/plugin-barman-cloud/docs/usage/#restoring-a-cluster)
-      to allow bootstrapping the replica cluster from an object store.
+  - Enables bootstrapping the replica cluster using a [CNPG-I](https://github.com/cloudnative-pg/cnpg-i)
+    plugin that support the
+    [`restore_job`](https://github.com/cloudnative-pg/cnpg-i/blob/main/docs/protocol.mdx#restore_job-proto)
+    and the [`wal`](https://github.com/cloudnative-pg/cnpg-i/blob/main/docs/protocol.mdx#wal-proto) protocols.
+  - CloudNativePG supports the [Barman Cloud Plugin](https://cloudnative-pg.io/plugin-barman-cloud/docs/usage/#restoring-a-cluster)
+    to allow bootstrapping the replica cluster from an object store.
 
 - **`connectionParameters` section**:
-    - Enables bootstrapping the replica cluster via streaming replication using
-      the `pg_basebackup` section.
-    - CloudNativePG automatically sets the `primary_conninfo` option in the
-      designated primary instance, initiating a WAL receiver process to connect
-      to the source cluster and receive data.
+  - Enables bootstrapping the replica cluster via streaming replication using
+    the `pg_basebackup` section.
+  - CloudNativePG automatically sets the `primary_conninfo` option in the
+    designated primary instance, initiating a WAL receiver process to connect
+    to the source cluster and receive data.
 
 You still have access to the **`barmanObjectStore` section**, although deprecated:
 
 - Enables use of the WAL archive, with CloudNativePG automatically setting
   the `restore_command` in the designated primary instance.
 - Allows bootstrapping the replica cluster from an object store using the
- `recovery` section if volume snapshots are not feasible.
+  `recovery` section if volume snapshots are not feasible.
 
 ### Backup and Symmetric Architectures
 
@@ -147,26 +147,26 @@ To set up a replica cluster from a source cluster, follow these steps to create
 a cluster YAML file and configure it accordingly:
 
 1. **Define External Clusters**:
-    - In the `externalClusters` section, specify the replica cluster.
-    - For a distributed PostgreSQL topology aimed at disaster recovery (DR) and
-      high availability (HA), this section should be defined for every
-      PostgreSQL cluster in the distributed database.
+   - In the `externalClusters` section, specify the replica cluster.
+   - For a distributed PostgreSQL topology aimed at disaster recovery (DR) and
+     high availability (HA), this section should be defined for every
+     PostgreSQL cluster in the distributed database.
 
 2. **Bootstrap the Replica Cluster**:
-    - **Streaming Bootstrap**: Use the `pg_basebackup` section for bootstrapping
-      via streaming replication.
-    - **Snapshot/Object Store Bootstrap**: Use the `recovery` section to
-      bootstrap from a volume snapshot or an object store.
+   - **Streaming Bootstrap**: Use the `pg_basebackup` section for bootstrapping
+     via streaming replication.
+   - **Snapshot/Object Store Bootstrap**: Use the `recovery` section to
+     bootstrap from a volume snapshot or an object store.
 3. **Continuous Recovery Strategy**: Define this in the `.spec.replica` stanza:
-    - **Distributed Topology**: Configure using the `primary`, `source`, and
-      `self` fields along with the distributed topology defined in
-      `externalClusters`. This allows CloudNativePG to declaratively control the
-      demotion of a primary cluster and the subsequent promotion of a replica cluster
-      using a promotion token.
-    - **Standalone Replica Cluster**: Enable continuous recovery using the
-      `enabled` option and set the `source` field to point to an
-      `externalClusters` name. This configuration is suitable for creating replicas
-      primarily intended for read-only workloads.
+   - **Distributed Topology**: Configure using the `primary`, `source`, and
+     `self` fields along with the distributed topology defined in
+     `externalClusters`. This allows CloudNativePG to declaratively control the
+     demotion of a primary cluster and the subsequent promotion of a replica cluster
+     using a promotion token.
+   - **Standalone Replica Cluster**: Enable continuous recovery using the
+     `enabled` option and set the `source` field to point to an
+     `externalClusters` name. This configuration is suitable for creating replicas
+     primarily intended for read-only workloads.
 
 Both the Distributed Topology and the Standalone Replica Cluster strategies for
 continuous recovery are thoroughly explained below.
@@ -202,7 +202,7 @@ In this example, recovery is performed solely through WAL shipping, without any
 streaming replication between the two clusters. However, you can configure the
 setup to use streaming replication alone or adopt a hybrid approach—streaming
 replication with WAL shipping as a fallback—as described in the
-[“Configuring replication”](replica_cluster.md#defining-an-external-cluster)
+[“Configuring replication”](replica_cluster.mdx#defining-an-external-cluster)
 section.
 
 Here’s how you would configure the `externalClusters` section for both
@@ -264,8 +264,8 @@ These processes are described in the next sections.
 
 :::important
 Before you proceed, ensure you review the ["About PostgreSQL Roles" section](#about-postgresql-roles)
-    above and use identical role definitions, including secrets, in all
-    `Cluster` objects participating in the distributed topology.
+above and use identical role definitions, including secrets, in all
+`Cluster` objects participating in the distributed topology.
 
 ### Demoting a Primary to a Replica Cluster
 
@@ -320,7 +320,7 @@ cluster's status. The token is listed under the `Demotion token` section.
 
 :::note
 The `demotionToken` obtained from `cluster-eu-south` will serve as the
-    `promotionToken` for `cluster-eu-central`.
+`promotionToken` for `cluster-eu-central`.
 
 You can verify the role change using the `cnpg` plugin, checking the status of
 the cluster:
@@ -338,7 +338,7 @@ you need to perform the following steps simultaneously:
 1. Set the `.spec.replica.primary` to the name of the current replica cluster
    to be promoted (e.g., `cluster-eu-central`).
 2. Set the `.spec.replica.promotionToken` with the value obtained from the
-   former primary cluster (refer to ["Demoting a Primary to a Replica Cluster"](replica_cluster.md#demoting-a-primary-to-a-replica-cluster)).
+   former primary cluster (refer to ["Demoting a Primary to a Replica Cluster"](replica_cluster.mdx#demoting-a-primary-to-a-replica-cluster)).
 
 The updated `replica` section in `cluster-eu-central`'s spec should look like
 this:
@@ -352,8 +352,8 @@ replica:
 
 :::warning
 It is crucial to apply the changes to the `primary` and `promotionToken`
-    fields simultaneously. If the promotion token is omitted, a failover will be
-    triggered, necessitating a rebuild of the former primary.
+fields simultaneously. If the promotion token is omitted, a failover will be
+triggered, necessitating a rebuild of the former primary.
 
 After making these adjustments, CloudNativePG will initiate the promotion of
 the replica cluster to a primary cluster. Initially, CloudNativePG will wait
@@ -382,8 +382,8 @@ clusters.
 
 :::important
 Standalone Replica Clusters were previously known as Replica Clusters
-    before the introduction of the Distributed Topology strategy in CloudNativePG
-    1.24.
+before the introduction of the Distributed Topology strategy in CloudNativePG
+1.24.
 
 In CloudNativePG, a Standalone Replica Cluster is a PostgreSQL cluster in
 continuous recovery with the following configurations:
@@ -398,13 +398,13 @@ from the original source.
 
 :::warning
 Disabling replication is an **irreversible** operation. Once replication is
-    disabled and the designated primary is promoted to primary, the replica cluster
-    and the source cluster become two independent clusters definitively.
+disabled and the designated primary is promoted to primary, the replica cluster
+and the source cluster become two independent clusters definitively.
 
 :::important
 Standalone replica clusters are suitable for several use cases, primarily
-    involving read-only workloads. If you are planning to setup a disaster
-    recovery solution, look into "Distributed Topology" above.
+involving read-only workloads. If you are planning to setup a disaster
+recovery solution, look into "Distributed Topology" above.
 
 ### Main Differences with Distributed Topology
 
@@ -437,18 +437,18 @@ in the `samples/` subdirectory.
 Note the `bootstrap` and `replica` sections pointing to the source cluster.
 
 ```yaml
-  bootstrap:
-    pg_basebackup:
-      source: cluster-example
-
-  replica:
-    enabled: true
+bootstrap:
+  pg_basebackup:
     source: cluster-example
+
+replica:
+  enabled: true
+  source: cluster-example
 ```
 
 The previous configuration assumes that the application database and its owning
 user are set to the default, `app`. If the PostgreSQL cluster being restored
-uses different names, you must specify them as documented in [Configure the application database](bootstrap.md#configure-the-application-database).
+uses different names, you must specify them as documented in [Configure the application database](bootstrap.mdx#configure-the-application-database).
 You should also consider copying over the application user secret from
 the original cluster and keep it synchronized with the source.
 See ["About PostgreSQL Roles"](#about-postgresql-roles) for more details.
@@ -459,7 +459,7 @@ The `-replication` and `-ca` secrets should have been copied over if necessary,
 in case the replica cluster is in a separate namespace.
 
 ```yaml
-  externalClusters:
+externalClusters:
   - name: <MAIN-CLUSTER>
     connectionParameters:
       host: <MAIN-CLUSTER>-rw.<NAMESPACE>.svc
@@ -490,18 +490,18 @@ for it in the `samples/` subdirectory.
 Note the `bootstrap` and `replica` sections pointing to the source cluster.
 
 ```yaml
-  bootstrap:
-    recovery:
-      source: cluster-example
-
-  replica:
-    enabled: true
+bootstrap:
+  recovery:
     source: cluster-example
+
+replica:
+  enabled: true
+  source: cluster-example
 ```
 
 The previous configuration assumes that the application database and its owning
 user are set to the default, `app`. If the PostgreSQL cluster being restored
-uses different names, you must specify them as documented in [Configure the application database](recovery.md#configure-the-application-database).
+uses different names, you must specify them as documented in [Configure the application database](recovery.mdx#configure-the-application-database).
 You should also consider copying over the application user secret from
 the original cluster and keep it synchronized with the source.
 See ["About PostgreSQL Roles"](#about-postgresql-roles) for more details.
@@ -532,9 +532,9 @@ a backup of the source cluster has been created already.
 
 :::note
 To use streaming replication between the source cluster and the replica
-    cluster, we need to make sure there is network connectivity between the two
-    clusters, and that all the necessary secrets which hold passwords or
-    certificates are properly created in advance.
+cluster, we need to make sure there is network connectivity between the two
+clusters, and that all the necessary secrets which hold passwords or
+certificates are properly created in advance.
 
 ### Example using a Volume Snapshot
 
@@ -554,7 +554,7 @@ for it in the `samples/` subdirectory.
 The example assumes that the application database and its owning
 user are set to the default, `app`. If the PostgreSQL cluster being restored
 uses different names, you must specify them as documented in [Configure the
-application database](recovery.md#configure-the-application-database).
+application database](recovery.mdx#configure-the-application-database).
 You should also consider copying over the application user secret from
 the original cluster and keep it synchronized with the source.
 See ["About PostgreSQL Roles"](#about-postgresql-roles) for more details.
@@ -562,7 +562,7 @@ See ["About PostgreSQL Roles"](#about-postgresql-roles) for more details.
 ## Delayed replicas
 
 CloudNativePG supports the creation of **delayed replicas** through the
-[`.spec.replica.minApplyDelay` option](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-ReplicaClusterConfiguration),
+[`.spec.replica.minApplyDelay` option](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-ReplicaClusterConfiguration),
 leveraging PostgreSQL's
 [`recovery_min_apply_delay`](https://www.postgresql.org/docs/current/runtime-config-replication.html#GUC-RECOVERY-MIN-APPLY-DELAY).
 
@@ -581,13 +581,13 @@ To configure a delay in a replica cluster, adjust the
 the replicas will lag behind the primary. For example:
 
 ```yaml
-  # ...
-  replica:
-    enabled: true
-    source: cluster-example
-    # Enforce a delay of 8 hours
-    minApplyDelay: '8h'
-  # ...
+# ...
+replica:
+  enabled: true
+  source: cluster-example
+  # Enforce a delay of 8 hours
+  minApplyDelay: '8h'
+# ...
 ```
 
 The above example helps safeguard against accidental data modifications by
@@ -612,7 +612,7 @@ The main use cases of delayed replicas can be summarized into:
 
 :::warning
 The `minApplyDelay` option of delayed replicas cannot be used in
-    conjunction with `promotionToken`.
+conjunction with `promotionToken`.
 
 By integrating delayed replicas into your replication strategy, you can enhance
 the resilience and data protection capabilities of your PostgreSQL environment.
@@ -621,6 +621,6 @@ your data.
 
 :::important
 Always measure your goals. Depending on your environment, it might be more
-    efficient to rely on volume snapshot-based recovery for faster outcomes.
-    Evaluate and choose the approach that best aligns with your unique requirements
-    and infrastructure.
+efficient to rely on volume snapshot-based recovery for faster outcomes.
+Evaluate and choose the approach that best aligns with your unique requirements
+and infrastructure.

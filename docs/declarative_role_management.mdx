@@ -1,4 +1,5 @@
 ﻿# PostgreSQL Role Management
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 From its inception, CloudNativePG has managed the creation of specific roles
@@ -8,14 +9,14 @@ required in PostgreSQL instances:
   and `cnpg_pooler_pgbouncer` (when the PgBouncer `Pooler` is used)
 - The application user, set as the low-privilege owner of the application database
 
-This process is described in the ["Bootstrap"](bootstrap.md) section.
+This process is described in the ["Bootstrap"](bootstrap.mdx) section.
 
 With the `managed` stanza in the cluster spec, CloudNativePG now provides full
 lifecycle management for roles specified in `.spec.managed.roles`.
 
 This feature enables declarative management of existing roles, as well as the
 creation of new roles if they are not already present in the database. Role
-creation will occur *after* the database bootstrapping is complete.
+creation will occur _after_ the database bootstrapping is complete.
 
 An example manifest for a cluster with declarative role management can be found
 in the file [`cluster-example-with-roles.yaml`](samples/cluster-example-with-roles.yaml).
@@ -28,19 +29,19 @@ kind: Cluster
 spec:
   managed:
     roles:
-    - name: dante
-      ensure: present
-      comment: Dante Alighieri
-      login: true
-      superuser: false
-      inRoles:
-        - pg_monitor
-        - pg_signal_backend
+      - name: dante
+        ensure: present
+        comment: Dante Alighieri
+        login: true
+        superuser: false
+        inRoles:
+          - pg_monitor
+          - pg_signal_backend
 ```
 
 The role specification in `.spec.managed.roles` adheres to the
 [PostgreSQL structure and naming conventions](https://www.postgresql.org/docs/current/sql-createrole.html).
-Please refer to the [API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-RoleConfiguration) for
+Please refer to the [API reference](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-RoleConfiguration) for
 the full list of attributes you can define for each role.
 
 A few points are worth noting:
@@ -67,7 +68,7 @@ Managed role configurations may optionally specify the name of a
 **Secret** where the username and password are stored (encoded in Base64
 as is usual in Kubernetes). For example:
 
-``` yaml
+```yaml
   managed:
     roles:
     - name: dante
@@ -81,7 +82,7 @@ This would assume the existence of a Secret called `cluster-example-dante`,
 containing a username and password. The username should match the role we
 are setting the password for. For example, :
 
-``` yaml
+```yaml
 apiVersion: v1
 data:
   username: ZGFudGU=
@@ -90,7 +91,7 @@ kind: Secret
 metadata:
   name: cluster-example-dante
   labels:
-    cnpg.io/reload: "true"
+    cnpg.io/reload: 'true'
 type: kubernetes.io/basic-auth
 ```
 
@@ -108,7 +109,7 @@ the field `DisablePassword` should be used.
 Imagine we decided we would like to have no password on the `dante` role in the
 database. In such case we would specify the following:
 
-``` yaml
+```yaml
   managed:
     roles:
     - name: dante
@@ -147,25 +148,25 @@ never expires, mirroring the behavior of PostgreSQL. Specifically:
 - in case of new role, it will omit the `VALID UNTIL` clause in the role
   creation statement
 - in case of existing role, it will set `VALID UNTIL` to `infinity` if `VALID
-  UNTIL` was not set to `NULL` in the database (this is due to PostgreSQL not
+UNTIL` was not set to `NULL` in the database (this is due to PostgreSQL not
   allowing `VALID UNTIL NULL` in the `ALTER ROLE` SQL statement)
 
 :::warning
 New roles created without `passwordSecret` will have a `NULL` password
-    inside PostgreSQL.
+inside PostgreSQL.
 
 ### Password hashed
 
 You can also provide pre-encrypted passwords by specifying the password
 in MD5/SCRAM-SHA-256 hash format:
 
-``` yaml
+```yaml
 kind: Secret
 type: kubernetes.io/basic-auth
 metadata:
   name: cluster-example-cavalcanti
   labels:
-    cnpg.io/reload: "true"
+    cnpg.io/reload: 'true'
 apiVersion: v1
 stringData:
   username: cavalcanti
@@ -193,7 +194,7 @@ above could be fixed by creating the role `poets` or dropping the database
 `inferno` respectively, but they might have originated due to human error, and
 in such case, the "fix" proposed might be the wrong thing to do.
 
-CloudNativePG  will record when such fundamental errors occur, and will display
+CloudNativePG will record when such fundamental errors occur, and will display
 them in the cluster Status. Which segues into…
 
 ## Status of managed roles
@@ -230,10 +231,10 @@ This section covers roles reserved for operator use and those that are **not**
 under declarative management, providing a comprehensive view of the roles in
 the database instances.
 
-The [kubectl plugin](kubectl-plugin.md) also shows the status of managed roles
+The [kubectl plugin](kubectl-plugin.mdx) also shows the status of managed roles
 in its `status` sub-command:
 
-``` txt
+```txt
 Managed roles status
 Status                  Roles
 ------                  -----
@@ -249,6 +250,6 @@ petrarca  could not perform UPDATE_MEMBERSHIPS on role petrarca: role "poets" do
 
 :::important
 In terms of backward compatibility, declarative role management is designed
-    to ignore roles that exist in the database but are not included in the spec.
-    The lifecycle of these roles will continue to be managed within PostgreSQL,
-    allowing CloudNativePG users to adopt this feature at their convenience.
+to ignore roles that exist in the database but are not included in the spec.
+The lifecycle of these roles will continue to be managed within PostgreSQL,
+allowing CloudNativePG users to adopt this feature at their convenience.

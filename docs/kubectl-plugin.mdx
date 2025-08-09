@@ -1,4 +1,5 @@
 ﻿# Kubectl Plugin
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG provides a plugin for `kubectl` to manage a cluster in Kubernetes.
@@ -9,7 +10,7 @@ You can install the `cnpg` plugin using a variety of methods.
 
 :::note
 For air-gapped systems, installation via package managers, using previously
-    downloaded files, may be a good option.
+downloaded files, may be a good option.
 
 ### Via the installation script
 
@@ -136,27 +137,27 @@ brew upgrade kubectl-cnpg
 
 :::note
 Auto-completion for the kubectl plugin is already managed by Homebrew.
-    There's no need to create the `kubectl_complete-cnpg` script mentioned below.
+There's no need to create the `kubectl_complete-cnpg` script mentioned below.
 
 ### Supported Architectures
 
 CloudNativePG Plugin is currently built for the following
 operating system and architectures:
 
-* Linux
-    * amd64
-    * arm 5/6/7
-    * arm64
-    * s390x
-    * ppc64le
-* macOS
-    * amd64
-    * arm64
-* Windows
-    * 386
-    * amd64
-    * arm 5/6/7
-    * arm64
+- Linux
+  - amd64
+  - arm 5/6/7
+  - arm64
+  - s390x
+  - ppc64le
+- macOS
+  - amd64
+  - arm64
+- Windows
+  - 386
+  - amd64
+  - arm 5/6/7
+  - arm64
 
 ### Configuring auto-completion
 
@@ -191,8 +192,8 @@ kubectl cnpg COMMAND [ARGS...]
 
 :::note
 The plugin automatically detects if the standard output channel is connected to a terminal.
-    In such cases, it may add ANSI colors to the command output. To disable colors, use the
-    `--color=never` option with the command.
+In such cases, it may add ANSI colors to the command output. To disable colors, use the
+`--color=never` option with the command.
 
 ### Generation of installation manifests
 
@@ -234,6 +235,7 @@ kubectl cnpg install generate \
 ```
 
 The flags in the above command have the following meaning:
+
 - `-n king` install the CNPG operator into the `king` namespace
 - `--version 1.23` install the latest patch version for minor version 1.23
 - `--replicas 3` install the operator with 3 replicas
@@ -245,24 +247,24 @@ The flags in the above command have the following meaning:
 The `status` command provides an overview of the current status of your
 cluster, including:
 
-* **general information**: name of the cluster, PostgreSQL's system ID, number of
+- **general information**: name of the cluster, PostgreSQL's system ID, number of
   instances, current timeline and position in the WAL
-* **backup**: point of recoverability, and WAL archiving status as returned by
+- **backup**: point of recoverability, and WAL archiving status as returned by
   the `pg_stat_archiver` view from the primary - or designated primary in the
   case of a replica cluster
-* **streaming replication**: information taken directly from the `pg_stat_replication`
+- **streaming replication**: information taken directly from the `pg_stat_replication`
   view on the primary instance
-* **instances**: information about each Postgres instance, taken directly by each
+- **instances**: information about each Postgres instance, taken directly by each
   instance manager; in the case of a standby, the `Current LSN` field corresponds
   to the latest write-ahead log location that has been replayed during recovery
   (replay LSN).
 
 :::important
 The status information above is taken at different times and at different
-    locations, resulting in slightly inconsistent returned values. For example,
-    the `Current Write LSN` location in the main header, might be different
-    from the `Current LSN` field in the instances status as it is taken at
-    two different time intervals.
+locations, resulting in slightly inconsistent returned values. For example,
+the `Current Write LSN` location in the main header, might be different
+from the `Current LSN` field in the instances status as it is taken at
+two different time intervals.
 
 ```sh
 kubectl cnpg status sandbox
@@ -426,7 +428,7 @@ common case for this will be a minor upgrade of PostgreSQL image.
 
 :::note
 If you want ConfigMaps and Secrets to be **automatically** reloaded
-    by instances, you can add a label with key `cnpg.io/reload` to it.
+by instances, you can add a label with key `cnpg.io/reload` to it.
 
 ### Reload
 
@@ -446,8 +448,8 @@ The `kubectl cnpg maintenance` command helps to modify one or more clusters
 across namespaces and set the maintenance window values, it will change
 the following fields:
 
-* .spec.nodeMaintenanceWindow.inProgress
-* .spec.nodeMaintenanceWindow.reusePVC
+- .spec.nodeMaintenanceWindow.inProgress
+- .spec.nodeMaintenanceWindow.reusePVC
 
 Accepts as argument `set` and `unset` using this to set the
 `inProgress` to `true` in case `set`and to `false` in case of `unset`.
@@ -493,20 +495,20 @@ regarding the operator deployment, configuration and events.
 
 :::important
 All confidential information in Secrets and ConfigMaps is REDACTED.
-    The Data map will show the **keys** but the values will be empty.
-    The flag `-S` / `--stopRedaction` will defeat the redaction and show the
-    values. Use only at your own risk, this will share private data.
+The Data map will show the **keys** but the values will be empty.
+The flag `-S` / `--stopRedaction` will defeat the redaction and show the
+values. Use only at your own risk, this will share private data.
 
 :::note
 By default, operator logs are not collected, but you can enable operator
-    log collection with the `--logs` flag
+log collection with the `--logs` flag
 
-* **deployment information**: the operator Deployment and operator Pod
-* **configuration**: the Secrets and ConfigMaps in the operator namespace
-* **events**: the Events in the operator namespace
-* **webhook configuration**: the mutating and validating webhook configurations
-* **webhook service**: the webhook service
-* **logs**: logs for the operator Pod (optional, off by default) in JSON-lines format
+- **deployment information**: the operator Deployment and operator Pod
+- **configuration**: the Secrets and ConfigMaps in the operator namespace
+- **events**: the Events in the operator namespace
+- **webhook configuration**: the mutating and validating webhook configurations
+- **webhook service**: the webhook service
+- **logs**: logs for the operator Pod (optional, off by default) in JSON-lines format
 
 The command will generate a ZIP file containing various manifest in YAML format
 (by default, but settable to JSON with the `-o` flag).
@@ -515,9 +517,9 @@ default time-stamped filename is created for the zip file.
 
 :::note
 The report plugin obeys `kubectl` conventions, and will look for objects constrained
-    by namespace. The CNPG Operator will generally not be installed in the same
-    namespace as the clusters.
-    E.g. the default installation namespace is cnpg-system
+by namespace. The CNPG Operator will generally not be installed in the same
+namespace as the clusters.
+E.g. the default installation namespace is cnpg-system
 
 ```sh
 kubectl cnpg report operator -n cnpg-system
@@ -569,9 +571,9 @@ Archive:  report_operator_<TIMESTAMP>.zip
 
 :::note
 The plugin will try to get the PREVIOUS operator's logs, which is helpful
-    when investigating restarted operators.
-    In all cases, it will also try to get the CURRENT operator logs. If current
-    and previous logs are available, it will show them both.
+when investigating restarted operators.
+In all cases, it will also try to get the CURRENT operator logs. If current
+and previous logs are available, it will show them both.
 
 ```output
 ====== Beginning of Previous Log =====
@@ -585,7 +587,7 @@ The plugin will try to get the PREVIOUS operator's logs, which is helpful
 ```
 
 If the operator hasn't been restarted, you'll still see the `====== Begin …`
-and  `====== End …` guards, with no content inside.
+and `====== End …` guards, with no content inside.
 
 You can verify that the confidential information is REDACTED by default:
 
@@ -596,14 +598,14 @@ head cnpg-ca-secret\(secret\).yaml
 
 ```yaml
 data:
-  ca.crt: ""
-  ca.key: ""
+  ca.crt: ''
+  ca.key: ''
 metadata:
-  creationTimestamp: "2022-03-22T10:42:28Z"
+  creationTimestamp: '2022-03-22T10:42:28Z'
   managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
 ```
 
 With the `-S` (`--stopRedaction`) option activated, secrets are shown:
@@ -629,22 +631,22 @@ data:
   ca.crt: LS0tLS1CRUdJTiBD…
   ca.key: LS0tLS1CRUdJTiBF…
 metadata:
-  creationTimestamp: "2022-03-22T10:42:28Z"
+  creationTimestamp: '2022-03-22T10:42:28Z'
   managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
+    - apiVersion: v1
+      fieldsType: FieldsV1
 ```
 
 #### report Cluster
 
 The `cluster` sub-command gathers the following:
 
-* **cluster resources**: the cluster information, same as `kubectl get cluster -o yaml`
-* **cluster pods**: pods in the cluster namespace matching the cluster name
-* **cluster jobs**: jobs, if any, in the cluster namespace matching the cluster name
-* **events**: events in the cluster namespace
-* **pod logs**: logs for the cluster Pods (optional, off by default) in JSON-lines format
-* **job logs**: logs for the Pods created by jobs (optional, off by default) in JSON-lines format
+- **cluster resources**: the cluster information, same as `kubectl get cluster -o yaml`
+- **cluster pods**: pods in the cluster namespace matching the cluster name
+- **cluster jobs**: jobs, if any, in the cluster namespace matching the cluster name
+- **events**: events in the cluster namespace
+- **pod logs**: logs for the cluster Pods (optional, off by default) in JSON-lines format
+- **job logs**: logs for the Pods created by jobs (optional, off by default) in JSON-lines format
 
 The `cluster` sub-command accepts the `-f` and `-o` flags, as the `operator` does.
 If the `-f` flag is not used, a default timestamped report name will be used.
@@ -653,7 +655,7 @@ so the `-S` is disabled.
 
 :::note
 By default, cluster logs are not collected, but you can enable cluster
-    log collection with the `--logs` flag
+log collection with the `--logs` flag
 
 Usage:
 
@@ -735,7 +737,7 @@ the `-h` flag:
 
 `kubectl cnpg logs cluster -h`
 
-The `logs` command will display logs in  JSON-lines format, unless the
+The `logs` command will display logs in JSON-lines format, unless the
 `--timestamps` flag is used, in which case, a human-readable timestamp will be
 prepended to each line. In this case, lines will no longer be valid JSON,
 and tools such as `jq` may not work as desired.
@@ -906,8 +908,8 @@ Hibernation is managed declaratively using the `cnpg.io/hibernation`
 annotation.
 
 :::info
-For more details, see the ["Declarative Hibernation"](declarative_hibernation.md)
-    documentation page.
+For more details, see the ["Declarative Hibernation"](declarative_hibernation.mdx)
+documentation page.
 
 To simplify the process, the `cnpg` plugin for `kubectl` provides a `hibernate`
 command, which acts as a convenient shortcut for applying the annotation.
@@ -947,7 +949,7 @@ command:
 kubectl cnpg pgbench CLUSTER -- --time 30 --client 1 --jobs 1
 ```
 
-Refer to the [Benchmarking pgbench section](benchmarking.md#pgbench) for more
+Refer to the [Benchmarking pgbench section](benchmarking.mdx#pgbench) for more
 details.
 
 ### Benchmarking the storage with fio
@@ -958,7 +960,7 @@ details.
 kubectl cnpg fio FIO_JOB_NAME [-n NAMESPACE]
 ```
 
-Refer to the [Benchmarking fio section](benchmarking.md#fio) for more details.
+Refer to the [Benchmarking fio section](benchmarking.mdx#fio) for more details.
 
 ### Requesting a new physical backup
 
@@ -993,7 +995,7 @@ to request an online/hot backup or an offline/cold one: additionally, you can
 also tune online backups by explicitly setting the `--immediate-checkpoint` and
 `--wait-for-archive` options.
 
-The ["Backup" section](./backup.md#backup) contains more information about
+The ["Backup" section](./backup.mdx#backup) contains more information about
 the configuration settings.
 
 ### Launching psql
@@ -1004,7 +1006,7 @@ it from the actual pod. This means that you will be using the `postgres` user.
 
 :::important
 As you will be connecting as `postgres` user, in production environments this
-    method should be used with extreme care, by authorized personnel only.
+method should be used with extreme care, by authorized personnel only.
 
 ```console
 $ kubectl cnpg psql cluster-example
@@ -1041,8 +1043,8 @@ reachable in your `PATH` variable to correctly work.
 
 :::warning
 The `kubectl cnpg snapshot` command has been removed.
-    Please use the [`backup` command](#requesting-a-new-physical-backup) to request
-    backups using volume snapshots.
+Please use the [`backup` command](#requesting-a-new-physical-backup) to request
+backups using volume snapshots.
 
 ### Using pgAdmin4 for evaluation/demonstration purposes only
 
@@ -1057,7 +1059,7 @@ Kubernetes deployment.
 
 :::important
 Deployment of pgAdmin in Kubernetes production environments is beyond the
-    scope of this document and, more broadly, of the CloudNativePG project.
+scope of this document and, more broadly, of the CloudNativePG project.
 
 However, **for the purposes of demonstration and evaluation**, CloudNativePG
 offers a suitable solution. The `cnpg` plugin implements the `pgadmin4`
@@ -1128,9 +1130,9 @@ databases.
 
 :::warning
 It is crucial to have a solid understanding of both the capabilities and
-    limitations of PostgreSQL's native logical replication system before using
-    these commands.
-    In particular, be mindful of the [logical replication restrictions](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
+limitations of PostgreSQL's native logical replication system before using
+these commands.
+In particular, be mindful of the [logical replication restrictions](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
 
 #### Creating a new publication
 
@@ -1156,7 +1158,7 @@ There are two primary use cases:
 
 :::warning
 When connecting to an external cluster, ensure that the specified user has
-    sufficient permissions to execute the `CREATE PUBLICATION` command.
+sufficient permissions to execute the `CREATE PUBLICATION` command.
 
 You have several options, similar to the [`CREATE PUBLICATION`](https://www.postgresql.org/docs/current/sql-createpublication.html)
 command, to define the group of tables to replicate. Notable options include:
@@ -1206,8 +1208,8 @@ which will create a publication named `app` for all the tables in the
 
 :::info
 There are two sample files that have been provided for illustration and inspiration:
-    [logical-source](samples/cluster-example-logical-source.yaml) and
-    [logical-destination](samples/cluster-example-logical-destination.yaml).
+[logical-source](samples/cluster-example-logical-source.yaml) and
+[logical-destination](samples/cluster-example-logical-destination.yaml).
 
 #### Dropping a publication
 
@@ -1240,9 +1242,9 @@ databases.
 
 :::warning
 Before using these commands, it is essential to have a comprehensive
-    understanding of both the capabilities and limitations of PostgreSQL's
-    native logical replication system.
-    In particular, be mindful of the [logical replication restrictions](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
+understanding of both the capabilities and limitations of PostgreSQL's
+native logical replication system.
+In particular, be mindful of the [logical replication restrictions](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
 
 In addition to subscription management, we provide a helpful command for
 synchronizing all sequences from the source cluster. While its applicability
@@ -1291,13 +1293,13 @@ will create a subscription for `app` on the destination cluster.
 
 :::warning
 Prioritize testing subscriptions in a non-production environment to ensure
-    their effectiveness and identify any potential issues before implementing them
-    in a production setting.
+their effectiveness and identify any potential issues before implementing them
+in a production setting.
 
 :::info
 There are two sample files that have been provided for illustration and inspiration:
-    [logical-source](samples/cluster-example-logical-source.yaml) and
-    [logical-destination](samples/cluster-example-logical-destination.yaml).
+[logical-source](samples/cluster-example-logical-source.yaml) and
+[logical-destination](samples/cluster-example-logical-destination.yaml).
 
 #### Dropping a subscription
 
@@ -1323,7 +1325,7 @@ publications and subscriptions, is the lack of sequence synchronization. This
 becomes particularly relevant when utilizing logical replication for live
 database migration, especially to a higher version of PostgreSQL. A crucial
 step in this process involves updating sequences before transitioning
-applications to the new database (*cutover*).
+applications to the new database (_cutover_).
 
 To address this limitation, the `cnpg subscription sync-sequences` command
 offers a solution. This command establishes a connection with the source
@@ -1362,8 +1364,8 @@ kubectl cnpg subscription sync-sequences destination-cluster \
 
 :::warning
 Prioritize testing subscriptions in a non-production environment to
-    guarantee their effectiveness and detect any potential issues before deploying
-    them in a production setting.
+guarantee their effectiveness and detect any potential issues before deploying
+them in a production setting.
 
 ## Integration with K9s
 
@@ -1380,7 +1382,7 @@ PDBs, PVCs, and enable actions like `get`, `delete`, `patch`. The following
 table contains the full details:
 
 | Command         | Resource Permissions                                                                                                                                                                                                                                                                                                                                  |
-|:----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | backup          | clusters: get<br/>backups: create                                                                                                                                                                                                                                                                                                                     |
 | certificate     | clusters: get<br/>secrets: get,create                                                                                                                                                                                                                                                                                                                 |
 | destroy         | pods: get,delete<br/>jobs: delete,list<br/>PVCs: list,delete,update                                                                                                                                                                                                                                                                                   |
@@ -1485,5 +1487,4 @@ rules:
 
 :::important
 Keeping the verbs restricted per `resources` and per `apiGroups` helps to
-    prevent inadvertently granting more than intended permissions.
-
+prevent inadvertently granting more than intended permissions.

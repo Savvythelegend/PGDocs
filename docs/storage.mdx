@@ -1,4 +1,5 @@
 ﻿# Storage
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Storage is the most critical component in a database workload.
@@ -9,11 +10,11 @@ and bare metal, are also valid in container contexts managed by Kubernetes.
 
 :::important
 When it comes to dynamically provisioned storage,
-    Kubernetes has its own specifics. These include *storage classes*, *persistent
-    volumes*, and *Persistent Volume Claims (PVCs)*. You need to own these
-    concepts, on top of all the valuable knowledge you've built over
-    the years in terms of storage for database workloads on VMs and
-    physical servers.
+Kubernetes has its own specifics. These include _storage classes_, _persistent
+volumes_, and _Persistent Volume Claims (PVCs)_. You need to own these
+concepts, on top of all the valuable knowledge you've built over
+the years in terms of storage for database workloads on VMs and
+physical servers.
 
 There are two primary methods of access to storage:
 
@@ -34,16 +35,16 @@ guarantees higher and more predictable performance.
 
 :::warning
 Before you deploy a PostgreSQL cluster with CloudNativePG,
-    ensure that the storage you're using is recommended for database
-    workloads. We recommend clearly setting performance expectations by
-    first benchmarking the storage using tools such as [fio](https://fio.readthedocs.io/en/latest/fio_doc.html)
-    and then the database using [pgbench](https://www.postgresql.org/docs/current/pgbench.html).
+ensure that the storage you're using is recommended for database
+workloads. We recommend clearly setting performance expectations by
+first benchmarking the storage using tools such as [fio](https://fio.readthedocs.io/en/latest/fio_doc.html)
+and then the database using [pgbench](https://www.postgresql.org/docs/current/pgbench.html).
 
 :::info
 CloudNativePG doesn't use `StatefulSet` for managing data persistence.
-    Rather, it manages PVCs directly. If you want
-    to know more, see
-    [Custom pod controller](controller.md).
+Rather, it manages PVCs directly. If you want
+to know more, see
+[Custom pod controller](controller.mdx).
 
 ## Backup and recovery
 
@@ -53,14 +54,14 @@ solution, especially if you manage very large databases.
 
 :::important
 See the Kubernetes documentation for a list of all
-    the supported [container storage interface (CSI) drivers](https://kubernetes-csi.github.io/docs/drivers.html)
-    that provide snapshot capabilities.
+the supported [container storage interface (CSI) drivers](https://kubernetes-csi.github.io/docs/drivers.html)
+that provide snapshot capabilities.
 
 ## Benchmarking CloudNativePG
 
 Before deploying the database in production, we recommend that you benchmark
 CloudNativePG in a controlled Kubernetes environment. Follow the guidelines in
-[Benchmarking](benchmarking.md).
+[Benchmarking](benchmarking.mdx).
 
 Briefly, we recommend operating at two levels:
 
@@ -72,14 +73,14 @@ Briefly, we recommend operating at two levels:
 
 :::important
 You must measure both the storage and database performance before putting
-    the database into production. These results are extremely valuable not just in
-    the planning phase (for example, capacity planning). They are also valuable in
-    the production lifecycle, particularly in emergency situations when you don't
-    have time to run this kind of test. Databases change and evolve over time, and
-    so does the distribution of data, potentially affecting performance. Knowing
-    the theoretical maximum throughput of sequential reads or writes is extremely
-    useful in those situations. This is true especially in shared-nothing contexts,
-    where results don't vary due to the influence of external workloads.
+the database into production. These results are extremely valuable not just in
+the planning phase (for example, capacity planning). They are also valuable in
+the production lifecycle, particularly in emergency situations when you don't
+have time to run this kind of test. Databases change and evolve over time, and
+so does the distribution of data, potentially affecting performance. Knowing
+the theoretical maximum throughput of sequential reads or writes is extremely
+useful in those situations. This is true especially in shared-nothing contexts,
+where results don't vary due to the influence of external workloads.
 
     Know your system: benchmark it.
 
@@ -99,17 +100,17 @@ Additionally, it supports creating clusters with:
 - A separate PVC on which to store PostgreSQL WAL, as explained in
   [Volume for WAL](#volume-for-wal)
 - Additional separate volumes reserved for PostgreSQL tablespaces, as explained
-  in [Tablespaces](tablespaces.md)
+  in [Tablespaces](tablespaces.mdx)
 
 In CloudNativePG, the volumes attached to a single PostgreSQL instance are
-defined as a *PVC group*.
+defined as a _PVC group_.
 
 ## Configuration via a storage class
 
 :::important
 CloudNativePG was designed to work interchangeably with all storage classes.
-    As usual, we recommend properly benchmarking the storage class in a
-    controlled environment before deploying to production.
+As usual, we recommend properly benchmarking the storage class in a
+controlled environment before deploying to production.
 
 The easiest way to configure the storage for a PostgreSQL class is to request
 storage of a certain size, like in the following example:
@@ -176,9 +177,9 @@ PostgreSQL.)
 
 :::info
 Normally, each segment is 16MB in size, but you can configure the size
-    using the `walSegmentSize` option. This option is applied at cluster
-    initialization time, as described in
-    [Bootstrap an empty cluster](bootstrap.md#bootstrap-an-empty-cluster-initdb).
+using the `walSegmentSize` option. This option is applied at cluster
+initialization time, as described in
+[Bootstrap an empty cluster](bootstrap.mdx#bootstrap-an-empty-cluster-initdb).
 
 In most cases, having `pg_wal` on the same volume where `PGDATA`
 resides is fine. However, having WALs stored in a separate
@@ -205,7 +206,7 @@ volume has a few benefits:
 
 :::info ""
 See [Reliability and the Write-Ahead Log](https://www.postgresql.org/docs/current/wal.html)
-    in the PostgreSQL documentation for more information.
+in the PostgreSQL documentation for more information.
 
 You can add a separate volume for WAL using the `.spec.walStorage` option.
 It follows the same rules described for the `storage` field and provisions a
@@ -226,13 +227,13 @@ spec:
 
 :::important
 Removing `walStorage` isn't supported. Once added, a separate volume for
-    WALs can't be removed from an existing Postgres cluster.
+WALs can't be removed from an existing Postgres cluster.
 
 ## Volumes for tablespaces
 
 CloudNativePG supports declarative tablespaces. You can add one or more
 volumes, each dedicated to a single PostgreSQL tablespace.
-See [Tablespaces](tablespaces.md) for details.
+See [Tablespaces](tablespaces.mdx) for details.
 
 ## Volume expansion
 
@@ -307,9 +308,9 @@ $ kubectl delete pvc/cluster-example-3 pod/cluster-example-3
 
 :::important
 If you created a dedicated WAL volume, both PVCs must be deleted during
-    this process. The same procedure applies if you want to regenerate the WAL
-    volume PVC. You can do this by also disabling `resizeInUseVolumes` for the
-    `.spec.walStorage` section.
+this process. The same procedure applies if you want to regenerate the WAL
+volume PVC. You can do this by also disabling `resizeInUseVolumes` for the
+`.spec.walStorage` section.
 
 For example, if a PVC dedicated to WAL storage is present:
 
@@ -339,13 +340,13 @@ See [Re-creating storage](#re-creating-storage).
 However, in some cases, Kubernetes administrators prefer to manually create
 storage volumes and then create the related `PersistentVolume` objects for
 their representation inside the Kubernetes cluster. This is also known as
-*pre-provisioning* of volumes.
+_pre-provisioning_ of volumes.
 
 :::important
 We recommend that you avoid pre-provisioning volumes, as it has an effect
-    on the high availability and self-healing capabilities of the operator. It
-    breaks the fully declarative model on which CloudNativePG was built.
-    
+on the high availability and self-healing capabilities of the operator. It
+breaks the fully declarative model on which CloudNativePG was built.
+
 To use a pre-provisioned volume in CloudNativePG:
 
 1. Manually create the volume outside Kubernetes.
@@ -353,16 +354,16 @@ To use a pre-provisioned volume in CloudNativePG:
    correct parameters as required by the actual CSI driver (that is, `volumeHandle`,
    `fsType`, `storageClassName`, and so on).
 3. Create the Postgres `Cluster` using, for each storage section, a coherent
-   [`pvcTemplate`](storage.md#configuration-via-a-pvc-template)
+   [`pvcTemplate`](storage.mdx#configuration-via-a-pvc-template)
    section that can help Kubernetes match the `PersistentVolume`
    and enable CloudNativePG to create the needed `PersistentVolumeClaim`.
 
 :::warning
 With static provisioning, it's your responsibility to ensure that Postgres
-    pods can be correctly scheduled by Kubernetes where a pre-provisioned volume
-    exists. (The scheduling configuration is based on the affinity rules of your
-    cluster.) Make sure you check for any pods stuck in `Pending` after you deploy
-    the cluster. If the condition persists, investigate why it's happening.
+pods can be correctly scheduled by Kubernetes where a pre-provisioned volume
+exists. (The scheduling configuration is based on the affinity rules of your
+cluster.) Make sure you check for any pods stuck in `Pending` after you deploy
+the cluster. If the condition persists, investigate why it's happening.
 
 ## Block storage considerations (Ceph/Longhorn)
 
@@ -372,7 +373,7 @@ approach works well for workloads that lack built-in resiliency.
 
 However, CloudNativePG integrates this resiliency directly into the Postgres
 `Cluster` through the number of instances and the persistent volumes attached
-to them, as explained in ["Synchronizing the state"](architecture.md#synchronizing-the-state).
+to them, as explained in ["Synchronizing the state"](architecture.mdx#synchronizing-the-state).
 
 As a result, defining additional replicas at the storage level can lead to
 write amplification, unnecessarily increasing disk I/O and space usage.
@@ -382,7 +383,7 @@ level to one, while ensuring that no single point of failure (SPoF) exists at
 the storage level for the entire `Cluster` resource. This typically means
 ensuring that a single storage host—and ultimately, a physical disk—does not
 host blocks from different instances of the same `Cluster`, in alignment with
-the broader *shared-nothing architecture* principle.
+the broader _shared-nothing architecture_ principle.
 
 In Longhorn, you can mitigate this risk by enabling strict-local data locality
 when creating a custom storage class. Detailed instructions for creating a
@@ -390,12 +391,12 @@ volume with strict-local data locality are available [here](https://longhorn.io/
 This setting ensures that a pod’s data volume resides on the same node as the
 pod itself.
 
-Additionally, your Postgres `Cluster` should have [pod anti-affinity rules](scheduling.md#isolating-postgresql-workloads)
+Additionally, your Postgres `Cluster` should have [pod anti-affinity rules](scheduling.mdx#isolating-postgresql-workloads)
 in place to ensure that the operator deploys pods across different nodes,
 allowing Longhorn to place the data volumes on the corresponding hosts. If
 needed, you can manually relocate volumes in Longhorn by temporarily setting
 the volume replica count to 2, reducing it afterward, and then removing the old
-replica. If a host becomes corrupted, you can use the [`cnpg` plugin to destroy](kubectl-plugin.md#destroy)
+replica. If a host becomes corrupted, you can use the [`cnpg` plugin to destroy](kubectl-plugin.mdx#destroy)
 the affected instance. CloudNativePG will then recreate the instance on another
 host and replicate the data.
 

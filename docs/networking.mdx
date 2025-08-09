@@ -1,4 +1,5 @@
 ﻿# Networking
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG assumes the underlying Kubernetes cluster has the required
@@ -17,7 +18,7 @@ might restrict certain types of traffic.
 
 Or, you might be interested in adding network policies in your environment for
 increased security.
-As mentioned in the [security document](security.md), please ensure the operator can reach every cluster pod on ports 8000 and 5432, and that pods can connect to each other.
+As mentioned in the [security document](security.mdx), please ensure the operator can reach every cluster pod on ports 8000 and 5432, and that pods can connect to each other.
 
 ## Cross-namespace network policy for the operator
 
@@ -25,7 +26,7 @@ Following the quickstart guide or using helm chart for deployment will install t
 a dedicated namespace (`cnpg-system` by default).
 We recommend that you create clusters in a different namespace.
 
-The operator *must* be able to connect to cluster pods.
+The operator _must_ be able to connect to cluster pods.
 This might be precluded if there is a `NetworkPolicy` restricting
 cross-namespace traffic.
 
@@ -43,7 +44,7 @@ the default namespace.
 
 ## Cross-cluster networking
 
-While [bootstrapping](bootstrap.md) from another cluster or when using the `externalClusters` section,
+While [bootstrapping](bootstrap.mdx) from another cluster or when using the `externalClusters` section,
 ensure connectivity among all clusters, object stores, and namespaces involved.
 
 Again, we refer you to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/)

@@ -1,4 +1,5 @@
 ﻿# Operator capability levels
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 These capabilities were implemented by CloudNativePG,
@@ -9,9 +10,9 @@ framework.
 ![Operator Capability Levels](/img/operator-capability-level.png)
 
 :::important
-Based on the [Operator Capability Levels model](operator_capability_levels.md),
-    you can expect a "Level V - Auto Pilot" set of capabilities from the
-    CloudNativePG operator.
+Based on the [Operator Capability Levels model](operator_capability_levels.mdx),
+you can expect a "Level V - Auto Pilot" set of capabilities from the
+CloudNativePG operator.
 
 Each capability level is associated with a certain set of management features the operator offers:
 
@@ -63,7 +64,7 @@ attribute in the CR. The operator also supports `imagePullSecrets`
 to access private container registries, and it supports digests and
 tags for finer control of container image immutability.
 If you prefer not to specify an image name, you can leverage
-[image catalogs](image_catalog.md) by simply referencing the PostgreSQL
+[image catalogs](image_catalog.mdx) by simply referencing the PostgreSQL
 major version. Moreover, image catalogs enable you to effortlessly create
 custom catalogs, directing to images based on your specific requirements.
 
@@ -101,7 +102,7 @@ PVC template in the CR's `storage` parameter.
 For better performance and finer control, you can also choose to host your
 cluster's write-ahead log (WAL, also known as `pg_wal`) on a separate volume,
 preferably on different storage.
-The ["Benchmarking"](benchmarking.md) section of the documentation provides
+The ["Benchmarking"](benchmarking.mdx) section of the documentation provides
 detailed instructions on benchmarking both storage and the database before
 production. It relies on the `cnpg` plugin to ensure optimal performance and
 reliability.
@@ -123,7 +124,7 @@ also supports user defined physical replication slots on the primary.
 
 ### Service Configuration
 
-By default, CloudNativePG creates three Kubernetes [services](service_management.md)
+By default, CloudNativePG creates three Kubernetes [services](service_management.mdx)
 for applications to access the cluster via the network:
 
 - One pointing to the primary for read/write operations.
@@ -147,7 +148,7 @@ same name. You can specify both the database name and the user name, if
 required, as part of the bootstrap.
 
 Additional databases can be created or managed via
-[declarative database management](declarative_database_management.md) using
+[declarative database management](declarative_database_management.mdx) using
 the `Database` CRD, also supporting extensions and schemas.
 
 Although no configuration is required to run the cluster, you can customize
@@ -157,7 +158,7 @@ authentication rules in the `postgresql` section of the CR.
 ### Configuration of Postgres roles, users, and groups
 
 CloudNativePG supports
-[management of PostgreSQL roles, users, and groups through declarative configuration](declarative_role_management.md)
+[management of PostgreSQL roles, users, and groups through declarative configuration](declarative_role_management.mdx)
 using the `.spec.managed.roles` stanza.
 
 ### Pod security standards
@@ -239,8 +240,8 @@ section of the PostgreSQL configuration. Depending on the configuration option,
 it also makes sure that all instances are properly reloaded or restarted.
 
 :::note Current limitation
-    Changes with `ALTER SYSTEM` aren't detected, meaning
-    that the cluster state isn't enforced.
+Changes with `ALTER SYSTEM` aren't detected, meaning
+that the cluster state isn't enforced.
 
 ### Import of existing PostgreSQL databases
 
@@ -259,14 +260,14 @@ for all databases that are part of the operation and, if requested, for roles.
 
 ### PostGIS clusters
 
-CloudNativePG supports the installation of clusters with the [PostGIS](postgis.md)
+CloudNativePG supports the installation of clusters with the [PostGIS](postgis.mdx)
 open source extension for geographical databases. This extension is one of the most popular
 extensions for PostgreSQL.
 
 ### Basic LDAP authentication for PostgreSQL
 
 The operator allows you to configure LDAP authentication for your PostgreSQL
-clients, using either the *simple bind* or *search+bind* mode, as described in
+clients, using either the _simple bind_ or _search+bind_ mode, as described in
 the [LDAP authentication section of the PostgreSQL documentation](https://www.postgresql.org/docs/current/auth-ldap.html).
 
 ### Multiple installation methods
@@ -301,7 +302,7 @@ Thanks to the instance manager's injection, upgrading the operator does not
 require changes to the operand, allowing the operator to manage older versions
 of it.
 
-Additionally, CloudNativePG supports [in-place updates of the instance manager](installation_upgrade.md#in-place-updates-of-the-instance-manager)
+Additionally, CloudNativePG supports [in-place updates of the instance manager](installation_upgrade.mdx#in-place-updates-of-the-instance-manager)
 following an operator upgrade. In-place updates do not require a rolling update
 or a subsequent switchover of the cluster.
 
@@ -345,11 +346,11 @@ Postgres major version`.
 Capability level 3 requires the operator to manage aspects of business
 continuity and scalability.
 
-*Disaster recovery* is a business continuity component that requires
+_Disaster recovery_ is a business continuity component that requires
 that both backup and recovery of a database work correctly. While as a
-starting point, the goal is to achieve [RPO](before_you_start.md#rpo) < 5
-minutes, the long-term goal is to implement RPO=0 backup solutions. *High
-availability* is the other important component of business continuity. Through
+starting point, the goal is to achieve [RPO](before_you_start.mdx#rpo) < 5
+minutes, the long-term goal is to implement RPO=0 backup solutions. _High
+availability_ is the other important component of business continuity. Through
 PostgreSQL native physical replication and hot standby replicas, it allows the
 operator to perform failover and switchover operations. This area includes
 enhancements in:
@@ -414,7 +415,7 @@ Both volume snapshots and CNPG-I-based backups support:
 ### Backups from a standby
 
 The operator supports offloading base backups onto a standby without impacting
-the [RPO](before_you_start.md#rpo) of the database. This allows resources to
+the [RPO](before_you_start.mdx#rpo) of the database. This allows resources to
 be preserved on the primary, in particular I/O, for standard database
 operations.
 
@@ -441,7 +442,7 @@ one and supports all the options available in
 
 ### Zero-Data-Loss Clusters Through Synchronous Replication
 
-Achieve *zero data loss* (RPO=0) in your local high-availability CloudNativePG
+Achieve _zero data loss_ (RPO=0) in your local high-availability CloudNativePG
 cluster with support for both quorum-based and priority-based synchronous
 replication. The operator offers a flexible way to define the number of
 expected synchronous standby replicas available at any time, and allows
@@ -471,13 +472,13 @@ switchover across data centers remains necessary.)
 
 Additionally, the flexibility extends to creating delayed replica clusters
 intentionally lagging behind the primary cluster. This intentional lag aims to
-minimize the Recovery Time Objective ([RTO](before_you_start.md#rto)) in the
+minimize the Recovery Time Objective ([RTO](before_you_start.mdx#rto)) in the
 event of unintended errors, such as incorrect `DELETE` or `UPDATE` SQL operations.
 
 ### Distributed Database Topologies
 
 Leverage replica clusters to
-define [distributed database topologies](replica_cluster.md#distributed-topology)
+define [distributed database topologies](replica_cluster.mdx#distributed-topology)
 for PostgreSQL that span across various Kubernetes clusters, facilitating hybrid
 and multi-cloud deployments. With CloudNativePG, you gain powerful capabilities,
 including:
@@ -517,7 +518,7 @@ meet specific needs, allowing for fine-tuning to align with your environment
 and workloads.
 
 For detailed configuration options and advanced usage,
-refer to the [Postgres instance manager](instance_manager.md) documentation.
+refer to the [Postgres instance manager](instance_manager.mdx) documentation.
 
 ### Rolling deployments
 
@@ -564,7 +565,7 @@ purposes.
 
 ### Hibernation
 
-CloudNativePG supports [hibernation of a running PostgreSQL cluster](declarative_hibernation.md)
+CloudNativePG supports [hibernation of a running PostgreSQL cluster](declarative_hibernation.mdx)
 in a declarative manner, through the `cnpg.io/hibernation` annotation.
 Hibernation enables saving CPU power by removing the database pods while
 keeping the database PVCs. This feature simulates scaling to 0 instances.
@@ -585,7 +586,7 @@ particular, you can set `requests` and `limits` values for both CPU and RAM.
 ### Connection pooling with PgBouncer
 
 CloudNativePG provides native support for connection pooling with
-[PgBouncer](connection_pooling.md), one of the most popular open source
+[PgBouncer](connection_pooling.mdx), one of the most popular open source
 connection poolers for PostgreSQL. From an architectural point of view, the
 native implementation of a PgBouncer connection pooler introduces a new layer
 to access the database. This optimizes the query flow toward the instances
@@ -604,7 +605,7 @@ PostgreSQL upgrades.
 
 ## Level 4: Deep insights
 
-Capability level 4 is about *observability*: monitoring,
+Capability level 4 is about _observability_: monitoring,
 alerting, trending, and log processing. This might involve the use of external tools,
 such as Prometheus, Grafana, and Fluent Bit, as well as extensions in the
 PostgreSQL engine for the output of error logs directly in JSON format.

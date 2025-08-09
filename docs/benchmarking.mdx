@@ -1,4 +1,5 @@
 ﻿# Benchmarking
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 The CNPG kubectl plugin provides an easy way for benchmarking a PostgreSQL deployment in Kubernetes using CloudNativePG.
@@ -107,6 +108,7 @@ kubectl cnpg pgbench \
 ```
 
 The job status can be fetched by running:
+
 ```
 kubectl get job/pgbench-job -n <namespace>
 
@@ -115,6 +117,7 @@ job-name   1/1           15s        41s
 ```
 
 Once the job is completed the results can be gathered by executing:
+
 ```
 kubectl logs job/pgbench-job -n <namespace>
 ```
@@ -128,15 +131,16 @@ modification/execution.
 
 :::note
 The kubectl plugin command `fio` will create a deployment with predefined
-    fio job values using a ConfigMap. If you want to provide custom job values, we
-    recommend generating a manifest using the `--dry-run` flag and providing your
-    custom job values in the generated ConfigMap.
+fio job values using a ConfigMap. If you want to provide custom job values, we
+recommend generating a manifest using the `--dry-run` flag and providing your
+custom job values in the generated ConfigMap.
 
 Example of default usage:
 
 ```shell
 kubectl cnpg fio <fio-name>
 ```
+
 Example with custom values:
 
 ```shell
@@ -157,6 +161,7 @@ kubectl cnpg fio fio-job \
 ```
 
 The deployment status can be fetched by running:
+
 ```shell
 kubectl get deployment/fio-job -n fio
 
@@ -196,8 +201,9 @@ mounted on a dedicated Kubernetes node
 ![Sequential writes bandwidth](/img/write_bw.1-2Draw.png)
 
 After all testing is done, fio deployment and resources can be deleted by:
+
 ```shell
 kubectl cnpg fio <fio-job-name> --dry-run | kubectl delete -f -
 ```
-make sure use the same name which was used to create the fio deployment and add namespace if applicable.
 
+make sure use the same name which was used to create the fio deployment and add namespace if applicable.

@@ -1,4 +1,5 @@
 ﻿# Declarative hibernation
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG is designed to keep PostgreSQL clusters up, running and available
@@ -17,7 +18,7 @@ database Pods, while keeping the database PVCs.
 
 To hibernate a cluster, set the `cnpg.io/hibernation=on` annotation:
 
-``` sh
+```sh
 $ kubectl annotate cluster <cluster-name> --overwrite cnpg.io/hibernation=on
 ```
 
@@ -31,8 +32,8 @@ Pods, avoiding switchover, to ensure the replicas are kept in sync.
 The hibernation status can be monitored by looking for the `cnpg.io/hibernation`
 condition:
 
-``` sh
-$ kubectl get cluster <cluster-name> -o "jsonpath={.status.conditions[?(.type==\"cnpg.io/hibernation\")]}" 
+```sh
+$ kubectl get cluster <cluster-name> -o "jsonpath={.status.conditions[?(.type==\"cnpg.io/hibernation\")]}"
 
 {
         "lastTransitionTime":"2023-03-05T16:43:35Z",
@@ -46,14 +47,14 @@ $ kubectl get cluster <cluster-name> -o "jsonpath={.status.conditions[?(.type==\
 The hibernation status can also be read with the `status` sub-command of the
 `cnpg` plugin for `kubectl`:
 
-``` sh
+```sh
 $ kubectl cnpg status <cluster-name>
 Cluster Summary
 Name:              cluster-example
 Namespace:         default
 PostgreSQL Image:  ghcr.io/cloudnative-pg/postgresql:17.5
 Primary instance:  cluster-example-2
-Status:            Cluster in healthy state 
+Status:            Cluster in healthy state
 Instances:         3
 Ready instances:   0
 
@@ -79,4 +80,3 @@ $ kubectl annotate cluster <cluster-name> cnpg.io/hibernation-
 ```
 
 The Pods will be recreated and the cluster will resume operation.
-

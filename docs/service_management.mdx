@@ -1,4 +1,5 @@
 ﻿# Service Management
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 A PostgreSQL cluster should only be accessed via standard Kubernetes network
@@ -7,9 +8,9 @@ services directly managed by CloudNativePG. For more details, refer to the
 
 CloudNativePG defines three types of services for each `Cluster` resource:
 
-* `rw`: Points to the primary instance of the cluster (read/write).
-* `ro`: Points to the replicas, where available (read-only).
-* `r`: Points to any PostgreSQL instance in the cluster (read).
+- `rw`: Points to the primary instance of the cluster (read/write).
+- `ro`: Points to the replicas, where available (read-only).
+- `r`: Points to any PostgreSQL instance in the cluster (read).
 
 By default, CloudNativePG creates all the above services for a `Cluster`
 resource, with the following conventions:
@@ -37,11 +38,11 @@ cluster is required. In such cases, you can create your own service of type
 ## Disabling Default Services
 
 You can disable any or all of the `ro` and `r` default services through the
-[`managed.services.disabledDefaultServices` option](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-ManagedServices).
+[`managed.services.disabledDefaultServices` option](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-ManagedServices).
 
 :::important
 The `rw` service is essential and cannot be disabled because CloudNativePG
-    relies on it to ensure PostgreSQL replication.
+relies on it to ensure PostgreSQL replication.
 
 For example, if you want to remove both the `ro` (read-only) and `r` (read)
 services, you can use this configuration:
@@ -50,19 +51,19 @@ services, you can use this configuration:
 # <snip>
 managed:
   services:
-    disabledDefaultServices: ["ro", "r"]
+    disabledDefaultServices: ['ro', 'r']
 ```
 
 ## Adding Your Own Services
 
 :::important
 When defining your own services, you cannot use any of the default reserved
-    service names that follow the convention `<CLUSTER_NAME>-<SERVICE_NAME>`. It is
-    your responsibility to pick a unique name for the service in the Kubernetes
-    namespace.
+service names that follow the convention `<CLUSTER_NAME>-<SERVICE_NAME>`. It is
+your responsibility to pick a unique name for the service in the Kubernetes
+namespace.
 
 You can define a list of additional services through the
-[`managed.services.additional` stanza](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-ManagedService)
+[`managed.services.additional` stanza](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-ManagedService)
 by specifying the service type (e.g., `rw`) in the `selectorType` field
 and optionally the `updateStrategy`.
 
@@ -75,10 +76,10 @@ field, as it is managed by the operator.
 
 :::warning
 Service templates give you unlimited possibilities in terms of configuring
-    network access to your PostgreSQL database. This translates into greater
-    responsibility on your end to ensure that services work as expected.
-    CloudNativePG has no control over the service configuration, except honoring
-    the selector.
+network access to your PostgreSQL database. This translates into greater
+responsibility on your end to ensure that services work as expected.
+CloudNativePG has no control over the service configuration, except honoring
+the selector.
 
 The `updateStrategy` field allows you to control how the operator
 updates a service definition. By default, the operator uses the `patch`
@@ -88,8 +89,8 @@ recreates it from the template.
 
 :::warning
 The `replace` strategy will cause a service disruption with every
-    change.  However, it may be necessary for modifying certain
-    parameters that can only be set during service creation.
+change. However, it may be necessary for modifying certain
+parameters that can only be set during service creation.
 
 For example, if you want to have a single `LoadBalancer` service for your
 PostgreSQL database primary, you can use the following excerpt:
@@ -102,11 +103,11 @@ managed:
       - selectorType: rw
         serviceTemplate:
           metadata:
-            name: "mydb-lb"
+            name: 'mydb-lb'
             labels:
-              test-label: "true"
+              test-label: 'true'
             annotations:
-              test-annotation: "true"
+              test-annotation: 'true'
           spec:
             type: LoadBalancer
 ```
@@ -123,12 +124,11 @@ outside your Kubernetes cluster:
 - Permanently, for **DBaaS purposes**.
 - Prolonged period/permanently, for **legacy applications** that cannot be
   easily or sustainably containerized and need to reside in a virtual machine
-or physical machine outside Kubernetes. This use case is very similar to DBaaS.
+  or physical machine outside Kubernetes. This use case is very similar to DBaaS.
 
 Be aware that allowing access to a database from the public network could
 expose your database to potential attacks from malicious users.
 
 :::warning
 Ensure you secure your database before granting external access, or make
-    sure your Kubernetes cluster is only reachable from a private network.
-
+sure your Kubernetes cluster is only reachable from a private network.

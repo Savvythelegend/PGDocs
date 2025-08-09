@@ -1,22 +1,23 @@
 ﻿# Failure Modes
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::note
 In previous versions of CloudNativePG, this page included specific failure
-    scenarios. Since these largely follow standard Kubernetes behavior, we have
-    streamlined the content to avoid duplication of information that belongs to the
-    underlying Kubernetes stack and is not specific to CloudNativePG.
+scenarios. Since these largely follow standard Kubernetes behavior, we have
+streamlined the content to avoid duplication of information that belongs to the
+underlying Kubernetes stack and is not specific to CloudNativePG.
 
 CloudNativePG adheres to standard Kubernetes principles for self-healing and
 high availability. We assume familiarity with core Kubernetes concepts such as
 storage classes, PVCs, nodes, and Pods. For CloudNativePG-specific details,
-refer to the ["Postgres Instance Manager" section](instance_manager.md), which
+refer to the ["Postgres Instance Manager" section](instance_manager.mdx), which
 covers startup, liveness, and readiness probes, as well as the
 [self-healing](#self-healing) section below.
 
 :::important
 If you are running CloudNativePG in production, we strongly recommend
-    seeking [professional support](https://cloudnative-pg.io/support/).
+seeking [professional support](https://cloudnative-pg.io/support/).
 
 ## Self-Healing
 
@@ -58,7 +59,7 @@ the `cnpg.io/reconciliationLoop` annotation:
 metadata:
   name: cluster-example-no-reconcile
   annotations:
-    cnpg.io/reconciliationLoop: "disabled"
+    cnpg.io/reconciliationLoop: 'disabled'
 spec:
   # ...
 ```
@@ -68,5 +69,5 @@ operations.
 
 :::warning
 This annotation should be removed as soon as the issue is resolved. Leaving
-    it in place prevents the operator from executing self-healing actions,
-    including failover.
+it in place prevents the operator from executing self-healing actions,
+including failover.

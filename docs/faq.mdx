@@ -55,7 +55,7 @@ For more information, please refer to
 **What does Cloud Native mean?**
 
 The Cloud Native Computing Foundation defines the term
-"[_Cloud Native_](https://github.com/cncf/toc/blob/main/DEFINITION.md)".
+"[_Cloud Native_](https://github.com/cncf/toc/blob/main/DEFINITION.mdx)".
 However, since the start of the Cloud Native PostgreSQL/CloudNativePG operator
 at 2ndQuadrant, the development team has been interpreting Cloud Native
 as three main concepts:
@@ -95,7 +95,7 @@ local persistent volumes, allowing the Cloud Native initiative to continue.
 **Why should I use PostgreSQL replication instead of file system
 replication?**
 
-Please read the ["Architecture: Synchronizing the state"](architecture.md#synchronizing-the-state)
+Please read the ["Architecture: Synchronizing the state"](architecture.mdx#synchronizing-the-state)
 section.
 
 **Why should I use an operator instead of running PostgreSQL as a
@@ -193,7 +193,7 @@ status from the CNCF certification program.
 CloudNativePG does not rely on `StatefulSet` resources, and
 instead manages the underlying PVCs directly by leveraging the selected
 storage class for dynamic provisioning. Please refer to the
-["Custom Pod Controller"](controller.md) section for details and reasons behind
+["Custom Pod Controller"](controller.mdx) section for details and reasons behind
 this decision.
 
 ## High availability
@@ -207,7 +207,7 @@ operator.
 
 However, assuming that the outage does not affect the nodes where PostgreSQL
 clusters are running, the database will continue to serve normal operations,
-through the relevant Kubernetes services. Moreover, the [instance manager](instance_manager.md),
+through the relevant Kubernetes services. Moreover, the [instance manager](instance_manager.mdx),
 which runs inside each PostgreSQL pod will still work, making sure that the
 database server is up, including accessory services like logging, export of
 metrics, continuous archiving of WAL files, etc.
@@ -228,7 +228,7 @@ server to hold the status of a Postgres cluster, and use it as the only source
 of truth to:
 
 - control High Availability of a Postgres cluster primarily via automated
-  failover and switchover, coordinating itself with the [instance manager](instance_manager.md)
+  failover and switchover, coordinating itself with the [instance manager](instance_manager.mdx)
 - control the Kubernetes services, that is the entry points for your
   applications
 
@@ -338,7 +338,7 @@ major version of Postgres is version 16, which ships out of the box:
 - declarative partitioning for horizontal table partitioning, which is
   a very well-known technique in the database area to improve vertical
   scalability on a single instance
-- extensibility, with extensions like [PostGIS](postgis.md) for geographical
+- extensibility, with extensions like [PostGIS](postgis.mdx) for geographical
   databases
 - parallel queries for vertical scalability
 - JSON support, unleashing the multi-model hybrid database for both
@@ -423,7 +423,7 @@ spec:
 
   postgresql:
     parameters:
-      timezone: "Europe/Rome"
+      timezone: 'Europe/Rome'
 
   storage:
     size: 1Gi
@@ -440,7 +440,7 @@ TimeZone | Europe/Rome
 **What is the recommended architecture for best business continuity
 outcomes?**
 
-As covered in the ["Architecture"](architecture.md) section, the main
+As covered in the ["Architecture"](architecture.mdx) section, the main
 recommendation is to adopt shared nothing architectures as much as possible, by
 leveraging the native capabilities and resources that Kubernetes provides in a
 single cluster, namely:
@@ -452,7 +452,7 @@ single cluster, namely:
 - storage: use dedicated storage for each worker node running Postgres
 
 Use at least one standby, preferably at least two, so that you can configure
-synchronous replication in the cluster, introducing [RPO](before_you_start.md#rpo)=0
+synchronous replication in the cluster, introducing [RPO](before_you_start.mdx#rpo)=0
 for high availability.
 
 If you do not have availability zones - normally the case of on-premise
@@ -462,7 +462,7 @@ Properly setup continuous backup on a local/regional object store.
 
 The same architecture that is in a single Kubernetes cluster can be replicated
 in another Kubernetes cluster (normally in another geographical area or region)
-through the [replica cluster](replica_cluster.md) feature, providing disaster
+through the [replica cluster](replica_cluster.mdx) feature, providing disaster
 recovery and high availability at global scale.
 
 You can use the WAL archive in the primary object store to feed the replica in
@@ -471,7 +471,7 @@ maximum RPO of 5 minutes is enough for you.
 
 **How can instances be stopped or started?**
 
-Please look at ["Fencing"](fencing.md) or ["Hibernation"](declarative_hibernation.md).
+Please look at ["Fencing"](fencing.mdx) or ["Hibernation"](declarative_hibernation.mdx).
 
 **What are the global objects such as roles and databases that are
 automatically created by CloudNativePG?**
@@ -485,7 +485,7 @@ can control migrations using the `app` user, without requiring _superuser_
 access.
 
 Teams can then create another user for read-write operations through the
-["Declarative role management"](declarative_role_management.md) feature
+["Declarative role management"](declarative_role_management.mdx) feature
 and assign the required `GRANT` to the tables.
 
 <!--

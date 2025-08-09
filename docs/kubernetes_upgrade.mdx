@@ -1,4 +1,5 @@
 ﻿# Kubernetes Upgrade and Maintenance
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Maintaining an up-to-date Kubernetes cluster is crucial for ensuring optimal
@@ -39,14 +40,14 @@ Kubernetes' self-healing capabilities, there are scenarios where operating with
 a temporarily degraded cluster may be acceptable. This is particularly relevant
 for PostgreSQL clusters relying on **node-local storage**, where the storage is
 local to the Kubernetes worker node running the PostgreSQL database. Node-local
-storage, or simply *local storage*, is employed to enhance performance.
+storage, or simply _local storage_, is employed to enhance performance.
 
 :::note
 If your database files reside on shared storage accessible over the
-    network, the default self-healing behavior of the operator can efficiently
-    handle scenarios where volumes are reused by pods on different nodes after a
-    drain operation. In such cases, you can skip the remaining sections of this
-    document.
+network, the default self-healing behavior of the operator can efficiently
+handle scenarios where volumes are reused by pods on different nodes after a
+drain operation. In such cases, you can skip the remaining sections of this
+document.
 
 ## Pod Disruption Budgets
 
@@ -65,7 +66,7 @@ resources - you can easily confirm it with the `kubectl get pdb` command.
 Our recommendation is to leave pod disruption budgets enabled for every
 production Postgres cluster. This can be effortlessly managed by toggling the
 `.spec.enablePDB` option, as detailed in the
-[API reference](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-ClusterSpec).
+[API reference](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-ClusterSpec).
 
 ## PostgreSQL Clusters used for Development or Testing
 
@@ -96,9 +97,9 @@ on draining the node during development activities.
 
 :::important
 While CloudNativePG will continue supporting the node maintenance window,
-    it is currently recommended to transition to direct control of pod disruption
-    budgets, as explained in the previous section. This section is retained
-    mainly for backward compatibility.
+it is currently recommended to transition to direct control of pod disruption
+budgets, as explained in the previous section. This section is retained
+mainly for backward compatibility.
 
 Prior to release 1.23, CloudNativePG had just one declarative mechanism to manage
 Kubernetes upgrades when dealing with local storage: you had to temporarily put
@@ -108,10 +109,10 @@ enlarging the partition on the physical node or updating the node itself.
 
 :::warning
 Limit the duration of the maintenance window to the shortest
-    amount of time possible. In this phase, some of the expected
-    behaviors of Kubernetes are either disabled or running with
-    some limitations, including self-healing, rolling updates,
-    and Pod disruption budget.
+amount of time possible. In this phase, some of the expected
+behaviors of Kubernetes are either disabled or running with
+some limitations, including self-healing, rolling updates,
+and Pod disruption budget.
 
 The `nodeMaintenanceWindow` option of the cluster has two further
 settings:
@@ -139,21 +140,21 @@ reusePVC disabled: see section below.
 
 :::note
 When performing the `kubectl drain` command, you will need
-    to add the `--delete-emptydir-data` option.
-    Don't be afraid: it refers to another volume internally used
-    by the operator - not the PostgreSQL data directory.
+to add the `--delete-emptydir-data` option.
+Don't be afraid: it refers to another volume internally used
+by the operator - not the PostgreSQL data directory.
 
 :::important
 `PodDisruptionBudget` management can be disabled by setting the
-    `.spec.enablePDB` field to `false`. In that case, the operator won't
-    create `PodDisruptionBudgets` and will delete them if they were
-    previously created.
+`.spec.enablePDB` field to `false`. In that case, the operator won't
+create `PodDisruptionBudgets` and will delete them if they were
+previously created.
 
 ### Single instance clusters with `reusePVC` set to `false`
 
 :::important
 We recommend to always create clusters with more
-    than one instance in order to guarantee high availability.
+than one instance in order to guarantee high availability.
 
 Deleting the only PostgreSQL instance in a single instance cluster with
 `reusePVC` set to `false` would imply all data being lost,
@@ -185,4 +186,3 @@ A possible approach could be:
 4. Scale back down the cluster to a single instance, this will delete the old instance
 5. The old primary's node can now be drained successfully, while leaving the new primary
    running on a new node.
-

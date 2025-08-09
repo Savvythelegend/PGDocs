@@ -1,4 +1,5 @@
 ﻿# PostgreSQL Configuration
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 Users that are familiar with PostgreSQL are aware of the existence of the
@@ -18,11 +19,11 @@ These settings are the same across all instances.
 
 :::warning
 Please don't use the `ALTER SYSTEM` query to change the configuration of
-    the PostgreSQL instances in an imperative way. Changing some of the options
-    that are normally controlled by the operator might indeed lead to an
-    unpredictable/unrecoverable state of the cluster.
-    Moreover, `ALTER SYSTEM` changes are not replicated across the cluster.
-    See ["Enabling ALTER SYSTEM"](#enabling-alter-system) below for details.
+the PostgreSQL instances in an imperative way. Changing some of the options
+that are normally controlled by the operator might indeed lead to an
+unpredictable/unrecoverable state of the cluster.
+Moreover, `ALTER SYSTEM` changes are not replicated across the cluster.
+See ["Enabling ALTER SYSTEM"](#enabling-alter-system) below for details.
 
 A reference for custom settings usage is included in the samples, see
 [`cluster-example-custom.yaml`](samples/cluster-example-custom.yaml).
@@ -41,18 +42,18 @@ The `custom.conf` file will contain the user-defined settings in the
 `postgresql` section, as in the following example:
 
 ```yaml
-  # ...
-  postgresql:
-    parameters:
-      shared_buffers: "1GB"
-  # ...
+# ...
+postgresql:
+  parameters:
+    shared_buffers: '1GB'
+# ...
 ```
 
 :::info ""
 Refer to the PostgreSQL documentation for
-    [more information on the available parameters](https://www.postgresql.org/docs/current/runtime-config.html),
-    also known as GUC (Grand Unified Configuration).
-    Please note that CloudNativePG accepts only strings for the PostgreSQL parameters.
+[more information on the available parameters](https://www.postgresql.org/docs/current/runtime-config.html),
+also known as GUC (Grand Unified Configuration).
+Please note that CloudNativePG accepts only strings for the PostgreSQL parameters.
 
 The content of `custom.conf` is automatically generated and maintained by the
 operator by applying the following sections in this order:
@@ -91,15 +92,15 @@ wal_receiver_timeout = '5s'
 
 :::warning
 It is your duty to plan for WAL segments retention in your PostgreSQL
-    cluster and properly configure either `wal_keep_size` or `wal_keep_segments`,
-    depending on the server version, based on the expected and observed workloads.
+cluster and properly configure either `wal_keep_size` or `wal_keep_segments`,
+depending on the server version, based on the expected and observed workloads.
 
     Alternatively, if the only streaming replication clients are the replica instances
     running in the High Availability cluster, you can take advantage of the
     replication slots feature, which adds support for replication slots at the
     cluster level. You can enable the feature with the
     `replicationSlots.highAvailability` option (for more information, please refer to the
-    ["Replication" section](replication.md#replication-slots-for-high-availability).)
+    ["Replication" section](replication.mdx#replication-slots-for-high-availability).)
 
     Without replication slots nor continuous backups in place, configuring
     `wal_keep_size` or `wal_keep_segments` is the only way to
@@ -166,7 +167,7 @@ primary_conninfo = 'host=<PRIMARY> user=postgres dbname=postgres'
 recovery_target_timeline = 'latest'
 ```
 
-The [`STANDBY_TCP_USER_TIMEOUT` operator configuration setting](operator_conf.md#available-options),
+The [`STANDBY_TCP_USER_TIMEOUT` operator configuration setting](operator_conf.mdx#available-options),
 if specified, sets the `tcp_user_timeout` parameter on all standby instances
 managed by the operator.
 
@@ -183,7 +184,7 @@ instance manager automatically parses it and outputs it in JSON format.
 For this reason, all log settings in PostgreSQL are fixed and cannot be
 changed.
 
-For further information, please refer to the ["Logging" section](logging.md).
+For further information, please refer to the ["Logging" section](logging.mdx).
 
 ### Shared Preload Libraries
 
@@ -199,10 +200,10 @@ we recommend that only expert Postgres users take advantage of this option.
 
 :::important
 In case a specified library is not found, the server fails to start,
-    preventing CloudNativePG from any self-healing attempt and requiring
-    manual intervention. Please make sure you always test both the extensions and
-    the settings of `shared_preload_libraries` if you plan to directly manage its
-    content.
+preventing CloudNativePG from any self-healing attempt and requiring
+manual intervention. Please make sure you always test both the extensions and
+the settings of `shared_preload_libraries` if you plan to directly manage its
+content.
 
 CloudNativePG is able to automatically manage the content of the
 `shared_preload_libraries` option for some of the most used PostgreSQL
@@ -216,8 +217,8 @@ requires it.
 
 :::important
 Please always keep in mind that removing libraries from
-    `shared_preload_libraries` requires a restart of all instances in the cluster
-    in order to be effective.
+`shared_preload_libraries` requires a restart of all instances in the cluster
+in order to be effective.
 
 You can provide additional `shared_preload_libraries` via
 `.spec.postgresql.shared_preload_libraries` as a list of strings: the operator
@@ -251,10 +252,10 @@ SELECT datname FROM pg_database WHERE datallowconn
 The above query also includes template databases like `template1`.
 
 :::important
-With the introduction of [declarative extensions](declarative_database_management.md#managing-extensions-in-a-database)
-    in the `Database` CRD, you can now manage extensions directly. As a result,
-    the managed extensions feature may undergo significant changes in future
-    versions of CloudNativePG, and some functionalities might be deprecated.
+With the introduction of [declarative extensions](declarative_database_management.mdx#managing-extensions-in-a-database)
+in the `Database` CRD, you can now manage extensions directly. As a result,
+the managed extensions feature may undergo significant changes in future
+versions of CloudNativePG, and some functionalities might be deprecated.
 
 #### Enabling `auto_explain`
 
@@ -269,16 +270,15 @@ automatically logs execution plans of queries that take longer than 10 seconds
 to complete):
 
 ```yaml
-  # ...
-  postgresql:
-    parameters:
-      auto_explain.log_min_duration: "10s"
-  # ...
+# ...
+postgresql:
+  parameters:
+    auto_explain.log_min_duration: '10s'
+# ...
 ```
 
 :::note
 Enabling auto_explain can lead to performance issues. Please refer to [`the auto explain documentation`](https://www.postgresql.org/docs/current/auto-explain.html)
-
 
 #### Enabling `pg_stat_statements`
 
@@ -290,12 +290,12 @@ You can enable `pg_stat_statements` by adding to the configuration a parameter
 that starts with `pg_stat_statements.` as in the following example excerpt:
 
 ```yaml
-  # ...
-  postgresql:
-    parameters:
-      pg_stat_statements.max: "10000"
-      pg_stat_statements.track: all
-  # ...
+# ...
+postgresql:
+  parameters:
+    pg_stat_statements.max: '10000'
+    pg_stat_statements.track: all
+# ...
 ```
 
 As explained previously, the operator will automatically add
@@ -308,7 +308,7 @@ against the `pg_stat_statements` view.
 The `pgaudit` extension provides detailed session and/or object audit logging via the standard PostgreSQL logging facility.
 
 CloudNativePG has transparent and native support for
-[PGAudit](https://www.pgaudit.org/) on PostgreSQL clusters. For further information, please refer to the ["PGAudit" logs section.](logging.md#pgaudit-logs)
+[PGAudit](https://www.pgaudit.org/) on PostgreSQL clusters. For further information, please refer to the ["PGAudit" logs section.](logging.mdx#pgaudit-logs)
 
 You can enable `pgaudit` by adding to the configuration a parameter
 that starts with `pgaudit.` as in the following example excerpt:
@@ -317,10 +317,10 @@ that starts with `pgaudit.` as in the following example excerpt:
 #
 postgresql:
   parameters:
-    pgaudit.log: "all, -misc"
-    pgaudit.log_catalog: "off"
-    pgaudit.log_parameter: "on"
-    pgaudit.log_relation: "on"
+    pgaudit.log: 'all, -misc'
+    pgaudit.log_catalog: 'off'
+    pgaudit.log_parameter: 'on'
+    pgaudit.log_relation: 'on'
 #
 ```
 
@@ -345,10 +345,10 @@ connect to the primary.
 For example, suppose that you want to use the `app` database with `pg_failover_slots`,
 you need to add this entry in the `pg_hba` section:
 
-``` yaml
-  postgresql:
-    pg_hba:
-      - hostssl app streaming_replica all cert
+```yaml
+postgresql:
+  pg_hba:
+    - hostssl app streaming_replica all cert
 ```
 
 ## The `pg_hba` section
@@ -358,7 +358,7 @@ used to create the `pg_hba.conf` used by the pods.
 
 :::important
 See the PostgreSQL documentation for
-    [more information on `pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html).
+[more information on `pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html).
 
 Since the first matching rule is used for authentication, the `pg_hba.conf` file
 generated by the operator can be seen as composed of four sections:
@@ -409,10 +409,10 @@ host all all all scram-sha-256 # (or md5 for PostgreSQL version <= 13)
 Inside the cluster manifest, `pg_hba` lines are added as list items
 in `.spec.postgresql.pg_hba`, as in the following excerpt:
 
-``` yaml
-  postgresql:
-    pg_hba:
-      - hostssl app app 10.244.0.0/16 md5
+```yaml
+postgresql:
+  pg_hba:
+    - hostssl app app 10.244.0.0/16 md5
 ```
 
 In the above example we are enabling access for the `app` user to the `app`
@@ -424,13 +424,13 @@ if you prefer) via a secure channel (`hostssl`).
 Under the `postgres` section of the cluster spec there is an optional `ldap` section available to define an LDAP
 configuration to be converted into a rule added into the `pg_hba.conf` file.
 
-This will support two modes: `simple bind` mode which requires specifying a `server`, `prefix` and `suffix` in the LDAP 
+This will support two modes: `simple bind` mode which requires specifying a `server`, `prefix` and `suffix` in the LDAP
 section and the `search+bind` mode which requires specifying `server`, `baseDN`, `binDN`, and a `bindPassword` which is
 a secret containing the ldap password. Additionally, in `search+bind` mode you have the option to specify a
 `searchFilter` or `searchAttribute`. If no `searchAttribute` is specified the default one of `uid` will be used.
 
 Additionally, both modes allow the specification of a `scheme` for ldapscheme and a `port`. Neither scheme nor port are
-required, however. 
+required, however.
 
 This section filled out for search+bind could look as follows:
 
@@ -455,7 +455,7 @@ data directory.
 
 :::important
 See the PostgreSQL documentation for
-    [more information on `pg_ident.conf`](https://www.postgresql.org/docs/current/auth-username-maps.html).
+[more information on `pg_ident.conf`](https://www.postgresql.org/docs/current/auth-username-maps.html).
 
 The `pg_ident.conf` file written by the operator is made up of the following
 two sections:
@@ -492,10 +492,10 @@ Inside the cluster manifest, `pg_ident` lines are added as list items
 in `.spec.postgresql.pg_ident`.
 For example:
 
-``` yaml
-  postgresql:
-    pg_ident:
-      - "mymap /^(.*)@mydomain\\.com$ \\1"
+```yaml
+postgresql:
+  pg_ident:
+    - "mymap /^(.*)@mydomain\\.com$ \\1"
 ```
 
 ## Changing configuration
@@ -522,9 +522,9 @@ you can explicitly set `.spec.postgresql.enableAlterSystem` to `true`.
 
 :::warning
 Proceed with caution when utilizing `ALTER SYSTEM`. This command operates
-    directly on the connected instance and does not undergo replication.
-    CloudNativePG assumes responsibility for certain fixed parameters and complete
-    control over others, emphasizing the need for careful consideration.
+directly on the connected instance and does not undergo replication.
+CloudNativePG assumes responsibility for certain fixed parameters and complete
+control over others, emphasizing the need for careful consideration.
 
 Starting from PostgreSQL 17, the `.spec.postgresql.enableAlterSystem` setting
 directly controls the [`allow_alter_system` GUC in PostgreSQL](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM)
@@ -535,7 +535,7 @@ Prior to PostgreSQL 17, when `.spec.postgresql.enableAlterSystem` is set to
 attempt to execute the `ALTER SYSTEM` command will result in an error. The
 error message might look like this:
 
-``` output
+```output
 ERROR:  could not open file "postgresql.auto.conf": Permission denied
 ```
 
@@ -557,7 +557,7 @@ For details, please refer to this
 ### POSIX shared memory
 
 The default setting of `posix` should be enough in most cases, considering that
-the operator automatically mounts a *memory-bound `EmptyDir` volume* called `shm`
+the operator automatically mounts a _memory-bound `EmptyDir` volume_ called `shm`
 under `/dev/shm`. You can verify the size of such volume inside the running
 Postgres container with:
 
@@ -587,7 +587,7 @@ In case your Kubernetes cluster has a high enough value for the `SHMMAX`
 and `SHMALL` parameters, you can also set:
 
 ```yaml
-dynamic_shared_memory_type: "sysv"
+dynamic_shared_memory_type: 'sysv'
 ```
 
 You can check the `SHMMAX`/`SHMALL` from inside a PostgreSQL container, by running:
@@ -686,4 +686,3 @@ Users are not allowed to set the following configuration parameters in the
 - `unix_socket_directories`
 - `unix_socket_group`
 - `unix_socket_permissions`
-

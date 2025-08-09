@@ -1,4 +1,5 @@
 ﻿# Installation and upgrades
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 ## Installation on Kubernetes
@@ -26,7 +27,7 @@ kubectl rollout status deployment \
 ### Using the `cnpg` plugin for `kubectl`
 
 You can use the `cnpg` plugin to override the default configuration options
-that are in the static manifests. 
+that are in the static manifests.
 
 For example, to generate the default latest manifest but change the watch
 namespaces to only be a specific namespace, you could run:
@@ -37,8 +38,8 @@ kubectl cnpg install generate \
   > cnpg_for_specific_namespace.yaml
 ```
 
-Please refer to ["`cnpg` plugin"](./kubectl-plugin.md#generation-of-installation-manifests) documentation
-for a more comprehensive example. 
+Please refer to ["`cnpg` plugin"](./kubectl-plugin.mdx#generation-of-installation-manifests) documentation
+for a more comprehensive example.
 
 :::warning
 If you are deploying CloudNativePG on GKE and get an error (`... failed to
@@ -108,7 +109,7 @@ is `cnpg-cloudnative-pg`.
 
 :::note
 With Helm you can customize the name of the deployment via the
-`fullnameOverride` field in the [*"values.yaml"* file](https://helm.sh/docs/chart_template_guide/values_files/).
+`fullnameOverride` field in the [_"values.yaml"_ file](https://helm.sh/docs/chart_template_guide/values_files/).
 :::
 
 You can get more information using the `describe` command in `kubectl`:
@@ -141,13 +142,13 @@ plane for self-managed Kubernetes installations).
 :::info "Operator configuration"
 You can change the default behavior of the operator by overriding
 some default options. For more information, please refer to the
-["Operator configuration"](operator_conf.md) section.
+["Operator configuration"](operator_conf.mdx) section.
 :::
 
 ## Upgrades
 
 :::important
-Please carefully read the [release notes](release_notes.md)
+Please carefully read the [release notes](release_notes.mdx)
 before performing an upgrade as some versions might require
 extra steps.
 :::
@@ -162,7 +163,6 @@ by applying the manifest of the newer version for plain Kubernetes
 installations, or using the native package manager of the used distribution
 (please follow the instructions in the above sections).
 
-
 The second step is automatically triggered after updating the controller. By
 default, this initiates a rolling update of every deployed PostgreSQL cluster,
 upgrading one instance at a time to use the new instance manager. The rolling
@@ -172,7 +172,7 @@ the switchover automatically. If set to `supervised`, the user must manually
 promote the new primary instance using the `cnpg` plugin for `kubectl`.
 
 :::info "Rolling updates"
-This process is discussed in-depth on the [Rolling Updates](rolling_update.md) page.
+This process is discussed in-depth on the [Rolling Updates](rolling_update.mdx) page.
 :::
 
 :::important
@@ -193,7 +193,7 @@ feature, which is disabled by default, is described in detail below.
 
 By default, all PostgreSQL clusters are rolled out simultaneously, which may
 lead to a spike in resource usage, especially when managing multiple clusters.
-CloudNativePG provides two configuration options at the [operator level](operator_conf.md)
+CloudNativePG provides two configuration options at the [operator level](operator_conf.mdx)
 that allow you to introduce delays between cluster roll-outs or even between
 instances within the same cluster, helping to distribute resource usage over
 time:
@@ -218,7 +218,7 @@ Internally, each instance manager in CloudNativePG supports the injection of a
 new executable that replaces the existing one after successfully completing an
 integrity verification phase and gracefully terminating all internal processes.
 Upon restarting with the new binary, the instance manager seamlessly adopts the
-already running *postmaster*.
+already running _postmaster_.
 
 As a result, the PostgreSQL process is unaffected by the update, refraining
 from the need to perform a switchover. The other side of the coin, is that
@@ -226,7 +226,7 @@ the Pod is changed after the start, breaking the pure concept of immutability.
 
 You can enable this feature by setting the `ENABLE_INSTANCE_MANAGER_INPLACE_UPDATES`
 environment variable to `'true'` in the
-[operator configuration](operator_conf.md#available-options).
+[operator configuration](operator_conf.mdx#available-options).
 
 The in-place upgrade process will not change the init container image inside the
 Pods. Therefore, the Pod definition will not reflect the current version of the
@@ -248,7 +248,7 @@ least monthly. If you are unable to apply updates as each version becomes
 available, we recommend upgrading through each version in sequential order to
 come current periodically and not skipping versions.
 
-The [release notes](release_notes.md) page contains a detailed list of the
+The [release notes](release_notes.mdx) page contains a detailed list of the
 changes introduced in every released version of CloudNativePG,
 and it must be read before upgrading to a newer version of the software.
 
@@ -260,20 +260,19 @@ When versions are not directly upgradable, the old version needs to be
 removed before installing the new one. This won't affect user data but
 only the operator itself.
 
-
 ### Upgrading to 1.26 from a previous minor version
 
 :::important
 We strongly recommend that all CloudNativePG users upgrade to version
-    1.26.1, or at a minimum, to the latest stable version of your current minor
-    release (for example, 1.25.x).
+1.26.1, or at a minimum, to the latest stable version of your current minor
+release (for example, 1.25.x).
 
 :::warning
 Due to changes in the startup probe for the manager component
-    ([#6623](https://github.com/cloudnative-pg/cloudnative-pg/pull/6623)),
-    upgrading the operator will trigger a restart of your PostgreSQL clusters,
-    even if in-place updates are enabled (`ENABLE_INSTANCE_MANAGER_INPLACE_UPDATES=true`).
-    Your applications will need to reconnect to PostgreSQL after the upgrade.
+([#6623](https://github.com/cloudnative-pg/cloudnative-pg/pull/6623)),
+upgrading the operator will trigger a restart of your PostgreSQL clusters,
+even if in-place updates are enabled (`ENABLE_INSTANCE_MANAGER_INPLACE_UPDATES=true`).
+Your applications will need to reconnect to PostgreSQL after the upgrade.
 
 #### Deprecation of backup metrics and fields in the `Cluster` `.status`
 
@@ -296,9 +295,9 @@ The following Prometheus metrics are also deprecated:
 
 :::warning
 If you have migrated to a plugin-based backup and recovery solution such as
-    Barman Cloud, these fields and metrics are no longer synchronized and will
-    not be updated. Users still relying on the in-core support for Barman Cloud
-    and volume snapshots can continue to use these fields for the time being.
+Barman Cloud, these fields and metrics are no longer synchronized and will
+not be updated. Users still relying on the in-core support for Barman Cloud
+and volume snapshots can continue to use these fields for the time being.
 
 Under the new plugin-based approach, multiple backup methods can operate
 simultaneously, each with its own timeline for backup and recovery. For
@@ -317,7 +316,7 @@ and operational awareness.
 #### Declarative Hibernation in the `cnpg` plugin
 
 In this release, the `cnpg` plugin for `kubectl` transitions from an imperative
-to a [declarative approach for cluster hibernation](declarative_hibernation.md).
+to a [declarative approach for cluster hibernation](declarative_hibernation.mdx).
 The `hibernate on` and `hibernate off` commands are now convenient shortcuts
 that apply declarative changes to enable or disable hibernation.
 The `hibernate status` command has been removed, as its purpose is now
@@ -327,10 +326,10 @@ fulfilled by the standard `status` command.
 
 :::warning
 Every time you are upgrading to a higher minor release, make sure you
-    go through the release notes and upgrade instructions of all the
-    intermediate minor releases. For example, if you want to move
-    from 1.23.x to 1.25, make sure you go through the release notes
-    and upgrade instructions for 1.24 and 1.25.
+go through the release notes and upgrade instructions of all the
+intermediate minor releases. For example, if you want to move
+from 1.23.x to 1.25, make sure you go through the release notes
+and upgrade instructions for 1.24 and 1.25.
 
 No changes to existing 1.24 cluster configurations are required when upgrading
 to 1.25.
@@ -375,5 +374,4 @@ distributed PostgreSQL setup. Ensure the following steps are taken:
   previously set to `true` or `false`, should now be unset (default).
 
 For more information, please refer to
-the ["Distributed Topology" section for replica clusters](replica_cluster.md#distributed-topology).
-
+the ["Distributed Topology" section for replica clusters](replica_cluster.mdx#distributed-topology).

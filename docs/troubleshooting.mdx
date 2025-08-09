@@ -1,4 +1,5 @@
 ﻿# Troubleshooting
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 In this page, you can find some basic information on how to troubleshoot
@@ -21,7 +22,7 @@ Make sure you know:
 
 - the Kubernetes distribution and version you are using
 - the specifications of the nodes where PostgreSQL is running
-- as much as you can about the actual [storage](storage.md), including storage
+- as much as you can about the actual [storage](storage.mdx), including storage
   class and benchmarks you have done before going into production.
 - which relevant Kubernetes applications you are using in your cluster (i.e.
   Prometheus, Grafana, Istio, Certmanager, ...)
@@ -34,27 +35,27 @@ Make sure you know:
 On top of the mandatory `kubectl` utility, for troubleshooting, we recommend the
 following plugins/utilities to be available in your system:
 
-- [`cnpg` plugin](kubectl-plugin.md) for `kubectl`
+- [`cnpg` plugin](kubectl-plugin.mdx) for `kubectl`
 - [`jq`](https://stedolan.github.io/jq/), a lightweight and flexible command-line JSON processor
 - [`grep`](https://www.gnu.org/software/grep/), searches one or more input files
   for lines containing a match to a specified pattern. It is already available in most \*nix distros.
   If you are on Windows OS, you can use [`findstr`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/findstr) as an alternative to `grep` or directly use [`wsl`](https://docs.microsoft.com/en-us/windows/wsl/)
-  and install your preferred *nix distro and use the tools mentioned above.
+  and install your preferred \*nix distro and use the tools mentioned above.
 
 ## First steps
 
 To quickly get an overview of the cluster or installation, the `kubectl` plugin
 is the primary tool to use:
 
-1. the [status subcommand](kubectl-plugin.md#status) provides an overview of a
-  cluster
-2. the [report subcommand](kubectl-plugin.md#report) provides the manifests
-  for clusters and the operator deployment. It can also include logs using
-  the `--logs` option.
-  The report generated via the plugin will include the full cluster manifest.
+1. the [status subcommand](kubectl-plugin.mdx#status) provides an overview of a
+   cluster
+2. the [report subcommand](kubectl-plugin.mdx#report) provides the manifests
+   for clusters and the operator deployment. It can also include logs using
+   the `--logs` option.
+   The report generated via the plugin will include the full cluster manifest.
 
 The plugin can be installed on air-gapped systems via packages.
-Please refer to the [plugin document](kubectl-plugin.md) for complete instructions.
+Please refer to the [plugin document](kubectl-plugin.mdx) for complete instructions.
 
 ## Are there backups?
 
@@ -127,7 +128,7 @@ The above steps might be integrated into the `cnpg` plugin at some stage in the 
 ## Logs
 
 All resources created and managed by CloudNativePG log to standard output in
-accordance with Kubernetes conventions, using [JSON format](logging.md).
+accordance with Kubernetes conventions, using [JSON format](logging.mdx).
 
 While logs are typically processed at the infrastructure level and include
 those from CloudNativePG, accessing logs directly from the command line
@@ -136,7 +137,7 @@ for doing so:
 
 - Use the `kubectl logs` command to retrieve logs from a specific resource, and
   apply `jq` for better readability.
-- Use the [`kubectl cnpg logs` command](kubectl-plugin.md#logs) for
+- Use the [`kubectl cnpg logs` command](kubectl-plugin.mdx#logs) for
   CloudNativePG-specific logging.
 - Leverage specialized open-source tools like
   [stern](https://github.com/stern/stern), which can aggregate logs from
@@ -153,7 +154,7 @@ resources when troubleshooting CloudNativePG.
 
 By default, the CloudNativePG operator is installed in the
 `cnpg-system` namespace in Kubernetes as a `Deployment`
-(see the ["Details about the deployment" section](installation_upgrade.md#details-about-the-deployment)
+(see the ["Details about the deployment" section](installation_upgrade.mdx#details-about-the-deployment)
 for details).
 
 You can get a list of the operator pods by running:
@@ -257,7 +258,7 @@ NAME        AGE        INSTANCES   READY   STATUS                     PRIMARY
 ```
 
 The above example reports a healthy PostgreSQL cluster of 3 instances, all in
-*ready* state, and with `<CLUSTER>-1` being the primary.
+_ready_ state, and with `<CLUSTER>-1` being the primary.
 
 In case of unhealthy conditions, you can discover more by getting the manifest
 of the `Cluster` resource:
@@ -411,6 +412,7 @@ Get all logs from PostgreSQL process from a specific pod:
 kubectl logs -n <NAMESPACE> <CLUSTER>-<N> | \
   jq -r '. | select(.logger == "postgres") | select(.msg != "record") | .msg'
 ```
+
 Output:
 
 ```shell
@@ -476,13 +478,13 @@ kubectl get pod -l cnpg.io/cluster=<CLUSTER> \
 ```
 
 The latter is important to understand where your pods are distributed - very
-useful if you are using [affinity/anti-affinity rules and/or tolerations](scheduling.md).
+useful if you are using [affinity/anti-affinity rules and/or tolerations](scheduling.mdx).
 
 ## Conditions
 
 Like many native kubernetes
-objects [like here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions), 
-Cluster exposes `status.conditions` as well. This allows one to 'wait' for a particular 
+objects [like here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions),
+Cluster exposes `status.conditions` as well. This allows one to 'wait' for a particular
 event to occur instead of relying on the overall cluster health state. Available conditions as of now are:
 
 - LastBackupSucceeded
@@ -502,19 +504,23 @@ the cluster to be created.
 ### How to wait for a particular condition
 
 - Backup:
+
 ```bash
 $ kubectl wait --for=condition=LastBackupSucceeded cluster/<CLUSTER-NAME> -n <NAMESPACE>
 ```
 
 - ContinuousArchiving:
+
 ```bash
 $ kubectl wait --for=condition=ContinuousArchiving cluster/<CLUSTER-NAME> -n <NAMESPACE>
 ```
 
 - Ready (Cluster is ready or not):
+
 ```bash
 $ kubectl wait --for=condition=Ready cluster/<CLUSTER-NAME> -n <NAMESPACE>
 ```
+
 Below is a snippet of a `cluster.status` that contains a failing condition.
 
 ```bash
@@ -546,7 +552,7 @@ $ kubectl get cluster/<cluster-name> -o yaml
 ## Networking
 
 CloudNativePG requires basic networking and connectivity in place.
-You can find more information in the [networking](networking.md) section.
+You can find more information in the [networking](networking.mdx) section.
 
 If installing CloudNativePG in an existing environment, there might be
 network policies in place, or other network configuration made specifically
@@ -555,15 +561,15 @@ between the operator and the cluster pods and/or the between the pods.
 
 You can look for existing network policies with the following command:
 
-``` sh
+```sh
 kubectl get networkpolicies
 ```
 
 There might be several network policies set up by the Kubernetes network
 administrator.
 
-``` sh
-$ kubectl get networkpolicies                       
+```sh
+$ kubectl get networkpolicies
 NAME                   POD-SELECTOR                      AGE
 allow-prometheus       cnpg.io/cluster=cluster-example   47m
 default-deny-ingress   <none>                            57m
@@ -580,7 +586,7 @@ CloudNativePG allows you to control what to include in the core dump through
 the `cnpg.io/coredumpFilter` annotation.
 
 :::info
-Please refer to ["Labels and annotations"](labels_annotations.md)
+Please refer to ["Labels and annotations"](labels_annotations.mdx)
 for more details on the standard annotations that CloudNativePG provides.
 :::
 
@@ -639,13 +645,12 @@ If you see messages in the logs about the disk being full, you should increase
 the size of the affected PVC. You can do this by editing the PVC and changing
 the `spec.resources.requests.storage` field. After that, you should also update
 the Cluster resource with the new size to apply the same change to all the pods.
-Please look at the ["Volume expansion" section](storage.md#volume-expansion) in the documentation.
+Please look at the ["Volume expansion" section](storage.mdx#volume-expansion) in the documentation.
 
 If the space for WAL segments is exhausted, the pod will be crash-looping and
 the cluster status will report `Not enough disk space`. Increasing the size in
 the PVC and then in the Cluster resource will solve the issue. See also
-the ["Disk Full Failure" section](instance_manager.md#disk-full-failure)
-
+the ["Disk Full Failure" section](instance_manager.mdx#disk-full-failure)
 
 ### Pods are stuck in `Pending` state
 
@@ -678,7 +683,7 @@ reasons (think of when a Kubernetes nodes is drained). In case your cluster
 does not have backup configured, when replicas come back up, they might
 require a WAL file that is not present anymore on the primary (having been
 already recycled according to the WAL management policies as mentioned in
-["The `postgresql` section"](postgresql_conf.md#the-postgresql-section)), and
+["The `postgresql` section"](postgresql_conf.mdx#the-postgresql-section)), and
 fall out of synchronization.
 
 Similarly, when `pg_rewind` might require a WAL file that is not present
@@ -706,7 +711,7 @@ This has been found to be related to the next issue
 [on connectivity](#networking-is-impaired-by-installed-network-policies).
 Networking issues are reflected in the status column as follows:
 
-``` text
+```text
 Instance Status Extraction Error: HTTP communication issue
 ```
 
@@ -718,15 +723,15 @@ could prevent some of the required connectivity.
 A tell-tale sign that connectivity is impaired is the presence in the operator
 logs of messages like:
 
-``` text
+```text
 "Cannot extract Pod status", […snipped…] "Get \"http://<pod IP>:8000/pg/status\": dial tcp <pod IP>:8000: i/o timeout"
 ```
 
 You should list the network policies, and look for any policies restricting
 connectivity.
 
-``` sh
-$ kubectl get networkpolicies                       
+```sh
+$ kubectl get networkpolicies
 NAME                   POD-SELECTOR                      AGE
 allow-prometheus       cnpg.io/cluster=cluster-example   47m
 default-deny-ingress   <none>                            57m
@@ -735,7 +740,7 @@ default-deny-ingress   <none>                            57m
 For example, in the listing above, `default-deny-ingress` seems a likely culprit.
 You can drill into it:
 
-``` sh
+```sh
 $ kubectl get networkpolicies default-deny-ingress -o yaml
 <…snipped…>
 spec:
@@ -744,7 +749,7 @@ spec:
   - Ingress
 ```
 
-In the [networking page](networking.md) you can find a network policy file
+In the [networking page](networking.mdx) you can find a network policy file
 that you can customize to create a `NetworkPolicy` explicitly allowing the
 operator to connect cross-namespace to cluster pods.
 
@@ -768,16 +773,16 @@ every PostgreSQL pod should have available.
 
 For example:
 
-``` yaml
-  postgresql:
-    parameters:
-      shared_buffers: "128MB"
+```yaml
+postgresql:
+  parameters:
+    shared_buffers: '128MB'
 
-  resources:
-    requests:
-      memory: "512Mi"
-    limits:
-      hugepages-2Mi: "512Mi"
+resources:
+  requests:
+    memory: '512Mi'
+  limits:
+    hugepages-2Mi: '512Mi'
 ```
 
 Please remember that you must have enough hugepages memory available to schedule
@@ -816,8 +821,7 @@ For more details, consult the
 [tcp_syn_retries documentation](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt).
 
 You can work around this issue by setting `STANDBY_TCP_USER_TIMEOUT` in the
-[operator configuration](operator_conf.md#available-options). This will cause
+[operator configuration](operator_conf.mdx#available-options). This will cause
 the standby instances to close the TCP connection if the initial `SYN` packet
 is not acknowledged within the specified timeout, allowing them to retry the
 connection more quickly.
-

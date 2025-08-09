@@ -12,7 +12,7 @@ on the release branch in GitHub.
 
 :::warning
 This is expected to be the last release in the 1.20.X series.
-    Users are encouraged to update to a newer minor version soon.
+Users are encouraged to update to a newer minor version soon.
 
 Enhancements:
 
@@ -34,7 +34,7 @@ Fixes:
   `initdb` bootstrap method, by disabling the durability settings in the PostgreSQL
   instance for the duration of the import process (#3743)
 - Avoid pod restart due to erroneous resource quantity comparisons, e.g. "1 !=
-  1000m"  (#3706)
+  1000m" (#3706)
 - Properly escape reserved characters in `pgpass` connection fields (#3713)
 - Prevent systematic rollout of pods due to considering zero and nil different
   values in `.spec.projectedVolumeTemplate.sources` (#3647)
@@ -64,9 +64,9 @@ Enhancements:
 - Enhancement of the `cnpg status` plugin command, providing information about
   managed roles, including alerts (#3310).
 - Connection pooler:
-    - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
-    - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
-      pooler deployment, differentiating them from instance pods (#3396).
+  - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
+  - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
+    pooler deployment, differentiating them from instance pods (#3396).
 
 Fixes:
 
@@ -81,11 +81,11 @@ Fixes:
 - Disabling of wal_sender_timeout when joining through pg_basebackup (#3586)
 - Reloading of secrets used by external clusters (#3565)
 - Connection pooler:
-    - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
-    - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
-    - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
-    - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
-    - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
+  - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
+  - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
+  - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
+  - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
+  - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
 
 Changes:
 
@@ -190,14 +190,13 @@ Fixes:
 - Fix backup failure due to missing RBAC `resourceNames` on the `Role` object
   (#2956)
 - Observability:
-
-    - Add TCP port label to default `pg_stat_replication` metric (#2961)
-    - Fix the `pg_wal_stat` default metric for Prometheus (#2569)
-    - Improve the `pg_replication` default metric for Prometheus (#2744 and
-      #2750)
-    - Use `alertInstanceLabelFilter` instead of `alertName` in the provided
-      Grafana dashboard
-    - Enforce `standard_conforming_strings` in metric collection (#2888)
+  - Add TCP port label to default `pg_stat_replication` metric (#2961)
+  - Fix the `pg_wal_stat` default metric for Prometheus (#2569)
+  - Improve the `pg_replication` default metric for Prometheus (#2744 and
+    #2750)
+  - Use `alertInstanceLabelFilter` instead of `alertName` in the provided
+    Grafana dashboard
+  - Enforce `standard_conforming_strings` in metric collection (#2888)
 
 Changes:
 
@@ -218,7 +217,6 @@ Technical enhancements:
 - Replace `k8s-api-docgen` with `gen-crd-api-reference-docs` to automatically
   build the API reference documentation (#2606)
 
-
 ## Version 1.20.2
 
 **Release date:** July 27, 2023
@@ -231,8 +229,8 @@ Enhancements:
   make scheduling decisions (#2043)
 - Add a metric and status field to monitor node usage by a CloudNativePG cluster (#2257)
 - Various enhancements to the documentation:
-    - Add troubleshooting instructions relating to hugepages (#1390)
-    - Extend the FAQs page (#2344)
+  - Add troubleshooting instructions relating to hugepages (#1390)
+  - Extend the FAQs page (#2344)
 
 Technical enhancements:
 
@@ -284,7 +282,7 @@ Technical enhancements:
 
 - Updated k8s kind tested versions (#2054)
 - Declarative roles should ignore passwords if not set, easing management of
-  previously existing roles  (#2029)
+  previously existing roles (#2029)
 - Use separate transactions to reconcile role credentials. Before this patch,
   the operator would revert the synchronization of all roles if one failed
   (#2004)
@@ -306,18 +304,18 @@ Fixes:
 **Release date:** April 27, 2023
 
 !!! Important "Important changes from previous versions"
-    CloudNativePG 1.20 introduces some changes to the default behavior of a
-    few features for newly created `Cluster` resources, compared to previous
-    versions of the operator. The goal of these changes is to improve the
-    resilience of a Postgres cluster out of the box through convention over
-    configuration. For clusters with one or more replicas:
-    
+CloudNativePG 1.20 introduces some changes to the default behavior of a
+few features for newly created `Cluster` resources, compared to previous
+versions of the operator. The goal of these changes is to improve the
+resilience of a Postgres cluster out of the box through convention over
+configuration. For clusters with one or more replicas:
+
       - Backup from standby is now enabled by default, unless `target` is
         explicitly set to `primary`
       - Restart of the primary is now the default method to complete the
         unsupervised rolling update procedure (`primaryUpdateMethod`
         defaults to `restart`, unless explicitly set to `switchover`)
-    
+
     For further information, please refer to the "Installation and upgrades" section.
 
 Features:

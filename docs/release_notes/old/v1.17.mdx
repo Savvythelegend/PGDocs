@@ -11,8 +11,8 @@ on the release branch in GitHub.
 **Release date:** March 20, 2023
 
 :::warning
-This is expected to be the last release in the 1.17.X series. 
-    Users are encouraged to update to a newer minor version soon.
+This is expected to be the last release in the 1.17.X series.
+Users are encouraged to update to a newer minor version soon.
 
 Enhancements:
 
@@ -101,7 +101,7 @@ Fixes:
 
 - Ensure PGDATA permissions on bootstrap are properly set to 750 (#1164)
 - Ensure the PVC containing WALs is deleted when scaling down the cluster
-(#1135)
+  (#1135)
 - Ensure that we create secrets and services only when not found (#1145)
 - Respect configured pg-wal when restoring (#1216)
 - Filter out replicas from nodeToClusters map (#1194)
@@ -149,20 +149,20 @@ Fixes:
 - Correct YAML key names for `barmanObjectStore` in documentation (#877)
 - Fix `krew` release (#866)
 
-##  Version 1.17.1
+## Version 1.17.1
 
 **Release date:** Oct 6, 2022
 
 Enhancements:
 
--  Introduce `leaseDuration` and `renewDeadline` parameters in the controller
-   manager to enhance configuration of the leader election in operator
-   deployments (#759)
--  Improve the mechanism that checks that the backup object store is empty
-   before archiving a WAL file for the first time: a new file called
-   `.check-empty-wal-archive` is placed in the `PGDATA` immediately after
-   the cluster is bootstrapped and it is then removed after the first WAL
-   file is successfully archived
+- Introduce `leaseDuration` and `renewDeadline` parameters in the controller
+  manager to enhance configuration of the leader election in operator
+  deployments (#759)
+- Improve the mechanism that checks that the backup object store is empty
+  before archiving a WAL file for the first time: a new file called
+  `.check-empty-wal-archive` is placed in the `PGDATA` immediately after
+  the cluster is bootstrapped and it is then removed after the first WAL
+  file is successfully archived
 
 Security:
 
@@ -174,11 +174,11 @@ Fixes:
 
 - Drop any active connection on a standby after it is promoted to primary (#737)
 - Honor `MAPPEDMETRIC` and `DURATION` metric types conversion in the native
-  Prometheus exporter  (#765)
+  Prometheus exporter (#765)
 - Ensure that timestamps that are specified with microsecond precision using the
   PostgreSQL format are correctly parsed (#741)
 
-##  Version 1.17.0
+## Version 1.17.0
 
 **Release date:** Sep 6, 2022 (minor release)
 
@@ -188,7 +188,7 @@ Features:
   (WAL) and database data files onto different disks, potentially leading to
   better performance on high write systems by easing I/O load on the data
   directory. This option is controlled with the introduction of the optional
-  `walStorage`	section to separate WAL files (`pg_wal`) in a dedicated volume,
+  `walStorage` section to separate WAL files (`pg_wal`) in a dedicated volume,
   separate from the `PGDATA` defined in the main and mandatory `storage` section
   (#513). Current limitations: `walStorage` can only be set at cluster creation
   and cannot be added or removed when the cluster is up and running.
@@ -214,5 +214,3 @@ Fixes:
   operator (#660)
 - Prevent a panic from happening when invoking `GetAllAccessibleDatabases`
   (#641)
-
-

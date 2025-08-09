@@ -12,8 +12,8 @@ on the release branch in GitHub.
 
 :::warning
 This is the final release in the 1.23.x series.
-    Users are strongly encouraged to upgrade to a newer minor version, as 1.23
-    is no longer supported.
+Users are strongly encouraged to upgrade to a newer minor version, as 1.23
+is no longer supported.
 
 ### Enhancements
 
@@ -24,7 +24,7 @@ This is the final release in the 1.23.x series.
 - Improved validation for the `spec.schedule` field in ScheduledBackups,
   raising warnings for potential misconfigurations. (#5396)
 - `cnpg` plugin:
-    - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
+  - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
 
 ### Bug Fixes
 
@@ -54,8 +54,8 @@ This is the final release in the 1.23.x series.
 - Ensure proper quoting of the inRoles field in SQL statements to prevent
   syntax errors in generated SQL during role management. (#6346)
 - `cnpg` plugin:
-    - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
-    - Avoid displaying physical backups block when empty with `status` command. (#5998)
+  - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
+  - Avoid displaying physical backups block when empty with `status` command. (#5998)
 
 ## Version 1.23.5
 
@@ -71,14 +71,14 @@ This is the final release in the 1.23.x series.
   PostgreSQL. This setting defaults to `on`, in line with PostgreSQL's
   recommendations (#5516).
 - Plugin:
-    - Add the `logs pretty` command in the `cnpg` plugin to read a log stream
-      from standard input and output a human-readable format, with options to
-      filter log entries (#5770)
-    - Enhance the `status` command by allowing multiple `-v` options to
-      increase verbosity for more detailed output (#5765).
-    - Add support for specifying a custom Docker image using the `--image`
-      flag in the `pgadmin4` plugin command, giving users control over the
-      Docker image used for pgAdmin4 deployments (#5515).
+  - Add the `logs pretty` command in the `cnpg` plugin to read a log stream
+    from standard input and output a human-readable format, with options to
+    filter log entries (#5770)
+  - Enhance the `status` command by allowing multiple `-v` options to
+    increase verbosity for more detailed output (#5765).
+  - Add support for specifying a custom Docker image using the `--image`
+    flag in the `pgadmin4` plugin command, giving users control over the
+    Docker image used for pgAdmin4 deployments (#5515).
 
 ### Fixes:
 
@@ -94,10 +94,10 @@ This is the final release in the 1.23.x series.
 - Correctly set the `TMPDIR` and `PSQL_HISTORY` environment variables for pods
   and jobs, improving temporary file and history management (#5503).
 - Plugin:
-    - Resolve a race condition in the `logs cluster` command (#5775).
-    - Display the `potential` sync status in the `status` plugin (#5533).
-    - Fix the issue where pods deployed by the `pgadmin4` command didn’t have
-      a writable home directory (#5800).
+  - Resolve a race condition in the `logs cluster` command (#5775).
+  - Display the `potential` sync status in the `status` plugin (#5533).
+  - Fix the issue where pods deployed by the `pgadmin4` command didn’t have
+    a writable home directory (#5800).
 
 ### Supported versions
 
@@ -110,11 +110,11 @@ This is the final release in the 1.23.x series.
 ### Enhancements:
 
 - `cnpg` plugin updates:
-    - Enhance the `install generate` command by adding a `--control-plane` option,
-      allowing deployment of the operator on control-plane nodes by setting
-      node affinity and tolerations (#5271).
-    - Enhance the `destroy` command to delete also any job related to the target
-      instance (#5298).
+  - Enhance the `install generate` command by adding a `--control-plane` option,
+    allowing deployment of the operator on control-plane nodes by setting
+    node affinity and tolerations (#5271).
+  - Enhance the `destroy` command to delete also any job related to the target
+    instance (#5298).
 
 ### Fixes:
 
@@ -191,11 +191,10 @@ This is the final release in the 1.23.x series.
   `.spec.livenessProbeTimeout` option (#4719)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Enhanced support for ANSI colors in the plugin by adding the `--color`
-      option, which accepts `always`, `never`, and `auto` (default) as values
-      (#4775)
-    - The plugin is now available on Homebrew for macOS users (#4602)
+  - Enhanced support for ANSI colors in the plugin by adding the `--color`
+    option, which accepts `always`, `never`, and `auto` (default) as values
+    (#4775)
+  - The plugin is now available on Homebrew for macOS users (#4602)
 
 ### Fixes:
 
@@ -237,8 +236,7 @@ This is the final release in the 1.23.x series.
   incorrectly routed to the normal log stream (#4394)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
+  - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
 
 ### Changes
 
@@ -259,9 +257,9 @@ This is the final release in the 1.23.x series.
 **Release date:** Apr 24, 2024
 
 !!! Important "Important changes to Community Supported Versions"
-    We've updated our support policy to streamline our focus on one supported
-    minor release at a time, rather than two. Additionally, we've extended the
-    supplementary support period for the previous minor release to 3 months.
+We've updated our support policy to streamline our focus on one supported
+minor release at a time, rather than two. Additionally, we've extended the
+supplementary support period for the previous minor release to 3 months.
 
 ### Features:
 
@@ -307,12 +305,12 @@ This is the final release in the 1.23.x series.
 - Cleanup `PGDATA` in case of failure of the restore job (#4151)
 - Reload certificates on configuration update (#3705)
 - `cnpg` plugin for `kubectl`:
-    - Improve the arguments handling of `destroy`, `fencing`, and `promote`
-      plugin commands (#4280)
-    - Correctly handle the percentage of the backup progress in `cnpg status`
-      (#4131)
-    - Gracefully handle databases with no sequences in `sync-sequences` command
-      (#4346)
+  - Improve the arguments handling of `destroy`, `fencing`, and `promote`
+    plugin commands (#4280)
+  - Correctly handle the percentage of the backup progress in `cnpg status`
+    (#4131)
+  - Gracefully handle databases with no sequences in `sync-sequences` command
+    (#4346)
 
 ### Changes:
 
@@ -320,4 +318,3 @@ This is the final release in the 1.23.x series.
   (#4201)
 - The Grafana dashboard now resides at
   https://github.com/cloudnative-pg/grafana-dashboards (#4154)
-

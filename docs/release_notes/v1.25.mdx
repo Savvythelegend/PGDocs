@@ -1,4 +1,5 @@
 ﻿# Release notes for CloudNativePG 1.25
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 History of user-visible changes in the 1.25 minor release of CloudNativePG.
@@ -11,7 +12,7 @@ on the release branch in GitHub.
 
 **Release date:** Jul 25, 2025
 
-*In memory of [DJ Walker-Morgan](https://www.linkedin.com/in/codepope/).*
+_In memory of [DJ Walker-Morgan](https://www.linkedin.com/in/codepope/)._
 
 ### Changes
 
@@ -101,10 +102,9 @@ on the release branch in GitHub.
 - Added support for collecting `pg_stat_wal` metrics in PostgreSQL 18. (#7005)
 
 - Added support for LZ4, XZ, and Zstandard compression methods when archiving
-  WAL files via Barman Cloud (*deprecated*). (#7151)
+  WAL files via Barman Cloud (_deprecated_). (#7151)
 
 - CloudNativePG Interface (CNPG-I):
-
   - A plugin can now trigger instance rollouts by implementing the `EVALUATE`
     verb, ensuring that plugin-induced changes are properly reconciled. (#7126) <!-- no 1.24 1.22 -->
 
@@ -154,7 +154,6 @@ on the release branch in GitHub.
   from the CRD to the webhook to avoid UI issues with OLM. (#7600) <!-- no 1.24 1.22 -->
 
 - CloudNativePG Interface (CNPG-I):
-
   - Implemented automatic reloading of TLS certificates for plugins when they
     change. (#7029) <!-- no 1.22 -->
 
@@ -166,7 +165,6 @@ on the release branch in GitHub.
     executions (#7496). <!-- no 1.22 -->
 
 - `cnpg` plugin:
-
   - Increased the buffer size in the `logs pretty` command to better handle
     larger log output (#7281). <!-- no 1.24 1.22 -->
 
@@ -246,18 +244,18 @@ on the release branch in GitHub.
 - Improved PostgreSQL version detection by using a more precise check of the
   data directory. (#6659)
 - Volume Snapshot Backups:
-    - Fixed an issue where unused backup connections were not properly cleaned
-      up. (#6882)
-    - Ensured the instance manager closes stale PostgreSQL connections left by
-      failed volume snapshot backups. (#6879)
-    - Prevented the operator from starting a new volume snapshot backup while
-      another is already in progress. (#6890)
+  - Fixed an issue where unused backup connections were not properly cleaned
+    up. (#6882)
+  - Ensured the instance manager closes stale PostgreSQL connections left by
+    failed volume snapshot backups. (#6879)
+  - Prevented the operator from starting a new volume snapshot backup while
+    another is already in progress. (#6890)
 - `cnpg` plugin:
-    - Restored functionality of the `promote` plugin command. (#6476)
-    - Enhanced `kubectl cnpg report --logs <cluster>` to collect logs from all
-      containers, including sidecars. (#6636)
-    - Ensured `pgbench` jobs can run when a `Cluster` uses an `ImageCatalog`.
-      (#6868)
+  - Restored functionality of the `promote` plugin command. (#6476)
+  - Enhanced `kubectl cnpg report --logs <cluster>` to collect logs from all
+    containers, including sidecars. (#6636)
+  - Ensured `pgbench` jobs can run when a `Cluster` uses an `ImageCatalog`.
+    (#6868)
 
 ### Technical Enhancements
 
@@ -306,8 +304,8 @@ on the release branch in GitHub.
 - Improved validation for the `spec.schedule` field in ScheduledBackups,
   raising warnings for potential misconfigurations. (#5396)
 - `cnpg` plugin:
-    - Enhance the `backup` command to support plugins. (#6045)
-    - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
+  - Enhance the `backup` command to support plugins. (#6045)
+  - Honor the `User-Agent` header in HTTP requests with the API server. (#6153)
 
 ### Bug Fixes
 
@@ -337,13 +335,13 @@ on the release branch in GitHub.
 - Ensure proper quoting of the inRoles field in SQL statements to prevent
   syntax errors in generated SQL during role management. (#6346)
 - `cnpg` plugin:
-    - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
-    - Avoid displaying physical backups block when empty with `status` command. (#5998)
+  - Ensure the `kubectl` context is properly passed in the `psql` command. (#6257)
+  - Avoid displaying physical backups block when empty with `status` command. (#5998)
 
 ### Supported Versions
 
 - **Kubernetes**: 1.32, 1.31, 1.30, and 1.29
 - **PostgreSQL**: 17, 16, 15, 14, and 13
-    - Default image: PostgreSQL 17.2
-    - Officially dropped support for PostgreSQL 12
-    - PostgreSQL 13 support ends on November 12, 2025
+  - Default image: PostgreSQL 17.2
+  - Officially dropped support for PostgreSQL 12
+  - PostgreSQL 13 support ends on November 12, 2025

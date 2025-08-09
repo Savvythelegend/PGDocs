@@ -74,7 +74,7 @@ kind create cluster --name pg
 Now that you have a Kubernetes installation up and running
 on your laptop, you can proceed with CloudNativePG installation.
 
-Please refer to the ["Installation"](installation_upgrade.md) section and then proceed
+Please refer to the ["Installation"](installation_upgrade.mdx) section and then proceed
 with the deployment of a PostgreSQL cluster.
 
 ## Part 3: Deploy a PostgreSQL cluster
@@ -100,7 +100,7 @@ spec:
 
 :::note "There's more"
 For more detailed information about the available options, please refer
-to the ["API Reference" section](cloudnative-pg.v1.md).
+to the ["API Reference" section](cloudnative-pg.v1.mdx).
 :::
 
 In order to create the 3-node PostgreSQL cluster, you need to run the following command:
@@ -160,7 +160,7 @@ to the image name, through the `<image>:<tag>@sha256:<digestValue>` format.
 :::note
 "There's more"
 There are some examples cluster configurations bundled with the operator.
-Please refer to the ["Examples" section](samples.md).
+Please refer to the ["Examples" section](samples.mdx).
 :::
 
 ## Part 4: Monitor clusters with Prometheus and Grafana
@@ -193,7 +193,7 @@ If you don't have [Helm](https://helm.sh) installed yet, please follow the
 system.
 
 We need to add the `prometheus-community` helm chart repository, and then
-install the *Kube Prometheus stack* with our sample configuration
+install the _Kube Prometheus stack_ with our sample configuration
 [`kube-stack-config.yaml`](./samples/monitoring/kube-stack-config.yaml).
 
 We can accomplish this with the following commands:
@@ -211,9 +211,9 @@ helm upgrade --install \
 After completion, you will have Prometheus, Grafana, and Alert Manager,
 configured with the `kube-stack-config.yaml` file:
 
-* From the Prometheus installation, you will have the Prometheus Operator
-  watching for **any** `PodMonitor` (see [*monitoring*](monitoring.md)).
-* Alert Manager and Grafana are both enabled.
+- From the Prometheus installation, you will have the Prometheus Operator
+  watching for **any** `PodMonitor` (see [_monitoring_](monitoring.mdx)).
+- Alert Manager and Grafana are both enabled.
 
 :::info
 Refer to the [install](https://helm.sh/docs/helm/helm_install/) documentation.
@@ -278,12 +278,12 @@ kubectl port-forward svc/prometheus-community-kube-prometheus 9090
 Then access the Prometheus console locally at: [`http://localhost:9090/`](http://localhost:9090/)
 
 You should find a series of metrics relating to CloudNativePG clusters.
-Please refer to the [monitoring section](monitoring.md) for more information.
+Please refer to the [monitoring section](monitoring.mdx) for more information.
 
 ![local prometheus](/img/prometheus-local.png)
 
 You can also monitor the CloudNativePG operator by creating a PodMonitor to
-target it. See the relevant section in the [monitoring page](monitoring.md#monitoring-the-operator-with-prometheus).
+target it. See the relevant section in the [monitoring page](monitoring.mdx#monitoring-the-operator-with-prometheus).
 
 You can define some alerts by creating a `prometheusRule`:
 
@@ -300,7 +300,7 @@ NAME                                                       AGE
 cnpg-default-alerts                                        3m27s
 ```
 
-In the Prometheus console, you can click on the *Alerts* menu to see the alerts
+In the Prometheus console, you can click on the _Alerts_ menu to see the alerts
 we just installed.
 
 ### Grafana Dashboard

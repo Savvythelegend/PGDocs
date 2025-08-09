@@ -1,4 +1,5 @@
 ﻿# Appendix A - Backup on volume snapshots
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::important
@@ -23,9 +24,9 @@ definitions: `VolumeSnapshot`, `VolumeSnapshotContent` and
 
 This Kubernetes feature defines a generic interface for:
 
-* the creation of a new volume snapshot, starting from a PVC
-* the deletion of an existing snapshot
-* the creation of a new volume from a snapshot
+- the creation of a new volume snapshot, starting from a PVC
+- the deletion of an existing snapshot
+- the creation of a new volume from a snapshot
 
 Kubernetes delegates the actual implementation to the underlying CSI drivers
 (not all of them support volume snapshots). Normally, storage classes that
@@ -62,14 +63,14 @@ CloudNativePG allows you to configure a given Postgres cluster for Volume
 Snapshot backups through the `backup.volumeSnapshot` stanza.
 
 :::info
-Please refer to [`VolumeSnapshotConfiguration`](../cloudnative-pg.v1.md#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration)
+Please refer to [`VolumeSnapshotConfiguration`](../cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-VolumeSnapshotConfiguration)
 in the API reference for a full list of options.
 :::
 
 A generic example with volume snapshots (assuming that PGDATA and WALs share
 the same storage class) is the following:
 
-``` yaml
+```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -88,7 +89,7 @@ spec:
     # Volume snapshot backups
     volumeSnapshot:
        className: @VOLUME_SNAPSHOT_CLASS_NAME@
-       
+
   plugins:
   - name: barman-cloud.cloudnative-pg.io
     isWALArchiver: true
@@ -98,7 +99,7 @@ spec:
 
 As you can see, the `backup` section contains both the `volumeSnapshot` stanza
 (controlling physical base backups on volume snapshots) and the
-`plugins` one (controlling the [WAL archive](../wal_archiving.md)).
+`plugins` one (controlling the [WAL archive](../wal_archiving.mdx)).
 
 :::info
 Once you have defined the `plugin`, you can decide to use
@@ -123,7 +124,7 @@ a `ScheduledBackup` resource that requests such backups on a periodic basis.
 ## Hot and cold backups
 
 :::warning
-As noted in the [backup document](../backup.md), a cold snapshot explicitly
+As noted in the [backup document](../backup.mdx), a cold snapshot explicitly
 set to target the primary will result in the primary being fenced for
 the duration of the backup, making the cluster read-only during this
 period. For safety, in a cluster already containing fenced instances, a cold
@@ -165,24 +166,24 @@ cold backups by default, all you need to do is add the `online: false` option
 to your manifest, as follows:
 
 ```yaml
-  # ...
-  backup:
-    volumeSnapshot:
-       online: false
-       # ...
+# ...
+backup:
+  volumeSnapshot:
+    online: false
+    # ...
 ```
 
 If you are instead requesting an immediate checkpoint as the default behavior,
 you can add this section:
 
 ```yaml
-  # ...
-  backup:
-    volumeSnapshot:
-       online: true
-       onlineConfiguration:
-         immediateCheckpoint: true
-       # ...
+# ...
+backup:
+  volumeSnapshot:
+    online: true
+    onlineConfiguration:
+      immediateCheckpoint: true
+    # ...
 ```
 
 ### Overriding the default behavior
@@ -213,7 +214,7 @@ kind: ScheduledBackup
 metadata:
   name: snapshot-cluster-cold-backup-example
 spec:
-  schedule: "0 0 0 * * *"
+  schedule: '0 0 0 * * *'
   backupOwnerReference: self
   cluster:
     name: snapshot-cluster
@@ -229,13 +230,13 @@ Such behavior is controlled by the `.spec.backup.volumeSnapshot.snapshotOwnerRef
 option which accepts the following values:
 
 - `none`: no ownership is set, meaning that `VolumeSnapshot` objects persist
-   after the `Backup` and/or the `Cluster` resources are removed
+  after the `Backup` and/or the `Cluster` resources are removed
 - `backup`: the `VolumeSnapshot` object is owned by the `Backup` resource that
-   originated it, and when the backup object is removed, the volume snapshot is
-   also removed
+  originated it, and when the backup object is removed, the volume snapshot is
+  also removed
 - `cluster`: the `VolumeSnapshot` object is owned by the `Cluster` resource that
-   is backed up, and when the Postgres cluster is removed, the volume snapshot is
-   also removed
+  is backed up, and when the Postgres cluster is removed, the volume snapshot is
+  also removed
 
 In case a `VolumeSnapshot` is deleted, the `deletionPolicy` specified in the
 `VolumeSnapshotContent` is evaluated:
@@ -305,9 +306,9 @@ kind: ScheduledBackup
 metadata:
   name: daily-backup-schedule
   annotations:
-    backup.cnpg.io/volumeSnapshotDeadline: "20"
+    backup.cnpg.io/volumeSnapshotDeadline: '20'
 spec:
-  schedule: "0 0 * * *"
+  schedule: '0 0 * * *'
   backupOwnerReference: self
   method: volumeSnapshot
   # other configuration...
@@ -325,9 +326,9 @@ kind: ScheduledBackup
 metadata:
   name: weekly-backup
   annotations:
-    backup.cnpg.io/volumeSnapshotDeadline: "30"
+    backup.cnpg.io/volumeSnapshotDeadline: '30'
 spec:
-  schedule: "0 0 * * 0"  # Weekly backup on Sunday
+  schedule: '0 0 * * 0' # Weekly backup on Sunday
   method: volumeSnapshot
   cluster:
     name: my-postgresql-cluster
@@ -341,7 +342,7 @@ kind: Backup
 metadata:
   name: my-backup
   annotations:
-    backup.cnpg.io/volumeSnapshotDeadline: "15"
+    backup.cnpg.io/volumeSnapshotDeadline: '15'
 spec:
   method: volumeSnapshot
   # other backup configuration...
@@ -359,12 +360,11 @@ If you are interested in testing the example, please read
 for detailed instructions on the installation process for the storage class and the snapshot class.
 :::
 
-
 The following manifest creates a `Cluster` that is ready to be used for volume
 snapshots and that stores the WAL archive in a S3 bucket via IAM role for the
-Service Account (IRSA, see [AWS S3](object_stores.md#aws-s3)):
+Service Account (IRSA, see [AWS S3](object_stores.mdx#aws-s3)):
 
-``` yaml
+```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -409,4 +409,3 @@ spec:
 
 The last resource defines daily volume snapshot backups at midnight, requesting
 one immediately after the cluster is created.
-

@@ -61,7 +61,7 @@ metadata:
   name: default-deny
   namespace: default
 spec:
-  description: "Default deny all ingress traffic to all Pods in this namespace"
+  description: 'Default deny all ingress traffic to all Pods in this namespace'
   endpointSelector: {}
   ingress: []
 ```
@@ -84,7 +84,7 @@ metadata:
   name: cnpg-operator-access
   namespace: default
 spec:
-  description: "Allow CloudNativePG operator access to any pod in the target namespace"
+  description: 'Allow CloudNativePG operator access to any pod in the target namespace'
   endpointSelector: {}
   ingress:
     - fromEndpoints:
@@ -92,9 +92,10 @@ spec:
             io.kubernetes.pod.namespace: cnpg-system
       toPorts:
         - ports:
-            - port: "8000"
+            - port: '8000'
               protocol: TCP
 ```
+
 :::important
 The `cnpg-system` namespace is the default namespace for the operator when
 using the YAML manifests. If the operator was installed using a different
@@ -115,7 +116,7 @@ metadata:
   name: cnpg-cluster-internal-access
   namespace: default
 spec:
-  description: "Allow CloudNativePG operator access and connection between pods in the same namespace"
+  description: 'Allow CloudNativePG operator access and connection between pods in the same namespace'
   endpointSelector: {}
   ingress:
     - fromEndpoints:
@@ -126,9 +127,9 @@ spec:
             cnpg.io/cluster: cluster-example
       toPorts:
         - ports:
-            - port: "8000"
+            - port: '8000'
               protocol: TCP
-            - port: "5432"
+            - port: '5432'
               protocol: TCP
 ```
 
@@ -151,18 +152,18 @@ metadata:
   name: postgres-access-backend-label
   namespace: default
 spec:
-  description: "Allow PostgreSQL access on port 5432 from Pods with role=backend"
+  description: 'Allow PostgreSQL access on port 5432 from Pods with role=backend'
   endpointSelector:
     matchLabels:
       cnpg.io/cluster: cluster-example
   ingress:
     - fromEndpoints:
-       - matchLabels:
+        - matchLabels:
             role: backend
       toPorts:
         - ports:
-          - port: "5432"
-            protocol: TCP
+            - port: '5432'
+              protocol: TCP
 ```
 
 This `CiliumNetworkPolicy` ensures that only Pods labeled with `role=backend`
@@ -180,7 +181,7 @@ metadata:
   name: postgres-access-backend-any-ns
   namespace: default
 spec:
-  description: "Allow PostgreSQL access on port 5432 from Pods with role=backend in any namespace"
+  description: 'Allow PostgreSQL access on port 5432 from Pods with role=backend in any namespace'
   endpointSelector:
     matchLabels:
       cnpg.io/cluster: cluster-example
@@ -194,8 +195,8 @@ spec:
                 operator: Exists
       toPorts:
         - ports:
-          - port: "5432"
-            protocol: TCP
+            - port: '5432'
+              protocol: TCP
 ```
 
 The following example allows ingress traffic to port 5432 of the
@@ -209,7 +210,7 @@ metadata:
   name: postgres-access-backend-namespace
   namespace: default
 spec:
-  description: "Allow PostgreSQL access on port 5432 from any Pods in the backend namespace"
+  description: 'Allow PostgreSQL access on port 5432 from any Pods in the backend namespace'
   endpointSelector:
     matchLabels:
       cnpg.io/cluster: cluster-example
@@ -219,7 +220,7 @@ spec:
             io.kubernetes.pod.namespace: backend
       toPorts:
         - ports:
-            - port: "5432"
+            - port: '5432'
               protocol: TCP
 ```
 
@@ -239,7 +240,7 @@ metadata:
   name: postgres-access-cluster-wide
   namespace: default
 spec:
-  description: "Allow ingress traffic to port 5432 of the cluster-example from any pods within the Kubernetes cluster"
+  description: 'Allow ingress traffic to port 5432 of the cluster-example from any pods within the Kubernetes cluster'
   endpointSelector:
     matchLabels:
       cnpg.io/cluster: cluster-example
@@ -248,7 +249,7 @@ spec:
         - cluster
       toPorts:
         - ports:
-            - port: "5432"
+            - port: '5432'
               protocol: TCP
 ```
 

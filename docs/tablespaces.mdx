@@ -1,4 +1,5 @@
 ﻿# Tablespaces
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 A tablespace is a robust and widely embraced feature in database
@@ -32,8 +33,8 @@ of PostgreSQL. Quoting from the
 
 ## Declarative tablespaces
 
-CloudNativePG provides support for PostgreSQL tablespaces through *declarative
-tablespaces*, operating at two distinct levels:
+CloudNativePG provides support for PostgreSQL tablespaces through _declarative
+tablespaces_, operating at two distinct levels:
 
 - Kubernetes, managing persistent volume claims, identically to how PGDATA and
   WAL volumes are handled
@@ -60,7 +61,7 @@ Using declarative tablespaces is straightforward. You can find a full example in
 
 To use them, use the new `tablespaces` stanza on a new or existing `Cluster` resource:
 
-``` yaml
+```yaml
 spec:
   instances: 3
 
@@ -90,9 +91,9 @@ tablespaces are created on the primary PostgreSQL instance using the `CREATE
 TABLESPACE` command. This process is quick, and you see this reflected in
 Postgres:
 
-``` txt
+```txt
 app=# SELECT oid, spcname FROM pg_tablespace;
-  oid  |      spcname       
+  oid  |      spcname
 -------+--------------------
   1663 | pg_default
   1664 | pg_global
@@ -104,14 +105,14 @@ app=# SELECT oid, spcname FROM pg_tablespace;
 
 You can start using them right away:
 
-``` txt
+```txt
 app=# CREATE TABLE fibonacci(num INTEGER) TABLESPACE tbs1;
 CREATE TABLE
 ```
 
 The cluster status has a section for tablespaces:
 
-``` yaml
+```yaml
 status:
 
   <- snipped ->
@@ -147,7 +148,7 @@ spec:
     size: 10Gi
   tablespaces:
     - name: current
-      storage:        
+      storage:
         size: 100Gi
         storageClass: fastest
     - name: this_year
@@ -170,7 +171,7 @@ You can then take advantage of horizontal table partitioning and create
 the current month's table (for example, facts for December 2023) in the `current`
 tablespace:
 
-``` sql
+```sql
 CREATE TABLE facts_202312 PARTITION OF facts
     FOR VALUES FROM ('2023-12-01') TO ('2024-01-01')
     TABLESPACE current;
@@ -178,13 +179,13 @@ CREATE TABLE facts_202312 PARTITION OF facts
 
 :::important
 This example assumes you're familiar with
-    [PostgreSQL declarative partitioning](https://www.postgresql.org/docs/current/ddl-partitioning.html).
+[PostgreSQL declarative partitioning](https://www.postgresql.org/docs/current/ddl-partitioning.html).
 
 ## Tablespace ownership
 
 By default, unless otherwise specified, tablespaces are owned by the `app`
 application user, as defined in `.spec.bootstrap.initdb.owner`. See
-[Bootstrap a new cluster](bootstrap.md#bootstrap-an-empty-cluster-initdb) for
+[Bootstrap a new cluster](bootstrap.mdx#bootstrap-an-empty-cluster-initdb) for
 details.
 This default behavior works in most microservice database use cases.
 
@@ -192,25 +193,25 @@ You can set the owner of a tablespace in the `owner` stanza, for example
 the `postgres` user, like in the following excerpt:
 
 ```yaml
-  # ...
-  tablespaces:
-    - name: clapton
-      owner:
-        name: postgres
-      storage:
-        size: 1Gi
+# ...
+tablespaces:
+  - name: clapton
+    owner:
+      name: postgres
+    storage:
+      size: 1Gi
 ```
 
 :::important
 If you change the ownership of a tablespace, make sure that you're using
-    an existing role. Otherwise, the status of the cluster reports the
-    issue and stops reconciling tablespaces until fixed. It's your responsibility
-    to monitor the status and the log and to promptly intervene by fixing the issue.
+an existing role. Otherwise, the status of the cluster reports the
+issue and stops reconciling tablespaces until fixed. It's your responsibility
+to monitor the status and the log and to promptly intervene by fixing the issue.
 
 If you define a tablespace with an owner that doesn't exist, CloudNativePG can't
 create the tablespace and reflects this in the cluster status:
 
-``` yaml
+```yaml
 spec:
   instances: 3
 
@@ -249,14 +250,14 @@ tablespace map) both on object stores and volume snapshots.
 
 :::warning
 By default, backups are taken from replica nodes. A backup taken immediately
-    after creating tablespaces in a cluster can result in an
-    incomplete view of the tablespaces from the replica and thus an incomplete
-    backup. The lag will be resolved in a maximum of 5 minutes, with the next
-    reconciliation.
+after creating tablespaces in a cluster can result in an
+incomplete view of the tablespaces from the replica and thus an incomplete
+backup. The lag will be resolved in a maximum of 5 minutes, with the next
+reconciliation.
 
 :::warning
 When you add or remove a tablespace in an existing cluster, recovery
-    from WAL will fail until you take a new base backup.
+from WAL will fail until you take a new base backup.
 
 Once a cluster with tablespaces has a base backup, you can restore a
 new cluster from it. When it comes to the recovery side, it's your
@@ -274,9 +275,8 @@ tablespaces, with the same name. Storage class and size might vary.
 
 For example:
 
-``` yaml
+```yaml
 spec:
-
   # ...
   bootstrap:
     recovery:
@@ -338,19 +338,19 @@ for details.
 
 ## kubectl plugin support
 
-The [kubectl status](kubectl-plugin.md#status) plugin includes a section
+The [kubectl status](kubectl-plugin.mdx#status) plugin includes a section
 dedicated to tablespaces that offers a convenient overview, including
 tablespace status, owner, temporary flag, and any errors:
 
-``` yaml
+```yaml
 [...]
 
 Tablespaces status
 Tablespace          Owner  Status      Temporary  Error
 ----------          -----  ------      ---------  -----
-atablespace         app    reconciled  true       
-another_tablespace  app    reconciled  true       
-tablespacea1        app    reconciled  false 
+atablespace         app    reconciled  true
+another_tablespace  app    reconciled  true
+tablespacea1        app    reconciled  false
 
 Instances status
 [...]
@@ -360,4 +360,3 @@ Instances status
 
 Currently, you can't remove tablespaces from an existing CloudNativePG
 cluster.
-

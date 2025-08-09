@@ -12,7 +12,7 @@ on the release branch in GitHub.
 
 :::warning
 This is expected to be the last release in the 1.21.X series.
-    Users are encouraged to update to a newer minor version soon.
+Users are encouraged to update to a newer minor version soon.
 
 ### Enhancements:
 
@@ -23,11 +23,10 @@ This is expected to be the last release in the 1.21.X series.
   `.spec.livenessProbeTimeout` option (#4719)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Enhanced support for ANSI colors in the plugin by adding the `--color`
-      option, which accepts `always`, `never`, and `auto` (default) as values
-      (#4775)
-    - The plugin is now available on Homebrew for macOS users (#4602)
+  - Enhanced support for ANSI colors in the plugin by adding the `--color`
+    option, which accepts `always`, `never`, and `auto` (default) as values
+    (#4775)
+  - The plugin is now available on Homebrew for macOS users (#4602)
 
 ### Fixes:
 
@@ -69,8 +68,7 @@ This is expected to be the last release in the 1.21.X series.
   incorrectly routed to the normal log stream (#4394)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
+  - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
 
 ### Changes
 
@@ -102,12 +100,12 @@ This is expected to be the last release in the 1.21.X series.
 - Cleanup `PGDATA` in case of failure of the restore job (#4151)
 - Reload certificates on configuration update (#3705)
 - `cnpg` plugin for `kubectl`:
-    - Improve the arguments handling of `destroy`, `fencing`, and `promote`
-      plugin commands (#4280)
-    - Correctly handle the percentage of the backup progress in `cnpg status`
-      (#4131)
-    - Gracefully handle databases with no sequences in `sync-sequences` command
-      (#4346)
+  - Improve the arguments handling of `destroy`, `fencing`, and `promote`
+    plugin commands (#4280)
+  - Correctly handle the percentage of the backup progress in `cnpg status`
+    (#4131)
+  - Gracefully handle databases with no sequences in `sync-sequences` command
+    (#4346)
 
 ### Changes:
 
@@ -188,7 +186,7 @@ This is expected to be the last release in the 1.21.X series.
   `initdb` bootstrap method, by disabling the durability settings in the PostgreSQL
   instance for the duration of the import process (#3743)
 - Avoid pod restart due to erroneous resource quantity comparisons, e.g. "1 !=
-  1000m"  (#3706)
+  1000m" (#3706)
 - Properly escape reserved characters in `pgpass` connection fields (#3713)
 - Prevent systematic rollout of pods due to considering zero and nil different
   values in `.spec.projectedVolumeTemplate.sources` (#3647)
@@ -224,9 +222,9 @@ This is expected to be the last release in the 1.21.X series.
 - Introduction of Red Hat UBI 8 container images for the operator, suitable for
   OLM deployments. <!-- NO 1.20 -->
 - Connection pooler:
-    - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
-    - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
-      pooler deployment, differentiating them from instance pods (#3396).
+  - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
+  - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
+    pooler deployment, differentiating them from instance pods (#3396).
 
 ### Fixes:
 
@@ -241,11 +239,11 @@ This is expected to be the last release in the 1.21.X series.
 - Disabling of wal_sender_timeout when joining through pg_basebackup (#3586)
 - Reloading of secrets used by external clusters (#3565)
 - Connection pooler:
-    - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
-    - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
-    - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
-    - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
-    - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
+  - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
+  - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
+  - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
+  - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
+  - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
 
 ### Changes:
 
@@ -307,11 +305,11 @@ This is expected to be the last release in the 1.21.X series.
 **Release date:** Oct 12, 2023
 
 !!! Important "Important changes from previous versions"
-    This release contains a few changes to the default settings of
-    CloudNativePG with the goal to improve general stability and security through
-    predefined values. If you are upgrading from a previous version, please
-    carefully read the "Important Changes" section below, as well as the
-    upgrade documentation.
+This release contains a few changes to the default settings of
+CloudNativePG with the goal to improve general stability and security through
+predefined values. If you are upgrading from a previous version, please
+carefully read the "Important Changes" section below, as well as the
+upgrade documentation.
 
 ### Features:
 
@@ -323,7 +321,7 @@ This is expected to be the last release in the 1.21.X series.
 
 - **OLM installation method**: introduce support for Operator Lifecycle Manager
   via OperatorHub.io for the latest patch version of the latest minor release
-  through the *stable* channel. Many thanks to EDB for donating the bundle of
+  through the _stable_ channel. Many thanks to EDB for donating the bundle of
   their "EDB Postgres for Kubernetes" operator and adapting it for CloudNativePG.
 
 ### Important Changes:
@@ -397,14 +395,13 @@ This is expected to be the last release in the 1.21.X series.
 - Fix backup failure due to missing RBAC `resourceNames` on the `Role` object
   (#2956)
 - Observability:
-
-    - Add TCP port label to default `pg_stat_replication` metric (#2961)
-    - Fix the `pg_wal_stat` default metric for Prometheus (#2569)
-    - Improve the `pg_replication` default metric for Prometheus (#2744 and
-      #2750)
-    - Use `alertInstanceLabelFilter` instead of `alertName` in the provided
-      Grafana dashboard
-    - Enforce `standard_conforming_strings` in metric collection (#2888)
+  - Add TCP port label to default `pg_stat_replication` metric (#2961)
+  - Fix the `pg_wal_stat` default metric for Prometheus (#2569)
+  - Improve the `pg_replication` default metric for Prometheus (#2744 and
+    #2750)
+  - Use `alertInstanceLabelFilter` instead of `alertName` in the provided
+    Grafana dashboard
+  - Enforce `standard_conforming_strings` in metric collection (#2888)
 
 ### Changes:
 
@@ -424,4 +421,3 @@ This is expected to be the last release in the 1.21.X series.
 
 - Replace `k8s-api-docgen` with `gen-crd-api-reference-docs` to automatically
   build the API reference documentation (#2606)
-

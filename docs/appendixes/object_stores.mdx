@@ -1,4 +1,5 @@
 ﻿# Appendix C - Common object stores for backups
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::warning
@@ -10,7 +11,7 @@ Plugin documentation describes
 [how to use common object stores](https://cloudnative-pg.io/plugin-barman-cloud/docs/object_stores/).
 :::
 
-You can store the [backup](../backup.md) files in any service that is supported
+You can store the [backup](../backup.mdx) files in any service that is supported
 by the Barman Cloud infrastructure. That is:
 
 - [Amazon S3](#aws-s3)
@@ -161,11 +162,11 @@ you need to set the option `endpointCA` inside `barmanObjectStore` referring
 to a secret containing the CA bundle, so that Barman can verify the certificate
 correctly.
 You can find instructions on creating a secret using your cert files in the
-[certificates](../certificates.md#example) document.
+[certificates](../certificates.mdx#example) document.
 Once you have created the secret, you can populate the `endpointCA` as in the
 following example:
 
-``` yaml
+```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 [...]
@@ -198,7 +199,7 @@ combinations of credentials:
 - Storage account name and [Storage account access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage)
 - Storage account name and [Storage account SAS Token](https://docs.microsoft.com/en-us/azure/storage/blobs/sas-service-create)
 - Storage account name and [Azure AD Workload Identity](https://azure.github.io/azure-workload-identity/docs/introduction.html)
-properly configured.
+  properly configured.
 
 Using **Azure AD Workload Identity**, you can avoid saving the credentials into a Kubernetes Secret,
 and have a Cluster configuration adding the `inheritFromAzureAD` as follows:
@@ -219,7 +220,7 @@ On the other side, using both **Storage account access key** or **Storage accoun
 the credentials need to be stored inside a Kubernetes Secret, adding data entries only when
 needed. The following command performs that:
 
-``` sh
+```sh
 kubectl create secret generic azure-creds \
   --from-literal=AZURE_STORAGE_ACCOUNT=<storage account name> \
   --from-literal=AZURE_STORAGE_KEY=<storage account key> \
@@ -259,7 +260,7 @@ spec:
 When using the Azure Blob Storage, the `destinationPath` fulfills the following
 structure:
 
-``` sh
+```sh
 <http|https>://<account-name>.<service-name>.core.windows.net/<resource-path>
 ```
 
@@ -271,7 +272,7 @@ which is also called **storage account name**, is included in the used host name
 If you are using a different implementation of the Azure Blob Storage APIs,
 the `destinationPath` will have the following structure:
 
-``` sh
+```sh
 <http|https>://<local-machine-address>:<port>/<account-name>/<resource-path>
 ```
 
@@ -353,4 +354,3 @@ This way of authentication will create a JSON file inside the container with all
 information to access your Google Cloud Storage bucket, meaning that if someone gets access to the pod
 will also have write permissions to the bucket.
 :::
-

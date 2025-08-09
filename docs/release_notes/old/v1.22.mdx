@@ -12,7 +12,7 @@ on the release branch in GitHub.
 
 :::warning
 This is expected to be the last release in the 1.22.X series.
-    Users are encouraged to update to a newer minor version soon.
+Users are encouraged to update to a newer minor version soon.
 
 ### Enhancements:
 
@@ -66,8 +66,8 @@ This is expected to be the last release in the 1.22.X series.
 
 :::warning
 Version 1.22 is approaching its End-of-Life (EOL) on Jul 24, 2024.
-    If you haven't already, please begin planning for an upgrade promptly to
-    ensure continued support and security.
+If you haven't already, please begin planning for an upgrade promptly to
+ensure continued support and security.
 
 ### Enhancements:
 
@@ -78,11 +78,10 @@ Version 1.22 is approaching its End-of-Life (EOL) on Jul 24, 2024.
   `.spec.livenessProbeTimeout` option (#4719)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Enhanced support for ANSI colors in the plugin by adding the `--color`
-      option, which accepts `always`, `never`, and `auto` (default) as values
-      (#4775)
-    - The plugin is now available on Homebrew for macOS users (#4602)
+  - Enhanced support for ANSI colors in the plugin by adding the `--color`
+    option, which accepts `always`, `never`, and `auto` (default) as values
+    (#4775)
+  - The plugin is now available on Homebrew for macOS users (#4602)
 
 ### Fixes:
 
@@ -124,8 +123,7 @@ Version 1.22 is approaching its End-of-Life (EOL) on Jul 24, 2024.
   incorrectly routed to the normal log stream (#4394)
 
 - `cnpg` plugin for `kubectl`:
-
-    - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
+  - Resolved an issue with listing PDBs using the `cnpg status` command (#4530)
 
 ### Changes
 
@@ -157,12 +155,12 @@ Version 1.22 is approaching its End-of-Life (EOL) on Jul 24, 2024.
 - Cleanup `PGDATA` in case of failure of the restore job (#4151)
 - Reload certificates on configuration update (#3705)
 - `cnpg` plugin for `kubectl`:
-    - Improve the arguments handling of `destroy`, `fencing`, and `promote`
-      plugin commands (#4280)
-    - Correctly handle the percentage of the backup progress in `cnpg status`
-      (#4131)
-    - Gracefully handle databases with no sequences in `sync-sequences` command
-      (#4346)
+  - Improve the arguments handling of `destroy`, `fencing`, and `promote`
+    plugin commands (#4280)
+  - Correctly handle the percentage of the backup progress in `cnpg status`
+    (#4131)
+  - Gracefully handle databases with no sequences in `sync-sequences` command
+    (#4346)
 
 ### Changes:
 
@@ -188,7 +186,6 @@ Version 1.22 is approaching its End-of-Life (EOL) on Jul 24, 2024.
   inject the correct binary into any Pod with a supported architecture (#3840)
 - Introduce initial support for tab-completion with the `cnpg` plugin for
   `kubectl` (#3875)
-
 
 ### Fixes
 
@@ -245,7 +242,7 @@ Fixes:
   `initdb` bootstrap method, by disabling the durability settings in the PostgreSQL
   instance for the duration of the import process (#3743)
 - Avoid pod restart due to erroneous resource quantity comparisons, e.g. "1 !=
-  1000m"  (#3706)
+  1000m" (#3706)
 - Properly escape reserved characters in `pgpass` connection fields (#3713)
 - Prevent systematic rollout of pods due to considering zero and nil different
   values in `.spec.projectedVolumeTemplate.sources` (#3647)
@@ -257,10 +254,10 @@ Fixes:
 **Release date:** Dec 21, 2023
 
 !!! Important "Important changes from previous versions"
-    This release introduces a significant change, disabling the default usage
-    of the `ALTER SYSTEM` command in PostgreSQL. For users upgrading from a
-    previous version who wish to retain the old behavior: please refer to the
-    [upgrade documentation](../../installation_upgrade.md) for detailed instructions.
+This release introduces a significant change, disabling the default usage
+of the `ALTER SYSTEM` command in PostgreSQL. For users upgrading from a
+previous version who wish to retain the old behavior: please refer to the
+[upgrade documentation](../../installation_upgrade.mdx) for detailed instructions.
 
 ### Features:
 
@@ -298,9 +295,9 @@ Fixes:
 - Introduction of Red Hat UBI 8 container images for the operator, suitable for
   OLM deployments. <!-- NO 1.20 -->
 - Connection pooler:
-    - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
-    - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
-      pooler deployment, differentiating them from instance pods (#3396).
+  - Scaling down instances of a `Pooler` resource to 0 is now possible (#3517).
+  - Addition of the `cnpg.io/podRole` label with a value of 'pooler' to every
+    pooler deployment, differentiating them from instance pods (#3396).
 
 Fixes:
 
@@ -315,11 +312,11 @@ Fixes:
 - Disabling of wal_sender_timeout when joining through pg_basebackup (#3586)
 - Reloading of secrets used by external clusters (#3565)
 - Connection pooler:
-    - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
-    - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
-    - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
-    - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
-    - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
+  - Ensuring the controller watches all secrets owned by a `Pooler` resource (#3428).
+  - Reconciliation of `RoleBinding` for `Pooler` resources (#3391).
+  - Reconciliation of `imagePullSecret` for `Pooler` resources (#3389).
+  - Reconciliation of the service of a `Pooler` and addition of the required labels (#3349).
+  - Extension of `Pooler` labels to the deployment as well, not just the pods (#3350).
 
 Changes:
 

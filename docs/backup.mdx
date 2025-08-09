@@ -1,4 +1,5 @@
 ﻿# Backup
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 :::info
@@ -6,7 +7,7 @@ This section covers **physical backups** in PostgreSQL.
 While PostgreSQL also supports logical backups using the `pg_dump` utility,
 these are **not suitable for business continuity** and are **not managed** by
 CloudNativePG. If you still wish to use `pg_dump`, refer to the
-[*Troubleshooting / Emergency backup* section](troubleshooting.md#emergency-backup)
+[_Troubleshooting / Emergency backup_ section](troubleshooting.mdx#emergency-backup)
 for guidance.
 :::
 
@@ -27,11 +28,10 @@ two main ways:
   for integration with object storage services.
 
 - **Natively**, with support for:
-
-    - [Object storage via Barman Cloud](appendixes/backup_barmanobjectstore.md)
-      *(although deprecated from 1.26 in favor of the Barman Cloud Plugin)*
-    - [Kubernetes Volume Snapshots](appendixes/backup_volumesnapshot.md), if
-      supported by the underlying storage class
+  - [Object storage via Barman Cloud](appendixes/backup_barmanobjectstore.mdx)
+    _(although deprecated from 1.26 in favor of the Barman Cloud Plugin)_
+  - [Kubernetes Volume Snapshots](appendixes/backup_volumesnapshot.mdx), if
+    supported by the underlying storage class
 
 Before selecting a backup strategy with CloudNativePG, it's important to
 familiarize yourself with the foundational concepts covered in the ["Main Concepts"](#main-concepts)
@@ -79,12 +79,12 @@ PostgreSQL cluster, allowing each instance to fetch any required WAL file from
 the archive if needed (normally the WAL archive has higher retention periods
 than any Postgres instance that normally recycles those files).
 
-This use case can also be extended to [replica clusters](replica_cluster.md),
+This use case can also be extended to [replica clusters](replica_cluster.mdx),
 as they can simply rely on the WAL archive to synchronize across long
 distances, extending disaster recovery goals across different regions.
 
-When you [configure a WAL archive](wal_archiving.md), CloudNativePG provides
-out-of-the-box an [RPO](before_you_start.md#rpo) ≤ 5 minutes for disaster
+When you [configure a WAL archive](wal_archiving.mdx), CloudNativePG provides
+out-of-the-box an [RPO](before_you_start.mdx#rpo) ≤ 5 minutes for disaster
 recovery, even across regions.
 
 :::important
@@ -121,8 +121,8 @@ CloudNativePG currently supports two main approaches for physical backups:
 
 - **Object store–based backups**, via the [**Barman Cloud
   Plugin**](https://cloudnative-pg.io/plugin-barman-cloud/) or the
-  [**deprecated native integration**](appendixes/backup_barmanobjectstore.md)
-- [**Volume Snapshots**](appendixes/backup_volumesnapshot.md), using the
+  [**deprecated native integration**](appendixes/backup_barmanobjectstore.mdx)
+- [**Volume Snapshots**](appendixes/backup_volumesnapshot.mdx), using the
   Kubernetes CSI interface and supported storage classes
 
 :::important
@@ -163,7 +163,7 @@ Consider the following factors:
 - **Database size**: For very large databases (VLDBs), **volume snapshots are
   generally preferred** as they enable faster recovery due to copy-on-write
   technology—this significantly improves your
-  [Recovery Time Objective (RTO)](before_you_start.md#rto).
+  [Recovery Time Objective (RTO)](before_you_start.mdx#rto).
 - **Data mobility**: Object store–based backups may offer greater flexibility
   for replicating or storing backups across regions or environments.
 - **Operational familiarity**: Choose the method that aligns best with your
@@ -172,16 +172,16 @@ Consider the following factors:
 ### Comparison Summary
 
 | Feature                           | Object Store |   Volume Snapshots   |
-|-----------------------------------|:------------:|:--------------------:|
+| --------------------------------- | :----------: | :------------------: |
 | **WAL archiving**                 |   Required   |    Recommended^1^    |
-| **Cold backup**                   |      ❌       |          ✅           |
-| **Hot backup**                    |      ✅       |          ✅           |
-| **Incremental copy**              |      ❌       |         ✅^2^         |
-| **Differential copy**             |      ❌       |         ✅^2^         |
-| **Backup from a standby**         |      ✅       |          ✅           |
-| **Snapshot recovery**             |     ❌^3^     |          ✅           |
-| **Retention policies**            |      ✅       |          ❌           |
-| **Point-in-Time Recovery (PITR)** |      ✅       | Requires WAL archive |
+| **Cold backup**                   |      ❌      |          ✅          |
+| **Hot backup**                    |      ✅      |          ✅          |
+| **Incremental copy**              |      ❌      |        ✅^2^         |
+| **Differential copy**             |      ❌      |        ✅^2^         |
+| **Backup from a standby**         |      ✅      |          ✅          |
+| **Snapshot recovery**             |    ❌^3^     |          ✅          |
+| **Retention policies**            |      ✅      |          ❌          |
+| **Point-in-Time Recovery (PITR)** |      ✅      | Requires WAL archive |
 | **Underlying technology**         | Barman Cloud |    Kubernetes API    |
 
 ---
@@ -203,14 +203,14 @@ resource.
 
 :::info
 For a complete list of configuration options, refer to the
-[`ScheduledBackupSpec`](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-ScheduledBackupSpec)
+[`ScheduledBackupSpec`](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-ScheduledBackupSpec)
 in the API reference.
 :::
 
 ### Cron Schedule
 
 The `schedule` field defines **when** the backup should occur, using a
-*six-field cron expression* that includes seconds. This format follows the
+_six-field cron expression_ that includes seconds. This format follows the
 [Go `cron` package specification](https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format).
 
 :::warning
@@ -226,7 +226,7 @@ kind: ScheduledBackup
 metadata:
   name: backup-example
 spec:
-  schedule: "0 0 0 * * *"  # At midnight every day
+  schedule: '0 0 0 * * *' # At midnight every day
   backupOwnerReference: self
   cluster:
     name: pg-backup
@@ -241,7 +241,7 @@ since seconds are not supported.
 
 :::tip
 The frequency of your backups directly impacts your **Recovery Time Objective**
-([RTO](before_you_start.md#rto)).
+([RTO](before_you_start.mdx#rto)).
 :::
 
 To optimize your disaster recovery strategy based on continuous backup:
@@ -287,7 +287,7 @@ by creating a `Backup` resource.
 
 :::info
 For a full list of available options, see the
-[`BackupSpec`](cloudnative-pg.v1.md#postgresql-cnpg-io-v1-BackupSpec) in the
+[`BackupSpec`](cloudnative-pg.v1.mdx#postgresql-cnpg-io-v1-BackupSpec) in the
 API reference.
 :::
 
@@ -371,11 +371,11 @@ CloudNativePG currently supports the following backup methods for scheduled
 and on-demand backups:
 
 - `plugin` – Uses a CNPG-I plugin (requires `.spec.pluginConfiguration`)
-- `volumeSnapshot` – Uses native [Kubernetes volume snapshots](appendixes/backup_volumesnapshot.md#how-to-configure-volume-snapshot-backups)
-- `barmanObjectStore` – Uses [Barman Cloud for object storage](appendixes/backup_barmanobjectstore.md)
-  *(deprecated starting with v1.26 in favor of the
+- `volumeSnapshot` – Uses native [Kubernetes volume snapshots](appendixes/backup_volumesnapshot.mdx#how-to-configure-volume-snapshot-backups)
+- `barmanObjectStore` – Uses [Barman Cloud for object storage](appendixes/backup_barmanobjectstore.mdx)
+  _(deprecated starting with v1.26 in favor of the
   [Barman Cloud Plugin](https://cloudnative-pg.io/plugin-barman-cloud/),
-  but still the default for backward compatibility)*
+  but still the default for backward compatibility)_
 
 Specify the method using the `.spec.method` field (defaults to
 `barmanObjectStore`).
@@ -443,11 +443,10 @@ to `primary` in the cluster configuration:
 ```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
-metadata:
-  [...]
+metadata: [...]
 spec:
   backup:
-    target: "primary"
+    target: 'primary'
 ```
 
 :::warning
@@ -466,12 +465,11 @@ backup:
 ```yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Backup
-metadata:
-  [...]
+metadata: [...]
 spec:
   cluster:
     name: [...]
-  target: "primary"
+  target: 'primary'
 ```
 
 In this example, even if the cluster’s default target is `prefer-standby`, the
@@ -496,4 +494,3 @@ Users are encouraged to rely on the retention mechanisms provided by the
 backup plugin they are using. This ensures better flexibility and consistency
 with the backup method in use.
 :::
-

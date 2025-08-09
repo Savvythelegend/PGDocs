@@ -1,4 +1,5 @@
 ﻿# Logging
+
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 CloudNativePG outputs logs in JSON format directly to standard output, including
@@ -9,10 +10,10 @@ management tools, including command line ones like
 
 :::important
 Long-term storage and management of logs are outside the scope of the
-    operator and should be handled at the Kubernetes infrastructure level.
-    For more information, see the
-    [Kubernetes Logging Architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
-    documentation.
+operator and should be handled at the Kubernetes infrastructure level.
+For more information, see the
+[Kubernetes Logging Architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+documentation.
 
 Each log entry includes the following fields:
 
@@ -27,9 +28,9 @@ Each log entry includes the following fields:
 
 :::info
 If your log ingestion system requires custom field names, you can rename
-    the `level` and `ts` fields using the `log-field-level` and
-    `log-field-timestamp` flags in the operator controller. This can be configured
-    by editing the `Deployment` definition of the `cloudnative-pg` operator.
+the `level` and `ts` fields using the `log-field-level` and
+`log-field-timestamp` flags in the operator controller. This can be configured
+by editing the `Deployment` definition of the `cloudnative-pg` operator.
 
 ## Cluster Logs
 
@@ -39,8 +40,8 @@ specification using the `logLevel` option. Available log levels are: `error`,
 
 :::important
 Currently, the log level can only be set at the time the instance starts.
-    Changes to the log level in the cluster specification after the cluster has
-    started will only apply to new pods, not existing ones.
+Changes to the log level in the cluster specification after the cluster has
+started will only apply to new pods, not existing ones.
 
 ## Operator Logs
 
@@ -89,13 +90,13 @@ Each PostgreSQL log entry is a JSON object with the `logger` key set to
     "application_name": "",
     "backend_type": "startup"
   },
-  "logging_pod": "cluster-example-1",
+  "logging_pod": "cluster-example-1"
 }
 ```
 
 :::info
 Internally, the operator uses PostgreSQL's CSV log format. For more details,
-    refer to the [PostgreSQL documentation on CSV log format](https://www.postgresql.org/docs/current/runtime-config-logging.html).
+refer to the [PostgreSQL documentation on CSV log format](https://www.postgresql.org/docs/current/runtime-config-logging.html).
 
 ## PGAudit Logs
 
@@ -107,16 +108,16 @@ section of the cluster configuration.
 
 :::important
 The PGAudit library must be added to `shared_preload_libraries`.
-    CloudNativePG automatically manages this based on the presence of `pgaudit.*`
-    parameters in the PostgreSQL configuration. The operator handles both the
-    addition and removal of the library from `shared_preload_libraries`.
+CloudNativePG automatically manages this based on the presence of `pgaudit.*`
+parameters in the PostgreSQL configuration. The operator handles both the
+addition and removal of the library from `shared_preload_libraries`.
 
 Additionally, the operator manages the creation and removal of the PGAudit
 extension across all databases within the cluster.
 
 :::important
 CloudNativePG executes the `CREATE EXTENSION` and `DROP EXTENSION` commands
-    in all databases within the cluster that accept connections.
+in all databases within the cluster that accept connections.
 
 The following example demonstrates a PostgreSQL `Cluster` deployment with
 PGAudit enabled and configured:
@@ -131,10 +132,10 @@ spec:
 
   postgresql:
     parameters:
-      "pgaudit.log": "all, -misc"
-      "pgaudit.log_catalog": "off"
-      "pgaudit.log_parameter": "on"
-      "pgaudit.log_relation": "on"
+      'pgaudit.log': 'all, -misc'
+      'pgaudit.log_catalog': 'off'
+      'pgaudit.log_parameter': 'on'
+      'pgaudit.log_relation': 'on'
 
   storage:
     size: 1Gi
@@ -183,12 +184,12 @@ This example shows sample log entries:
       "parameter": "<none>"
     }
   },
-  "logging_pod": "cluster-example-1",
+  "logging_pod": "cluster-example-1"
 }
 ```
 
 See the
-[PGAudit documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#format) <!-- wokeignore:rule=master -->
+[PGAudit documentation](https://github.com/pgaudit/pgaudit/blob/master/README.mdx#format) <!-- wokeignore:rule=master -->
 for more details about each field in a record.
 
 ## Other Logs
@@ -209,7 +210,7 @@ the `logger` field indicating the process that produced them. The possible
   `record`)
 - `wal-archive`: logs from the `wal-archive` subcommand of the instance manager
 - `wal-restore`: logs from the `wal-restore` subcommand of the instance manager
-- `instance-manager`: from the [PostgreSQL instance manager](./instance_manager.md)
+- `instance-manager`: from the [PostgreSQL instance manager](./instance_manager.mdx)
 
 With the exception of `postgres`, which follows a specific structure, all other
 `logger` values contain the `msg` field with the escaped message that is

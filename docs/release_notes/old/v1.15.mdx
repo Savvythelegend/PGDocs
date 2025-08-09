@@ -7,23 +7,23 @@ For a complete list of changes, please refer to the
 on the release branch in GitHub.
 
 :::warning
-This is expected to be the last release in the 1.15.X series. 
-    Users are encouraged to update to a newer minor version soon.
+This is expected to be the last release in the 1.15.X series.
+Users are encouraged to update to a newer minor version soon.
 
-##  Version 1.15.5
+## Version 1.15.5
 
 **Release date:** Oct 6, 2022
 
 Enhancements:
 
--  Introduce `leaseDuration` and `renewDeadline` parameters in the controller
-   manager to enhance configuration of the leader election in operator
-   deployments (#759)
--  Improve the mechanism that checks that the backup object store is empty
-   before archiving a WAL file for the first time: a new file called
-   `.check-empty-wal-archive` is placed in the `PGDATA` immediately after
-   the cluster is bootstrapped and it is then removed after the first WAL
-   file is successfully archived
+- Introduce `leaseDuration` and `renewDeadline` parameters in the controller
+  manager to enhance configuration of the leader election in operator
+  deployments (#759)
+- Improve the mechanism that checks that the backup object store is empty
+  before archiving a WAL file for the first time: a new file called
+  `.check-empty-wal-archive` is placed in the `PGDATA` immediately after
+  the cluster is bootstrapped and it is then removed after the first WAL
+  file is successfully archived
 
 Security:
 
@@ -36,9 +36,9 @@ Fixes:
 - Make the cluster's conditions compatible with `metav1.Conditions` struct (#720)
 - Drop any active connection on a standby after it is promoted to primary (#737)
 - Honor `MAPPEDMETRIC` and `DURATION` metric types conversion in the native
-  Prometheus exporter  (#765)
+  Prometheus exporter (#765)
 
-##  Version 1.15.4
+## Version 1.15.4
 
 **Release date:** Sep 6, 2022
 
@@ -60,7 +60,7 @@ Fixes:
 - Prevent a panic from happening when invoking `GetAllAccessibleDatabases`
   (#641)
 
-##  Version 1.15.3
+## Version 1.15.3
 
 **Release date:** Aug 12, 2022
 
@@ -93,13 +93,13 @@ Fixes:
 - Avoid updating the CRD if a TLS certificate is not changed (#501)
 - Handle conflicts while injecting a certificate in the CRD (#547)
 - Backup and recovery:
-    - Correctly pass object store credentials in Google Cloud (#454)
+  - Correctly pass object store credentials in Google Cloud (#454)
 
 Minor changes:
 
 - Set the default operand image to PostgreSQL 15.0
 
-##  Version 1.15.2
+## Version 1.15.2
 
 **Release date:** Jul 7, 2022 (patch release)
 
@@ -124,24 +124,24 @@ Fixes:
   decreased, and the primary has already restarted
 - Properly quote role names in `ALTER ROLE` statements
 - Backup and recovery:
-    - Fix the algorithm detecting the closest Barman backup for PITR, which was
-      comparing the requested recovery timestamp with the backup start instead
-      of the end
-    - Fix Point in Time Recovery based on a transaction ID, a named restore
-      point, or the “immediate” target by providing a new field called
-      `backupID` in the `recoveryTarget` section
-    - Fix encryption parameters invoking `barman-cloud-wal-archive` and
-      `barman-cloud-backup` commands
-    - Stop ignoring `barmanObjectStore.serverName` option when recovering from
-      a backup object store using a server name that doesn’t match the current
-      cluster name
+  - Fix the algorithm detecting the closest Barman backup for PITR, which was
+    comparing the requested recovery timestamp with the backup start instead
+    of the end
+  - Fix Point in Time Recovery based on a transaction ID, a named restore
+    point, or the “immediate” target by providing a new field called
+    `backupID` in the `recoveryTarget` section
+  - Fix encryption parameters invoking `barman-cloud-wal-archive` and
+    `barman-cloud-backup` commands
+  - Stop ignoring `barmanObjectStore.serverName` option when recovering from
+    a backup object store using a server name that doesn’t match the current
+    cluster name
 - `cnpg` plug-in:
-    - Make sure that the plug-in complies with the `-n` parameter when
-      specified by the user
-    - Fix the `status` command to sort results and remove variability in the
-      output
+  - Make sure that the plug-in complies with the `-n` parameter when
+    specified by the user
+  - Fix the `status` command to sort results and remove variability in the
+    output
 
-##  Version 1.15.1
+## Version 1.15.1
 
 **Release date:** May 27, 2022 (patch release)
 
