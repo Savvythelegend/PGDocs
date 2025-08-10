@@ -1,6 +1,13 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
 
+/**
+ * Docusaurus config for multi-version docs:
+ * - 'Next' (in-progress/RC) docs live in /docs and appear at /next/ and in the version dropdown as 'Next'.
+ * - '1.26' is the only versioned (stable) docs, appears at / and /1.26/.
+ * - When ready to release a new stable version, run: npx docusaurus docs:version <new-version>
+ */
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Documentation | CloudNativePG PostgreSQL Operator for K8s',
@@ -39,6 +46,11 @@ const config = {
           sidebarPath: './sidebars.js',
           editUrl:
             'https://github.com/cloudnative-pg/cloudnative-pg/tree/main/docs/',
+          // Only 1.26 is versioned; 'Next' is always the main docs folder
+          lastVersion: '1.26',
+          versions: {
+            '1.26': { label: '1.26', banner: 'none' },
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -58,6 +70,10 @@ const config = {
         },
         items: [
           { to: '/faq', label: 'FAQs', position: 'right' },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
           {
             href: 'https://github.com/cloudnative-pg/cloudnative-pg/',
             label: 'GitHub',

@@ -1,7 +1,7 @@
 // sidebars.js
 module.exports = {
   docs: [
-    { type: 'doc', id: 'index', label: 'Introduction' },
+    { type: 'doc', id: 'intro', label: 'Introduction' },
     { type: 'doc', id: 'before_you_start', label: 'Before You Start' },
     { type: 'doc', id: 'use_cases', label: 'Use Cases' },
     { type: 'doc', id: 'architecture', label: 'Architecture' },
@@ -53,7 +53,7 @@ module.exports = {
     { type: 'doc', id: 'networking', label: 'Networking' },
     { type: 'doc', id: 'benchmarking', label: 'Benchmarking' },
     { type: 'doc', id: 'faq', label: 'FAQ' },
-    { type: 'doc', id: 'cloudnative-pg.v1', label: 'CloudNativePG v1' },
+    { type: 'doc', id: 'cloudnative-pg.v1', label: 'API Reference' },
     { type: 'doc', id: 'supported_releases', label: 'Supported Releases' },
     { type: 'doc', id: 'preview_version', label: 'Preview Version' },
     { type: 'doc', id: 'release_notes', label: 'Release Notes' },
