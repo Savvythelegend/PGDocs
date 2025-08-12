@@ -77,6 +77,3 @@ Fork, create a feature branch, make changes, submit a PR. Follow existing struct
 ## License
 
 MIT License — see [LICENSE](LICENSE)
-
-```
-```
