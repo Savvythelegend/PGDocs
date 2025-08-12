@@ -19,7 +19,7 @@ creation of new roles if they are not already present in the database. Role
 creation will occur _after_ the database bootstrapping is complete.
 
 An example manifest for a cluster with declarative role management can be found
-in the file [`cluster-example-with-roles.yaml`](samples/cluster-example-with-roles.yaml).
+in the file [`cluster-example-with-roles.yaml`](/samples/cluster-example-with-roles.yaml).
 
 Here is an excerpt from that file:
 
@@ -253,3 +253,5 @@ In terms of backward compatibility, declarative role management is designed
 to ignore roles that exist in the database but are not included in the spec.
 The lifecycle of these roles will continue to be managed within PostgreSQL,
 allowing CloudNativePG users to adopt this feature at their convenience.
+
+

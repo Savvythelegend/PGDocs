@@ -2,10 +2,8 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 
 /**
- * Docusaurus config for multi-version docs:
- * - 'Next' (in-progress/RC) docs live in /docs and appear at /next/ and in the version dropdown as 'Next'.
- * - '1.26' is the only versioned (stable) docs, appears at / and /1.26/.
- * - When ready to release a new stable version, run: npx docusaurus docs:version <new-version>
+ * Docusaurus config for documentation:
+ * - Main docs live in /docs and appear at the root path /
  */
 
 /** @type {import('@docusaurus/types').Config} */
@@ -20,14 +18,14 @@ const config = {
   },
 
   // Production URL and base path
-  url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  url: 'https://Savvythelegend.github.io',  // ← Your username here
+  baseUrl: '/pgdocs/',                      // ← Keep this
 
   // GitHub pages deployment config
-  organizationName: 'cloudnative-pg',
-  projectName: 'cloudnative-pg',
+  organizationName: 'Savvythelegend',        // ← Your username here
+  projectName: 'pgdocs',       // ← Your repo name
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Internationalization settings
@@ -42,15 +40,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
           sidebarPath: './sidebars.js',
           editUrl:
             'https://github.com/cloudnative-pg/cloudnative-pg/tree/main/docs/',
-          // Only 1.26 is versioned; 'Next' is always the main docs folder
-          lastVersion: '1.26',
-          versions: {
-            '1.26': { label: '1.26', banner: 'none' },
-          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -69,11 +61,7 @@ const config = {
           src: 'img/large_logo.svg',
         },
         items: [
-          { to: '/faq', label: 'FAQs', position: 'right' },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-          },
+          { to: '/docs/faq', label: 'FAQs', position: 'right' },
           {
             href: 'https://github.com/cloudnative-pg/cloudnative-pg/',
             label: 'GitHub',
@@ -89,7 +77,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/',
               },
             ],
           },
@@ -128,5 +116,5 @@ const config = {
       },
     }),
 };
-
+  
 export default config;

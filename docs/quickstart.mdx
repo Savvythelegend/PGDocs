@@ -82,7 +82,7 @@ with the deployment of a PostgreSQL cluster.
 As with any other deployment in Kubernetes, to deploy a PostgreSQL cluster
 you need to apply a configuration file that defines your desired `Cluster`.
 
-The [`cluster-example.yaml`](samples/cluster-example.yaml) sample file
+The [`cluster-example.yaml`](/samples/cluster-example.yaml) sample file
 defines a simple `Cluster` using the default storage class to allocate
 disk space:
 
@@ -194,7 +194,7 @@ system.
 
 We need to add the `prometheus-community` helm chart repository, and then
 install the _Kube Prometheus stack_ with our sample configuration
-[`kube-stack-config.yaml`](./samples/monitoring/kube-stack-config.yaml).
+[`kube-stack-config.yaml`](/samples/monitoring/kube-stack-config.yaml).
 
 We can accomplish this with the following commands:
 
@@ -203,7 +203,7 @@ helm repo add prometheus-community \
   https://prometheus-community.github.io/helm-charts
 
 helm upgrade --install \
-  -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/kube-stack-config.yaml \
+  -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src//samples/monitoring/kube-stack-config.yaml \
   prometheus-community \
   prometheus-community/kube-prometheus-stack
 ```
@@ -289,7 +289,7 @@ You can define some alerts by creating a `prometheusRule`:
 
 ```sh
 kubectl apply -f \
-  https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/prometheusrule.yaml
+  https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src//samples/monitoring/prometheusrule.yaml
 ```
 
 You should see the default alerts now:
@@ -335,3 +335,8 @@ producing some graphs to show `No data`.
 Note that in our local setup, Prometheus and Grafana are configured to
 automatically discover and monitor any CloudNativePG clusters deployed with the
 Monitoring feature enabled.
+
+
+
+
+

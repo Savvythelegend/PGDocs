@@ -37,7 +37,7 @@ contains an example policy denying all ingress traffic by default.
 If your local kubernetes setup has this kind of restrictive network policy, you
 will need to create a `NetworkPolicy` to explicitly allow connection from the
 operator namespace and pod to the cluster namespace and pods. You can find an example in the
-[`networkpolicy-example.yaml`](samples/networkpolicy-example.yaml) file in this repository.
+[`networkpolicy-example.yaml`](/samples/networkpolicy-example.yaml) file in this repository.
 Please note, you'll need to adjust the cluster name and cluster namespace to
 match your specific setup, and also the operator namespace if it is not
 the default namespace.
@@ -49,3 +49,5 @@ ensure connectivity among all clusters, object stores, and namespaces involved.
 
 Again, we refer you to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/)
 for setup information.
+
+

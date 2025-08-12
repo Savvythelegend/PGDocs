@@ -431,8 +431,8 @@ This **first example** defines a standalone replica cluster using streaming
 replication in both bootstrap and continuous recovery. The replica cluster
 connects to the source cluster using TLS authentication.
 
-You can check the [sample YAML](samples/cluster-example-replica-streaming.yaml)
-in the `samples/` subdirectory.
+You can check the [sample YAML](/samples/cluster-example-replica-streaming.yaml)
+in the `/samples/` subdirectory.
 
 Note the `bootstrap` and `replica` sections pointing to the source cluster.
 
@@ -484,8 +484,8 @@ store using the `recovery` section and continuous recovery using both streaming
 replication and the given object store. For streaming replication, the replica
 cluster connects to the source cluster using basic authentication.
 
-You can check the [sample YAML](samples/cluster-example-replica-from-backup-simple.yaml)
-for it in the `samples/` subdirectory.
+You can check the [sample YAML](/samples/cluster-example-replica-from-backup-simple.yaml)
+for it in the `/samples/` subdirectory.
 
 Note the `bootstrap` and `replica` sections pointing to the source cluster.
 
@@ -548,8 +548,8 @@ from a volume snapshot using the `recovery` section. It uses
 streaming replication (via basic authentication) and the object
 store to fetch the WAL files.
 
-You can check the [sample YAML](samples/cluster-example-replica-from-volume-snapshot.yaml)
-for it in the `samples/` subdirectory.
+You can check the [sample YAML](/samples/cluster-example-replica-from-volume-snapshot.yaml)
+for it in the `/samples/` subdirectory.
 
 The example assumes that the application database and its owning
 user are set to the default, `app`. If the PostgreSQL cluster being restored
@@ -624,3 +624,5 @@ Always measure your goals. Depending on your environment, it might be more
 efficient to rely on volume snapshot-based recovery for faster outcomes.
 Evaluate and choose the approach that best aligns with your unique requirements
 and infrastructure.
+
+

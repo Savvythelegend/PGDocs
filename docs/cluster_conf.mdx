@@ -40,7 +40,7 @@ spec:
 
 You can find a complete example that uses a projected volume template to mount
 the secret and ConfigMap in the
-[cluster-example-projected-volume.yaml](samples/cluster-example-projected-volume.yaml)
+[cluster-example-projected-volume.yaml](/samples/cluster-example-projected-volume.yaml)
 deployment manifest.
 
 ## Ephemeral volumes
@@ -147,3 +147,5 @@ If the `env` or the `envFrom` section refers to a secret or a ConfigMap, the
 operator doesn't detect any changes in them and doesn't trigger a rollout. The
 kubelet uses the same behavior with pods, and you must trigger the pod rollout
 manually.
+
+
