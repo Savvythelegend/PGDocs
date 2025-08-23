@@ -73,42 +73,38 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Learn',
             items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/',
-              },
+              { label: 'Documentation', to: 'docs/' },
+              { label: 'Quickstart Guide', to: '/docs/quickstart' },
+              { label: 'Tutorials', to: '#' },
             ],
           },
           {
             title: 'Community',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: '#',
-              },
-              {
-                label: 'Discord',
-                href: '#',
-              },
-              {
-                label: 'X',
-                href: '#',
-              },
+              { label: 'Blog', to: '#' },
+              { label: 'Releases', to: '/docs/release_notes' },
+              { label: 'How to Contribute', to: 'https://github.com/cloudnative-pg/cloudnative-pg/blob/main/CONTRIBUTING.md' },
             ],
           },
           {
-            title: 'More',
+            title: 'CloudNativePG',
             items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/cloudnative-pg/cloudnative-pg/',
-              },
-            ],
-          },
+              { html: `
+                <a href="https://cloud-native.slack.com/archives/C08MAUJ7NPM" target="_self"><i class="fab fa-slack fa-2x"></i></a>
+                <a href="https://x.com/CloudNativePg" target="_blank"><i class="fab fa-x-twitter fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UCTGH88W1BiuRRPTzJUDPJyA" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                <a href="https://www.linkedin.com/company/cloudnative-pg" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="https://mastodon.social/@CloudNativePG" target="_blank"><i class="fab fa-mastodon fa-2x"></i></a>
+                <a href="https://bsky.app/profile/cloudnativepg.bsky.social" target="_blank"><i class="fas fa-bug fa-2x"></i></a>
+              ` },
+              { html: '<a href="https://github.com/cloudnative-pg/cloudnative-pg/" target="_blank" rel="noopener"><button style="background: #ad94d4;color:#000513;padding:10px 30px;border:none;border-radius:25px;font-size:1.1em;margin-top:10px;">View on GitHub</button></a>' }
+            ]
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Doc only site, Inc. Built with Docusaurus.`,
+      // Add link to the copyright title
+      copyright: `<a href='/pgdocs' style='text-decoration:none;'><img src='img/large_logo.svg' alt='CloudNativePG Logo' style='height:45px;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1);'/></a> © ${new Date().getFullYear()} CloudNativePG`,
       },
       prism: {
         theme: prismThemes.github,

@@ -5,9 +5,17 @@ import Link from '@docusaurus/Link';
 export default function Home() {
   return (
     <Layout title="CloudNativePG Documentation">
-      <main className="container margin-vert--lg">
-        <div className="row">
-          <div className="col col--8 col--offset--2">
+      <main
+        className="container margin-vert--lg"
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          minHeight: '70vh',
+        }}
+      >
+        <div className="row" style={{ width: '100%' }}>
+          <div className="col col--8 col--offset--2" style={{ textAlign: 'left' }}>
             <h1>Welcome to CloudNativePG</h1>
             <p className="text--large">
               The open-source operator designed to manage PostgreSQL workloads 

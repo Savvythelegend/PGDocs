@@ -47,7 +47,18 @@
   filter: brightness(0) invert(1);
 }
 
+[data-theme='dark'] .footer .fab,
+[data-theme='dark'] .footer .fas,
+[data-theme='dark'] .footer .footer__link-item i {
+  color: #fff !important;
+}
+
+[data-theme='dark'] .footer img[alt="CloudNativePG Logo"] {
+  filter: brightness(0) invert(1) !important;
+}
+
 /* Table cell white-space fix from MkDocs override */
 td, th {
   white-space: normal;
 }
+@import url('@fortawesome/fontawesome-free/css/all.min.css');
